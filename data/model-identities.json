@@ -1,0 +1,290 @@
+[
+  {
+    "id": "gpt-5-3-codex",
+    "name": "GPT-5.3-Codex",
+    "date": "2026-02-05",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-3-codex-spark",
+    "name": "GPT-5.3-Codex-Spark",
+    "date": "2026-02-12",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-3-instant",
+    "name": "GPT-5.3 Instant",
+    "date": "2026-03-03",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-4-thinking",
+    "name": "GPT-5.4 / GPT-5.4 Thinking",
+    "date": "2026-03-05",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-4-pro",
+    "name": "GPT-5.4 Pro",
+    "date": "2026-03-05",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-4-mini",
+    "name": "GPT-5.4 mini",
+    "date": "2026-03-17",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-4-nano",
+    "name": "GPT-5.4 nano",
+    "date": "2026-03-17",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-5",
+    "name": "GPT-5.5 / GPT-5.5 Thinking",
+    "date": "2026-04-23",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-5-pro",
+    "name": "GPT-5.5 Pro",
+    "date": "2026-04-23",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-5-instant",
+    "name": "GPT-5.5 Instant",
+    "date": "2026-05-05",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-6-preview",
+    "name": "GPT-5.6 Sol Preview",
+    "date": "2026-06-26",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-6-sol",
+    "name": "GPT-5.6 Sol",
+    "date": "2026-07-09",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-6-terra",
+    "name": "GPT-5.6 Terra",
+    "date": "2026-07-09",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-6-luna",
+    "name": "GPT-5.6 Luna",
+    "date": "2026-07-09",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-6-astra",
+    "name": "GPT-6 Astra",
+    "date": "2026-09-03",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-6-sol-sep",
+    "name": "GPT-6 Sol（9月）",
+    "date": "2026-09-03",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-6-sol-oct",
+    "name": "GPT-6 Sol（10月更新）",
+    "date": "2026-10",
+    "date_precision": "month"
+  },
+  {
+    "id": "gpt-6-luna-sep",
+    "name": "GPT-6 Luna（9月）",
+    "date": "2026-09-03",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-6-luna-oct",
+    "name": "GPT-6 Luna（10月更新）",
+    "date": "2026-10",
+    "date_precision": "month"
+  },
+  {
+    "id": "gpt-6-1-sol",
+    "name": "GPT-6.1 Sol",
+    "date": "2026-09-29",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-4-cyber",
+    "name": "GPT-5.4-Cyber",
+    "date": "2026-04",
+    "date_precision": "month"
+  },
+  {
+    "id": "gpt-5-5-cyber",
+    "name": "GPT-5.5-Cyber",
+    "date": "2026-06-22",
+    "date_precision": "day"
+  },
+  {
+    "id": "gpt-5-6-cyber",
+    "name": "GPT-5.6-Cyber",
+    "date": "2026-08-10",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-opus-4-6",
+    "name": "Claude Opus 4.6",
+    "date": "2026-02-05",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-opus-4-7",
+    "name": "Claude Opus 4.7",
+    "date": "2026-04-16",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-opus-4-8",
+    "name": "Claude Opus 4.8",
+    "date": "2026-05-28",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-opus-5",
+    "name": "Claude Opus 5",
+    "date": "2026-07-24",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-opus-5-5",
+    "name": "Claude Opus 5.5",
+    "date": "2026-09-22",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-sonnet-4-6",
+    "name": "Claude Sonnet 4.6",
+    "date": "2026-02-17",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-sonnet-5",
+    "name": "Claude Sonnet 5",
+    "date": "2026-06-30",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-sonnet-5-5",
+    "name": "Claude Sonnet 5.5",
+    "date": "2026-09-28",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-haiku-5-5",
+    "name": "Claude Haiku 5.5",
+    "date": "2026-10-07",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-mythos-preview",
+    "name": "Claude Mythos Preview",
+    "date": "2026-04-07",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-fable-5",
+    "name": "Claude Fable 5",
+    "date": "2026-06-09",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-mythos-5",
+    "name": "Claude Mythos 5",
+    "date": "2026-06-09",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-fable-5-1",
+    "name": "Claude Fable 5.1",
+    "date": "2026-09-01",
+    "date_precision": "day"
+  },
+  {
+    "id": "claude-mythos-5-1",
+    "name": "Claude Mythos 5.1",
+    "date": "2026-09-01",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-deep-think",
+    "name": "Gemini 3 Deep Think（2月更新）",
+    "date": "2026-02",
+    "date_precision": "month"
+  },
+  {
+    "id": "gemini-3-1-pro",
+    "name": "Gemini 3.1 Pro",
+    "date": "2026-02-19",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-1-flash-lite",
+    "name": "Gemini 3.1 Flash-Lite",
+    "date": "2026-03-03",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-5-flash",
+    "name": "Gemini 3.5 Flash",
+    "date": "2026-05-19",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-6-flash",
+    "name": "Gemini 3.6 Flash",
+    "date": "2026-07-21",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-5-flash-lite",
+    "name": "Gemini 3.5 Flash-Lite",
+    "date": "2026-07-21",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-5-flash-cyber",
+    "name": "Gemini 3.5 Flash Cyber",
+    "date": "2026-07-21",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-7-flash",
+    "name": "Gemini 3.7 Flash",
+    "date": "2026-08-13",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-8-flash",
+    "name": "Gemini 3.8 Flash",
+    "date": "2026-09-02",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-3-8-flash-cyber",
+    "name": "Gemini 3.8 Flash Cyber",
+    "date": "2026-09-02",
+    "date_precision": "day"
+  },
+  {
+    "id": "gemini-4-argon",
+    "name": "Gemini 4 Argon",
+    "date": "2026-10-13",
+    "date_precision": "day"
+  }
+]

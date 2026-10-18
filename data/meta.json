@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "asOf": "2026-10-17",
+  "workbook": "snapshots/2026-10-17.xlsx",
+  "workbookSha256": "295437386b734c541366c85e1f9b99d355786d52d2cdab722fd4d4c6928d9848",
+  "scope": "公开报告证据整理；未独立重跑模型评测",
+  "modelCount": 48,
+  "recordCount": 233,
+  "scoreCount": 43,
+  "numericCount": 28
+}

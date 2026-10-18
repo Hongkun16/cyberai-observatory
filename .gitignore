@@ -1,0 +1,9 @@
+node_modules/
+dist/
+web/dist/
+test-results/
+playwright-report/
+*.log
+__pycache__/
+.env*
+.DS_Store

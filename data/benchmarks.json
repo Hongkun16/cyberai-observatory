@@ -1,0 +1,345 @@
+[
+  {
+    "name": "20-language Vulnerability Discovery",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "跨20种编程语言的内部漏洞发现",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+  },
+  {
+    "name": "Advanced Cybersecurity Completion Rate",
+    "openness": "OpenAI内部行为评测",
+    "task": "高阶网安请求的响应/拒答率",
+    "caveat": "完成回答不表示攻击或防御任务成功",
+    "sourceUrl": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/"
+  },
+  {
+    "name": "Binary Exploitation Benchmark",
+    "openness": "Anthropic内部；原称OSS-Fuzz",
+    "task": "从未提示漏洞的入口发现漏洞并构造利用原语",
+    "caveat": "831入口/228项目；2026年8月后重写harness，重跑基线，勿混旧分数",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-5-5-system-card"
+  },
+  {
+    "name": "CTF Internal (63 challenges)",
+    "openness": "内部重新筛选的63题",
+    "task": "较难的CTF漏洞识别利用",
+    "caveat": "5.6系列新版题集，不与此前CTF直接比较",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-6"
+  },
+  {
+    "name": "CTF Professional",
+    "openness": "内部选题集（题目来自公开CTF）",
+    "task": "专业级CTF技能",
+    "caveat": "不可写成Cybench；题集随版本改变",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-3-codex"
+  },
+  {
+    "name": "CVE-Bench",
+    "openness": "公开基准；厂商可能移植",
+    "task": "真实Web应用漏洞识别和利用",
+    "caveat": "OpenAI v1.0仅34/40，zero-day prompt，无源码",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-3-codex"
+  },
+  {
+    "name": "CWE-Bench",
+    "openness": "外部基准；版本单列",
+    "task": "漏洞审计与修复",
+    "caveat": "3.8 Flash Cyber文未声明v1；不合并Argon v1成绩",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+  },
+  {
+    "name": "CWE-Bench v1",
+    "openness": "外部基准；私有held-out集",
+    "task": "无预定位提示的仓库安全审计与补丁生成",
+    "caveat": "120任务/73 CWEs/6语言；须同时阻止exploit且通过回归测试",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf"
+  },
+  {
+    "name": "Chrome Patching",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "Chrome补丁正确性比较",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+  },
+  {
+    "name": "Crypto CTF",
+    "openness": "Anthropic内部RSP题集",
+    "task": "对应领域CTF能力",
+    "caveat": "不等同Cybench；按具体章节核对",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-4-6-system-card"
+  },
+  {
+    "name": "CyScenarioBench",
+    "openness": "公开方法；场景集私有",
+    "task": "多阶段网安操作的规划、执行与协调",
+    "caveat": "不同厂商9/10/11等子集不能直比；Google报告旧称Key Skills",
+    "sourceUrl": "https://irregular.com/publications/cyscenariobench"
+  },
+  {
+    "name": "CyScenarioBench (safeguards)",
+    "openness": "防护/鲁棒性评测",
+    "task": "拒答覆盖或静态/自适应越狱防护",
+    "caveat": "与能力测试分列",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf"
+  },
+  {
+    "name": "Cybench",
+    "openness": "公开基准；厂商子集",
+    "task": "CTF多领域安全任务",
+    "caveat": "记录35/40子集、采样和pass@k",
+    "sourceUrl": "https://arxiv.org/abs/2408.08926"
+  },
+  {
+    "name": "Cyber Adaptive Jailbreak Eval",
+    "openness": "防护/鲁棒性评测",
+    "task": "拒答覆盖或静态/自适应越狱防护",
+    "caveat": "与能力测试分列",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf"
+  },
+  {
+    "name": "Cyber Capability Proxy Evaluations",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "Google用于网安uplift估计的代理评测",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf"
+  },
+  {
+    "name": "Cyber Conversational Evals",
+    "openness": "防护/鲁棒性评测",
+    "task": "拒答覆盖或静态/自适应越狱防护",
+    "caveat": "与能力测试分列",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf"
+  },
+  {
+    "name": "Cyber Range",
+    "openness": "OpenAI内部",
+    "task": "仿真网络端到端多步骤任务",
+    "caveat": "区分OpenAI靶场与外部UK AISI靶场",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-3-codex"
+  },
+  {
+    "name": "Cyber Static Jailbreak Eval",
+    "openness": "防护/鲁棒性评测",
+    "task": "拒答覆盖或静态/自适应越狱防护",
+    "caveat": "与能力测试分列",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf"
+  },
+  {
+    "name": "CyberGym",
+    "openness": "公开基准；厂商配置不同",
+    "task": "按高层漏洞描述在真实软件定向复现已知漏洞",
+    "caveat": "非全新零日发现；记录1507题、单/多Agent、harness",
+    "sourceUrl": "https://arxiv.org/abs/2506.02548"
+  },
+  {
+    "name": "Expert-led Browser / OS Assessment",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "OpenAI专家监督的浏览器与内核评估",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-6-astra/gpt-6-astra.pdf"
+  },
+  {
+    "name": "ExploitBench",
+    "openness": "公开基准；存在内部移植",
+    "task": "已知V8漏洞转化为分级利用能力及完整代码执行",
+    "caveat": "41题，16 flags；Cap%不是ACE率；plain/AutoNudge；种子数；评分变更",
+    "sourceUrl": "https://arxiv.org/abs/2605.14153"
+  },
+  {
+    "name": "ExploitBench Internal Port",
+    "openness": "OpenAI内部移植/刷新",
+    "task": "近期披露漏洞的利用开发",
+    "caveat": "2026年6–8月；与公共ExploitBench分列",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-6-astra"
+  },
+  {
+    "name": "ExploitGym",
+    "openness": "公开基准；厂商实现不同",
+    "task": "从已知漏洞和触发输入发展为目标漏洞代码执行",
+    "caveat": "869题；judge确认；2h/6h；缓解开关；离线v1实现",
+    "sourceUrl": "https://arxiv.org/abs/2605.11086"
+  },
+  {
+    "name": "External Cyber Range / Sandbox Assessment",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "外部网络靶场与沙箱评估",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://www.anthropic.com/claude-mythos-preview-system-card"
+  },
+  {
+    "name": "FSF Cyber Testing",
+    "openness": "框架/总体评估，不是独立具名benchmark",
+    "task": "Google风险阈值判断",
+    "caveat": "只披露做过测试，不等于披露具体题集与成绩",
+    "sourceUrl": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+  },
+  {
+    "name": "Firefox 147",
+    "openness": "Anthropic/Mozilla内部任务",
+    "task": "由浏览器引擎崩溃发展为代码执行",
+    "caveat": "50类别×5次；SpiderMonkey shell；无浏览器进程沙箱；非完整浏览器安全结论",
+    "sourceUrl": "https://www.anthropic.com/claude-mythos-preview-system-card"
+  },
+  {
+    "name": "FrontierCyber",
+    "openness": "厂商内部或外部专门评估；见逐项来源",
+    "task": "见能力评测工作表的任务设置",
+    "caveat": "未验证数据开放；不可直接称开源benchmark",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-6-preview/gpt-5-6-preview.pdf"
+  },
+  {
+    "name": "Gray Swan Cyber Eval",
+    "openness": "防护/鲁棒性评测",
+    "task": "拒答覆盖或静态/自适应越狱防护",
+    "caveat": "与能力测试分列",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf"
+  },
+  {
+    "name": "Gray Swan IPI",
+    "openness": "外部防护评测",
+    "task": "间接提示注入鲁棒性",
+    "caveat": "单列网安任务能力之外",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf"
+  },
+  {
+    "name": "Gray Swan Prompt Injection Evaluation",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "Gray Swan提示注入防护测试",
+    "caveat": "3.8发布文确认评测提供方和用途，正文未明确IPI正式名称；保留名称不确定性",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+  },
+  {
+    "name": "Internal Vulnerability Research",
+    "openness": "厂商内部或外部专门评估；见逐项来源",
+    "task": "见能力评测工作表的任务设置",
+    "caveat": "未验证数据开放；不可直接称开源benchmark",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf"
+  },
+  {
+    "name": "Irregular Atomic Challenges",
+    "openness": "厂商内部或外部专门评估；见逐项来源",
+    "task": "见能力评测工作表的任务设置",
+    "caveat": "未验证数据开放；不可直接称开源benchmark",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-4-thinking/gpt-5-4-thinking.pdf"
+  },
+  {
+    "name": "Key Skills",
+    "openness": "内部/合作方评测",
+    "task": "侦察、工具开发、工具使用、操作安全",
+    "caveat": "Argon报告明确旧称；保留v1/v2和报告上下文；3.7能力端仅代理",
+    "sourceUrl": "https://deepmind.google/models/fsf-reports/gemini-3-pro/"
+  },
+  {
+    "name": "Network CTF",
+    "openness": "Anthropic内部RSP题集",
+    "task": "对应领域CTF能力",
+    "caveat": "不等同Cybench；按具体章节核对",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-4-6-system-card"
+  },
+  {
+    "name": "Novel Zero-day Severity Calibration",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "新零日漏洞发现与严重度/报告校准",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/?output=1"
+  },
+  {
+    "name": "OSS-Fuzz (Anthropic internal)",
+    "openness": "Anthropic内部；借用开源OSS-Fuzz语料",
+    "task": "无引导漏洞发现和利用原语",
+    "caveat": "约830入口/228项目；不是Google OSS-Fuzz项目本身；旧harness",
+    "sourceUrl": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card"
+  },
+  {
+    "name": "Pwn CTF",
+    "openness": "Anthropic内部RSP题集",
+    "task": "对应领域CTF能力",
+    "caveat": "不等同Cybench；按具体章节核对",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-4-6-system-card"
+  },
+  {
+    "name": "Real-world Vulnerability Discovery",
+    "openness": "厂商内部或外部专门评估；见逐项来源",
+    "task": "见能力评测工作表的任务设置",
+    "caveat": "未验证数据开放；不可直接称开源benchmark",
+    "sourceUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf"
+  },
+  {
+    "name": "Rev CTF",
+    "openness": "Anthropic内部RSP题集",
+    "task": "对应领域CTF能力",
+    "caveat": "不等同Cybench；按具体章节核对",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-4-6-system-card"
+  },
+  {
+    "name": "SEC-Bench Pro",
+    "openness": "公开基准；版本与grader需保留",
+    "task": "大型JavaScript引擎漏洞发现与PoC构造",
+    "caveat": "2026年5月版183题；Astra更新根因grader，不与5.6直接混比",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-6-astra"
+  },
+  {
+    "name": "SRE-Bench",
+    "openness": "公开描述；私有程序生成任务",
+    "task": "无源码二进制软件逆向",
+    "caveat": "262 binary instances / 19 privately developed programs；六目标全满足",
+    "sourceUrl": "https://arxiv.org/html/2608.11469"
+  },
+  {
+    "name": "Sandbox Bench",
+    "openness": "OpenAI内部",
+    "task": "运行时、解析器、出口代理漏洞利用",
+    "caveat": "22目标；不得当作公共benchmark",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-6-astra"
+  },
+  {
+    "name": "UK AISI Cyber Evaluations",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "UK AISI外部网安评估",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-5/gpt-5-5.pdf"
+  },
+  {
+    "name": "US CAISI Cyber Evaluations",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "US CAISI外部网安评估",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-5/gpt-5-5.pdf"
+  },
+  {
+    "name": "VulnLMP",
+    "openness": "OpenAI内部",
+    "task": "长时开放式漏洞研究和利用原语",
+    "caveat": "有源码、高算力；不能把崩溃当作完整利用；Astra已停止沿用",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-6"
+  },
+  {
+    "name": "Vulnerability Discovery and Report Writing",
+    "openness": "厂商内部或外部专门评估；见逐项来源",
+    "task": "见能力评测工作表的任务设置",
+    "caveat": "未验证数据开放；不可直接称开源benchmark",
+    "sourceUrl": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/?output=1"
+  },
+  {
+    "name": "Web CTF",
+    "openness": "Anthropic内部RSP题集",
+    "task": "对应领域CTF能力",
+    "caveat": "不等同Cybench；按具体章节核对",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-4-6-system-card"
+  },
+  {
+    "name": "Wiz Penetration Testing",
+    "openness": "描述性任务标签；非正式benchmark名称",
+    "task": "Wiz内部渗透测试",
+    "caveat": "为便于整理而命名，不能据此认为有同名开源基准；以逐项报告正文为准",
+    "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+  },
+  {
+    "name": "未披露具名项目",
+    "openness": "证据状态",
+    "task": "未披露或未定位具体名称",
+    "caveat": "不表示厂商未运行测试",
+    "sourceUrl": ""
+  }
+]

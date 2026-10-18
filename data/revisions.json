@@ -1,0 +1,142 @@
+[
+  {
+    "subject": "GPT-5.3-Codex",
+    "before": "漏列Cyber Range",
+    "change": "本卡§5.1.2.3明确报告Cyber Range，已补齐",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-3-codex",
+    "pages": "15-17"
+  },
+  {
+    "subject": "GPT-5.4 mini",
+    "before": "具名项目待核对",
+    "change": "附录§6.3.2表19明确CTF与CVE-Bench；未给mini Cyber Range独立结果",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-4-thinking",
+    "pages": "36"
+  },
+  {
+    "subject": "GPT-5.5 Pro",
+    "before": "除CTF外均待核对",
+    "change": "CTF明确未跑；CVE-Bench明确报告Pro结果；Cyber Range/VulnLMP仍不继承",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-5",
+    "pages": "30-34"
+  },
+  {
+    "subject": "GPT-5.6 Terra / Luna",
+    "before": "SEC-Bench Pro覆盖待核对",
+    "change": "图35图例明确列出Sol、Terra和Luna，已确认；VulnLMP正文仍只确认Sol",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-6",
+    "pages": "54-55"
+  },
+  {
+    "subject": "GPT-5.6 Sol",
+    "before": "CyberGym仅标宣发",
+    "change": "卡§9.4.4明确用于越狱迁移及能力退化测试，83.6%为无越狱基线；已单列防护用途",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-6",
+    "pages": "77"
+  },
+  {
+    "subject": "GPT-6 Sol / Luna（9月）",
+    "before": "原表仅三项",
+    "change": "附录另有ExploitBench和Sandbox Bench，已补齐",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-6-astra",
+    "pages": "146-151"
+  },
+  {
+    "subject": "GPT-6 Sol / Luna（10月）",
+    "before": "原表仅说引用方法",
+    "change": "10月卡实际明确报告ExploitBench和SEC-Bench Pro；不继承9月其他项目",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-6-october",
+    "pages": "22-23"
+  },
+  {
+    "subject": "GPT-5.5-Cyber",
+    "before": "精确日期未确认，缺具名项目",
+    "change": "6月22日官方完整版本更新：CyberGym、ExploitGym、SEC-Bench Pro；最早preview日仍待核",
+    "sourceUrl": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+    "pages": "见逐项明细/来源章节"
+  },
+  {
+    "subject": "Claude Opus 4.6",
+    "before": "CyberGym宣发、Cybench索引",
+    "change": "原始卡正文：CyberGym §2.17、Cybench §8.4.7、五类内部CTF §8.4.2–6",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-4-6-system-card",
+    "pages": "29-30,198-203"
+  },
+  {
+    "subject": "Claude Opus 4.7 / 4.8",
+    "before": "清单不完整",
+    "change": "4.7补Firefox147；4.8补Firefox147与内部OSS-Fuzz；4.8停止Cybench",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-4-8-system-card",
+    "pages": "49-54"
+  },
+  {
+    "subject": "Claude Opus 5",
+    "before": "待正文",
+    "change": "正文确认ExploitBench、OSS-Fuzz、Firefox147、CyScenarioBench、ExploitGym",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-5-system-card",
+    "pages": "37-44"
+  },
+  {
+    "subject": "Claude Sonnet 5",
+    "before": "待正文",
+    "change": "正文确认ExploitBench、OSS-Fuzz、CyberGym、Firefox147",
+    "sourceUrl": "https://www.anthropic.com/claude-sonnet-5-system-card",
+    "pages": "30-35"
+  },
+  {
+    "subject": "Claude 5.5 家族",
+    "before": "大部分待正文",
+    "change": "Opus/Sonnet/Haiku分别明确ExploitBench、CyScenarioBench、Binary Exploitation Benchmark、ExploitGym",
+    "sourceUrl": "https://www.anthropic.com/claude-haiku-5-5-system-card",
+    "pages": "23-29"
+  },
+  {
+    "subject": "Claude Fable 5 / 5.1",
+    "before": "共用报告项目可能被误归属",
+    "change": "两卡正文均明确只报告关闭防护的Mythos结果；Fable触发后多界面回退Opus4.8，不报独立网安能力成绩",
+    "sourceUrl": "https://www.anthropic.com/claude-fable-5-1-mythos-5-1-system-card",
+    "pages": "45-46"
+  },
+  {
+    "subject": "OSS-Fuzz名称",
+    "before": "不能仅凭名称判断",
+    "change": "现已由正文确认是Anthropic内部评测，基于Google OSS-Fuzz语料；后改名Binary Exploitation Benchmark且harness重写",
+    "sourceUrl": "https://www.anthropic.com/claude-opus-5-5-system-card",
+    "pages": "52-53"
+  },
+  {
+    "subject": "Gemini 3.1 Pro",
+    "before": "将方法引用当模型实测",
+    "change": "卡确认额外FSF cyber测试；链接3 Pro报告说明Key Skills方法，不能归属为3.1独立具名成绩",
+    "sourceUrl": "https://deepmind.google/models/model-cards/gemini-3-1-pro/",
+    "pages": "7-8"
+  },
+  {
+    "subject": "Gemini 3.7 Flash",
+    "before": "Key Skills与代理用途混合",
+    "change": "能力评估没跑完整Key Skills，用代理估计；防护覆盖测试另跑Key Skills，全部milestones拒答",
+    "sourceUrl": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+    "pages": "见逐项明细/来源章节"
+  },
+  {
+    "subject": "Gemini 4 Argon",
+    "before": "仅列CWE-bench宣发，清单不完整",
+    "change": "完整Safety & Security Report还明确CyScenarioBench、ExploitBench、两项内部漏洞评测；CWE-Bench v1有正文",
+    "sourceUrl": "https://deepmind.google/models/model-cards/gemini-4-argon/",
+    "pages": "见逐项明细/来源章节"
+  },
+  {
+    "subject": "Gemini 4 Argon 发布节点",
+    "before": "原表称10月宣布",
+    "change": "官方宣布为9月30日，广泛开放为10月13日；两节点分开保存",
+    "sourceUrl": "https://deepmind.google/models/model-cards/gemini-4-argon/",
+    "pages": "见逐项明细/来源章节"
+  },
+  {
+    "subject": "报告日期差异",
+    "before": "网页与PDF可能不同",
+    "change": "5.5 Instant网页5月5日而PDF封面5月4日；5.6预览网页6月26日而PDF封面6月25日；分别保留",
+    "sourceUrl": "https://deploymentsafety.openai.com/gpt-5-6-preview",
+    "pages": "1"
+  }
+]

@@ -1,0 +1,938 @@
+[
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-3-codex-spark/",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-3-codex-spark/",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "272a20cdb9471d74987fe3db20f086c3d66ead19c264cdaa3258d6cf36f89065",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "758f8de6c7b0eff0be8fd9a0b7e8bbc58c8d61076a0798d9648c60031071e1e3",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-3-codex",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-3-codex",
+    "contentType": "text/html",
+    "sha256": "59a3a9daf2183b81c5f02ad6842aa2dde3447e7febdd59cdfcd65e2d7a352b5c",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-3-instant",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-3-instant",
+    "contentType": "text/html",
+    "sha256": "7013b7934579791a6238b2b4bb3b3ea77f0ef3c9f76d81c12bfb913d4ab59057",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-4-thinking",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-4-thinking",
+    "contentType": "text/html",
+    "sha256": "982279fb5fd77d2ef0b4dd8f87808e0c8e2cee67446ef4062c88a2fde788b261",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-5-instant",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-5-instant",
+    "contentType": "text/html",
+    "sha256": "a2479e2604579c677120d5678195a514fdf63c9fd694155b1f02cd52a6e55503",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "52d6d041a3351ac6c18118580977b53517c3174711f6b80d996c8f6ded202c41",
+    "fetchedAt": "2026-10-17T12:55:27Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/scaling-trusted-access-for-cyber-defense/",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/scaling-trusted-access-for-cyber-defense/",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "6563dd83dce2c06b80904bd48246ab6059f69d2b5e44977d1ae7df6589e8ed76",
+    "fetchedAt": "2026-10-17T12:55:27Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-5",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-5",
+    "contentType": "text/html",
+    "sha256": "488f13423f6f29eb05e6c2695428a3e47054af7b178c0477e21641a8cc1b23cc",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-6-october",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-6-october",
+    "contentType": "text/html",
+    "sha256": "1a4073b7d596b7f5540ff945bbe4ca2994332a90bb1357337ab9ba78d7b7a602",
+    "fetchedAt": "2026-10-17T12:55:26Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-6-preview",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-6-preview",
+    "contentType": "text/html",
+    "sha256": "2b195bf2cff9a1dface70d0d3835a6c488195c01e59dca2ec77faf4e8fd159aa",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+    "contentType": "text/html",
+    "sha256": "75edab677bbc6c5370356a8ea480fd50c4e44fa84df09214290c6321566c9324",
+    "fetchedAt": "2026-10-17T12:55:26Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-6",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-6",
+    "contentType": "text/html",
+    "sha256": "f49e90835f0d6cd4e013d1a431f186a5b19cd91c21ca4719497e647132ed73bc",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-6-astra",
+    "contentType": "text/html",
+    "sha256": "6824c6a53c9628a5cc4713bad925c72ef04a6bd22ff8259c6affb40da1974444",
+    "fetchedAt": "2026-10-17T12:55:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-sonnet-4-6-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/bbd8ef16d70b7a1665f14f306ee88b53f686aa75/Claude%20Sonnet%204.6%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "672339ab327e8798578b3559e8489561db5ad25e81b427de4e306393108e90b6",
+    "fetchedAt": "2026-10-17T12:55:29Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-sonnet-5-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/283ef97c476cf442c91d9a37d5b214242a55bb92/Claude%20Sonnet%205%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "33573adb9f1871b903f79b77d7755a44cc20bb913ef48ac9000ddb090e41f7ed",
+    "fetchedAt": "2026-10-17T12:55:29Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-4-7-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/037f06850df7fbe871e206dad004c3db5fd50340/Claude%20Opus%204.7%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "a7729a0e5eb61dc6818f553ae3c27ab774411cd5ab4ed7f414456d74a05c26d2",
+    "fetchedAt": "2026-10-17T12:55:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-5-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "0950dae1ba6b341e4f1a009e535e0f025625efeca21bd043a9a5ae148a3f2e6b",
+    "fetchedAt": "2026-10-17T12:55:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-5-5-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "7311c9c6bbb16d012f1c12c7418b05949fcf7ae3e30d2c40f22050074b2a7378",
+    "fetchedAt": "2026-10-17T12:55:29Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/",
+    "status": "200",
+    "finalUrl": "https://deepmind.google/models/model-cards/gemini-3-1-pro/",
+    "contentType": "text/html",
+    "sha256": "c73d5059f615092c67f44c7394233dcbdaed2252ec8f70390fb0c2973404feef",
+    "fetchedAt": "2026-10-17T12:56:06Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/model-cards/gemini-3-1-flash-lite/",
+    "status": "200",
+    "finalUrl": "https://deepmind.google/models/model-cards/gemini-3-1-flash-lite/",
+    "contentType": "text/html",
+    "sha256": "a7e49d45d96de85b9f3f3e09f3d0a53934ef0ab5e13c4474b1ac714f1dfb5eb5",
+    "fetchedAt": "2026-10-17T12:56:08Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-6/?utm_source=chatgpt.com",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-6/?utm_source=chatgpt.com",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "d5cb5b3cf6e04d3f3ce6bc0bf96caa0171d392687d34cb61fc214f246ec06f19",
+    "fetchedAt": "2026-10-17T12:56:11Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/scaling-trusted-access-for-cyber-defense/?utm_source=chatgpt.com",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/scaling-trusted-access-for-cyber-defense/?utm_source=chatgpt.com",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "b6bde752aa509e0b9ecf467cb9b79a7e71ce56aad59f476bb5da0f02faad9a12",
+    "fetchedAt": "2026-10-17T12:56:11Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-5/?utm_source=chatgpt.com",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-5/?utm_source=chatgpt.com",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "a1d2e97aa8915675ba2e7c4803b18afb7356a767521419566cfcbd18956d8b69",
+    "fetchedAt": "2026-10-17T12:56:11Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-3-codex-spark/?utm_source=chatgpt.com",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-3-codex-spark/?utm_source=chatgpt.com",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "ad097c093bfb0b1e734391d9848eecd4c5ffec73d2813e67ceeea44ed5fd9729",
+    "fetchedAt": "2026-10-17T12:56:11Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/?utm_source=chatgpt.com",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/?utm_source=chatgpt.com",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "6d2a394907864ddbfd38cc6b700ded951380a9fc85c9e50f70eb46438c8bc2de",
+    "fetchedAt": "2026-10-17T12:56:11Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/?utm_source=chatgpt.com",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/?utm_source=chatgpt.com",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "91115a5e32bc8663a5df0e4287923a92ff5fbc57ca28d73426b9eb8d4ef10385",
+    "fetchedAt": "2026-10-17T12:56:11Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/model-cards/gemini-3-5-flash/",
+    "status": "200",
+    "finalUrl": "https://deepmind.google/models/model-cards/gemini-3-5-flash/",
+    "contentType": "text/html",
+    "sha256": "39b03527c4e134ee143bfc18b7f06203af3467a9c34f71a5f371d301a167ef3e",
+    "fetchedAt": "2026-10-17T12:56:12Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-4-6-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/6a5fa276ac68b9aeb0c8b6af5fa36326e0e166dd/Claude%20Opus%204.6%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "4db67c6b6aea0a87e7f8a784b83fc05a0f1a61a3e87615fe7956e3486b951b3c",
+    "fetchedAt": "2026-10-17T12:55:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-4-8-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/0f0c97ad20d8005706296bd92aa1c27c6b2f4f61/Claude%20Opus%204.8%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "0df5d061b6688c2d5839476620d66960011cb69043185dbed87ed1f68ab76d8f",
+    "fetchedAt": "2026-10-17T12:55:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/model-cards/gemini-3-6-flash/",
+    "status": "200",
+    "finalUrl": "https://deepmind.google/models/model-cards/gemini-3-6-flash/",
+    "contentType": "text/html",
+    "sha256": "7d483b708d9c84ad45049d3c69104ac35db196868c02d65254e5c4175a2f08eb",
+    "fetchedAt": "2026-10-17T12:56:14Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/870c8f525702625d2c62fc6dd04c857e3250bec1/Claude%20Sonnet%205.5%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "89cfd6a6d3aa6148eaf23f4a53006950ee7746009f381237c62920c720725785",
+    "fetchedAt": "2026-10-17T12:55:29Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/model-cards/gemini-3-5-flash-lite/",
+    "status": "200",
+    "finalUrl": "https://deepmind.google/models/model-cards/gemini-3-5-flash-lite/",
+    "contentType": "text/html",
+    "sha256": "4c71f83ccceeac5c5d1e5198b66b3069852b436737fcaab19f768cfe1448435c",
+    "fetchedAt": "2026-10-17T12:56:15Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+    "status": "200",
+    "finalUrl": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+    "contentType": "text/html",
+    "sha256": "3f8b451c3b37e6936e94dd2aa4a5d20e5254857d65db533a103d89061464217d",
+    "fetchedAt": "2026-10-17T12:56:16Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/",
+    "status": "200",
+    "finalUrl": "https://deepmind.google/models/model-cards/gemini-3-8-flash/",
+    "contentType": "text/html",
+    "sha256": "c2f3919e942c0d30ed7c89d842bc397fe7378666bb84525d056cfb61b4ef133f",
+    "fetchedAt": "2026-10-17T12:56:16Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/model-cards/gemini-4-argon/",
+    "status": "200",
+    "finalUrl": "https://deepmind.google/models/model-cards/gemini-4-argon/",
+    "contentType": "text/html",
+    "sha256": "71d099474d38ad8966a95e5f7a9d991984b10fac3f8b4976c7452cb20283e224",
+    "fetchedAt": "2026-10-17T12:56:16Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/system-cards",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/system-cards",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "7a257746418c47cfca20775cd6d75a3874c5008ae03998c9221c59a681ba6346",
+    "fetchedAt": "2026-10-17T12:56:17Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-5/",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-5/",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "f97631d8f7843f793f48dd7991295a3b9096bc9b1f6c70afb60aa7d42b7c099c",
+    "fetchedAt": "2026-10-17T12:56:18Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-6/",
+    "status": "403",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-6/",
+    "contentType": "text/html; charset=UTF-8",
+    "sha256": "c7114f47f78b0abb2482a0acc27c2e984c4fc4508df7faaeb7d5edc6f9aad651",
+    "fetchedAt": "2026-10-17T12:56:18Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "62ba8b9f7c4a414b14328a44c25917c54a7cc9f4e79c6e461dd811d58112ce38",
+    "fetchedAt": "2026-10-17T12:56:16Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "561b6f67294625a9a60c4df99848615e434bf9d9850e4fc6bbecca3525e8e69c",
+    "fetchedAt": "2026-10-17T12:56:16Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-haiku-5-5-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/e1080d6bf5ae2018ea3c2f414064be03232f5be5/Claude%20Haiku%205.5%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "d5dbaab6996c02ad6ff28b032ce5a9c7582e59af09b5d1bc0975cf0235535da9",
+    "fetchedAt": "2026-10-17T12:55:45Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf",
+    "contentType": "application/pdf",
+    "sha256": "f0eec853b7371aac56d3ef3e21f2e0f52e3ca7eb60db5119ee5b4234f66d522c",
+    "fetchedAt": "2026-10-17T12:56:18Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-5/?output=1",
+    "status": "200",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-5/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "f757c5081831904a3fa714a305fc3215e5dfd72dd04e14a919e0a0323fef8d8a",
+    "fetchedAt": "2026-10-17T12:56:30Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-6/?output=1",
+    "status": "404",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-6/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "1637600c3c2dfaf7d980509ff2b8ec77c0a12490791ac2619587192a6dd07471",
+    "fetchedAt": "2026-10-17T12:56:30Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-3-codex-spark/?output=1",
+    "status": "200",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-3-codex-spark/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "44521d1c764bbdcc7a9f48c055f4ce07e6166482eb080785f6df811a952785fe",
+    "fetchedAt": "2026-10-17T12:56:30Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/scaling-trusted-access-for-cyber-defense/?output=1",
+    "status": "200",
+    "finalUrl": "https://openai.com/index/scaling-trusted-access-for-cyber-defense/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "f2fac3954ded9ea8b324b7e2b5f81b1391d0cae3558fb5ec03923e360f6635f7",
+    "fetchedAt": "2026-10-17T12:56:30Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/?output=1",
+    "status": "200",
+    "finalUrl": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "108130ad71c5fe071919a35934001e843cf8814215dc5e10465f190feb4e127d",
+    "fetchedAt": "2026-10-17T12:56:30Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/?output=1",
+    "status": "200",
+    "finalUrl": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "3db2b2312db0f8f7a554e3ebd9b0a9994ad87014ab4b00636461d423a8a4cc08",
+    "fetchedAt": "2026-10-17T12:56:30Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-fable-5-1-mythos-5-1-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "b0d59edc7a60eef32a879c13d713cce60c3fefd7e6b5183afdc8b835af3c8c39",
+    "fetchedAt": "2026-10-17T12:56:02Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/7624816413e9b4d2e3ba620c5a5e091b98b190a5/Claude%20Mythos%20Preview%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "55f6ed1c0735ec1b5b14d99c91794fb759ac4647edc64381123b68be89fd3225",
+    "fetchedAt": "2026-10-17T12:55:53Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+    "status": "200",
+    "finalUrl": "https://www-cdn.anthropic.com/57a52ea7d8f0e54e8a542e908266086df425cdf5/Claude%20Fable%205%20&%20Claude%20Mythos%205%20System%20Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "f95d413845ad8624f384ba026963f2bad2158f10f2626575bb45e823e3c2e0ca",
+    "fetchedAt": "2026-10-17T12:55:58Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-3-instant/gpt-5-3-instant.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-3-instant/gpt-5-3-instant.pdf",
+    "contentType": "application/pdf",
+    "sha256": "a20601d492338d06ea98b8f2a075bbcd4d732367edbb5dc776d11069076c4087",
+    "fetchedAt": "2026-10-17T12:56:42Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-3-codex/gpt-5-3-codex.pdf",
+    "contentType": "application/pdf",
+    "sha256": "320635949a1e8b127af026167c4e991bb73a7e1f2ab824ee07fd764a92708107",
+    "fetchedAt": "2026-10-17T12:56:42Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/gpt-5-5-instant.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-5-instant/gpt-5-5-instant.pdf",
+    "contentType": "application/pdf",
+    "sha256": "f5117be723b660df6d4576c106f64a1ff7c7cf4be24c5c5baca0d602769eae9f",
+    "fetchedAt": "2026-10-17T12:56:42Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-4-thinking/gpt-5-4-thinking.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-4-thinking/gpt-5-4-thinking.pdf",
+    "contentType": "application/pdf",
+    "sha256": "e1d430988982bb6617c19db37bec03cbefba1771657d5ab57743dbfc53e7aa50",
+    "fetchedAt": "2026-10-17T12:56:42Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-5/gpt-5-5.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-5/gpt-5-5.pdf",
+    "contentType": "application/pdf",
+    "sha256": "31133a3f53b520713b87ff9b92ddf90d3e699ac8b47f87c3e739b4365e8bfecf",
+    "fetchedAt": "2026-10-17T12:56:42Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-6-october/gpt-6-october.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-6-october/gpt-6-october.pdf",
+    "contentType": "application/pdf",
+    "sha256": "1c34c6a00e161825b5a066c6e7616f55a8aedee5f04a4d819fa067b898a0c603",
+    "fetchedAt": "2026-10-17T12:56:42Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-6-preview/gpt-5-6-preview.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-6-preview/gpt-5-6-preview.pdf",
+    "contentType": "application/pdf",
+    "sha256": "679a6d76d1c3732b8facc8942367e93fd027cb4079a9677a20ff51524a1f36f2",
+    "fetchedAt": "2026-10-17T12:56:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-1-Flash-Lite-Model-Card.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-1-Flash-Lite-Model-Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "72730fbcf1b1864afa8245f53644173da025a6f192a77cd6f9fcb33353982d56",
+    "fetchedAt": "2026-10-17T12:56:48Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-5-6/gpt-5-6.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-5-6/gpt-5-6.pdf",
+    "contentType": "application/pdf",
+    "sha256": "aa8073bcfa15449167c64aab7c520c2d0c71e33220f64dff62baa0f2118e7e8b",
+    "fetchedAt": "2026-10-17T12:56:46Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-6-Flash-Model-Card.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-6-Flash-Model-Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "2c54f031b6fdee883e562eaa1a9f5e3d43bee4e81f5dd55edc6b965fba03b4a2",
+    "fetchedAt": "2026-10-17T12:56:49Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-1-Pro-Model-Card.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-1-Pro-Model-Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "70bcda79a248255d2c858600cb1fecae9ea30278c942684754df0bca71ca8315",
+    "fetchedAt": "2026-10-17T12:56:48Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-6-1-sol/gpt-6-1-sol.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-6-1-sol/gpt-6-1-sol.pdf",
+    "contentType": "application/pdf",
+    "sha256": "1ae4ad6f0e2425a0f85623d3ccfc2a747c13611432a504ef0a7b5f4228789884",
+    "fetchedAt": "2026-10-17T12:56:45Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-5-Flash-Model-Card.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-5-Flash-Model-Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "eed86d38a5f69732eea4ef3dd5662e526496a77d1cdf61679319d45461a2c195",
+    "fetchedAt": "2026-10-17T12:56:49Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-5-Flash-Lite-Model-Card.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-5-Flash-Lite-Model-Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "d4d8e79d69377a5d1add81b7833197f3e84dd6ebe983b5d5a39f1530e2052571",
+    "fetchedAt": "2026-10-17T12:56:50Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-8-Flash-Model-Card.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-8-Flash-Model-Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "fd9b9494c8cb0da6dc16777c3df70d9f9226708e08ba7c9337222207c5d482af",
+    "fetchedAt": "2026-10-17T12:56:51Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-7-Flash-Model-Card.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-7-Flash-Model-Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "6d7f1347e7f55d44a634bef40bd96fd3e70d331826382c75733b633af3be9aef",
+    "fetchedAt": "2026-10-17T12:56:51Z",
+    "error": ""
+  },
+  {
+    "url": "https://deploymentsafety.openai.com/gpt-6-astra/gpt-6-astra.pdf",
+    "status": "200",
+    "finalUrl": "https://deploymentsafety.openai.com/gpt-6-astra/gpt-6-astra.pdf",
+    "contentType": "application/pdf",
+    "sha256": "77ff1e8aaf7018c7d7bbe347c374cd74188387ceca91f1ef637ccc59ea930895",
+    "fetchedAt": "2026-10-17T12:56:47Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Argon-Model-Card.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Argon-Model-Card.pdf",
+    "contentType": "application/pdf",
+    "sha256": "562cd3c5deddf75dd2aff7a59dcf6dcc273277eae7d82fe957b6a607d84f7763",
+    "fetchedAt": "2026-10-17T12:56:51Z",
+    "error": ""
+  },
+  {
+    "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf",
+    "contentType": "application/pdf",
+    "sha256": "33e2583627db65db9eeb4fca42e3982c971e18d3d61a899452752c49c50f1f2a",
+    "fetchedAt": "2026-10-17T12:56:51Z",
+    "error": ""
+  },
+  {
+    "url": "https://deepmind.google/models/fsf-reports/gemini-3-pro/",
+    "status": "200",
+    "finalUrl": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3_pro_fsf_report.pdf",
+    "contentType": "application/pdf",
+    "sha256": "0b093ee5fc80e30fa5b46e6aa9a853c6dd3f308656e9c9a346724e108e620e46",
+    "fetchedAt": "2026-10-17T12:57:20Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-4-7",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-opus-4-7",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "b617d0fc66a1b772e46122c20f0afd0debdce166eedacf68bc5dd8bdfcf35746",
+    "fetchedAt": "2026-10-17T12:58:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-4-8",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-opus-4-8",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "f514074d0c391d1cc564008194da03cef80275c95d93a2bb1ff4e8155432db54",
+    "fetchedAt": "2026-10-17T12:58:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-5",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-opus-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "126e351c7880c34c2b9ee41e864850397fd0595c180498858be6069b7abaddae",
+    "fetchedAt": "2026-10-17T12:58:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-sonnet-4-6",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-sonnet-4-6",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "d2090c3a28a21b5c3456029380c6a329fc9174d2f855135daa5f760de4db683e",
+    "fetchedAt": "2026-10-17T12:58:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-sonnet-5",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-sonnet-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "2af4a805405ad4449cd07cd0266eca05e6e6d2696c84f76b97afc4abe7db6437",
+    "fetchedAt": "2026-10-17T12:58:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-4-6",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-opus-4-6",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "5767d31c10256761275e2d4cc64786c793f6e7745b348349d02017a3e91e80b5",
+    "fetchedAt": "2026-10-17T12:58:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-haiku-5-5",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/claude-haiku-5-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "efbd96280808ec71b6fc7e2ddad3c374d467c202f97cd55b67987246d3d50172",
+    "fetchedAt": "2026-10-17T12:58:45Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-sonnet-5-5",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/claude-sonnet-5-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "68c4d918b18d8cc23dc2b9fa68b02d2d3dcdbc9067f50630f6418e6a57b9c2df",
+    "fetchedAt": "2026-10-17T12:58:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-mythos-preview",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-mythos-preview",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "4b4cba9fc72250569603d6418c7c233b9bcd92894f0fb8b2323d3c5b1d3e02e1",
+    "fetchedAt": "2026-10-17T12:58:45Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-fable-5-mythos-5",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-fable-5-mythos-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "7e68410a7138a5aabe8399f4bde670acdd12cfcafbf7db925002f520dae3d98f",
+    "fetchedAt": "2026-10-17T12:58:45Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-fable-5-1-mythos-5-1",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/claude-fable-5-1-mythos-5-1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "13203c9ec999574dab5fdeb6579ad3e61c8e965dccb808e7eadf72bf0327de45",
+    "fetchedAt": "2026-10-17T12:58:45Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/claude-opus-5-5",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/claude-opus-5-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "318da81f833c24608fed0221039b2f7d52f16ac65f5ef91c663b7bebb5983163",
+    "fetchedAt": "2026-10-17T12:58:44Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/news/claude-sonnet-4-6",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "82ec2b55d85eb893ba04cb31ae54139f9c3a7ca0947eb4fc7cd755b234f77c89",
+    "fetchedAt": "2026-10-17T12:59:07Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-opus-4-6",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/news/claude-opus-4-6",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "ef4a9caa3f58eec3a3509b737a34764b1163da25c7bdb1cc10d4703dd110277f",
+    "fetchedAt": "2026-10-17T12:59:07Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/daybreak-securing-the-world/?output=1",
+    "status": "200",
+    "finalUrl": "https://openai.com/index/daybreak-securing-the-world/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "f17f62c83f1f7deae9515a3675f4630c88072f27f1bf3f796de3c4721a578950",
+    "fetchedAt": "2026-10-17T12:59:07Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "dfa09fe34e32c939f6c6f730a5b5e27d78f85e0db966b10c72643dfcbefe9875",
+    "fetchedAt": "2026-10-17T12:59:07Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-fable-5",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/news/claude-fable-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "b32eb7f25b4754866b1799a10c21d091d519d2b7a2b8765d39fe3c466fc28287",
+    "fetchedAt": "2026-10-17T12:59:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-opus-4-8",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/news/claude-opus-4-8",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "26a84b24f9de1f329820bab4266fb13c0d14f96c1ccf0a28cc424c1dab4bb2cd",
+    "fetchedAt": "2026-10-17T12:59:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-mythos-preview",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/news/claude-mythos-preview",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "3ccfab5cc2969dbccac8888dbcae59eb98c55d8b6275070fa5b328ce81c0ba19",
+    "fetchedAt": "2026-10-17T12:59:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-sonnet-5",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/news/claude-sonnet-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "ca2ff1d7cc43c1d708f20c19a2025e60ce8c6d3908072496855ae580e48238b9",
+    "fetchedAt": "2026-10-17T12:59:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-opus-5",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/news/claude-opus-5",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "960c5d4f0c1afa287a786dfe93486ccd88888f410284b5fa2f9e3e5f0aec8575",
+    "fetchedAt": "2026-10-17T12:59:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-opus-4-7",
+    "status": "200",
+    "finalUrl": "https://www.anthropic.com/news/claude-opus-4-7",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "91a0f84bcf4bd6ce52d50e9dc3657926a09490d1c4fd4cf5ed54d95bcca0af3e",
+    "fetchedAt": "2026-10-17T12:59:28Z",
+    "error": ""
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-fable-5-1",
+    "status": "404",
+    "finalUrl": "https://www.anthropic.com/news/claude-fable-5-1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "5c9d12cfbee63e7a3228b9fdb86a5a8623ecc0f58ed3f6747c75412d31c9f5fd",
+    "fetchedAt": "2026-10-17T12:59:29Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/gpt-5-6/?output=1",
+    "status": "200",
+    "finalUrl": "https://openai.com/index/gpt-5-6/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "b0a05d71eea2ce237ef4db6860e7ad7686e0104d943ee7ebc5ab62423af30504",
+    "fetchedAt": "2026-10-17T13:00:25Z",
+    "error": ""
+  },
+  {
+    "url": "https://openai.com/index/previewing-gpt-5-6-sol/?output=1",
+    "status": "200",
+    "finalUrl": "https://openai.com/index/previewing-gpt-5-6-sol/?output=1",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "0ac395ac4805f5dd7dc9b29ffbb8e995e2a13a0d8111af9fdae9cc3df9eb48b0",
+    "fetchedAt": "2026-10-17T13:03:23Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "85c77a82ace2b53f4e7cdf934d41fda343f83a28c9421f8a4b34305f244571c8",
+    "fetchedAt": "2026-10-17T13:04:27Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "70475d62fd3ace0a4f333938918a097d9275e52e2c3f658a5539618dc96247d6",
+    "fetchedAt": "2026-10-17T13:04:27Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "d2bf6b99280e0cdfc5882b367d70f065eea4ec600bff5eb622677c537990eac2",
+    "fetchedAt": "2026-10-17T13:04:27Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "4401ca2b0b6cac9fbe4d4d102ec0c4b42ad2f4a7fbc884ab5736e3249726a15e",
+    "fetchedAt": "2026-10-17T13:04:27Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "f8c6aaaa1e412e31b9f7f497fbd0b6e0685a6d533dff80c2053547566dee8431",
+    "fetchedAt": "2026-10-17T13:04:42Z",
+    "error": ""
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+    "status": "200",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "d475abfb1ca54bd3247bb364edeafcbf8e0fb086ba70212811656ee22a9d8716",
+    "fetchedAt": "2026-10-17T13:05:27Z",
+    "error": ""
+  },
+  {
+    "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+    "status": "200",
+    "finalUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "760422486f0c9b47a1a052b9072ad2735c93f66062aa04b8ec5ed0e6627c4007",
+    "fetchedAt": "2026-10-17T13:05:27Z",
+    "error": ""
+  }
+]
