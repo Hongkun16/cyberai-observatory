@@ -56,6 +56,7 @@ npm run test:web
 ```text
 snapshots/2026-10-17.xlsx + data/score-audit/*.json
           ↓ scripts/import_workbook.py + scripts/export_workbook.py
+pdf/                     # 模型报告与补充材料 PDF
 data/                    # 标准模型、记录、评测、来源、修订、PDF 目录
           ↓
 web/public/data/         # 网站完整 JSON
@@ -72,7 +73,7 @@ dist/                    # 静态网站
 
 推送 `main` 后，GitHub Actions 会重新导入工作簿、校验数据、构建、执行浏览器检查，再部署 GitHub Pages。PR 执行同样检查但不部署。项目站点路径通过 `VITE_BASE_PATH` 设置，使用哈希导航以支持刷新和直接分享。
 
-PDF 原文不进入 Git 历史。可从目录中的官方链接访问；现有本地资料包可作为版本归档单独保存。网站链接与导出的 JSON 均保留原始来源。
+PDF 文件收录在 [`pdf/`](pdf/README.md)，共 69 份模型报告与补充材料，包含官方原始 PDF 和官方网页转制 PDF。文件与 `data/pdfs.json` 的 SHA-256 逐一对应，网站链接与导出的 JSON 仍保留原始来源。
 
 [贡献方式](CONTRIBUTING.md) · [更新记录](CHANGELOG.md) · [下一步](ROADMAP.md)
 
