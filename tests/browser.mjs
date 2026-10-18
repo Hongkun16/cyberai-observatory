@@ -91,6 +91,12 @@ try {
   console.log(
     'Browser checks passed: desktop, mobile, chart keyboard, deep links, filters, model matrix, benchmark detail, downloads and evidence.',
   );
+} catch (error) {
+  console.error('Page URL:', page.url());
+  console.error('Browser errors:', errors);
+  console.error('Page text:', (await page.locator('body').innerText()).slice(0, 1500));
+  await page.screenshot({ path: 'test-results/failure.png', fullPage: true });
+  throw error;
 } finally {
   await browser.close();
 }

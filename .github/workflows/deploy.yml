@@ -44,6 +44,7 @@ jobs:
           npm run test:web
         env:
           TEST_URL: http://127.0.0.1:4173/${{ github.event.repository.name }}/
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
       - uses: actions/upload-artifact@v4
         if: always()
         with:
