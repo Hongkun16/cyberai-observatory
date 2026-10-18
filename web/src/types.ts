@@ -91,6 +91,12 @@ export type Audit = {
   models: Model[];
   evaluations: Evaluation[];
   benchmarks: Benchmark[];
+  benchmarkUsage: {
+    sourceWorkbook: string;
+    sha256: string;
+    scope: string;
+    entries: { name: string; url: string; openSource: string; times: number }[];
+  };
   revisions: {
     subject: string;
     before: string;

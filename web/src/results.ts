@@ -22,8 +22,8 @@ export const CREATOR_LABELS: Record<Provider, string> = {
   OpenAI: 'OpenAI',
   Anthropic: 'Anthropic',
   Google: 'Google',
-  Tencent: '腾讯 Tencent',
-  Zhipu: '智谱 GLM',
+  Tencent: 'Tencent',
+  Zhipu: 'GLM',
   DeepSeek: 'DeepSeek',
   xAI: 'xAI',
 };
@@ -193,4 +193,26 @@ export function scoreSummary(record: Evaluation) {
   if (record.scoreStatus === 'graphical') return '结果见报告图表';
   if (record.scoreStatus === 'qualitative' && record.score) return record.score;
   return '—';
+}
+
+export function orderedBenchmarks(data: Audit) {
+  const reference = new Map(
+    data.benchmarkUsage.entries.map((entry, index) => [entry.name, { ...entry, index }]),
+  );
+  const coverage = new Map<string, Set<string>>();
+  for (const record of data.evaluations) {
+    if (record.status !== '已确认' || record.scoreStatus !== 'reported') continue;
+    if (!coverage.has(record.benchmark)) coverage.set(record.benchmark, new Set());
+    coverage.get(record.benchmark)!.add(record.modelId);
+  }
+  return [...data.benchmarks].sort((a, b) => {
+    const ar = reference.get(a.name),
+      br = reference.get(b.name);
+    if (ar && br) return br.times - ar.times || ar.index - br.index;
+    if (ar || br) return ar ? -1 : 1;
+    return (
+      (coverage.get(b.name)?.size || 0) - (coverage.get(a.name)?.size || 0) ||
+      a.name.localeCompare(b.name, 'en')
+    );
+  });
 }

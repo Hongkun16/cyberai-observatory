@@ -216,6 +216,12 @@ def build(workbook: Path, as_of: str):
             "models": models, "evaluations": records, "benchmarks": benchmarks, "pdfs": pdfs,
             "revisions": revisions, "sources": sources}
     merge_vendor_supplement(data, registry)
+    usage = json.loads((ROOT / "data/benchmark-usage.json").read_text(encoding="utf-8"))
+    if hashlib.sha256((ROOT / usage["sourceWorkbook"]).read_bytes()).hexdigest() != usage["sha256"]:
+        raise ValueError("Benchmark summary workbook hash mismatch")
+    if len({item["name"] for item in usage["entries"]}) != len(usage["entries"]) or any(item["times"] < 0 for item in usage["entries"]):
+        raise ValueError("Invalid benchmark usage reference")
+    data["benchmarkUsage"] = usage
     validate(data)
     write_json(registry_path, registry)
     for key in ["models", "evaluations", "benchmarks", "sources", "revisions", "pdfs", "documents", "meta"]:

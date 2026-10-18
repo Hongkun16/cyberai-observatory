@@ -60,3 +60,11 @@
 为兼容历史字段，`pdfPath`也可指向官方HTML、MHTML或图片；必须结合sourceKind或目录kind解释。`scoreAudit.evidence`的pages仅用于PDF，网页／图片填写section；每条证据必须含来源、定位、摘录和哈希。laterDisclosure继续表示后续报告披露。`originalScore`为空表示不在历史Excel中，不表示该成绩未披露。
 
 meta.asOf仍是原Excel快照日期；supplementalAsOf表示扩展层日期，supplementalModelCount、supplementalRecordCount、supplementalScoreCount分别记录扩展规模。总计字段覆盖历史快照和新增资料；addedScoreCount包含历史补录与厂商新增数值。
+
+## 评测排序参考与语言
+
+`data/benchmark-usage.json`保存用户提供的`Benchmark_Summary.xlsx`的55项参考记录：name、url、openSource、times，以及原表路径和SHA-256。完整网站JSON中的`benchmarkUsage`保留相同内容。Times用于显示排序，不是本站成绩记录数或去重模型数；参考表中的新评测名称不会自动添加到成绩库。
+
+网站按times降序排列已有评测，相同次数沿用参考表顺序；未列评测排在其后，按本站已确认且有数值成绩的去重模型数降序。首页取前六项作为快捷评测。原始评测数组、ID和深链接不因排序或语言改变。
+
+英文展示词典位于`web/src/data.en.json`，覆盖模型用途／日期说明、评测任务／开放性、指标及分项配置。语言状态仅保存在浏览器本地；数据原文不改写。英文成绩摘要来自已记录的分项指标，原成绩、完整配置、证据定位和核验备注可在结果弹窗展开查看。

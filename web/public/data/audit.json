@@ -15698,5 +15698,342 @@
       "downloadUrl": "https://docs.x.ai/developers/release-notes",
       "fetchedAt": "2026-10-18T09:25:32.382055+00:00"
     }
-  ]
+  ],
+  "benchmarkUsage": {
+    "sourceWorkbook": "snapshots/Benchmark_Summary.xlsx",
+    "sha256": "ec27e729fab45254b3c3a9f61e7ed07b79faff2c2ff30fdbdb29f89bc78cd899",
+    "scope": "排序参考使用次数；不等于本站去重模型数，不添加或推断评测成绩",
+    "entries": [
+      {
+        "name": "ExploitBench",
+        "url": "https://github.com/exploitbench/exploitbench",
+        "openSource": "Yes（MIT；厂商内部移植版不包括在内）",
+        "times": 28
+      },
+      {
+        "name": "CyberGym",
+        "url": "https://github.com/sunblaze-ucb/cybergym",
+        "openSource": "Yes（Apache-2.0；目标软件另遵上游许可）",
+        "times": 26
+      },
+      {
+        "name": "ExploitGym",
+        "url": "https://github.com/sunblaze-ucb/exploitgym",
+        "openSource": "Yes（代码Apache-2.0；任务数据按上游许可）",
+        "times": 21
+      },
+      {
+        "name": "SEC-Bench Pro",
+        "url": "https://github.com/SEC-bench/SEC-bench-Pro",
+        "openSource": "Yes（MIT；厂商评测版本与公开最新版可能不同）",
+        "times": 13
+      },
+      {
+        "name": "CyScenarioBench",
+        "url": "https://www.irregular.com/research/cyscenariobench",
+        "openSource": "No（场景集私有；公开方法不等于开源）",
+        "times": 11
+      },
+      {
+        "name": "CVE-Bench",
+        "url": "https://github.com/uiuc-kang-lab/cve-bench",
+        "openSource": "Yes（Apache-2.0；参考利用需另行申请）",
+        "times": 10
+      },
+      {
+        "name": "Firefox 147",
+        "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+        "openSource": "No（内部评测；Firefox源码开源不等于本评测开源）",
+        "times": 9
+      },
+      {
+        "name": "OSS-Fuzz (Anthropic internal)",
+        "url": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+        "openSource": "No（Anthropic内部评测；不是Google开源OSS-Fuzz项目本身）",
+        "times": 8
+      },
+      {
+        "name": "Binary Exploitation Benchmark",
+        "url": "https://www.anthropic.com/claude-opus-5-5-system-card",
+        "openSource": "No（Anthropic内部；不同于公开软件本身）",
+        "times": 6
+      },
+      {
+        "name": "CTF Professional",
+        "url": "https://deploymentsafety.openai.com/gpt-5-3-codex",
+        "openSource": "No（OpenAI内部选题集；题目来源部分公开）",
+        "times": 5
+      },
+      {
+        "name": "Cybench",
+        "url": "https://github.com/andyzorigin/cybench",
+        "openSource": "Yes（Apache-2.0；题目另遵上游许可）",
+        "times": 5
+      },
+      {
+        "name": "Irregular Atomic Challenges",
+        "url": "https://deploymentsafety.openai.com/gpt-5-4-thinking",
+        "openSource": "Unconfirmed（未确认合作方题集开源）",
+        "times": 5
+      },
+      {
+        "name": "CTF Internal (63 challenges)",
+        "url": "https://deploymentsafety.openai.com/gpt-5-6",
+        "openSource": "No（OpenAI内部63题选集）",
+        "times": 4
+      },
+      {
+        "name": "Cyber Range",
+        "url": "https://deploymentsafety.openai.com/gpt-5-3-codex",
+        "openSource": "No（OpenAI内部靶场）",
+        "times": 4
+      },
+      {
+        "name": "ExploitBench Internal Port",
+        "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+        "openSource": "No（OpenAI内部移植／刷新集）",
+        "times": 4
+      },
+      {
+        "name": "UK AISI Cyber Evaluations",
+        "url": "https://deploymentsafety.openai.com/gpt-5-5/gpt-5-5.pdf",
+        "openSource": "N/A（外部评估集合称，非单一benchmark）",
+        "times": 4
+      },
+      {
+        "name": "FrontierCyber",
+        "url": "https://www.irregular.com/research/frontiercyber",
+        "openSource": "Unconfirmed（方法有公开介绍；未确认源码／测试集开源）",
+        "times": 3
+      },
+      {
+        "name": "FSF Cyber Testing",
+        "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/",
+        "openSource": "N/A（框架下的总体评估，非独立benchmark）",
+        "times": 3
+      },
+      {
+        "name": "Sandbox Bench",
+        "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+        "openSource": "No（OpenAI内部题集）",
+        "times": 3
+      },
+      {
+        "name": "VulnLMP",
+        "url": "https://deploymentsafety.openai.com/gpt-5-6",
+        "openSource": "No（OpenAI内部评测）",
+        "times": 3
+      },
+      {
+        "name": "Crypto CTF",
+        "url": "https://www.anthropic.com/claude-opus-4-6-system-card",
+        "openSource": "No（Anthropic内部RSP题集）",
+        "times": 2
+      },
+      {
+        "name": "Cyber Adaptive Jailbreak Eval",
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf",
+        "openSource": "No（Google内部防护评测）",
+        "times": 2
+      },
+      {
+        "name": "Cyber Conversational Evals",
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf",
+        "openSource": "No（Google内部防护评测）",
+        "times": 2
+      },
+      {
+        "name": "Cyber Static Jailbreak Eval",
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf",
+        "openSource": "No（Google内部防护评测）",
+        "times": 2
+      },
+      {
+        "name": "CyberBench v1",
+        "url": "https://www.vals.ai/benchmarks/cyber-v1",
+        "openSource": "No（Vals AI标注Proprietary；v1已归档）",
+        "times": 2
+      },
+      {
+        "name": "Gray Swan Cyber Eval",
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf",
+        "openSource": "Unconfirmed（未确认该具体评测集开源）",
+        "times": 2
+      },
+      {
+        "name": "Gray Swan Prompt Injection Evaluation",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+        "openSource": "Unconfirmed（合作评测标签；具体测试集未确认开源）",
+        "times": 2
+      },
+      {
+        "name": "Network CTF",
+        "url": "https://www.anthropic.com/claude-opus-4-6-system-card",
+        "openSource": "No（Anthropic内部RSP题集）",
+        "times": 2
+      },
+      {
+        "name": "Pwn CTF",
+        "url": "https://www.anthropic.com/claude-opus-4-6-system-card",
+        "openSource": "No（Anthropic内部RSP题集）",
+        "times": 2
+      },
+      {
+        "name": "Real-world Vulnerability Discovery",
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf",
+        "openSource": "No（厂商内部评估；非公开独立基准）",
+        "times": 2
+      },
+      {
+        "name": "Rev CTF",
+        "url": "https://www.anthropic.com/claude-opus-4-6-system-card",
+        "openSource": "No（Anthropic内部RSP题集）",
+        "times": 2
+      },
+      {
+        "name": "US CAISI Cyber Evaluations",
+        "url": "https://deploymentsafety.openai.com/gpt-5-5/gpt-5-5.pdf",
+        "openSource": "N/A（外部评估集合称，非单一benchmark）",
+        "times": 2
+      },
+      {
+        "name": "Web CTF",
+        "url": "https://www.anthropic.com/claude-opus-4-6-system-card",
+        "openSource": "No（Anthropic内部RSP题集）",
+        "times": 2
+      },
+      {
+        "name": "20-language Vulnerability Discovery",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+        "openSource": "N/A（描述性任务标签，非正式benchmark名称）",
+        "times": 1
+      },
+      {
+        "name": "Advanced Cybersecurity Completion Rate",
+        "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+        "openSource": "No（OpenAI内部行为评测）",
+        "times": 1
+      },
+      {
+        "name": "AgentDojo",
+        "url": "https://github.com/ethz-spylab/agentdojo",
+        "openSource": "Yes（MIT）",
+        "times": 1
+      },
+      {
+        "name": "AgentHarm",
+        "url": "https://huggingface.co/datasets/ai-safety-institute/AgentHarm",
+        "openSource": "Partial（代码与部分数据公开；数据许可限制用途）",
+        "times": 1
+      },
+      {
+        "name": "Chrome Patching",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+        "openSource": "N/A（描述性任务标签，非正式benchmark名称）",
+        "times": 1
+      },
+      {
+        "name": "CWE-Bench",
+        "url": "https://cwe-bench.com/",
+        "openSource": "No（评测集私有；公开训练集不等于评测集开源）",
+        "times": 1
+      },
+      {
+        "name": "CWE-Bench v1",
+        "url": "https://cwe-bench.com/",
+        "openSource": "No（v1评测集私有）",
+        "times": 1
+      },
+      {
+        "name": "Cyber Capability Proxy Evaluations",
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_3-7_flash_fsf_report.pdf",
+        "openSource": "N/A（描述性代理评估，非独立benchmark）",
+        "times": 1
+      },
+      {
+        "name": "CyberBench v1.1",
+        "url": "https://www.vals.ai/benchmarks/cyber",
+        "openSource": "No（Vals AI标注Proprietary；离线沙箱及加固评分器版本）",
+        "times": 1
+      },
+      {
+        "name": "Expert-led Browser / OS Assessment",
+        "url": "https://deploymentsafety.openai.com/gpt-6-astra/gpt-6-astra.pdf",
+        "openSource": "N/A（内部专家评估，非独立benchmark）",
+        "times": 1
+      },
+      {
+        "name": "External Cyber Range / Sandbox Assessment",
+        "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+        "openSource": "N/A（外部评估集合称，非独立benchmark）",
+        "times": 1
+      },
+      {
+        "name": "Gray Swan IPI",
+        "url": "https://github.com/GraySwanAI/ipi_arena_os",
+        "openSource": "Partial（MIT评测工具／部分攻击数据公开；报告完整测试集未确认公开）",
+        "times": 1
+      },
+      {
+        "name": "HackerBench v0.3",
+        "url": "https://x.ai/news/grok-4-7",
+        "openSource": "Unconfirmed（仅确认xAI官方披露，未找到v0.3开源发布）",
+        "times": 1
+      },
+      {
+        "name": "In-house exploit suite (36 tasks; Moonshot)",
+        "url": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+        "openSource": "No（Moonshot内部36题集；描述性名称，非公开独立benchmark）",
+        "times": 1
+      },
+      {
+        "name": "Internal Vulnerability Research",
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf",
+        "openSource": "No（厂商内部评估；非公开独立基准）",
+        "times": 1
+      },
+      {
+        "name": "Key Skills",
+        "url": "https://deepmind.google/models/fsf-reports/gemini-3-pro/",
+        "openSource": "Unconfirmed（未确认所用版本题集开源）",
+        "times": 1
+      },
+      {
+        "name": "Novel Zero-day Severity Calibration",
+        "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+        "openSource": "N/A（描述性内部评测，非正式benchmark名称）",
+        "times": 1
+      },
+      {
+        "name": "SRE-Bench",
+        "url": "https://sre-bench.lol/",
+        "openSource": "Unconfirmed（论文公开；未找到公开测试仓库）",
+        "times": 1
+      },
+      {
+        "name": "The Last Ones (TLO)",
+        "url": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities",
+        "openSource": "Unconfirmed（未确认AISI原版环境开源；同名复刻不等同原版）",
+        "times": 1
+      },
+      {
+        "name": "Vulnerability Discovery and Report Writing",
+        "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+        "openSource": "No（OpenAI内部评测）",
+        "times": 1
+      },
+      {
+        "name": "Wiz Penetration Testing",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+        "openSource": "N/A（合作方评测描述，非正式benchmark名称）",
+        "times": 1
+      },
+      {
+        "name": "WMDP Cyber",
+        "url": "https://github.com/centerforaisafety/wmdp",
+        "openSource": "Yes（MIT）",
+        "times": 1
+      }
+    ]
+  }
 }

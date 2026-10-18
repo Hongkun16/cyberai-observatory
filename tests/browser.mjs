@@ -17,6 +17,14 @@ try {
     0,
   );
   assert.ok((await page.locator('.data-point').count()) > 0);
+  assert.deepEqual(await page.locator('.benchmark-tabs > button').allTextContents(), [
+    'ExploitBench',
+    'CyberGym',
+    'ExploitGym',
+    'SEC-Bench Pro',
+    'CyScenarioBench',
+    'CVE-Bench',
+  ]);
   await expect(page.locator('.legend img')).toHaveCount(7);
   await expect
     .poll(() =>
@@ -139,6 +147,66 @@ try {
   assert.match(await page.locator('.reported-result strong').innerText(), /289\/869/);
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await page.screenshot({ path: 'test-results/result-mobile.png', fullPage: true });
+  await page.goto(origin + '#overview?benchmark=CyberGym&creator=Tencent');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('Tencent');
+  const beforeLanguageSwitch = new URL(page.url()).hash;
+  await page.getByRole('button', { name: 'Switch to English', exact: true }).click();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  assert.equal(new URL(page.url()).hash, beforeLanguageSwitch);
+  await expect(page.getByRole('combobox', { name: 'Filter creator', exact: true })).toHaveValue(
+    'Tencent',
+  );
+  await expect(page.getByRole('table', { name: 'Model results', exact: true })).toContainText(
+    '78.4%',
+  );
+  assert.doesNotMatch(await page.locator('main').innerText(), /[\u3400-\u9fff]/);
+  await page.reload();
+  await expect(
+    page.getByRole('heading', { name: 'Compare AI cybersecurity capabilities' }),
+  ).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await page.screenshot({ path: 'test-results/english-mobile.png', fullPage: true });
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.goto(origin + '#models');
+  await expect(
+    page.getByRole('table', { name: 'Model directory', exact: true }).locator('tbody tr'),
+  ).toHaveCount(73);
+  assert.doesNotMatch(await page.locator('main').innerText(), /[\u3400-\u9fff]/);
+  await expect(
+    page.getByRole('combobox', { name: 'Filter model creator' }).locator('option[value="Zhipu"]'),
+  ).toHaveText('GLM');
+  await page.goto(origin + '#models?model=deepseek-v4-flash');
+  await expect(
+    page.getByRole('heading', { name: 'Efficient general reasoning, coding and agents' }),
+  ).toBeVisible();
+  assert.doesNotMatch(await page.locator('main').innerText(), /[\u3400-\u9fff]/);
+  await page.goto(origin + '#benchmarks');
+  await expect(page.locator('.benchmark-row')).toHaveCount(54);
+  assert.deepEqual((await page.locator('.benchmark-row h2').allTextContents()).slice(0, 6), [
+    'ExploitBench',
+    'CyberGym',
+    'ExploitGym',
+    'SEC-Bench Pro',
+    'CyScenarioBench',
+    'CVE-Bench',
+  ]);
+  assert.doesNotMatch(await page.locator('main').innerText(), /[\u3400-\u9fff]/);
+  await page.goto(origin + '#overview?benchmark=CyberGym&creator=Tencent&record=CAO-2026-0255');
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await expect(page.getByRole('dialog')).toContainText('Later disclosure');
+  assert.doesNotMatch(await page.getByRole('dialog').innerText(), /[\u3400-\u9fff]/);
+  await expect(page.getByRole('link', { name: 'View report', exact: true })).toHaveAttribute(
+    'href',
+    'https://huggingface.co/tencent/Hy4-preview',
+  );
+  await page.getByRole('button', { name: 'Close result details' }).click();
+  await page.setViewportSize({ width: 1440, height: 1050 });
+  await page.screenshot({ path: 'test-results/english-desktop.png', fullPage: true });
+  await page.getByRole('button', { name: 'Switch to Chinese', exact: true }).click();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'zh-CN');
+  await expect(page.getByRole('combobox', { name: '筛选厂商', exact: true })).toHaveValue(
+    'Tencent',
+  );
   assert.deepEqual(errors, []);
   console.log(
     'Browser checks passed: comparison, metric conversion, filters, trend dates, profiles, deep links, keyboard focus, downloads and mobile.',

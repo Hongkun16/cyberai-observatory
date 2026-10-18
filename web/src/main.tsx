@@ -16,24 +16,24 @@ import {
   CREATORS,
   COLORS,
   CREATOR_LABELS,
-  configuration,
   familiesFor,
+  orderedBenchmarks,
   modelName,
   numberText,
   resultsFor,
-  scoreSummary,
   sourceLink,
   type Family,
   type Result,
 } from './results';
+import { LanguageProvider, useLanguage } from './language';
 import './style.css';
 const BASE = import.meta.env.BASE_URL,
   REPO = 'https://github.com/Hongkun16/cyberai-observatory';
 const NAV = [
-  ['overview', '能力对比'],
-  ['progress', '进展趋势'],
-  ['models', '模型'],
-  ['benchmarks', '评测'],
+  ['overview', '能力对比', 'Comparison'],
+  ['progress', '进展趋势', 'Progress'],
+  ['models', '模型', 'Models'],
+  ['benchmarks', '评测', 'Evaluations'],
 ];
 function route() {
   const [view, query] = location.hash.slice(1).split('?');
@@ -78,6 +78,7 @@ function SearchBox({
   onChange: (s: string) => void;
   placeholder?: string;
 }) {
+  const { t } = useLanguage();
   return (
     <label className="search">
       <Search size={15} />
@@ -88,7 +89,7 @@ function SearchBox({
         onChange={(e) => onChange(e.target.value)}
       />
       {value && (
-        <button aria-label="清除搜索" onClick={() => onChange('')}>
+        <button aria-label={t('清除搜索', 'Clear search')} onClick={() => onChange('')}>
           <X size={14} />
         </button>
       )}
@@ -125,6 +126,7 @@ function Intro({
   );
 }
 function App() {
+  const { language, setLanguage, t } = useLanguage();
   const [data, setData] = useState<Audit>();
   const [error, setError] = useState('');
   const [current, setCurrent] = useState(route);
@@ -146,12 +148,22 @@ function App() {
     return () => removeEventListener('hashchange', fn);
   }, []);
   useEffect(() => {
-    document.title = (NAV.find(([v]) => v === current.view)?.[1] || '') + ' | CyberAI Analysis';
+    document.title =
+      (NAV.find(([v]) => v === current.view)?.[language === 'en' ? 2 : 1] || '') +
+      ' | CyberAI Analysis';
+    const description = document.querySelector('meta[name="description"]');
+    description?.setAttribute(
+      'content',
+      t(
+        '对比大模型在网络安全评测中的表现，探索漏洞发现、漏洞利用、CTF与安全防护成绩。',
+        'Compare AI models on cybersecurity evaluations: vulnerability discovery, exploitation, CTFs and safeguards.',
+      ),
+    );
     if (previous.current !== current.view) {
       window.scrollTo(0, 0);
       previous.current = current.view;
     }
-  }, [current.view]);
+  }, [current.view, language]);
   function update(changes: Record<string, string>) {
     const next = route();
     for (const [k, v] of Object.entries(changes)) {
@@ -173,14 +185,22 @@ function App() {
             </span>
             CyberAI Analysis
           </a>
-          <nav className={menu ? 'open' : ''} aria-label="主导航">
-            {NAV.map(([v, label]) => (
+          <nav className={menu ? 'open' : ''} aria-label={t('主导航', 'Main navigation')}>
+            {NAV.map(([v, zh, en]) => (
               <a key={v} href={'#' + v} className={v === current.view ? 'active' : ''}>
-                {label}
+                {t(zh, en)}
               </a>
             ))}
           </nav>
           <div className="header-actions">
+            <button
+              className="language-toggle"
+              type="button"
+              aria-label={t('Switch to English', 'Switch to Chinese')}
+              onClick={() => setLanguage(language === 'zh' ? 'en' : 'zh')}
+            >
+              {language === 'zh' ? 'English' : '中文'}
+            </button>
             <a className="github" href={REPO} target="_blank" rel="noreferrer">
               <Github size={15} />
               <span>GitHub</span>
@@ -189,14 +209,14 @@ function App() {
               <a
                 className="icon-button"
                 href={BASE + data.meta.downloadWorkbook}
-                aria-label="下载完整数据"
+                aria-label={t('下载完整数据', 'Download full dataset')}
               >
                 <Download size={17} />
               </a>
             )}
             <button
               className="mobile-menu icon-button"
-              aria-label="展开导航"
+              aria-label={t('展开导航', 'Toggle navigation')}
               aria-expanded={menu}
               onClick={() => setMenu(!menu)}
             >
@@ -206,7 +226,11 @@ function App() {
         </div>
       </header>
       {!data ? (
-        <main className="container loading">{error || 'Loading model performance…'}</main>
+        <main className="container loading">
+          {error
+            ? t('数据加载失败，请刷新重试。', 'Unable to load data. Please refresh and try again.')
+            : 'Loading model performance…'}
+        </main>
       ) : (
         <main>
           {['overview', 'progress'].includes(current.view) ? (
@@ -220,7 +244,7 @@ function App() {
                     Benchmarks
                   </>
                 }
-                heading="大模型网络安全能力对比"
+                heading={t('大模型网络安全能力对比', 'Compare AI cybersecurity capabilities')}
                 meta={
                   <>
                     <span>{data.models.length} models</span>
@@ -230,8 +254,10 @@ function App() {
                 }
               >
                 <p>
-                  探索 OpenAI、Anthropic、Google、腾讯、智谱 GLM、DeepSeek 和 xAI
-                  的模型在漏洞发现、漏洞利用、CTF 与多阶段任务中的表现。
+                  {t(
+                    '探索 OpenAI、Anthropic、Google、Tencent、GLM、DeepSeek 和 xAI 的模型在漏洞发现、漏洞利用、CTF 与多阶段任务中的表现。',
+                    'Explore OpenAI, Anthropic, Google, Tencent, GLM, DeepSeek and xAI models on vulnerability discovery, exploitation, CTFs and multi-stage tasks.',
+                  )}
                 </p>
                 <div className="intro-links">
                   <External url={REPO}>About this dataset</External>
@@ -283,7 +309,9 @@ function Dashboard({
   params: URLSearchParams;
   update: (v: Record<string, string>) => void;
 }) {
-  const benchmark = params.get('benchmark') || 'ExploitBench';
+  const { t, tr, config } = useLanguage();
+  const ordered = useMemo(() => orderedBenchmarks(data), [data]);
+  const benchmark = params.get('benchmark') || ordered[0]?.name || 'ExploitBench';
   const all = useMemo(() => resultsFor(data, benchmark), [data, benchmark]);
   const creator = params.get('creator') || 'all',
     setting = params.get('setting') || 'all',
@@ -312,14 +340,7 @@ function Dashboard({
       if (sort === 'score' && family?.lower) v = -v;
       return (asc ? -v : v) || a.key.localeCompare(b.key);
     });
-  const quick = [
-    'ExploitBench',
-    'CyberGym',
-    'SEC-Bench Pro',
-    'CVE-Bench',
-    'CyScenarioBench',
-    'CTF Professional',
-  ];
+  const quick = ordered.slice(0, 6).map((b) => b.name);
   const open = (r: Result) => update({ record: r.record.id });
   const choose = (name: string) => update({ benchmark: name, metric: '', setting: '', record: '' });
   const benchmarkInfo = data.benchmarks.find((b) => b.name === benchmark);
@@ -347,6 +368,12 @@ function Dashboard({
           Download
         </a>
       </div>
+      <p className="ordering-note">
+        {t(
+          '按参考表使用次数排序；模型数为本站已披露数值成绩的去重统计。',
+          'Ordered by usage in the reference workbook; model counts show unique models with reported numerical results on this site.',
+        )}
+      </p>
       <div className="benchmark-tabs">
         {quick.map((name) => (
           <button key={name} aria-pressed={name === benchmark} onClick={() => choose(name)}>
@@ -354,37 +381,43 @@ function Dashboard({
           </button>
         ))}
         <select
-          aria-label="选择评测"
+          aria-label={t('选择评测', 'Choose evaluation')}
           value={quick.includes(benchmark) ? '' : benchmark}
           onChange={(e) => choose(e.target.value)}
         >
           <option value="" disabled>
             More benchmarks
           </option>
-          {data.benchmarks
+          {ordered
             .filter((b) => !quick.includes(b.name))
             .map((b) => (
-              <option key={b.name}>{b.name}</option>
+              <option key={b.name} value={b.name}>
+                {tr(b.name)}
+              </option>
             ))}
         </select>
       </div>
       <div className="chart-card">
         <div className="chart-heading">
           <div>
-            <div className="benchmark-label">{benchmark}</div>
-            <h2>{family?.label || 'Model performance'}</h2>
-            <p>{benchmarkInfo?.task || '模型在所选评测中的表现'}</p>
+            <div className="benchmark-label">{tr(benchmark)}</div>
+            <h2>{tr(family?.label || 'Model performance')}</h2>
+            <p>
+              {benchmarkInfo
+                ? tr(benchmarkInfo.task)
+                : t('模型在所选评测中的表现', 'Model performance on the selected evaluation')}
+            </p>
           </div>
           <div className="chart-options">
             <select
-              aria-label="选择指标"
+              aria-label={t('选择指标', 'Choose metric')}
               value={family?.id || ''}
               onChange={(e) => update({ metric: e.target.value, setting: '' })}
             >
               {families.length ? (
                 families.map((f) => (
                   <option key={f.id} value={f.id}>
-                    {f.label}
+                    {tr(f.label)}
                   </option>
                 ))
               ) : (
@@ -410,7 +443,7 @@ function Dashboard({
         <div className="filter-toolbar">
           <SearchBox value={search} onChange={(s) => update({ search: s })} />
           <select
-            aria-label="筛选厂商"
+            aria-label={t('筛选厂商', 'Filter creator')}
             value={creator}
             onChange={(e) => update({ creator: e.target.value })}
           >
@@ -422,7 +455,7 @@ function Dashboard({
             ))}
           </select>
           <select
-            aria-label="筛选运行配置"
+            aria-label={t('筛选运行配置', 'Filter configuration')}
             value={setting}
             onChange={(e) => update({ setting: e.target.value })}
           >
@@ -453,7 +486,12 @@ function Dashboard({
             open={open}
           />
         ) : (
-          <div className="empty">该评测暂无公开数值成绩。</div>
+          <div className="empty">
+            {t(
+              '该评测暂无公开数值成绩。',
+              'No public numerical results are available for this evaluation.',
+            )}
+          </div>
         )}
         <div className="chart-foot">
           <span>
@@ -464,17 +502,22 @@ function Dashboard({
                 : family?.unit || 'Reported value'}
             {family?.lower ? ' · Lower is better' : ' · Higher is better'}
           </span>
-          <span>各条目保留报告中的运行设置，点击查看成绩与配置。</span>
+          <span>
+            {t(
+              '各条目保留报告中的运行设置，点击查看成绩与配置。',
+              'Each entry retains its reported settings. Select a result to inspect the score and configuration.',
+            )}
+          </span>
         </div>
       </div>
       <div className="section-heading">
-        <h2>{benchmark} — Model results</h2>
+        <h2>{tr(benchmark)} — Model results</h2>
         <a href={BASE + 'downloads/results.csv'}>
           Export CSV <Download size={13} />
         </a>
       </div>
       <div className="table-scroll">
-        <table aria-label="模型成绩表">
+        <table aria-label={t('模型成绩表', 'Model results')}>
           <thead>
             <tr>
               <th>#</th>
@@ -486,7 +529,7 @@ function Dashboard({
               <th>Creator</th>
               <th className="score-cell">
                 <button onClick={() => sortBy('score')}>
-                  {family?.label || 'Result'} {sort === 'score' && <ArrowDown size={12} />}
+                  {tr(family?.label || 'Result')} {sort === 'score' && <ArrowDown size={12} />}
                 </button>
               </th>
               <th>Configuration</th>
@@ -518,15 +561,18 @@ function Dashboard({
                 </td>
                 <td className="config-cell">
                   <span>{r.variant}</span>
-                  <small title={configuration(r.metric.configuration)}>
-                    {configuration(r.metric.configuration)}
+                  <small title={config(r.metric.configuration)}>
+                    {config(r.metric.configuration)}
                   </small>
                 </td>
                 <td className="date-cell">{r.model.date}</td>
                 <td>
                   <button
                     className="icon-button"
-                    aria-label={`查看${modelName(r.model)}的${r.family.label}结果`}
+                    aria-label={t(
+                      `查看${modelName(r.model)}的${r.family.label}结果`,
+                      `View ${modelName(r.model)} — ${tr(r.family.label)} result`,
+                    )}
                     onClick={() => open(r)}
                   >
                     <ArrowUpRight size={16} />
@@ -536,7 +582,14 @@ function Dashboard({
             ))}
           </tbody>
         </table>
-        {!results.length && <div className="empty">没有匹配结果，请调整指标或筛选条件。</div>}
+        {!results.length && (
+          <div className="empty">
+            {t(
+              '没有匹配结果，请调整指标或筛选条件。',
+              'No matching results. Try another metric or filter.',
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
@@ -552,6 +605,7 @@ function PerformanceChart({
   time: boolean;
   open: (r: Result) => void;
 }) {
+  const { t, tr } = useLanguage();
   const [hover, setHover] = useState<string>();
   const [expanded, setExpanded] = useState(false);
   useEffect(() => {
@@ -587,7 +641,11 @@ function PerformanceChart({
             viewBox={`0 0 ${width} ${height}`}
             style={{ minWidth: time ? 700 : Math.min(width, 1000) }}
             role="group"
-            aria-label={time ? '模型成绩随发布时间的变化' : '模型成绩柱状图'}
+            aria-label={
+              time
+                ? t('模型成绩随发布时间的变化', 'Model results over release dates')
+                : t('模型成绩柱状图', 'Model results bar chart')
+            }
           >
             {[0, 0.25, 0.5, 0.75, 1].map((t) => (
               <g key={t}>
@@ -628,7 +686,10 @@ function PerformanceChart({
                   role="button"
                   tabIndex={0}
                   key={r.key}
-                  aria-label={`${modelName(r.model)}，${r.display}，${r.variant}，查看结果`}
+                  aria-label={t(
+                    `${modelName(r.model)}，${r.display}，${r.variant}，查看结果`,
+                    `${modelName(r.model)}, ${r.display}, ${r.variant}, view result`,
+                  )}
                   onMouseEnter={() => setHover(r.key)}
                   onMouseLeave={() => setHover(undefined)}
                   onFocus={() => setHover(r.key)}
@@ -679,7 +740,12 @@ function PerformanceChart({
             })}
           </svg>
         ) : (
-          <div className="empty">当前筛选下暂无可绘制的数值，请调整指标或筛选条件。</div>
+          <div className="empty">
+            {t(
+              '当前筛选下暂无可绘制的数值，请调整指标或筛选条件。',
+              'No plottable values for these filters. Try another metric or configuration.',
+            )}
+          </div>
         )}
       </div>
       <div className="chart-readout">
@@ -694,7 +760,12 @@ function PerformanceChart({
             </button>
           </>
         ) : (
-          <span>悬停查看模型 · 点击查看完整成绩</span>
+          <span>
+            {t(
+              '悬停查看模型 · 点击查看完整成绩',
+              'Hover to inspect a model · Select to view full results',
+            )}
+          </span>
         )}
         {!time && drawable.length > 18 && (
           <button onClick={() => setExpanded(!expanded)}>
@@ -726,6 +797,7 @@ function Models({
   params: URLSearchParams;
   update: (p: Record<string, string>) => void;
 }) {
+  const { language, t, tr, summary } = useLanguage();
   const selected = data.models.find((m) => m.id === params.get('model'));
   const search = params.get('search') || '',
     creator = params.get('creator') || 'all';
@@ -738,7 +810,7 @@ function Models({
         <Intro
           eyebrow="Language models / Model profile"
           title={modelName(selected)}
-          heading={selected.role}
+          heading={tr(selected.role)}
           meta={
             <>
               <Creator name={selected.provider} />
@@ -749,8 +821,13 @@ function Models({
             </>
           }
         >
-          <p>查看该模型在公开网络安全评测中的成绩、任务覆盖与运行配置。</p>
-          {selected.dateNote && <p>{selected.dateNote}</p>}
+          <p>
+            {t(
+              '查看该模型在公开网络安全评测中的成绩、任务覆盖与运行配置。',
+              'Explore this model’s reported cybersecurity results, task coverage and evaluation settings.',
+            )}
+          </p>
+          {selected.dateNote && <p>{tr(selected.dateNote)}</p>}
           <div className="intro-links">
             <a href="#models">← All models</a>
             <External url={selected.sourceUrl}>Model report</External>
@@ -762,11 +839,19 @@ function Models({
           </div>
           {records.length === 0 && (
             <p className="model-disclosure" role="status">
-              暂无可归属到该版本的已确认成绩。{selected.caveats || selected.conclusion}
+              {t(
+                '暂无可归属到该版本的已确认成绩。',
+                'No confirmed results attributable to this version. ',
+              )}
+              {language === 'zh'
+                ? selected.caveats || selected.conclusion
+                : selected.id === 'grok-4-7-fast'
+                  ? 'Fast is a service tier of Grok 4.7, without separate scores.'
+                  : 'Results from other snapshots or deployment configurations are not inherited.'}
             </p>
           )}
           <div className="table-scroll">
-            <table aria-label="模型评测成绩">
+            <table aria-label={t('模型评测成绩', 'Model evaluation results')}>
               <thead>
                 <tr>
                   <th>Benchmark</th>
@@ -780,10 +865,10 @@ function Models({
                   <tr key={r.id}>
                     <td>
                       <a className="model-link" href={href('overview', { benchmark: r.benchmark })}>
-                        {r.benchmark}
+                        {tr(r.benchmark)}
                       </a>
                     </td>
-                    <td className="summary-cell">{scoreSummary(r)}</td>
+                    <td className="summary-cell">{summary(r)}</td>
                     <td>
                       {r.category === '能力'
                         ? 'Capability'
@@ -794,7 +879,10 @@ function Models({
                     <td>
                       <button
                         className="icon-button"
-                        aria-label={'查看' + r.benchmark + '结果'}
+                        aria-label={t(
+                          '查看' + r.benchmark + '结果',
+                          'View ' + tr(r.benchmark) + ' result',
+                        )}
                         onClick={() => update({ record: r.id })}
                       >
                         <ArrowUpRight size={16} />
@@ -821,7 +909,7 @@ function Models({
       <Intro
         eyebrow="Language models / Model directory"
         title="AI Models"
-        heading="按模型浏览网络安全表现"
+        heading={t('按模型浏览网络安全表现', 'Browse cybersecurity performance by model')}
         meta={
           <>
             <span>{data.models.length} models</span>
@@ -830,7 +918,12 @@ function Models({
           </>
         }
       >
-        <p>从旗舰推理模型到高效轻量模型，查看各个版本的任务表现与发布信息。</p>
+        <p>
+          {t(
+            '从旗舰推理模型到高效轻量模型，查看各个版本的任务表现与发布信息。',
+            'Explore performance and release information for flagship reasoning models and efficient lightweight models.',
+          )}
+        </p>
         <div className="intro-links">
           <External url={REPO}>Explore the dataset</External>
         </div>
@@ -839,7 +932,7 @@ function Models({
         <div className="directory-toolbar">
           <SearchBox value={search} onChange={(search) => update({ search })} />
           <select
-            aria-label="筛选模型厂商"
+            aria-label={t('筛选模型厂商', 'Filter model creator')}
             value={creator}
             onChange={(e) => update({ creator: e.target.value })}
           >
@@ -853,7 +946,7 @@ function Models({
           <span>{models.length} models</span>
         </div>
         <div className="table-scroll">
-          <table aria-label="模型列表">
+          <table aria-label={t('模型列表', 'Model directory')}>
             <thead>
               <tr>
                 <th>Model</th>
@@ -877,7 +970,7 @@ function Models({
                     <Creator name={m.provider} />
                   </td>
                   <td className="date-cell">{m.date}</td>
-                  <td className="role-cell">{m.role}</td>
+                  <td className="role-cell">{tr(m.role)}</td>
                   <td>
                     {
                       data.evaluations.filter(
@@ -889,7 +982,10 @@ function Models({
                     }
                   </td>
                   <td>
-                    <a aria-label={'查看' + modelName(m)} href={href('models', { model: m.id })}>
+                    <a
+                      aria-label={t('查看' + modelName(m), 'View ' + modelName(m))}
+                      href={href('models', { model: m.id })}
+                    >
                       <ChevronRight size={16} />
                     </a>
                   </td>
@@ -911,9 +1007,12 @@ function Benchmarks({
   params: URLSearchParams;
   update: (p: Record<string, string>) => void;
 }) {
+  const { t, tr } = useLanguage();
   const search = params.get('search') || '';
-  const benchmarks = data.benchmarks.filter((b) =>
-    (b.name + ' ' + b.task).toLowerCase().includes(search.toLowerCase()),
+  const benchmarks = orderedBenchmarks(data).filter((b) =>
+    (b.name + ' ' + b.task + ' ' + tr(b.name) + ' ' + tr(b.task))
+      .toLowerCase()
+      .includes(search.toLowerCase()),
   );
   return (
     <>
@@ -926,7 +1025,7 @@ function Benchmarks({
             Evaluations
           </>
         }
-        heading="从任务理解模型能力"
+        heading={t('从任务理解模型能力', 'Understand capabilities through tasks')}
         meta={
           <>
             <span>{data.benchmarks.length} benchmarks & tasks</span>
@@ -934,7 +1033,12 @@ function Benchmarks({
           </>
         }
       >
-        <p>覆盖真实漏洞复现、端到端利用、CTF 与安全防护。选择评测，探索模型在具体任务中的表现。</p>
+        <p>
+          {t(
+            '覆盖真实漏洞复现、端到端利用、CTF 与安全防护。选择评测，探索模型在具体任务中的表现。',
+            'Explore real-world vulnerability reproduction, end-to-end exploitation, CTFs and safeguards. Choose an evaluation to inspect model performance.',
+          )}
+        </p>
         <div className="intro-links">
           <External url={REPO}>Dataset documentation</External>
         </div>
@@ -948,6 +1052,12 @@ function Benchmarks({
           />
           <span>{benchmarks.length} evaluations</span>
         </div>
+        <p className="ordering-note">
+          {t(
+            '按 Benchmark_Summary.xlsx 的 Times 排序；未列项目按本站模型覆盖数排列。',
+            'Ordered by Times in Benchmark_Summary.xlsx; unlisted evaluations follow in order of model coverage on this site.',
+          )}
+        </p>
         <div className="benchmark-directory">
           {benchmarks.map((b) => (
             <a
@@ -955,11 +1065,11 @@ function Benchmarks({
               key={b.name}
               href={href('overview', { benchmark: b.name })}
             >
-              <div className="benchmark-monogram">{b.name.slice(0, 2).toUpperCase()}</div>
+              <div className="benchmark-monogram">{tr(b.name).slice(0, 2).toUpperCase()}</div>
               <div>
-                <h2>{b.name}</h2>
-                <p>{b.task}</p>
-                <small>{b.openness.replaceAll('核验', '验证')}</small>
+                <h2>{tr(b.name)}</h2>
+                <p>{tr(b.task)}</p>
+                <small>{tr(b.openness).replaceAll('核验', '验证')}</small>
               </div>
               <span>
                 {
@@ -988,6 +1098,7 @@ function ResultDialog({
   record: Evaluation;
   close: () => void;
 }) {
+  const { language, t, tr, config, summary } = useLanguage();
   const ref = useRef<HTMLDialogElement>(null);
   const [copied, setCopied] = useState(false);
   const model = data.models.find((m) => m.id === record.modelId)!;
@@ -1017,28 +1128,32 @@ function ResultDialog({
       <div className="dialog-inner">
         <div className="dialog-top">
           <span>Model performance</span>
-          <button className="icon-button" aria-label="关闭结果详情" onClick={close}>
+          <button
+            className="icon-button"
+            aria-label={t('关闭结果详情', 'Close result details')}
+            onClick={close}
+          >
             <X size={20} />
           </button>
         </div>
         <Creator name={model.provider} />
         <h2 id="result-title">{modelName(model)}</h2>
         <div className="dialog-subtitle">
-          <span className="benchmark-label">{record.benchmark}</span>
+          <span className="benchmark-label">{tr(record.benchmark)}</span>
           <span>Released {model.date}</span>
         </div>
         <div className="reported-result">
           <span>Reported result</span>
-          <strong>{scoreSummary(record)}</strong>
+          <strong>{summary(record)}</strong>
         </div>
         {record.metrics.length > 0 && (
-          <section aria-label="分项成绩">
+          <section aria-label={t('分项成绩', 'Detailed results')}>
             <h3>Results & configurations</h3>
             {record.metrics.map((m, i) => (
               <div className="metric-row" key={i}>
                 <div>
-                  <b>{m.label}</b>
-                  <p>{configuration(m.configuration)}</p>
+                  <b>{tr(m.label)}</b>
+                  <p>{config(m.configuration)}</p>
                 </div>
                 <strong>
                   {typeof m.value === 'number' ? numberText(m.value) : m.value}
@@ -1049,33 +1164,70 @@ function ResultDialog({
           </section>
         )}
         <section className="run-settings">
-          <h3>运行设置</h3>
-          <p>{configuration(record.configuration)}</p>
+          <h3>{t('运行设置', 'Run settings')}</h3>
+          <p>
+            {language === 'en'
+              ? record.metrics.length
+                ? [...new Set(record.metrics.map((metric) => config(metric.configuration)))].join(
+                    '; ',
+                  )
+                : 'See the original report and transcription for full evaluation settings.'
+              : config(record.configuration)}
+          </p>
           {record.scoreAudit?.laterDisclosure && (
-            <p>后续报告披露：此成绩来自模型发布后的报告或补测，不能视为首发成绩。</p>
+            <p>
+              {t(
+                '后续报告披露：此成绩来自模型发布后的报告或补测，不能视为首发成绩。',
+                'Later disclosure: this result comes from a subsequent report or evaluation and is not a launch-time score.',
+              )}
+            </p>
           )}
-          {record.scoreAudit?.notes && <p>{record.scoreAudit.notes}</p>}
+          {language === 'zh' && record.scoreAudit?.notes && <p>{record.scoreAudit.notes}</p>}
           {record.scoreAudit?.evidence.map((evidence, index) => (
             <p key={index}>
-              来源定位：{evidence.pages ? `PDF 文件第 ${evidence.pages} 页` : evidence.section} ·{' '}
-              <External url={evidence.sourceUrl}>原始来源</External>
+              {t('来源定位：', 'Source location: ')}
+              {evidence.pages
+                ? t(`PDF 文件第 ${evidence.pages} 页`, `PDF file page ${evidence.pages}`)
+                : language === 'en' && /[\u3400-\u9fff]/.test(evidence.section || '')
+                  ? 'Report table or figure; original locator below'
+                  : evidence.section}{' '}
+              · <External url={evidence.sourceUrl}>{t('原始来源', 'Original source')}</External>
             </p>
           ))}
         </section>
+        {language === 'en' && (
+          <details className="original-transcription">
+            <summary>Original transcription & qualifications</summary>
+            <div lang="zh-CN">
+              <p>{record.score}</p>
+              <p>{record.configuration}</p>
+              <p>{record.scoreAudit?.notes}</p>
+              {record.scoreAudit?.evidence.map((e, i) => (
+                <p key={i}>
+                  {e.section} {e.quote}
+                </p>
+              ))}
+            </div>
+          </details>
+        )}
         <div className="dialog-links">
-          <External url={sourceLink(record)}>查看报告</External>
-          <External url={model.sourceUrl}>Model 主页</External>
+          <External url={sourceLink(record)}>{t('查看报告', 'View report')}</External>
+          <External url={model.sourceUrl}>{t('Model 主页', 'Model homepage')}</External>
           <button
             onClick={() => {
               navigator.clipboard.writeText(location.href).then(() => setCopied(true));
             }}
           >
             <Copy size={13} />
-            {copied ? '已复制' : '复制链接'}
+            {copied ? t('已复制', 'Copied') : t('复制链接', 'Copy link')}
           </button>
         </div>
       </div>
     </dialog>
   );
 }
-createRoot(document.getElementById('root')!).render(<App />);
+createRoot(document.getElementById('root')!).render(
+  <LanguageProvider>
+    <App />
+  </LanguageProvider>,
+);

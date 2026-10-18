@@ -142,6 +142,34 @@ nav a.active {
   align-items: center;
   gap: 14px;
 }
+.language-toggle {
+  border: 1px solid #c9cdd2;
+  border-radius: 18px;
+  background: #fff;
+  color: #272d32;
+  padding: 7px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.language-toggle:hover {
+  background: #e9ebed;
+}
+.ordering-note {
+  margin: 0 0 16px;
+  color: #6d737b;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.original-transcription {
+  margin: 18px 0;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.original-transcription summary {
+  cursor: pointer;
+  color: #626972;
+}
 .github {
   background: #17191b;
   color: white !important;

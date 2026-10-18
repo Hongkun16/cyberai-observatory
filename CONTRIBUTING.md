@@ -19,3 +19,7 @@ npm run build
 新增历史成绩和可比组时，请先把原始记录与分析判断分开：相同评测名称不足以成立可比组。
 
 新增腾讯、智谱GLM、DeepSeek、xAI资料时维护`data/vendor-supplement.json`，归档原文件到`sources/vendors/`并记录SHA-256；新增记录在`data/record-identities.json`登记指纹与稳定ID。PDF填写文件页码，网页／图片填写evidence.section；不将网页章节写成PDF页码。日期依据文件在模型dateEvidencePaths中保留。不要编辑生成的data/documents.json或其他导出文件。
+
+中英文界面由`web/src/language.tsx`维护，展示数据的英文译文保存在`web/src/data.en.json`；新增模型用途、日期说明、评测说明或分项指标／配置时，请同时提供英文译文。原始摘录和证据备注不改写，英文结果弹窗可展开查看原文。
+
+评测显示顺序参考`data/benchmark-usage.json`，原表保存在`snapshots/Benchmark_Summary.xlsx`，导入时校验文件哈希。Times仅表示该参考表的使用次数，不等于本站模型数；未列评测按本站已披露数值成绩的去重模型数排序。更新参考表时同步JSON，不据此增加或推断模型成绩。

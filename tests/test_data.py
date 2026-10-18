@@ -2,6 +2,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import re
 import unittest
 from collections import Counter
 from pathlib import Path
@@ -170,6 +171,26 @@ class AuditIntegrityTests(unittest.TestCase):
         self.assertEqual(safety["metrics"][0]["value"], 3.3)
         grok = {r["benchmark"]: r for r in self.vendor_records if r["modelId"] == "grok-4-20"}
         self.assertEqual({b: r["metrics"][0]["value"] for b, r in grok.items()}, {"Cybench": 53, "WMDP Cyber": 91, "AgentHarm": 30, "AgentDojo": 33})
+
+    def test_benchmark_usage_matches_user_workbook(self):
+        import openpyxl
+        reference = self.data["benchmarkUsage"]
+        path = ROOT / reference["sourceWorkbook"]
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), reference["sha256"])
+        rows = list(openpyxl.load_workbook(path, read_only=True, data_only=True).active.values)[1:]
+        self.assertEqual([(r[0], r[3]) for r in rows if r[0]], [(r["name"], r["times"]) for r in reference["entries"]])
+        self.assertEqual([r["name"] for r in reference["entries"][:6]], ["ExploitBench", "CyberGym", "ExploitGym", "SEC-Bench Pro", "CyScenarioBench", "CVE-Bench"])
+
+    def test_english_translations_cover_displayed_data(self):
+        translations = json.loads((ROOT / "web/src/data.en.json").read_text())
+        displayed = [m[k] for m in self.data["models"] for k in ["role", "dateNote"]]
+        displayed += [b[k] for b in self.data["benchmarks"] for k in ["name", "task", "openness"]]
+        displayed += [m[k] for r in self.data["evaluations"] for m in r["metrics"] for k in ["label", "configuration"]]
+        for value in set(displayed):
+            if re.search(r"[\u3400-\u9fff]", value):
+                self.assertIn(value, translations)
+                self.assertTrue(translations[value].strip())
+                self.assertIsNone(re.search(r"[\u3400-\u9fff]", translations[value]))
 
 
 if __name__ == "__main__":
