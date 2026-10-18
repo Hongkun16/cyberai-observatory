@@ -2,38 +2,77 @@
 
 **追踪大模型网络安全能力的演进，让每个结果都能回到证据。**
 
-[浏览网站](https://hongkun16.github.io/cyberai-observatory/) · [能力进展](https://hongkun16.github.io/cyberai-observatory/#progress) · [研究方法](docs/methodology.md) · [下载成绩 Excel](web/public/downloads/audit-2026-10-18.xlsx)
+[浏览网站](https://hongkun16.github.io/cyberai-observatory/) · [能力进展](https://hongkun16.github.io/cyberai-observatory/#progress) · [模型目录](https://hongkun16.github.io/cyberai-observatory/#models) · [研究方法](docs/methodology.md) · [下载 Excel](web/public/downloads/audit-2026-10-18.xlsx)
 
-基于公开模型报告的证据资料库与交互网站。覆盖 **OpenAI、Anthropic、Google、Tencent、GLM、DeepSeek、xAI、Kimi 八家厂商**。截至 **2026-10-18**，共 **79** 个模型 / 版本 / 服务档位、**282** 条逐项记录、**229** 条证据归属已确认，包含 **189** 条数值记录、**357** 项分配置指标。
+CyberAI Observatory 是一个基于公开报告的大模型网络安全评测资料库与交互网站，覆盖 **OpenAI、Anthropic、Google、Tencent、GLM、DeepSeek、xAI、Kimi 八家厂商**，汇集厂商自测、其他厂商比较和独立机构评估，提供成绩查询、配置筛选、时间趋势和来源追溯。
+
+截至 **2026-10-18**，资料库包含：
+
+| 内容 | 数量 |
+| --- | ---: |
+| 模型／版本／服务档位 | 79 |
+| 评测／任务标签 | 58 |
+| 逐项记录 | 282 |
+| 证据归属已确认的记录 | 229 |
+| 含数值成绩的记录 | 189 |
+| 分配置指标 | 357 |
+| PDF 报告与材料 | 76 |
+
+项目整理公开证据，没有独立运行或复现模型评测。服务档位与模型版本分别列示，目录条目数不等于独立模型数。
 
 ![CyberAI Observatory 首页](docs/preview.png)
 
-页头可一键切换中文／English，并保留筛选和语言选择。评测展示顺序参考 `Benchmark_Summary.xlsx` 的使用次数，优先展示常用评测；参考次数与本站去重模型数分别统计。
+## 网站功能
 
-Kimi新增6个版本／档位、14条记录与两份PDF报告，明确区分厂商自测、其他厂商比较及独立机构评测，详见[Kimi扩展说明](docs/kimi-expansion.md)。
+- **能力对比：**按评测、指标、厂商与运行配置筛选柱状图和成绩表，查看分项结果及报告链接。
+- **进展趋势：**按模型日期展示同一指标的表现，月精度日期单列。
+- **模型目录：**搜索模型、筛选厂商，查看各版本的评测覆盖、成绩和发布信息。
+- **评测库：**查询任务定义、开放性和解释限制，常用评测优先展示。
+- **中英文切换：**一键切换界面与数据说明，保留当前筛选并记住语言选择；证据原文可单独展开。
+- **数据下载：**提供 Excel、CSV 和完整 JSON，保留指标、配置、评测方及证据定位。
 
-## 可以探索什么
+评测排序参考 `Benchmark_Summary.xlsx` 的使用次数；页面中的模型数按本站已披露数值成绩去重统计，两者分别解释。
 
-- **成绩对比：**按评测、指标、厂商和运行配置筛选柱状图与成绩表，点击查看分项成绩和报告链接。
-- **进展趋势：**按模型发布日期查看同一指标的表现，月精度日期单列。
-- **模型目录：**79 个版本 / 服务档位，支持搜索、厂商筛选和模型成绩页。
-- **评测库：**58 个评测 / 任务标签的定义、开放性和比较限制。
-- **来源与方法：**核验记录、修订说明与研究方法保留在本仓库，网站聚焦成绩展示。
-- **下载：**Excel、CSV、完整 JSON；PDF 目录保留官方来源、页数与 SHA-256。
+## 如何解读成绩
 
-## 如何解释图表
+**指标与运行配置是两个维度。**例如 ExploitBench 的 **Cap%** 表示利用能力覆盖率，**Full ACE** 表示完整任意代码执行；2h／6h、Plain／AutoNudge、防护开启／关闭则属于运行配置。能力覆盖率不能解读为完整利用成功率，不同预算和防护设置的结果分别保留。
 
-189 条记录已核实数值，22 条仅有未标精确值的曲线，18 条只有定性结论，53 条因归属未确认、未披露或不独立计分而不适用。原43条成绩也已复核。补录保留归档路径、PDF文件页码或网页章节、原文摘录或图表读数、哈希和配置。历史PDF复核详见 [成绩补录说明](docs/score-audit.md)。
+189 条记录含有数值成绩，22 条只有未标精确值的图示，18 条只有定性结论，53 条因归属未确认、未披露或不独立计分而不适用。范围、上下界与近似值保留原样，未标值曲线不估读；次数、比例和百分数按各自单位展示，不混合平均。
 
-网页以 Artificial Analysis 的简洁数据展示风格为参考，采用浅灰页头、衬线标题、柱状图与紧凑表格。默认展示 ExploitBench Cap%，可切换评测、指标与运行配置。多个预算、防护开关及指标分别保留；次数指标可单独绘图，混合指标不平均。月精度结果在图下单列。只有曲线而没有精确数值标签的结果不估读。
+**同名评测不自动可比。**题集、指标、采样预算、工具环境、评分器和防护设置都可能影响成绩。网站不计算综合排名，也不连接尚未核定可比性的成绩点。横轴采用模型日期，后续报告披露的结果另行标注；月精度日期不补造具体日。
 
-**同名评测不自动可比。**题集、指标、采样预算、工具环境和防护设置可能不同，目前不连接数据点、不计算综合排名。横轴为模型日期；后续报告补测在记录中另行标注。覆盖项目增加也不等于能力提升。
+“已确认”表示原文支持该模型与测试的对应关系，不代表任务全部成功或结果已被独立复现。不同来源、模型快照与服务档位不互相继承成绩。具体解释见[研究方法](docs/methodology.md)和[数据字典](docs/data-dictionary.md)。
 
-“已确认”确认的是模型与测试的证据对应关系，不能解读为全部任务成功或独立复现。缺失记录、未披露、待核、明确未运行和排除状态分别保留。
+## 数据与证据
+
+每条评测记录使用稳定 ID，保留模型、评测、成绩、指标、运行配置、官方或评测机构链接，以及 PDF 文件页码或网页章节。归档材料包含 PDF、HTML、MHTML 和基准图表，并以 SHA-256 校验文件内容。成绩、配置或状态的修订不会改变既有记录 ID。
+
+```text
+公开报告、评测资料与模型清单
+              ↓ 导入、结构化整理与证据校验
+模型 · 评测 · 分项成绩 · 配置 · 来源
+              ↓
+       JSON / CSV / Excel
+              ↓ React + TypeScript + Vite
+         交互网站 / GitHub Pages
+```
+
+| 目录 | 内容 |
+| --- | --- |
+| `snapshots/` | 来源工作簿、模型清单与评测使用统计 |
+| `pdf/`、`sources/vendors/` | 模型报告、评测机构资料、网页与图表归档 |
+| `data/` | 结构化模型、评测、成绩、证据索引及身份映射 |
+| `scripts/` | 数据导入、校验、Excel 导出与图标转换 |
+| `web/src/` | 网站页面、图表、样式与中英文展示 |
+| `web/public/` | 网站数据、下载文件与标准化厂商图标 |
+| `tests/` | 数据完整性与浏览器交互检查 |
+| `docs/` | 研究方法、字段说明与资料核对说明 |
+
+完整网站数据位于 `web/public/data/audit.json`。报告与材料目录见 `data/pdfs.json` 和 `data/documents.json`。来源工作簿与报告归档保留供核对，网站数据和下载文件由脚本生成，Excel 使用固定时间戳以支持重复构建。
 
 ## 本地运行
 
-需要 Node.js 22、npm 和 Python 3.10+。数据导入使用Python标准库，补录版Excel导出另需openpyxl。
+需要 Node.js 22、npm 和 Python 3.10+。
 
 ```bash
 npm ci
@@ -42,52 +81,38 @@ npm run data:import
 npm run dev
 ```
 
-构建和验证：
+构建与数据检查：
 
 ```bash
 npm run test:data
 npm run build
+```
+
+浏览器检查：
+
+```bash
 npx playwright install --with-deps chromium
 npm run preview -- --port 4173
 # 在另一终端运行
 npm run test:web
 ```
 
-构建产物位于 `dist/`。浏览器测试覆盖桌面 / 手机、键盘操作数据点、结果深链接、筛选、百分数转换、模型详情与下载。
-
-## 数据流程与目录
-
-```text
-snapshots/2026-10-17.xlsx + data/score-audit/*.json
-                        + data/vendor-supplement.json + sources/vendors/
-          ↓ scripts/import_workbook.py + scripts/export_workbook.py
-pdf/                     # 模型报告与补充材料 PDF
-data/                    # 标准模型、记录、评测、来源、修订、PDF 目录
-          ↓
-web/public/data/         # 网站完整 JSON
-web/public/downloads/    # CSV / Excel 下载
-          ↓ React + TypeScript + Vite
-dist/                    # 静态网站
-```
-
-`data/model-identities.json` 保存模型 ID 及经整理的日期精度。`data/record-identities.json` 保存证据记录身份；修正配置、成绩或状态时保留原 ID。具体字段见 [数据字典](docs/data-dictionary.md)。历史PDF成绩复核层按厂商保存在 `data/score-audit/`；新增五家厂商由 `data/vendor-supplement.json` 独立维护，官方PDF、HTML、MHTML和基准图片保存在 `sources/vendors/`。原始成绩及配置保留在 `originalScore`、`originalConfiguration`。
-
-原始Excel是记录、归属和来源索引的快照；逐项PDF复核JSON是历史成绩补录与配置纠正的来源；厂商扩展JSON保存新增模型、成绩及证据目录。两者合并生成结构化数据、CSV及补录版Excel（含“成绩补录审计”“新增厂商模型”“新增厂商证据文件”表）。原始Excel完整保留，不覆盖历史证据。生成的Excel采用固定时间戳，可重复构建。
+构建产物位于 `dist/`。浏览器检查覆盖桌面与手机布局、键盘操作、筛选、指标单位、模型详情、深链接、中英文切换和文件下载。厂商标志的转换方法见[图标说明](assets/logos/README.md)。
 
 ## 部署与维护
 
-推送 `main` 后，GitHub Actions 会重新导入工作簿、校验数据、构建、执行浏览器检查，再部署 GitHub Pages。PR 执行同样检查但不部署。项目站点路径通过 `VITE_BASE_PATH` 设置，使用哈希导航以支持刷新和直接分享。
+推送 `main` 后，GitHub Actions 自动导入数据、检查生成结果、运行数据测试、构建网站并执行浏览器检查，通过后部署到 GitHub Pages。PR 执行相同检查。站点路径由 `VITE_BASE_PATH` 设置，哈希导航支持刷新与直接分享。
 
-PDF 文件收录在 [`pdf/`](pdf/README.md)，共 69 份模型报告与补充材料，包含官方原始 PDF 和官方网页转制 PDF。文件与 `data/pdfs.json` 的 SHA-256 逐一对应，网站链接与导出的 JSON 仍保留原始来源。新增厂商的46份PDF、网页和图片另存于 `sources/vendors/`，目录与哈希见 `data/documents.json`。
+维护数据时，请提供模型精确版本、评测与指标名称、原始成绩、运行配置、来源链接和章节／页码，明确评测方及披露时间。具体流程见[贡献指南](CONTRIBUTING.md)。
 
-[贡献方式](CONTRIBUTING.md) · [更新记录](CHANGELOG.md) · [下一步](ROADMAP.md)
+[研究方法](docs/methodology.md) · [数据字典](docs/data-dictionary.md) · [更新记录](CHANGELOG.md) · [项目计划](ROADMAP.md)
 
 ## 许可与引用
 
-MIT 许可适用于本项目原创代码。第三方报告和引用内容保留原权利；整理数据未另行声明独立再分发许可。请在使用具体成绩时引用原报告与运行设置。
+MIT 许可适用于本项目原创代码。第三方报告、标志和引用内容保留原权利；整理数据未另行声明独立再分发许可。使用具体成绩时，请引用原报告并注明运行设置。
 
 ```text
-CyberAI Observatory. 模型网安评测核验快照. 2026-10-17.
+CyberAI Observatory. 大模型网络安全评测资料库. 数据截至2026-10-18.
 https://github.com/Hongkun16/cyberai-observatory
 公开报告证据整理；未独立重跑模型评测。
 ```
