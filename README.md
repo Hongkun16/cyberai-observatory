@@ -2,7 +2,7 @@
 
 **追踪大模型网络安全能力的演进，让每个结果都能回到证据。**
 
-[浏览网站](https://hongkun16.github.io/cyberai-observatory/) · [能力进展](https://hongkun16.github.io/cyberai-observatory/#progress) · [研究方法](docs/methodology.md) · [下载成绩补录版 Excel](web/public/downloads/audit-2026-10-18.xlsx)
+[浏览网站](https://hongkun16.github.io/cyberai-observatory/) · [能力进展](https://hongkun16.github.io/cyberai-observatory/#progress) · [研究方法](docs/methodology.md) · [下载成绩 Excel](web/public/downloads/audit-2026-10-18.xlsx)
 
 基于公开模型报告的证据资料库与交互网站。覆盖 **OpenAI、Anthropic、Google、腾讯、智谱 GLM、DeepSeek、xAI 七家厂商**。截至 **2026-10-18**，共 **73** 个模型 / 版本 / 服务档位、**268** 条逐项记录、**218** 条证据归属已确认，包含 **178** 条数值记录、**339** 项分配置指标。项目没有独立重跑模型评测。
 
