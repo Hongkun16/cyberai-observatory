@@ -1,1831 +1,1047 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  Activity,
-  ArrowDown,
-  ArrowDownToLine,
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
-  BookOpen,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  CircleHelp,
-  Code2,
-  Copy,
-  Database,
-  ExternalLink,
-  FileText,
-  FlaskConical,
+  ArrowDown,
+  Download,
   Github,
-  Globe2,
-  Layers,
   Menu,
   Search,
-  ShieldCheck,
-  SlidersHorizontal,
   X,
+  ChevronRight,
+  Copy,
 } from 'lucide-react';
-import type { Audit, Benchmark, Evaluation, Model, Provider } from './types';
+import type { Audit, Evaluation, Provider } from './types';
+import {
+  CREATORS,
+  COLORS,
+  configuration,
+  familiesFor,
+  modelName,
+  numberText,
+  resultsFor,
+  scoreSummary,
+  sourceLink,
+  type Family,
+  type Result,
+} from './results';
 import './style.css';
-
-const BASE = import.meta.env.BASE_URL;
-const REPOSITORY = 'https://github.com/Hongkun16/cyberai-observatory';
-const scoreLabels: Record<Evaluation['scoreStatus'], string> = {
-  reported: '已核实数值',
-  graphical: '仅图示，未标精确值',
-  qualitative: '仅定性结论',
-  not_disclosed: '未披露数值',
-  not_applicable: '不适用（证据未确认）',
-};
-function scoreText(record: Evaluation) {
-  return record.score || scoreLabels[record.scoreStatus];
-}
-function metricText(metric: Evaluation['metrics'][number]) {
-  const suffix: Record<string, string> = {
-    percent: '%',
-    hours: ' 小时',
-    hour: ' 小时',
-    seconds: ' 秒',
-    tokens: ' tokens',
-    multiplier: '×',
-  };
-  return `${metric.value}${suffix[metric.unit] || ''}`;
-}
-function metricKey(metric: Evaluation['metrics'][number]) {
-  return `${metric.label}${metric.configuration ? ' · ' + metric.configuration : ''}`;
-}
-const providers: Provider[] = ['OpenAI', 'Anthropic', 'Google'];
-const colors: Record<Provider, string> = {
-  OpenAI: '#3867e8',
-  Anthropic: '#d58250',
-  Google: '#279b8f',
-};
-const nav = [
-  { id: 'overview', en: 'Overview', zh: '总览' },
-  { id: 'progress', en: 'Progress', zh: '能力进展' },
-  { id: 'models', en: 'Models', zh: '模型库' },
-  { id: 'benchmarks', en: 'Benchmarks', zh: '评测库' },
-  { id: 'evidence', en: 'Evidence', zh: '证据与方法' },
+const BASE = import.meta.env.BASE_URL,
+  REPO = 'https://github.com/Hongkun16/cyberai-observatory';
+const NAV = [
+  ['overview', '能力对比'],
+  ['progress', '进展趋势'],
+  ['models', '模型'],
+  ['benchmarks', '评测'],
 ];
-type Route = { view: string; params: URLSearchParams };
-function readRoute(): Route {
-  const [path, query = ''] = location.hash.slice(1).split('?');
+function route() {
+  const [view, query] = location.hash.slice(1).split('?');
   return {
-    view: nav.some((n) => n.id === path) ? path : 'overview',
+    view: NAV.some(([v]) => v === view) ? view : 'overview',
     params: new URLSearchParams(query),
   };
 }
 function href(view: string, params: Record<string, string> = {}) {
-  const q = new URLSearchParams(params).toString();
-  return `#${view}${q ? '?' + q : ''}`;
+  const p = new URLSearchParams(Object.entries(params).filter(([, v]) => v));
+  return '#' + view + (p.size ? '?' + p : '');
 }
-function dateLabel(m: Model) {
-  return m.date + (m.date_precision === 'month' ? ' · 月精度' : '');
-}
-function isLater(r: Evaluation) {
-  return r.scoreAudit?.laterDisclosure || /后续|后测|后补/.test(r.configuration + r.note);
-}
-function statusClass(status: string) {
-  return status === '已确认'
-    ? 'confirmed'
-    : status === '模型覆盖待核对' || status === '未披露具名项目'
-      ? 'pending'
-      : 'excluded';
-}
-function Status({ value }: { value: string }) {
+function Creator({ name }: { name: Provider }) {
   return (
-    <span className={`status ${statusClass(value)}`}>
-      <span />
-      {value}
+    <span className="creator">
+      <span className={'creator-icon ' + name.toLowerCase()}>
+        {name === 'OpenAI' ? '◈' : name[0]}
+      </span>
+      {name}
     </span>
   );
 }
-function ProviderMark({ value }: { value: Provider }) {
+function External({ url, children }: { url: string; children: React.ReactNode }) {
   return (
-    <span className="provider">
-      <i style={{ background: colors[value] }} />
-      {value}
-    </span>
-  );
-}
-function External({
-  url,
-  children,
-  className = '',
-}: {
-  url: string;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <a className={className} href={url} target="_blank" rel="noreferrer">
+    <a href={url} target="_blank" rel="noreferrer">
       {children}
       <ArrowUpRight size={14} />
     </a>
   );
 }
-
-function App() {
-  const [audit, setAudit] = useState<Audit>();
-  const [error, setError] = useState(false);
-  const [route, setRoute] = useState(readRoute);
-  const [menu, setMenu] = useState(false);
-  const viewRef = useRef(route.view);
-  useEffect(() => {
-    const update = () => setRoute(readRoute());
-    window.addEventListener('hashchange', update);
-    return () => window.removeEventListener('hashchange', update);
-  }, []);
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch(BASE + `data/audit.json?v=${__DATA_VERSION__}`, {
-      signal: controller.signal,
-      cache: 'no-cache',
-    })
-      .then((r) => {
-        if (!r.ok) throw Error('load');
-        return r.json();
-      })
-      .then(setAudit)
-      .catch((e) => {
-        if (e.name !== 'AbortError') setError(true);
-      });
-    return () => controller.abort();
-  }, []);
-  useEffect(() => {
-    if (viewRef.current !== route.view) {
-      window.scrollTo(0, 0);
-      viewRef.current = route.view;
-    }
-    setMenu(false);
-    document.title = `${nav.find((n) => n.id === route.view)?.zh} · CyberAI Observatory`;
-  }, [route.view]);
-  function update(params: Record<string, string | null>) {
-    // Hash changes can arrive faster than React renders; retain the latest URL filters.
-    const current = readRoute();
-    const p = new URLSearchParams(current.params);
-    Object.entries(params).forEach(([k, v]) => (v ? p.set(k, v) : p.delete(k)));
-    location.hash = href(current.view, Object.fromEntries(p));
-  }
-  const select = (record: Evaluation) => update({ record: record.id });
-  if (error)
-    return (
-      <div className="load-state">
-        <Activity />
-        <h1>数据暂时未能加载</h1>
-        <p>请确认通过 HTTP 服务打开网站，然后重试。</p>
-        <button className="button primary" onClick={() => location.reload()}>
-          重新加载
-        </button>
-      </div>
-    );
-  if (!audit)
-    return (
-      <div className="load-state" role="status">
-        <Activity className="pulse" />
-        <p>正在载入核验资料…</p>
-      </div>
-    );
-  const selectedId = route.params.get('record');
-  const record = audit.evaluations.find((e) => e.id === selectedId);
-  return (
-    <>
-      <a
-        className="skip-link"
-        href="#main-content"
-        onClick={(e) => {
-          e.preventDefault();
-          document.getElementById('main-content')?.focus();
-        }}
-      >
-        跳到主要内容
-      </a>
-      <header className="header">
-        <div className="header-inner">
-          <a href="#overview" className="brand" aria-label="CyberAI Observatory 首页">
-            <span className="brand-symbol">
-              <Activity size={23} strokeWidth={1.8} />
-            </span>
-            <span>
-              CyberAI<span className="brand-light"> Observatory</span>
-              <small>大模型网安进展观察站</small>
-            </span>
-          </a>
-          <nav className={menu ? 'nav open' : 'nav'} aria-label="主要导航">
-            {nav.map((n) => (
-              <a
-                key={n.id}
-                href={href(n.id)}
-                aria-current={route.view === n.id ? 'page' : undefined}
-                className={route.view === n.id ? 'active' : ''}
-              >
-                {n.en}
-                <span>{n.zh}</span>
-              </a>
-            ))}
-          </nav>
-          <a className="source-button" href={REPOSITORY} target="_blank" rel="noreferrer">
-            <Github size={17} />
-            <span>GitHub</span>
-          </a>
-          <button
-            className="menu-button icon-button"
-            aria-label={menu ? '关闭导航' : '展开导航'}
-            aria-expanded={menu}
-            onClick={() => setMenu(!menu)}
-          >
-            {menu ? <X /> : <Menu />}
-          </button>
-        </div>
-      </header>
-      <main id="main-content" tabIndex={-1} className="main">
-        {route.view === 'overview' && (
-          <Overview audit={audit} route={route} update={update} select={select} />
-        )}
-        {route.view === 'progress' && (
-          <Progress audit={audit} route={route} update={update} select={select} />
-        )}
-        {route.view === 'models' && (
-          <Models audit={audit} route={route} update={update} select={select} />
-        )}
-        {route.view === 'benchmarks' && (
-          <Benchmarks audit={audit} route={route} update={update} select={select} />
-        )}
-        {route.view === 'evidence' && (
-          <Evidence audit={audit} route={route} update={update} select={select} />
-        )}
-      </main>
-      <footer className="footer">
-        <div>
-          <a className="footer-brand" href="#overview">
-            <Activity size={19} />
-            CyberAI Observatory
-          </a>
-          <p>公开报告 · 可追溯证据 · 持续观察</p>
-        </div>
-        <div className="footer-right">
-          <span>数据快照 {audit.meta.asOf}</span>
-          <a href="#evidence">
-            方法与限制 <ArrowUpRight size={13} />
-          </a>
-          <a href={BASE + 'downloads/results.csv'} download>
-            下载 CSV <ArrowDownToLine size={13} />
-          </a>
-        </div>
-      </footer>
-      {record && (
-        <EvidenceDrawer
-          record={record}
-          model={audit.models.find((m) => m.id === record.modelId)!}
-          close={() => update({ record: null })}
-        />
-      )}
-      {selectedId && !record && (
-        <div className="inline-notice" role="status">
-          未找到记录 {selectedId} <button onClick={() => update({ record: null })}>关闭</button>
-        </div>
-      )}
-    </>
-  );
-}
-
-type Shared = {
-  audit: Audit;
-  route: Route;
-  update: (p: Record<string, string | null>) => void;
-  select: (r: Evaluation) => void;
-};
-function PageIntro({
-  eyebrow,
-  title,
-  text,
-  action,
-}: {
-  eyebrow: string;
-  title: string;
-  text: string;
-  action?: React.ReactNode;
-}) {
-  return (
-    <div className="page-intro">
-      <div>
-        <div className="eyebrow">{eyebrow}</div>
-        <h1>{title}</h1>
-        <p>{text}</p>
-      </div>
-      {action}
-    </div>
-  );
-}
-function SectionTitle({
-  number,
-  title,
-  text,
-  link,
-  target,
-}: {
-  number: string;
-  title: string;
-  text: string;
-  link?: string;
-  target?: string;
-}) {
-  return (
-    <div className="section-heading">
-      <div>
-        <div className="section-number">{number} / RESEARCH EXPLORER</div>
-        <h2>{title}</h2>
-        <p>{text}</p>
-      </div>
-      {link && (
-        <a className="text-link" href={target}>
-          {link}
-          <ArrowUpRight size={16} />
-        </a>
-      )}
-    </div>
-  );
-}
-
-function Overview(props: Shared) {
-  const { audit } = props;
-  const confirmed = audit.evaluations.filter((e) => e.status === '已确认').length;
-  return (
-    <>
-      <section className="hero">
-        <div className="hero-copy">
-          <div className="eyebrow">
-            <span className="live-dot" /> AN OPEN RESEARCH OBSERVATORY{' '}
-            <span className="edition">/ VOL. 01</span>
-          </div>
-          <h1>
-            追踪大模型
-            <br />
-            网络安全能力的<span>演进。</span>
-          </h1>
-          <p>
-            从公开评测到原始证据，理解模型能做什么，
-            <br className="desktop-break" />
-            以及每一次进步，究竟意味着什么。
-          </p>
-          <div className="hero-actions">
-            <a href="#progress" className="button primary">
-              探索能力进展 <ArrowRight size={17} />
-            </a>
-            <a className="text-link" href="#evidence">
-              阅读研究方法 <ArrowUpRight size={15} />
-            </a>
-          </div>
-          <div className="hero-caption">
-            <Globe2 size={13} /> OpenAI · Anthropic · Google <span>数据截至 {audit.meta.asOf}</span>
-          </div>
-        </div>
-        <div className="research-note">
-          <div className="note-top">
-            <span>FIELD NOTES</span>
-            <span>2026 / 01</span>
-          </div>
-          <div className="note-orbit" aria-hidden="true">
-            <div className="orbit-ring r1" />
-            <div className="orbit-ring r2" />
-            <div className="orbit-ring r3" />
-            <div className="orbit-center">
-              <ShieldCheck size={38} strokeWidth={1.2} />
-            </div>
-            <i className="orbit-point p1" />
-            <i className="orbit-point p2" />
-            <i className="orbit-point p3" />
-            <span className="orbit-label l1">DISCOVER</span>
-            <span className="orbit-label l2">EXPLOIT</span>
-            <span className="orbit-label l3">DEFEND</span>
-          </div>
-          <h3>让能力变化，有据可循。</h3>
-          <p>漏洞发现与利用 / 多阶段任务 / 防护与拒答</p>
-          <div className="note-bottom">
-            <span>REPORTS → EVIDENCE → INSIGHT</span>
-            <ArrowUpRight size={18} />
-          </div>
-        </div>
-      </section>
-      <section className="stats" aria-label="数据概览">
-        {[
-          { n: audit.models.length, label: '模型与版本快照', en: 'MODEL SNAPSHOTS' },
-          { n: audit.evaluations.length, label: '逐项评测记录', en: 'EVALUATION RECORDS' },
-          { n: confirmed, label: '证据归属已确认', en: 'CONFIRMED RECORDS' },
-          { n: audit.meta.scoreCount, label: '已核实数值的记录', en: 'VERIFIED RESULTS' },
-        ].map((s) => (
-          <div className="stat" key={s.en}>
-            <span>{s.en}</span>
-            <strong>
-              {s.n}
-              <i>↗</i>
-            </strong>
-            <p>{s.label}</p>
-          </div>
-        ))}
-      </section>
-      <div className="score-review-banner">
-        <CheckCircle2 size={18} />
-        <p>
-          <strong>PDF 成绩复核已更新</strong>
-          <span>
-            {audit.meta.scoreReviewDate} · 已复核 {audit.meta.reviewedScoreRecords}{' '}
-            条已确认记录，新增 {audit.meta.addedScoreCount}{' '}
-            条数值成绩；仅图示、定性和不适用分别标注。
-          </span>
-        </p>
-        <a className="text-link" href="#evidence?scoreStatus=reported">
-          查看补录 <ArrowUpRight size={14} />
-        </a>
-      </div>
-      <section className="section">
-        <SectionTitle
-          number="01"
-          title="能力的变化，放到时间里看。"
-          text="选择一个评测，探索公开成绩与模型版本之间的关系。"
-          link="进入完整探索"
-          target="#progress"
-        />
-        <TrendChart {...props} />
-      </section>
-      <section className="section">
-        <SectionTitle
-          number="02"
-          title="先看懂证据，再解读进步。"
-          text="阅读这份资料时，三个值得保留的观察角度。"
-        />
-        <div className="insight-grid">
-          <a className="insight" href="#benchmarks?search=Exploit">
-            <div className="insight-top">
-              <span className="tag">任务维度</span>
-              <Layers size={21} />
-            </div>
-            <h3>从解题到漏洞研究</h3>
-            <p>
-              CTF、真实漏洞利用、仓库修复与多阶段靶场，测量的是不同能力。先了解任务，再比较表现。
-            </p>
-            <span className="insight-link">
-              探索评测类型 <ArrowUpRight size={17} />
-            </span>
-          </a>
-          <a className="insight" href="#evidence?status=模型覆盖待核对">
-            <div className="insight-top">
-              <span className="tag">证据边界</span>
-              <CircleHelp size={21} />
-            </div>
-            <h3>没有记录，不代表没有测试</h3>
-            <p>37 条记录保留了待核、未披露、未运行等不同状态。报告共用，也不意味着结果可以共用。</p>
-            <span className="insight-link">
-              查看待核与排除 <ArrowUpRight size={17} />
-            </span>
-          </a>
-          <a className="insight" href="#evidence?category=防护/鲁棒性">
-            <div className="insight-top">
-              <span className="tag">测量口径</span>
-              <ShieldCheck size={21} />
-            </div>
-            <h3>能力与防护，分别观察</h3>
-            <p>任务成功率、越狱防护与请求响应率各有含义。是否关闭防护，也会影响测试结果的解读。</p>
-            <span className="insight-link">
-              查看防护与拒答 <ArrowUpRight size={17} />
-            </span>
-          </a>
-        </div>
-      </section>
-      <section className="section">
-        <SectionTitle
-          number="03"
-          title="哪些能力，有公开证据？"
-          text="查看模型与评测的对应关系。覆盖范围不等于能力高低。"
-          link="浏览全部模型"
-          target="#models"
-        />
-        <Coverage audit={audit} select={props.select} compact />
-      </section>
-      <section className="section updates-section">
-        <div>
-          <div className="section-number">04 / RESEARCH LOG</div>
-          <h2>
-            每一次修订，
-            <br />
-            也留下记录。
-          </h2>
-          <p>
-            保留补齐、纠正与证据限制。
-            <br />
-            让结论的来路可以被复核。
-          </p>
-          <a className="text-link" href="#evidence?section=changes">
-            查看全部修订 <ArrowUpRight size={15} />
-          </a>
-        </div>
-        <div className="update-list">
-          {audit.revisions.slice(0, 3).map((r, i) => (
-            <a
-              href={href('evidence', { search: r.subject.split(' / ')[0].replace('GPT-', 'GPT-') })}
-              key={r.subject}
-            >
-              <span className="update-index">0{i + 1}</span>
-              <div>
-                <span className="update-label">
-                  {audit.meta.asOf} <span>资料核验</span>
-                </span>
-                <h3>{r.subject}</h3>
-                <p>{r.change}</p>
-              </div>
-              <ArrowUpRight size={17} />
-            </a>
-          ))}
-        </div>
-      </section>
-      <div className="download-banner">
-        <span className="download-icon">
-          <Database size={27} />
-        </span>
-        <div>
-          <h3>把证据带进你的研究。</h3>
-          <p>下载完整核验表，或使用结构化 JSON 与 CSV。</p>
-        </div>
-        <a className="button secondary" href={BASE + audit.meta.downloadWorkbook} download>
-          下载 Excel <ArrowDownToLine size={16} />
-        </a>
-        <a className="text-link" href={BASE + 'data/audit.json'} download>
-          JSON <ArrowUpRight size={15} />
-        </a>
-      </div>
-    </>
-  );
-}
-
-function TrendChart({ audit, route, update, select }: Shared) {
-  const benchmark = route.params.get('benchmark') || 'ExploitBench';
-  const provider = route.params.get('provider') || 'all';
-  const modelMap = useMemo(() => new Map(audit.models.map((m) => [m.id, m])), [audit]);
-  const [hover, setHover] = useState<string | null>(null);
-  const [compact, setCompact] = useState(() => matchMedia('(max-width: 760px)').matches);
-  useEffect(() => {
-    const media = matchMedia('(max-width: 760px)');
-    const listener = () => setCompact(media.matches);
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, []);
-  const options = [
-    ...new Set(
-      audit.evaluations
-        .filter(
-          (r) =>
-            r.category === '能力' &&
-            (r.numericScore !== null ||
-              r.metrics?.some(
-                (m) => typeof m.value === 'number' && ['percent', 'count'].includes(m.unit),
-              )),
-        )
-        .map((r) => r.benchmark),
-    ),
-  ].sort();
-  const benchmarkRecords = audit.evaluations.filter(
-    (r) => r.benchmark === benchmark && r.status === '已确认' && r.category === '能力',
-  );
-  const metricOptions = [
-    ...new Map(
-      benchmarkRecords
-        .flatMap((r) => r.metrics || [])
-        .filter((m) => typeof m.value === 'number' && ['percent', 'count'].includes(m.unit))
-        .map((m) => [metricKey(m), m]),
-    ).entries(),
-  ];
-  const metricChoice = route.params.get('metric') || 'auto';
-  const metric = metricOptions.find(([key]) => key === metricChoice)?.[1];
-  const plotted = benchmarkRecords.flatMap((r) => {
-    const numericMetrics = (r.metrics || []).filter(
-      (m) => m.unit === 'percent' && typeof m.value === 'number',
-    );
-    const candidates =
-      metricChoice === 'auto'
-        ? numericMetrics.length === 1
-          ? numericMetrics
-          : r.numericScore !== null
-            ? [
-                {
-                  label: '原文单一百分数',
-                  value: r.numericScore,
-                  unit: 'percent',
-                  configuration: r.configuration,
-                },
-              ]
-            : []
-        : (r.metrics || []).filter(
-            (m) => metricKey(m) === metricChoice && typeof m.value === 'number',
-          );
-    return candidates.map((m, index) => ({
-      ...r,
-      numericScore: m.value as number,
-      pointId: `${r.id}-${index}`,
-      plotLabel: `${m.label} ${metricText(m)}`,
-      plotConfig: m.configuration,
-    }));
-  });
-  const all = benchmarkRecords.filter(
-    (r) => provider === 'all' || modelMap.get(r.modelId)?.provider === provider,
-  );
-  const filteredPlots = plotted.filter(
-    (r) => provider === 'all' || modelMap.get(r.modelId)?.provider === provider,
-  );
-  const points = filteredPlots.filter(
-    (r) => r.numericScore !== null && modelMap.get(r.modelId)?.date_precision === 'day',
-  );
-  const months = filteredPlots.filter(
-    (r) => r.numericScore !== null && modelMap.get(r.modelId)?.date_precision === 'month',
-  );
-  const dates = plotted.map((r) => modelMap.get(r.modelId)!.date.slice(0, 7)).sort();
-  const firstMonth = dates[0] || audit.meta.asOf.slice(0, 7),
-    lastMonth = dates.at(-1) || firstMonth;
-  const lo = Date.parse(firstMonth + '-01'),
-    last = new Date(lastMonth + '-01T00:00:00Z');
-  const hi = Date.UTC(last.getUTCFullYear(), last.getUTCMonth() + 1, 0);
-  const ticks = Array.from(
-    { length: compact ? 4 : 5 },
-    (_, i) => lo + ((hi - lo) * i) / (compact ? 3 : 4),
-  );
-  const width = compact ? 600 : 920,
-    right = width - 65;
-  const x = (d: string | number) =>
-    70 + (((typeof d === 'number' ? d : Date.parse(d)) - lo) / (hi - lo)) * (right - 70);
-  const maximum =
-    metric?.unit === 'count' ? Math.max(1, ...plotted.map((p) => p.numericScore)) * 1.1 : 100;
-  const y = (n: number) => 260 - (n / maximum) * 212;
-  const active = points.find((p) => p.pointId === hover);
-  const bench = audit.benchmarks.find((b) => b.name === benchmark);
-  return (
-    <div className="chart-panel">
-      <div className="chart-toolbar">
-        <div className="chart-select">
-          <label htmlFor="trend-benchmark">BENCHMARK</label>
-          <div className="select-wrap">
-            <select
-              id="trend-benchmark"
-              value={options.includes(benchmark) ? benchmark : ''}
-              onChange={(e) => {
-                setHover(null);
-                update({ benchmark: e.target.value, metric: null });
-              }}
-            >
-              {!options.includes(benchmark) && <option value="">选择可绘图评测</option>}
-              {options.map((b) => (
-                <option key={b}>{b}</option>
-              ))}
-            </select>
-            <ChevronDown size={15} />
-          </div>
-        </div>
-        <div className="provider-filters" aria-label="筛选厂商">
-          {['all', ...providers].map((p) => (
-            <button
-              key={p}
-              aria-pressed={provider === p}
-              className={provider === p ? 'selected' : ''}
-              onClick={() => {
-                setHover(null);
-                update({ provider: p === 'all' ? null : p });
-              }}
-            >
-              {p !== 'all' && <i style={{ background: colors[p as Provider] }} />}
-              {p === 'all' ? '全部厂商' : p}
-            </button>
-          ))}
-        </div>
-      </div>
-      <div className="metric-selector">
-        <label htmlFor="trend-metric">查看指标 / 配置</label>
-        <select
-          id="trend-metric"
-          value={metricChoice}
-          onChange={(e) => {
-            setHover(null);
-            update({ metric: e.target.value === 'auto' ? null : e.target.value });
-          }}
-        >
-          <option value="auto">单一百分数指标（每条记录仅一个百分数）</option>
-          {metricOptions.map(([key, item]) => (
-            <option key={key} value={key}>
-              {item.label} · {item.configuration || '见证据配置'} [
-              {item.unit === 'percent' ? '%' : '计数'}]
-            </option>
-          ))}
-        </select>
-        <span>多指标记录可逐项选择，配置差异见证据。</span>
-      </div>
-      <div className="chart-title">
-        <div>
-          <h3>
-            {benchmark}
-            <span>公开成绩 · 时间分布</span>
-          </h3>
-          <p>{bench?.task || '从评测库选择一个项目，查看相关证据。'}</p>
-        </div>
-        <span className="chart-mode">
-          <span />
-          独立数据点
-        </span>
-      </div>
-      <div className="plot-scroll">
-        <svg
-          className="plot"
-          viewBox={`0 0 ${width} 320`}
-          role="group"
-          aria-label={`${benchmark}公开成绩时间散点图。每个数据点可用键盘选择。`}
-        >
-          <text x="28" y="22" className="axis-title">
-            {metric?.unit === 'count' ? '原文计数' : '原文百分数 (%)'}
-          </text>
-          {[0, 0.25, 0.5, 0.75, 1].map((fraction) => {
-            const t = fraction * maximum;
-            return (
-              <g key={t}>
-                <line x1="70" x2={right} y1={y(t)} y2={y(t)} className="grid-line" />
-                <text x="49" y={y(t) + 4} textAnchor="end" className="axis-label">
-                  {Number(t.toFixed(1))}
-                </text>
-              </g>
-            );
-          })}
-          {ticks.map((t, i) => {
-            const date = new Date(t);
-            return (
-              <g key={t}>
-                <text
-                  x={x(t)}
-                  y="291"
-                  textAnchor={i === ticks.length - 1 ? 'end' : i === 0 ? 'start' : 'middle'}
-                  className="axis-label"
-                >
-                  {date.getUTCMonth() + 1}月
-                  {hi - lo < 120 * 86400000 ? `${date.getUTCDate()}日` : ''}
-                </text>
-              </g>
-            );
-          })}
-          <text x={right} y="313" textAnchor="end" className="axis-title">
-            模型日期 / {audit.meta.asOf.slice(0, 4)}
-          </text>
-          {points.map((r) => {
-            const m = modelMap.get(r.modelId)!;
-            const cx = x(m.date),
-              cy = y(r.numericScore!);
-            return (
-              <g
-                key={r.pointId}
-                className="data-point"
-                role="button"
-                tabIndex={0}
-                aria-label={`${m.name}，${r.plotLabel}，${m.date}。打开原文证据`}
-                onMouseEnter={() => setHover(r.pointId)}
-                onMouseLeave={() => setHover(null)}
-                onFocus={() => setHover(r.pointId)}
-                onBlur={() => setHover(null)}
-                onClick={() => select(r)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    select(r);
-                  }
-                }}
-              >
-                <circle
-                  className="point-halo"
-                  cx={cx}
-                  cy={cy}
-                  r={hover === r.pointId ? 14 : 10}
-                  fill={colors[m.provider]}
-                  opacity={hover === r.pointId ? 0.14 : 0.07}
-                />
-                <circle
-                  cx={cx}
-                  cy={cy}
-                  r={hover === r.pointId ? 6.5 : compact ? 7 : 5}
-                  fill={colors[m.provider]}
-                  stroke="white"
-                  strokeWidth="2"
-                />
-                <title>
-                  {m.name} · {r.plotLabel} · {r.plotConfig} · {m.date}
-                </title>
-                {points.length < 8 && !compact && (
-                  <text
-                    x={Math.min(right - 30, Math.max(110, cx))}
-                    y={cy > 70 ? cy - 17 : cy + 23}
-                    textAnchor="middle"
-                    className="point-label"
-                  >
-                    {m.name.replace(' / GPT-5.5 Thinking', '').replace(' / GPT-5.4 Thinking', '')}
-                  </text>
-                )}
-              </g>
-            );
-          })}
-          {!points.length && (
-            <text x={width / 2} y="153" textAnchor="middle" className="empty-chart">
-              当前筛选下，没有符合指标条件的日精度能力成绩
-            </text>
-          )}
-        </svg>
-      </div>
-      <div className="chart-readout" aria-live="polite">
-        {active ? (
-          <>
-            <ProviderMark value={modelMap.get(active.modelId)!.provider} />
-            <strong>{modelMap.get(active.modelId)!.name}</strong>
-            <span>{active.plotLabel}</span>
-            <span className="readout-config">{active.plotConfig}</span>
-            <button onClick={() => select(active)}>
-              查看证据 <ArrowRight size={13} />
-            </button>
-          </>
-        ) : (
-          <>
-            <span className="readout-hint">
-              <span className="cursor-icon">↖</span>悬停查看模型，点击数据点打开原文证据
-            </span>
-            <span>{points.length} 个数据点</span>
-          </>
-        )}
-      </div>
-      {months.length > 0 && (
-        <div className="month-records">
-          <span>仅有月精度，单独列示：</span>
-          {months.map((r) => (
-            <button key={r.pointId} onClick={() => select(r)}>
-              <i style={{ background: colors[modelMap.get(r.modelId)!.provider] }} />
-              {modelMap.get(r.modelId)!.name} <strong>{r.plotLabel}</strong>
-              <span>{modelMap.get(r.modelId)!.date}</span>
-              <ArrowUpRight size={12} />
-            </button>
-          ))}
-        </div>
-      )}
-      <div className="chart-footnote">
-        <CircleHelp size={15} />
-        <p>
-          同名评测的题集、指标与预算可能不同，数据点不连线、不作综合排名。横轴为模型日期，后续补测见证据；每个点保留指标与配置，不把多指标平均为一个分数。
-          {all.some((r) => !filteredPlots.some((p) => p.id === r.id)) && (
-            <span>
-              {' '}
-              当前另有 {all.filter((r) => !filteredPlots.some((p) => p.id === r.id)).length}{' '}
-              条记录不符合所选指标，具体数值或披露状态见下方记录表。
-            </span>
-          )}
-        </p>
-        <a href="#evidence?section=method">
-          比较口径 <ArrowUpRight size={12} />
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function Progress(props: Shared) {
-  const { audit, route, update } = props;
-  const benchmark = route.params.get('benchmark') || 'ExploitBench';
-  const provider = route.params.get('provider') || 'all';
-  const records = audit.evaluations.filter(
-    (r) =>
-      r.benchmark === benchmark &&
-      (provider === 'all' || audit.models.find((m) => m.id === r.modelId)?.provider === provider),
-  );
-  return (
-    <>
-      <PageIntro
-        eyebrow="PROGRESS / 能力进展"
-        title="把成绩放回时间与条件中。"
-        text="保留每个结果的原始指标与运行设置，逐项理解变化。"
-        action={
-          <a className="button secondary" href={BASE + 'downloads/results.csv'} download>
-            下载数据 <ArrowDownToLine size={16} />
-          </a>
-        }
-      />
-      <TrendChart {...props} />
-      <div className="section">
-        <SectionTitle
-          number="01"
-          title={`${benchmark} · 逐项记录`}
-          text="数值成绩、仅图示、定性结论和证据未确认分别标注。点击查看提取依据。"
-        />
-        <RecordTable records={records} audit={audit} select={props.select} />
-      </div>
-      <div className="reading-note">
-        <FlaskConical size={23} />
-        <div>
-          <h3>什么样的数据，才能说明“进步”？</h3>
-          <p>
-            同一题集版本、指标、运行预算、工具环境和防护配置下的历史对照，才适合直接比较。目前所有记录的可比组仍待人工核定，因此以独立数据点呈现。后续会优先补充同一报告里的历史重跑成绩。
-          </p>
-          <button
-            className="text-link"
-            onClick={() => update({ benchmark: 'CyberGym', provider: null })}
-          >
-            也看看 CyberGym <ArrowRight size={15} />
-          </button>
-        </div>
-      </div>
-    </>
-  );
-}
-
 function SearchBox({
   value,
-  change,
-  placeholder,
+  onChange,
+  placeholder = 'Filter models, e.g. GPT, Claude…',
 }: {
   value: string;
-  change: (v: string) => void;
-  placeholder: string;
+  onChange: (s: string) => void;
+  placeholder?: string;
 }) {
   return (
-    <label className="search-box">
-      <Search size={17} />
+    <label className="search">
+      <Search size={15} />
       <input
         aria-label={placeholder}
         value={value}
-        onChange={(e) => change(e.target.value)}
         placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)}
       />
       {value && (
-        <button
-          type="button"
-          className="icon-button"
-          aria-label="清空搜索"
-          onClick={() => change('')}
-        >
+        <button aria-label="清除搜索" onClick={() => onChange('')}>
           <X size={14} />
         </button>
       )}
     </label>
   );
 }
-function Empty({ text }: { text: string }) {
+function Intro({
+  title,
+  eyebrow,
+  heading,
+  children,
+  meta,
+}: {
+  title: React.ReactNode;
+  eyebrow: string;
+  heading: string;
+  children: React.ReactNode;
+  meta?: React.ReactNode;
+}) {
   return (
-    <div className="empty-state">
-      <Search size={25} />
-      <h3>没有找到匹配结果</h3>
-      <p>{text}</p>
+    <div className="intro-background">
+      <section className="intro container">
+        <div>
+          <div className="eyebrow">{eyebrow}</div>
+          <h1>{title}</h1>
+        </div>
+        <div className="intro-copy">
+          <h2>{heading}</h2>
+          {children}
+        </div>
+        {meta && <div className="dataset-line">{meta}</div>}
+      </section>
     </div>
   );
 }
-function RecordTable({
-  records,
-  audit,
-  select,
-}: {
-  records: Evaluation[];
-  audit: Audit;
-  select: (r: Evaluation) => void;
-}) {
-  if (!records.length) return <Empty text="试试其他关键词或筛选条件。" />;
-  const map = new Map(audit.models.map((m) => [m.id, m]));
+function App() {
+  const [data, setData] = useState<Audit>();
+  const [error, setError] = useState('');
+  const [current, setCurrent] = useState(route);
+  const [menu, setMenu] = useState(false);
+  const previous = useRef(current.view);
+  useEffect(() => {
+    fetch(BASE + 'data/audit.json?v=' + __DATA_VERSION__, { cache: 'no-cache' })
+      .then((r) => {
+        if (!r.ok) throw Error('数据加载失败');
+        return r.json();
+      })
+      .then(setData)
+      .catch((e) => setError(String(e)));
+    const fn = () => {
+      setCurrent(route());
+      setMenu(false);
+    };
+    addEventListener('hashchange', fn);
+    return () => removeEventListener('hashchange', fn);
+  }, []);
+  useEffect(() => {
+    document.title = (NAV.find(([v]) => v === current.view)?.[1] || '') + ' | CyberAI Analysis';
+    if (previous.current !== current.view) {
+      window.scrollTo(0, 0);
+      previous.current = current.view;
+    }
+  }, [current.view]);
+  function update(changes: Record<string, string>) {
+    const next = route();
+    for (const [k, v] of Object.entries(changes)) {
+      if (v) next.params.set(k, v);
+      else next.params.delete(k);
+    }
+    location.hash = next.view + (next.params.size ? '?' + next.params : '');
+  }
+  const record = data?.evaluations.find((r) => r.id === current.params.get('record'));
   return (
-    <div className="table-scroll">
-      <table className="record-table">
-        <thead>
-          <tr>
-            <th>模型 / 评测</th>
-            <th>原文成绩</th>
-            <th>证据状态</th>
-            <th>类别</th>
-            <th>
-              <span className="sr-only">操作</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {records.map((r) => (
-            <tr key={r.id}>
-              <td>
-                <button className="row-main" onClick={() => select(r)}>
-                  {map.get(r.modelId)?.name}
-                  <span>{r.benchmark}</span>
-                </button>
-              </td>
-              <td className="score-cell">
-                {r.scoreStatus === 'reported' ? (
-                  r.score
-                ) : (
-                  <span className="muted">{scoreText(r)}</span>
-                )}
-                <small className={`score-review-label ${r.scoreStatus}`}>
-                  {r.scoreStatus === 'reported' ? (
-                    <>
-                      <CheckCircle2 size={10} /> PDF已复核
-                    </>
-                  ) : (
-                    scoreLabels[r.scoreStatus]
-                  )}
-                </small>
-                {isLater(r) && <small className="later-tag">后续补测</small>}
-              </td>
-              <td>
-                <Status value={r.status} />
-              </td>
-              <td className="category-cell">{r.category}</td>
-              <td>
-                <button
-                  className="icon-button"
-                  aria-label={`查看 ${r.id} 证据`}
-                  onClick={() => select(r)}
-                >
-                  <ArrowUpRight size={17} />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <header>
+        <div className="header-inner container">
+          <a className="brand" href="#overview">
+            <span className="brand-bars">
+              <i />
+              <i />
+              <i />
+            </span>
+            CyberAI Analysis
+          </a>
+          <nav className={menu ? 'open' : ''} aria-label="主导航">
+            {NAV.map(([v, label]) => (
+              <a key={v} href={'#' + v} className={v === current.view ? 'active' : ''}>
+                {label}
+              </a>
+            ))}
+          </nav>
+          <div className="header-actions">
+            <a className="github" href={REPO} target="_blank" rel="noreferrer">
+              <Github size={15} />
+              <span>GitHub</span>
+            </a>
+            {data && (
+              <a
+                className="icon-button"
+                href={BASE + data.meta.downloadWorkbook}
+                aria-label="下载完整数据"
+              >
+                <Download size={17} />
+              </a>
+            )}
+            <button
+              className="mobile-menu icon-button"
+              aria-label="展开导航"
+              aria-expanded={menu}
+              onClick={() => setMenu(!menu)}
+            >
+              {menu ? <X size={19} /> : <Menu size={19} />}
+            </button>
+          </div>
+        </div>
+      </header>
+      {!data ? (
+        <main className="container loading">{error || 'Loading model performance…'}</main>
+      ) : (
+        <main>
+          {['overview', 'progress'].includes(current.view) ? (
+            <>
+              <Intro
+                eyebrow="Language models / Cybersecurity"
+                title={
+                  <>
+                    AI Cybersecurity
+                    <br />
+                    Benchmarks
+                  </>
+                }
+                heading="大模型网络安全能力对比"
+                meta={
+                  <>
+                    <span>{data.models.length} models</span>
+                    <span>{data.benchmarks.length} benchmarks & tasks</span>
+                    <span>{data.meta.scoreCount} reported results</span>
+                  </>
+                }
+              >
+                <p>
+                  探索 OpenAI、Anthropic 和 Google 的模型在漏洞发现、漏洞利用、CTF
+                  与多阶段任务中的表现。
+                </p>
+                <div className="intro-links">
+                  <External url={REPO}>About this dataset</External>
+                  <a href={BASE + 'downloads/results.csv'}>
+                    Download data <Download size={14} />
+                  </a>
+                </div>
+              </Intro>
+              <Dashboard data={data} view={current.view} params={current.params} update={update} />
+            </>
+          ) : current.view === 'models' ? (
+            <Models data={data} params={current.params} update={update} />
+          ) : (
+            <Benchmarks data={data} params={current.params} update={update} />
+          )}
+        </main>
+      )}
+      <footer className="container">
+        <div>
+          <a className="footer-brand" href="#overview">
+            CyberAI Analysis
+          </a>
+          <span>AI capabilities, in focus.</span>
+        </div>
+        <div>
+          <span>Updated {data?.meta.scoreReviewDate || '2026-10-18'}</span>
+          <External url={REPO}>Data & code</External>
+          {data && (
+            <a href={BASE + data.meta.downloadWorkbook}>
+              Download Excel <Download size={13} />
+            </a>
+          )}
+        </div>
+      </footer>
+      {data && record && (
+        <ResultDialog data={data} record={record} close={() => update({ record: '' })} />
+      )}
+    </>
   );
 }
-
-const matrixBenchmarks = [
-  'ExploitBench',
-  'ExploitGym',
-  'CyberGym',
-  'SEC-Bench Pro',
-  'CVE-Bench',
-  'CyScenarioBench',
-  'Cybench',
-];
-function Coverage({
-  audit,
-  select,
-  compact = false,
+function Dashboard({
+  data,
+  view,
+  params,
+  update,
 }: {
-  audit: Audit;
-  select: (r: Evaluation) => void;
-  compact?: boolean;
+  data: Audit;
+  view: string;
+  params: URLSearchParams;
+  update: (v: Record<string, string>) => void;
 }) {
-  const ids = [
-    'gpt-6-1-sol',
-    'gpt-5-5-cyber',
-    'claude-opus-5-5',
-    'claude-sonnet-5-5',
-    'gemini-4-argon',
-    'gemini-3-7-flash',
+  const benchmark = params.get('benchmark') || 'ExploitBench';
+  const all = useMemo(() => resultsFor(data, benchmark), [data, benchmark]);
+  const families = familiesFor(all);
+  const family = families.find((f) => f.id === params.get('metric')) || families[0];
+  const creator = params.get('creator') || 'all',
+    setting = params.get('setting') || 'all',
+    search = params.get('search') || '';
+  const sort = params.get('sort') || 'score',
+    asc = params.get('direction') === 'asc';
+  const results = all
+    .filter(
+      (r) =>
+        r.family.id === family?.id &&
+        (creator === 'all' || r.model.provider === creator) &&
+        (setting === 'all' || r.variant === setting) &&
+        modelName(r.model).toLowerCase().includes(search.toLowerCase()),
+    )
+    .sort((a, b) => {
+      let v =
+        sort === 'name'
+          ? modelName(a.model).localeCompare(modelName(b.model))
+          : sort === 'date'
+            ? b.model.date.localeCompare(a.model.date)
+            : (b.value ?? -Infinity) - (a.value ?? -Infinity);
+      if (sort === 'score' && family?.lower) v = -v;
+      return (asc ? -v : v) || a.key.localeCompare(b.key);
+    });
+  const quick = [
+    'ExploitBench',
+    'CyberGym',
+    'SEC-Bench Pro',
+    'CVE-Bench',
+    'CyScenarioBench',
+    'CTF Professional',
   ];
-  const models = compact
-    ? ids.map((id) => audit.models.find((m) => m.id === id)!).filter(Boolean)
-    : audit.models;
+  const open = (r: Result) => update({ record: r.record.id });
+  const choose = (name: string) => update({ benchmark: name, metric: '', setting: '', record: '' });
+  const benchmarkInfo = data.benchmarks.find((b) => b.name === benchmark);
+  const sortBy = (name: string) =>
+    update({ sort: name, direction: sort === name && !asc ? 'asc' : '' });
   return (
-    <div className="coverage-panel">
-      <div className="coverage-header">
-        <span>
-          <Layers size={15} /> EVALUATION COVERAGE
-        </span>
-        <div className="matrix-legend">
-          <span>
-            <b className="cell-confirmed">●</b>确认
+    <section className="workspace container">
+      <div className="workspace-top">
+        <div className="view-tabs">
+          <a
+            className={view === 'overview' ? 'selected' : ''}
+            href={href('overview', Object.fromEntries(params))}
+          >
+            Model comparison
+          </a>
+          <a
+            className={view === 'progress' ? 'selected' : ''}
+            href={href('progress', Object.fromEntries(params))}
+          >
+            Over time
+          </a>
+        </div>
+        <a className="text-download" href={BASE + data.meta.downloadWorkbook}>
+          <Download size={14} />
+          Download
+        </a>
+      </div>
+      <div className="benchmark-tabs">
+        {quick.map((name) => (
+          <button key={name} aria-pressed={name === benchmark} onClick={() => choose(name)}>
+            {name}
+          </button>
+        ))}
+        <select
+          aria-label="选择评测"
+          value={quick.includes(benchmark) ? '' : benchmark}
+          onChange={(e) => choose(e.target.value)}
+        >
+          <option value="" disabled>
+            More benchmarks
+          </option>
+          {data.benchmarks
+            .filter((b) => !quick.includes(b.name))
+            .map((b) => (
+              <option key={b.name}>{b.name}</option>
+            ))}
+        </select>
+      </div>
+      <div className="chart-card">
+        <div className="chart-heading">
+          <div>
+            <div className="benchmark-label">{benchmark}</div>
+            <h2>{family?.label || 'Model performance'}</h2>
+            <p>{benchmarkInfo?.task || '模型在所选评测中的表现'}</p>
+          </div>
+          <div className="chart-options">
+            <select
+              aria-label="选择指标"
+              value={family?.id || ''}
+              onChange={(e) => update({ metric: e.target.value, setting: '' })}
+            >
+              {families.length ? (
+                families.map((f) => (
+                  <option key={f.id} value={f.id}>
+                    {f.label}
+                  </option>
+                ))
+              ) : (
+                <option value="">No reported metrics</option>
+              )}
+            </select>
+            <div className="legend">
+              {CREATORS.map((c) => (
+                <span key={c}>
+                  <i style={{ background: COLORS[c] }} />
+                  {c}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="filter-toolbar">
+          <SearchBox value={search} onChange={(s) => update({ search: s })} />
+          <select
+            aria-label="筛选厂商"
+            value={creator}
+            onChange={(e) => update({ creator: e.target.value })}
+          >
+            <option value="all">All creators</option>
+            {CREATORS.map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </select>
+          <select
+            aria-label="筛选运行配置"
+            value={setting}
+            onChange={(e) => update({ setting: e.target.value })}
+          >
+            <option value="all">All configurations</option>
+            {[...new Set(all.filter((r) => r.family.id === family?.id).map((r) => r.variant))].map(
+              (s) => (
+                <option key={s}>{s}</option>
+              ),
+            )}
+          </select>
+          <span className="result-count">
+            {new Set(results.map((r) => r.model.id)).size} models · {results.length} results
           </span>
+          {(search || creator !== 'all' || setting !== 'all') && (
+            <button
+              className="reset"
+              onClick={() => update({ search: '', creator: '', setting: '' })}
+            >
+              Reset
+            </button>
+          )}
+        </div>
+        {family ? (
+          <PerformanceChart
+            results={results}
+            family={family}
+            time={view === 'progress'}
+            open={open}
+          />
+        ) : (
+          <div className="empty">该评测暂无公开数值成绩。</div>
+        )}
+        <div className="chart-foot">
           <span>
-            <b className="cell-later">◇</b>后续补测
+            {family?.unit === 'percent'
+              ? 'Percentage (%)'
+              : family?.unit === 'ratio'
+                ? 'Ratio'
+                : family?.unit || 'Reported value'}
+            {family?.lower ? ' · Lower is better' : ' · Higher is better'}
           </span>
-          <span>
-            <b className="cell-pending">◐</b>待核 / 未披露
-          </span>
-          <span>
-            <b className="cell-excluded">×</b>未运行 / 排除
-          </span>
-          <span>— 无记录</span>
+          <span>各条目保留报告中的运行设置，点击查看成绩与配置。</span>
         </div>
       </div>
+      <div className="section-heading">
+        <h2>{benchmark} — Model results</h2>
+        <a href={BASE + 'downloads/results.csv'}>
+          Export CSV <Download size={13} />
+        </a>
+      </div>
       <div className="table-scroll">
-        <table className="matrix">
+        <table aria-label="模型成绩表">
           <thead>
             <tr>
-              <th>模型 / MODEL</th>
-              {matrixBenchmarks.map((b) => (
-                <th key={b}>{b}</th>
-              ))}
+              <th>#</th>
+              <th>
+                <button onClick={() => sortBy('name')}>
+                  Model {sort === 'name' && <ArrowDown size={12} />}
+                </button>
+              </th>
+              <th>Creator</th>
+              <th className="score-cell">
+                <button onClick={() => sortBy('score')}>
+                  {family?.label || 'Result'} {sort === 'score' && <ArrowDown size={12} />}
+                </button>
+              </th>
+              <th>Configuration</th>
+              <th>
+                <button onClick={() => sortBy('date')}>
+                  Release date {sort === 'date' && <ArrowDown size={12} />}
+                </button>
+              </th>
+              <th />
             </tr>
           </thead>
           <tbody>
-            {models.map((m) => (
-              <tr key={m.id}>
-                <th>
-                  <a href={href('models', { model: m.id })}>
-                    <i style={{ background: colors[m.provider] }} />
-                    {m.name}
-                  </a>
-                </th>
-                {matrixBenchmarks.map((b) => {
-                  const records = audit.evaluations.filter(
-                    (r) => r.modelId === m.id && r.benchmark === b,
-                  );
-                  const r =
-                    records.find((e) => e.category === '能力' && e.status === '已确认') ||
-                    records.find((e) => e.category === '能力') ||
-                    records[0];
-                  const later = r && isLater(r) && r.status === '已确认';
-                  const cls = r
-                    ? later
-                      ? 'cell-later'
-                      : 'cell-' + statusClass(r.status)
-                    : 'cell-empty';
-                  const symbol = !r
-                    ? '—'
-                    : later
-                      ? '◇'
-                      : r.status === '已确认'
-                        ? '●'
-                        : statusClass(r.status) === 'pending'
-                          ? '◐'
-                          : '×';
-                  return (
-                    <td key={b}>
-                      {r ? (
-                        <button
-                          className={`matrix-cell ${cls}`}
-                          title={`${m.name} / ${b}：${r.status}${later ? '，后续补测' : ''}；${r.category}`}
-                          aria-label={`${m.name}，${b}，${r.status}${later ? '，后续补测' : ''}，${r.category}`}
-                          onClick={() => select(r)}
-                        >
-                          {symbol}
-                        </button>
-                      ) : (
-                        <span className="cell-empty" aria-label="无对应记录">
-                          —
-                        </span>
-                      )}
-                    </td>
-                  );
-                })}
+            {results.map((r, i) => (
+              <tr key={r.key}>
+                <td className="rank">{i + 1}</td>
+                <td>
+                  <button className="model-link" onClick={() => open(r)}>
+                    <i style={{ background: COLORS[r.model.provider] }} />
+                    {modelName(r.model)}
+                  </button>
+                </td>
+                <td>
+                  <Creator name={r.model.provider} />
+                </td>
+                <td className="score-cell">
+                  <button className="score-value" onClick={() => open(r)}>
+                    {r.display}
+                  </button>
+                </td>
+                <td className="config-cell">
+                  <span>{r.variant}</span>
+                  <small title={configuration(r.metric.configuration)}>
+                    {configuration(r.metric.configuration)}
+                  </small>
+                </td>
+                <td className="date-cell">{r.model.date}</td>
+                <td>
+                  <button
+                    className="icon-button"
+                    aria-label={`查看${modelName(r.model)}的${r.family.label}结果`}
+                    onClick={() => open(r)}
+                  >
+                    <ArrowUpRight size={16} />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        {!results.length && <div className="empty">没有匹配结果，请调整指标或筛选条件。</div>}
       </div>
-      <div className="matrix-foot">
-        {compact ? '精选模型 · ' : ''}
-        符号表示证据状态，不表示能力高低；同一模型存在多类记录时优先显示能力证据。完整记录见模型档案。
-      </div>
-    </div>
+    </section>
   );
 }
-
-function Models({ audit, route, update, select }: Shared) {
-  const [layout, setLayout] = useState('cards');
-  const search = route.params.get('search') || '',
-    provider = route.params.get('provider') || 'all';
-  const selected = audit.models.find((m) => m.id === route.params.get('model'));
-  const filtered = audit.models.filter(
-    (m) =>
-      (provider === 'all' || m.provider === provider) &&
-      `${m.name} ${m.id} ${m.role}`.toLowerCase().includes(search.toLowerCase()),
-  );
-  if (selected) {
-    const records = audit.evaluations.filter((r) => r.modelId === selected.id);
-    return (
-      <>
-        <a href="#models" className="back-link">
-          <ArrowLeft size={15} />
-          全部模型
-        </a>
-        <PageIntro
-          eyebrow={`${selected.provider.toUpperCase()} / MODEL PROFILE`}
-          title={selected.name}
-          text={selected.role}
-          action={
-            <External className="button secondary" url={selected.sourceUrl}>
-              官方报告
-            </External>
-          }
-        />
-        <div className="model-facts">
-          <div>
-            <span>模型日期</span>
-            <strong>{dateLabel(selected)}</strong>
-          </div>
-          <div>
-            <span>报告类型</span>
-            <strong>{selected.reportType}</strong>
-          </div>
-          <div>
-            <span>已确认记录</span>
-            <strong>
-              {records.filter((r) => r.status === '已确认').length} / {records.length}
-            </strong>
-          </div>
-          <div>
-            <span>主文档</span>
-            <strong>
-              {selected.pdfPages} 页 · {selected.pdfKind}
-            </strong>
-          </div>
-        </div>
-        <div className="profile-notes">
-          <FileText size={20} />
-          <div>
-            <p>
-              <strong>日期证据：</strong>
-              {selected.dateEvidence}。{selected.dateNote}
-            </p>
-            <p>
-              <strong>归属与限制：</strong>
-              {selected.caveats}
-            </p>
-            {selected.conclusion && <p>{selected.conclusion}</p>}
-          </div>
-        </div>
-        <SectionTitle
-          number="01"
-          title="评测与证据"
-          text="原始报告项目与后续补测分别保留，能力、防护和拒答记录分别标注。"
-        />
-        <RecordTable records={records} audit={audit} select={select} />
-      </>
-    );
-  }
+function PerformanceChart({
+  results,
+  family,
+  time,
+  open,
+}: {
+  results: Result[];
+  family: Family;
+  time: boolean;
+  open: (r: Result) => void;
+}) {
+  const [hover, setHover] = useState<string>();
+  const [expanded, setExpanded] = useState(false);
+  useEffect(() => {
+    setExpanded(false);
+    setHover(undefined);
+  }, [family.id, time]);
+  const numeric = results.filter((r) => r.value !== null);
+  const monthly = time ? numeric.filter((r) => r.model.date_precision === 'month') : [];
+  const drawable = time ? numeric.filter((r) => r.model.date_precision === 'day') : numeric;
+  const shown = expanded || time ? drawable : drawable.slice(0, 18);
+  const width = time ? 1100 : Math.max(1000, shown.length * 66 + 110),
+    height = time ? 360 : 440,
+    top = 32,
+    bottom = time ? 298 : 278,
+    left = 58,
+    right = 28;
+  const max =
+    family.unit === 'percent'
+      ? Math.max(100, ...shown.map((r) => r.value!))
+      : Math.max(1, ...shown.map((r) => r.value!)) * 1.12;
+  const dates = shown.map((r) => Date.parse(r.model.date));
+  const minDate = dates.length ? Math.min(...dates) - 86400000 * 10 : 0,
+    maxDate = dates.length ? Math.max(...dates) + 86400000 * 10 : 1;
+  const y = (n: number) => bottom - (n / max) * (bottom - top);
+  const focused = shown.find((r) => r.key === hover);
+  const step = (width - left - right) / Math.max(1, shown.length);
   return (
     <>
-      <PageIntro
-        eyebrow="MODELS / 模型库"
-        title="每一个模型，都有自己的证据档案。"
-        text="覆盖三家厂商的 48 个模型与版本快照；共用报告、版本更新和补测分别记录。"
-      />
-      <div className="filter-bar">
-        <SearchBox
-          value={search}
-          change={(v) => update({ search: v || null })}
-          placeholder="搜索模型名称、版本或定位…"
-        />
-        <select
-          aria-label="筛选模型厂商"
-          value={provider}
-          onChange={(e) => update({ provider: e.target.value === 'all' ? null : e.target.value })}
-        >
-          <option value="all">全部厂商</option>
-          {providers.map((p) => (
-            <option key={p}>{p}</option>
-          ))}
-        </select>
-        <span className="result-count">{filtered.length} 个模型</span>
-        <div className="view-switch">
-          <button
-            className={layout === 'cards' ? 'active' : ''}
-            aria-pressed={layout === 'cards'}
-            onClick={() => setLayout('cards')}
+      <div className="plot-scroll">
+        {shown.length ? (
+          <svg
+            className={'plot ' + (time ? 'time-plot' : 'bar-plot')}
+            viewBox={`0 0 ${width} ${height}`}
+            style={{ minWidth: time ? 700 : Math.min(width, 1000) }}
+            role="group"
+            aria-label={time ? '模型成绩随发布时间的变化' : '模型成绩柱状图'}
           >
-            档案
-          </button>
-          <button
-            className={layout === 'matrix' ? 'active' : ''}
-            aria-pressed={layout === 'matrix'}
-            onClick={() => setLayout('matrix')}
-          >
-            矩阵
-          </button>
-        </div>
-      </div>
-      {!filtered.length ? (
-        <Empty text="试试其他模型名称或厂商。" />
-      ) : layout === 'matrix' ? (
-        <Coverage audit={{ ...audit, models: filtered }} select={select} />
-      ) : (
-        <div className="model-grid">
-          {filtered.map((m) => {
-            const records = audit.evaluations.filter((r) => r.modelId === m.id);
-            return (
-              <a className="model-card" href={href('models', { model: m.id })} key={m.id}>
-                <div className="model-card-top">
-                  <ProviderMark value={m.provider} />
-                  <span>{m.date}</span>
-                </div>
-                <h2>{m.name}</h2>
-                <p>{m.role}</p>
-                <div className="model-card-meta">
-                  <span>
-                    <CheckCircle2 size={14} />
-                    {records.filter((r) => r.status === '已确认').length} 条确认
-                  </span>
-                  <span>{records.length} 条记录</span>
-                  <ArrowUpRight size={17} />
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      )}
-    </>
-  );
-}
-
-function Benchmarks({ audit, route, update, select }: Shared) {
-  const search = route.params.get('search') || '';
-  const selected = audit.benchmarks.find((b) => b.name === route.params.get('benchmark'));
-  const counts = (b: Benchmark) => audit.evaluations.filter((r) => r.benchmark === b.name).length;
-  const filtered = [...audit.benchmarks]
-    .filter((b) => `${b.name} ${b.task} ${b.openness}`.toLowerCase().includes(search.toLowerCase()))
-    .sort((a, b) => counts(b) - counts(a));
-  if (selected) {
-    const records = audit.evaluations.filter((r) => r.benchmark === selected.name);
-    return (
-      <>
-        <a className="back-link" href="#benchmarks">
-          <ArrowLeft size={15} />
-          全部评测
-        </a>
-        <PageIntro
-          eyebrow="BENCHMARK / 评测档案"
-          title={selected.name}
-          text={selected.task}
-          action={
-            <External className="button secondary" url={selected.sourceUrl}>
-              定义来源
-            </External>
-          }
-        />
-        <div className="reading-note">
-          <BookOpen size={23} />
-          <div>
-            <h3>{selected.openness}</h3>
-            <p>{selected.caveat}</p>
-          </div>
-        </div>
-        <SectionTitle
-          number="01"
-          title="相关模型与记录"
-          text={`${records.length} 条记录。评测名称相同，不代表版本和运行条件相同。`}
-        />
-        <RecordTable records={records} audit={audit} select={select} />
-      </>
-    );
-  }
-  return (
-    <>
-      <PageIntro
-        eyebrow="BENCHMARKS / 评测库"
-        title="理解分数，从理解任务开始。"
-        text="公开基准、私有测试集与描述性任务标签各有边界。这里保留它们的定义和设置限制。"
-      />
-      <div className="filter-bar">
-        <SearchBox
-          value={search}
-          change={(v) => update({ search: v || null })}
-          placeholder="搜索评测名称、任务或开放性…"
-        />
-        <span className="result-count">{filtered.length} 个评测 / 任务标签</span>
-      </div>
-      {!filtered.length ? (
-        <Empty text="试试漏洞、CTF、利用、修复或 Exploit。" />
-      ) : (
-        <div className="benchmark-list">
-          {filtered.map((b) => (
-            <a
-              className="benchmark-card"
-              href={href('benchmarks', { benchmark: b.name })}
-              key={b.name}
-            >
-              <div className="benchmark-icon">
-                <FlaskConical size={22} />
-              </div>
-              <div>
-                <div className="benchmark-title">
-                  <h2>{b.name}</h2>
-                  <span>{counts(b)} 条记录</span>
-                </div>
-                <p>{b.task}</p>
-                <span className="benchmark-openness">{b.openness}</span>
-              </div>
-              <ArrowUpRight size={20} />
-            </a>
-          ))}
-        </div>
-      )}
-    </>
-  );
-}
-
-function Evidence({ audit, route, update, select }: Shared) {
-  const section = route.params.get('section') || 'records';
-  const search = route.params.get('search') || '',
-    status = route.params.get('status') || 'all',
-    category = route.params.get('category') || 'all',
-    scoreStatus = route.params.get('scoreStatus') || 'all';
-  const modelMap = new Map(audit.models.map((m) => [m.id, m]));
-  const records = audit.evaluations.filter(
-    (r) =>
-      (status === 'all' || r.status === status) &&
-      (category === 'all' || r.category === category) &&
-      (scoreStatus === 'all' || r.scoreStatus === scoreStatus) &&
-      `${r.id} ${r.benchmark} ${modelMap.get(r.modelId)?.name} ${r.configuration} ${r.note} ${r.score} ${r.scoreAudit?.notes || ''}`
-        .toLowerCase()
-        .includes(search.toLowerCase()),
-  );
-  const sections = [
-    { id: 'records', label: '证据记录', icon: Database },
-    { id: 'method', label: '方法与边界', icon: BookOpen },
-    { id: 'changes', label: '修订记录', icon: FileText },
-    { id: 'repository', label: '源码与下载', icon: Code2 },
-  ];
-  return (
-    <>
-      <PageIntro
-        eyebrow="EVIDENCE / 证据与方法"
-        title="每一个结论，都应该能找到来处。"
-        text={`报告快照 ${audit.meta.asOf}；成绩复核 ${audit.meta.scoreReviewDate}。保留原文、图表读数和配置差异。`}
-      />
-      <div className="tabs" aria-label="证据页面分类">
-        {sections.map((s) => (
-          <button
-            key={s.id}
-            className={section === s.id ? 'active' : ''}
-            aria-pressed={section === s.id}
-            onClick={() => update({ section: s.id })}
-          >
-            <s.icon size={16} />
-            {s.label}
-          </button>
-        ))}
-      </div>
-      {section === 'records' && (
-        <>
-          <div className="filter-bar evidence-filters">
-            <SearchBox
-              value={search}
-              change={(v) => update({ search: v || null })}
-              placeholder="搜索模型、评测、配置或记录 ID…"
-            />
-            <select
-              aria-label="筛选证据状态"
-              value={status}
-              onChange={(e) => update({ status: e.target.value === 'all' ? null : e.target.value })}
-            >
-              <option value="all">全部证据状态</option>
-              {[...new Set(audit.evaluations.map((r) => r.status))].map((s) => (
-                <option key={s}>{s}</option>
-              ))}
-            </select>
-            <select
-              aria-label="筛选记录类别"
-              value={category}
-              onChange={(e) =>
-                update({ category: e.target.value === 'all' ? null : e.target.value })
-              }
-            >
-              <option value="all">全部类别</option>
-              {[...new Set(audit.evaluations.map((r) => r.category))].map((s) => (
-                <option key={s}>{s}</option>
-              ))}
-            </select>
-            <select
-              aria-label="筛选成绩披露状态"
-              value={scoreStatus}
-              onChange={(e) =>
-                update({ scoreStatus: e.target.value === 'all' ? null : e.target.value })
-              }
-            >
-              <option value="all">全部成绩状态</option>
-              {Object.entries(scoreLabels).map(([value, label]) => (
-                <option key={value} value={value}>
-                  {label} ({audit.meta.scoreStatusCounts[value] || 0})
-                </option>
-              ))}
-            </select>
-            <span className="result-count">{records.length} 条记录</span>
-          </div>
-          <RecordTable records={records} audit={audit} select={select} />
-        </>
-      )}
-      {section === 'method' && (
-        <div className="method-layout">
-          <div className="method-prose">
-            <div className="eyebrow">METHODOLOGY / V0.2</div>
-            <h2>一份公开报告的证据地图。</h2>
-            <p className="lead">
-              本项目整理公开报告中的网安评测信息，未独立重跑模型，也未对所有结论做独立复现。
-            </p>
-            <h3>01 · 数据从哪里来</h3>
-            <p>
-              当前数据由《模型网安评测核验.xlsx》导入，包含 {audit.models.length} 个模型快照与{' '}
-              {audit.evaluations.length} 条记录。主文档和补充资料共 {audit.pdfs.length} 份
-              PDF；原始报告与网页转制文件分别标识。访问失败日志同样保留。
-            </p>
-            <h3>02 · “已确认”确认的是什么</h3>
-            <p>
-              确认的是报告正文或图表明确支持该模型与该项测试的对应关系。它不表示全部任务成功，也不表示已经独立复现。共用报告不自动继承结果；模型覆盖不足、明确未运行、停止报告和仅方法引用分别标注。
-            </p>
-            <h3>03 · 如何解释时间图</h3>
-            <p>
-              横轴使用模型日期，而非成绩披露日期；后续补测在记录里标注。月精度日期仅显示到月份，在图下单列，不伪造具体日期。发布日、开放日和报告日期可能不同，模型档案保留日期证据和口径。
-            </p>
-            <h3>04 · 如何处理成绩</h3>
-            <p>
-              {audit.meta.scoreReviewDate} 已逐项复核全部 {audit.meta.reviewedScoreRecords}{' '}
-              条已确认记录， 从原表 {audit.meta.originalScoreCount} 条含成绩记录补至{' '}
-              {audit.meta.scoreCount} 条已核实数值记录， 共提取 {audit.meta.metricCount}{' '}
-              项指标。只有曲线而没有精确标值的结果记为“仅图示”，
-              只有文字结论的记为“仅定性”，未确认归属的记为“不适用”。不通过估读曲线或借用相邻模型成绩填数。
-              次数、比值、区间及多个配置分别保留；选择具体百分数指标可查看对应数据点。
-            </p>
-            <h3>05 · 比较必须满足的条件</h3>
-            <p>
-              题集版本、子集、指标、采样次数、时间与计算预算、工具环境、judge
-              和防护开关均可能影响结果。当前未核定可比组，所以不连线、不计算综合排名，也不把覆盖项目增加解释为能力提升。
-            </p>
-            <h3>06 · 哪些仍需补齐</h3>
-            <p>
-              优先补充同一报告中、相同设置下的历史模型重跑结果；另行记录模型快照日期、成绩报告日期与实际运行配置。核定可比组后再增加趋势线。任何新增记录都需要官方来源和可定位证据。
-            </p>
-            <h3>07 · 文件与权利</h3>
-            <p>
-              报告版权属于原权利人。本站提供来源链接及归档哈希，不将第三方报告纳入代码许可。仓库中的
-              MIT 许可仅适用于本项目原创代码；整理数据的独立再分发许可暂未声明。
-            </p>
-          </div>
-          <aside className="method-aside">
-            <span className="eyebrow">AUDIT SNAPSHOT</span>
-            <strong>{audit.meta.asOf}</strong>
-            <dl>
-              <div>
-                <dt>模型快照</dt>
-                <dd>{audit.models.length}</dd>
-              </div>
-              <div>
-                <dt>证据记录</dt>
-                <dd>{audit.evaluations.length}</dd>
-              </div>
-              <div>
-                <dt>PDF 目录</dt>
-                <dd>{audit.pdfs.length}</dd>
-              </div>
-              <div>
-                <dt>访问记录</dt>
-                <dd>{audit.sources.length}</dd>
-              </div>
-            </dl>
-            <a className="button secondary" href={BASE + audit.meta.downloadWorkbook} download>
-              下载成绩补录版 <ArrowDownToLine size={15} />
-            </a>
-          </aside>
-        </div>
-      )}
-      {section === 'changes' && (
-        <div className="revision-list">
-          {audit.revisions.map((r, i) => (
-            <article key={r.subject}>
-              <div className="revision-date">
-                <span>{audit.meta.asOf}</span>
-                <small>REV. {String(i + 1).padStart(2, '0')}</small>
-              </div>
-              <div>
-                <h2>{r.subject}</h2>
-                <p className="revision-before">原表：{r.before}</p>
-                <p>{r.change}</p>
-                <External className="text-link" url={r.sourceUrl}>
-                  核对原文 · {r.pages}
-                </External>
-              </div>
-            </article>
-          ))}
-        </div>
-      )}
-      {section === 'repository' && (
-        <div className="repository-content">
-          <div className="repo-hero">
-            <Github size={35} />
-            <h2>开放源码，可复核的数据流程。</h2>
-            <p>Excel → 结构化数据 → 校验 → 静态网站</p>
-            <div className="local-repo-note">
-              <Code2 size={17} />
-              <External className="text-link" url={REPOSITORY}>
-                Hongkun16 / cyberai-observatory · 浏览源码与提交修订
-              </External>
-            </div>
-          </div>
-          <div className="download-grid">
-            {[
-              {
-                file: audit.meta.downloadWorkbook,
-                name: 'Excel 成绩补录版',
-                text: '原工作簿 + 逐项成绩审计与指标',
-                icon: FileText,
-              },
-              {
-                file: 'downloads/results.csv',
-                name: 'CSV 逐项记录',
-                text: `${audit.evaluations.length} 条记录 · 含成绩状态`,
-                icon: Database,
-              },
-              {
-                file: 'data/audit.json',
-                name: 'JSON 完整数据',
-                text: '模型、评测、来源与修订',
-                icon: Code2,
-              },
-            ].map((d) => (
-              <a className="download-card" key={d.file} href={BASE + d.file} download>
-                <d.icon size={25} />
-                <h3>{d.name}</h3>
-                <p>{d.text}</p>
-                <span>
-                  下载文件 <ArrowDownToLine size={15} />
-                </span>
-              </a>
+            {[0, 0.25, 0.5, 0.75, 1].map((t) => (
+              <g key={t}>
+                <line
+                  x1={left}
+                  x2={width - right}
+                  y1={y(max * t)}
+                  y2={y(max * t)}
+                  className="grid-line"
+                />
+                <text x={left - 12} y={y(max * t) + 4} textAnchor="end" className="axis-label">
+                  {numberText(max * t)}
+                </text>
+              </g>
             ))}
-          </div>
-          <div className="hash-note">
-            <span>源工作簿 SHA-256</span>
-            <code>{audit.meta.workbookSha256}</code>
-          </div>
-          <h3>引用这份快照</h3>
-          <pre className="citation">
-            CyberAI Observatory. 模型网安评测核验快照. {audit.meta.asOf}.<br />
-            公开报告证据整理；未独立重跑模型评测。
-          </pre>
+            {time &&
+              [0, 0.2, 0.4, 0.6, 0.8, 1].map((t) => (
+                <text
+                  className="axis-label"
+                  key={t}
+                  x={left + t * (width - left - right)}
+                  y={bottom + 27}
+                  textAnchor="middle"
+                >
+                  {new Date(minDate + t * (maxDate - minDate)).toISOString().slice(0, 7)}
+                </text>
+              ))}
+            {shown.map((r, i) => {
+              const x = time
+                ? left +
+                  ((Date.parse(r.model.date) - minDate) / (maxDate - minDate)) *
+                    (width - left - right)
+                : left + step * (i + 0.5);
+              const barWidth = Math.min(42, step * 0.62);
+              return (
+                <g
+                  className="data-point"
+                  role="button"
+                  tabIndex={0}
+                  key={r.key}
+                  aria-label={`${modelName(r.model)}，${r.display}，${r.variant}，查看结果`}
+                  onMouseEnter={() => setHover(r.key)}
+                  onMouseLeave={() => setHover(undefined)}
+                  onFocus={() => setHover(r.key)}
+                  onBlur={() => setHover(undefined)}
+                  onClick={() => open(r)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      open(r);
+                    }
+                  }}
+                >
+                  {time ? (
+                    <circle
+                      cx={x}
+                      cy={y(r.value!)}
+                      r={hover === r.key ? 8 : 6}
+                      fill={COLORS[r.model.provider]}
+                      stroke="white"
+                      strokeWidth="1.5"
+                    />
+                  ) : (
+                    <>
+                      <rect
+                        x={x - barWidth / 2}
+                        y={y(r.value!)}
+                        width={barWidth}
+                        height={Math.max(2, bottom - y(r.value!))}
+                        rx="1"
+                        fill={COLORS[r.model.provider]}
+                        opacity={focused && hover !== r.key ? 0.78 : 1}
+                      />
+                      <text x={x} y={y(r.value!) - 9} textAnchor="middle" className="bar-value">
+                        {r.display}
+                      </text>
+                      <g transform={`translate(${x + 4},${bottom + 20}) rotate(-48)`}>
+                        <text textAnchor="end" className="model-axis">
+                          {modelName(r.model)}
+                        </text>
+                        <text textAnchor="end" y="15" className="config-axis">
+                          {r.variant}
+                        </text>
+                      </g>
+                    </>
+                  )}
+                </g>
+              );
+            })}
+          </svg>
+        ) : (
+          <div className="empty">当前筛选下暂无可绘制的数值，请调整指标或筛选条件。</div>
+        )}
+      </div>
+      <div className="chart-readout">
+        {focused ? (
+          <>
+            <Creator name={focused.model.provider} />
+            <strong>{modelName(focused.model)}</strong>
+            <b>{focused.display}</b>
+            <span>{focused.variant}</span>
+            <button onClick={() => open(focused)}>
+              View result <ArrowUpRight size={13} />
+            </button>
+          </>
+        ) : (
+          <span>悬停查看模型 · 点击查看完整成绩</span>
+        )}
+        {!time && drawable.length > 18 && (
+          <button onClick={() => setExpanded(!expanded)}>
+            {expanded ? 'Show fewer' : 'Show all ' + drawable.length + ' results'}
+          </button>
+        )}
+      </div>
+      {monthly.length > 0 && (
+        <div className="month-results">
+          <span>Month-level release dates</span>
+          {monthly.map((r) => (
+            <button key={r.key} onClick={() => open(r)}>
+              <i style={{ background: COLORS[r.model.provider] }} />
+              {modelName(r.model)} <b>{r.display}</b>
+              <small>{r.model.date}</small>
+            </button>
+          ))}
         </div>
       )}
     </>
   );
 }
-
-function EvidenceDrawer({
-  record: r,
-  model,
+function Models({
+  data,
+  params,
+  update,
+}: {
+  data: Audit;
+  params: URLSearchParams;
+  update: (p: Record<string, string>) => void;
+}) {
+  const selected = data.models.find((m) => m.id === params.get('model'));
+  const search = params.get('search') || '',
+    creator = params.get('creator') || 'all';
+  if (selected) {
+    const records = data.evaluations.filter(
+      (r) => r.modelId === selected.id && r.status === '已确认',
+    );
+    return (
+      <>
+        <Intro
+          eyebrow="Language models / Model profile"
+          title={modelName(selected)}
+          heading={selected.role}
+          meta={
+            <>
+              <Creator name={selected.provider} />
+              <span>Released {selected.date}</span>
+              <span>
+                {records.filter((r) => r.scoreStatus === 'reported').length} reported results
+              </span>
+            </>
+          }
+        >
+          <p>查看该模型在公开网络安全评测中的成绩、任务覆盖与运行配置。</p>
+          <div className="intro-links">
+            <a href="#models">← All models</a>
+            <External url={selected.sourceUrl}>Model report</External>
+          </div>
+        </Intro>
+        <section className="container workspace">
+          <div className="section-heading">
+            <h2>Cybersecurity performance</h2>
+          </div>
+          <div className="table-scroll">
+            <table aria-label="模型评测成绩">
+              <thead>
+                <tr>
+                  <th>Benchmark</th>
+                  <th>Result</th>
+                  <th>Category</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>
+                {records.map((r) => (
+                  <tr key={r.id}>
+                    <td>
+                      <a className="model-link" href={href('overview', { benchmark: r.benchmark })}>
+                        {r.benchmark}
+                      </a>
+                    </td>
+                    <td className="summary-cell">{scoreSummary(r)}</td>
+                    <td>
+                      {r.category === '能力'
+                        ? 'Capability'
+                        : r.category === '行为/拒答'
+                          ? 'Behavior'
+                          : 'Safeguards'}
+                    </td>
+                    <td>
+                      <button
+                        className="icon-button"
+                        aria-label={'查看' + r.benchmark + '结果'}
+                        onClick={() => update({ record: r.id })}
+                      >
+                        <ArrowUpRight size={16} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </>
+    );
+  }
+  const models = data.models
+    .filter(
+      (m) =>
+        (creator === 'all' || m.provider === creator) &&
+        modelName(m).toLowerCase().includes(search.toLowerCase()),
+    )
+    .sort((a, b) => b.date.localeCompare(a.date));
+  return (
+    <>
+      <Intro
+        eyebrow="Language models / Model directory"
+        title="AI Models"
+        heading="按模型浏览网络安全表现"
+        meta={
+          <>
+            <span>{data.models.length} models</span>
+            <span>3 creators</span>
+            <span>2026 releases</span>
+          </>
+        }
+      >
+        <p>从旗舰推理模型到高效轻量模型，查看各个版本的任务表现与发布信息。</p>
+        <div className="intro-links">
+          <External url={REPO}>Explore the dataset</External>
+        </div>
+      </Intro>
+      <section className="container workspace">
+        <div className="directory-toolbar">
+          <SearchBox value={search} onChange={(search) => update({ search })} />
+          <select
+            aria-label="筛选模型厂商"
+            value={creator}
+            onChange={(e) => update({ creator: e.target.value })}
+          >
+            <option value="all">All creators</option>
+            {CREATORS.map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </select>
+          <span>{models.length} models</span>
+        </div>
+        <div className="table-scroll">
+          <table aria-label="模型列表">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Creator</th>
+                <th>Release date</th>
+                <th>Focus</th>
+                <th>Results</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              {models.map((m) => (
+                <tr key={m.id}>
+                  <td>
+                    <a className="model-link" href={href('models', { model: m.id })}>
+                      <i style={{ background: COLORS[m.provider] }} />
+                      {modelName(m)}
+                    </a>
+                  </td>
+                  <td>
+                    <Creator name={m.provider} />
+                  </td>
+                  <td className="date-cell">{m.date}</td>
+                  <td className="role-cell">{m.role}</td>
+                  <td>
+                    {
+                      data.evaluations.filter(
+                        (r) =>
+                          r.modelId === m.id &&
+                          r.scoreStatus === 'reported' &&
+                          r.status === '已确认',
+                      ).length
+                    }
+                  </td>
+                  <td>
+                    <a aria-label={'查看' + modelName(m)} href={href('models', { model: m.id })}>
+                      <ChevronRight size={16} />
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
+  );
+}
+function Benchmarks({
+  data,
+  params,
+  update,
+}: {
+  data: Audit;
+  params: URLSearchParams;
+  update: (p: Record<string, string>) => void;
+}) {
+  const search = params.get('search') || '';
+  const benchmarks = data.benchmarks.filter((b) =>
+    (b.name + ' ' + b.task).toLowerCase().includes(search.toLowerCase()),
+  );
+  return (
+    <>
+      <Intro
+        eyebrow="Language models / Evaluations"
+        title={
+          <>
+            Cybersecurity
+            <br />
+            Evaluations
+          </>
+        }
+        heading="从任务理解模型能力"
+        meta={
+          <>
+            <span>{data.benchmarks.length} benchmarks & tasks</span>
+            <span>Capability · Safeguards · Behavior</span>
+          </>
+        }
+      >
+        <p>覆盖真实漏洞复现、端到端利用、CTF 与安全防护。选择评测，探索模型在具体任务中的表现。</p>
+        <div className="intro-links">
+          <External url={REPO}>Dataset documentation</External>
+        </div>
+      </Intro>
+      <section className="container workspace">
+        <div className="directory-toolbar">
+          <SearchBox
+            value={search}
+            onChange={(search) => update({ search })}
+            placeholder="Search evaluations…"
+          />
+          <span>{benchmarks.length} evaluations</span>
+        </div>
+        <div className="benchmark-directory">
+          {benchmarks.map((b) => (
+            <a
+              className="benchmark-row"
+              key={b.name}
+              href={href('overview', { benchmark: b.name })}
+            >
+              <div className="benchmark-monogram">{b.name.slice(0, 2).toUpperCase()}</div>
+              <div>
+                <h2>{b.name}</h2>
+                <p>{b.task}</p>
+                <small>{b.openness.replaceAll('核验', '验证')}</small>
+              </div>
+              <span>
+                {
+                  new Set(
+                    data.evaluations
+                      .filter((r) => r.benchmark === b.name && r.scoreStatus === 'reported')
+                      .map((r) => r.modelId),
+                  ).size
+                }{' '}
+                models
+              </span>
+              <ArrowUpRight size={19} />
+            </a>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+function ResultDialog({
+  data,
+  record,
   close,
 }: {
+  data: Audit;
   record: Evaluation;
-  model: Model;
   close: () => void;
 }) {
-  const dialog = useRef<HTMLDialogElement>(null);
+  const ref = useRef<HTMLDialogElement>(null);
   const [copied, setCopied] = useState(false);
+  const model = data.models.find((m) => m.id === record.modelId)!;
   useEffect(() => {
-    const previous = document.activeElement as HTMLElement | null;
-    dialog.current?.showModal();
+    const focus = document.activeElement as HTMLElement;
+    const previous = document.body.style.overflow;
+    ref.current?.showModal();
     document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = '';
-      previous?.focus();
+      document.body.style.overflow = previous;
+      focus?.focus();
     };
   }, []);
-  useEffect(() => {
-    setCopied(false);
-  }, [r.id]);
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(location.href);
-      setCopied(true);
-    } catch {
-      setCopied(false);
-    }
-  }
   return (
     <dialog
-      ref={dialog}
-      className="evidence-drawer"
-      aria-labelledby="drawer-title"
+      ref={ref}
+      className="result-dialog"
       onCancel={(e) => {
         e.preventDefault();
         close();
       }}
       onClick={(e) => {
-        if (e.target === e.currentTarget) {
-          const box = e.currentTarget.getBoundingClientRect();
-          if (
-            e.clientX < box.left ||
-            e.clientX > box.right ||
-            e.clientY < box.top ||
-            e.clientY > box.bottom
-          )
-            close();
-        }
+        if (e.target === ref.current) close();
       }}
+      aria-labelledby="result-title"
     >
-      <div className="drawer-inner">
-        <div className="drawer-header">
-          <span>
-            <FileText size={16} /> EVIDENCE RECORD
-          </span>
-          <button className="icon-button" aria-label="关闭证据面板" onClick={close}>
+      <div className="dialog-inner">
+        <div className="dialog-top">
+          <span>Model performance</span>
+          <button className="icon-button" aria-label="关闭结果详情" onClick={close}>
             <X size={20} />
           </button>
         </div>
-        <div className="drawer-content">
-          <span className="record-id">{r.id}</span>
-          <h2 id="drawer-title">{r.benchmark}</h2>
-          <a className="drawer-model" href={href('models', { model: model.id })}>
-            <ProviderMark value={model.provider} />
-            {model.name}
-            <ArrowUpRight size={15} />
-          </a>
-          <div className="drawer-status">
-            <Status value={r.status} />
-            <span className="tag">{r.category}</span>
-            {isLater(r) && <span className="tag">后续补测</span>}
-          </div>
-          <div className="reported-score">
-            <span>原文成绩 / REPORTED RESULT</span>
-            <strong>{scoreText(r)}</strong>
-            <p>{scoreLabels[r.scoreStatus]} · 保留原始指标与运行条件。</p>
-          </div>
-          {r.metrics.length > 0 && (
-            <section className="extracted-metrics" aria-label="逐指标成绩">
-              <h3>逐指标成绩</h3>
-              {r.metrics.map((metric, i) => (
-                <div key={i}>
-                  <span>
-                    {metric.label}
-                    <small>{metric.configuration}</small>
-                  </span>
-                  <strong>{metricText(metric)}</strong>
+        <Creator name={model.provider} />
+        <h2 id="result-title">{modelName(model)}</h2>
+        <div className="dialog-subtitle">
+          <span className="benchmark-label">{record.benchmark}</span>
+          <span>Released {model.date}</span>
+        </div>
+        <div className="reported-result">
+          <span>Reported result</span>
+          <strong>{scoreSummary(record)}</strong>
+        </div>
+        {record.metrics.length > 0 && (
+          <section aria-label="分项成绩">
+            <h3>Results & configurations</h3>
+            {record.metrics.map((m, i) => (
+              <div className="metric-row" key={i}>
+                <div>
+                  <b>{m.label}</b>
+                  <p>{configuration(m.configuration)}</p>
                 </div>
-              ))}
-            </section>
-          )}
-          {r.scoreAudit && (
-            <section className="score-audit-evidence" aria-label="成绩提取依据">
-              <h3>
-                <CheckCircle2 size={14} /> 成绩提取依据 <span>{r.scoreAudit.reviewedAt}</span>
-              </h3>
-              {r.scoreAudit.evidence.map((e, i) => (
-                <div key={i}>
-                  <External url={e.sourceUrl}>
-                    {e.pdfPath.split('/').at(-1)} · 文件页 {e.pages}
-                  </External>
-                  <blockquote>{e.quote}</blockquote>
-                  <code title={e.sha256}>SHA-256 {e.sha256.slice(0, 16)}…</code>
-                </div>
-              ))}
-              {r.scoreAudit.notes && <p>{r.scoreAudit.notes}</p>}
-              {r.originalScore && r.originalScore !== r.score && (
-                <p className="original-score">原表记录：{r.originalScore}</p>
-              )}
-            </section>
-          )}
-          <dl className="evidence-details">
-            <div>
-              <dt>运行配置与指标口径</dt>
-              <dd>{r.configuration || '原表未另列配置'}</dd>
-            </div>
-            <div>
-              <dt>章节 / 表图</dt>
-              <dd>{r.section || '见原报告'}</dd>
-            </div>
-            <div>
-              <dt>PDF 文件页码</dt>
-              <dd>
-                {r.pages || '见原报告'}
-                <small>从文件第一页计数，可能与页脚编号不同。</small>
-              </dd>
-            </div>
-            <div>
-              <dt>来源性质</dt>
-              <dd>{r.sourceKind}</dd>
-            </div>
-            <div>
-              <dt>模型日期</dt>
-              <dd>
-                {dateLabel(model)}
-                <small>{model.dateNote}；后续补测不等于原始发布快照。</small>
-              </dd>
-            </div>
-            {r.note && (
-              <div>
-                <dt>核验备注</dt>
-                <dd>{r.note}</dd>
+                <strong>
+                  {typeof m.value === 'number' ? numberText(m.value) : m.value}
+                  {m.unit === 'percent' ? '%' : ''}
+                </strong>
               </div>
-            )}
-            <div>
-              <dt>归档文件</dt>
-              <dd>
-                <code>{r.pdfPath}</code>
-                <small>文件名用于匹配资料包。网页通过下方链接访问官方来源。</small>
-              </dd>
-            </div>
-          </dl>
-          <div className="drawer-links">
-            <External className="button primary" url={r.sourceUrl}>
-              打开官方来源
-            </External>
-            <External className="button secondary" url={r.pdfUrl}>
-              打开证据文档
-            </External>
-          </div>
-          <button className="copy-button" onClick={copy}>
-            {copied ? <Check size={15} /> : <Copy size={15} />}
-            {copied ? '已复制证据链接' : '复制这条证据的链接'}
+            ))}
+          </section>
+        )}
+        <section className="run-settings">
+          <h3>运行设置</h3>
+          <p>{configuration(record.configuration)}</p>
+        </section>
+        <div className="dialog-links">
+          <External url={sourceLink(record)}>查看报告</External>
+          <External url={model.sourceUrl}>Model 主页</External>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(location.href).then(() => setCopied(true));
+            }}
+          >
+            <Copy size={13} />
+            {copied ? '已复制' : '复制链接'}
           </button>
-          <div className="evidence-boundary">
-            <ShieldCheck size={17} />
-            <p>“已确认”指模型与测试的证据归属。不同设置的结果仍需分别解读；本站未独立复现。</p>
-          </div>
         </div>
       </div>
     </dialog>
   );
 }
-
-createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+createRoot(document.getElementById('root')!).render(<App />);
