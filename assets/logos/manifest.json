@@ -1,0 +1,93 @@
+[
+  {
+    "provider": "openai",
+    "source": "assets/logos/original/OAI.svg",
+    "sourceSha256": "75c1e9fffa5e8c437bec1d67197a73992bca45d166c6ff23215185dea8fae92a",
+    "output": "web/public/logos/openai.png",
+    "sha256": "d27e0080328515552875c09764536fcbd8aa57535826dbc665d737707fb0586a",
+    "width": 128,
+    "height": 128,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": 12,
+    "removedWhiteBorder": false
+  },
+  {
+    "provider": "anthropic",
+    "source": "assets/logos/original/claude.png",
+    "sourceSha256": "84ec7391830128d5514ce3da21b6436c252312731d5a54de894457d095c07e6e",
+    "output": "web/public/logos/anthropic.png",
+    "sha256": "20eec52e9e7a343dcca7ae5e6c0a5823f3be6eeab48b3d2acbac399242968bf8",
+    "width": 128,
+    "height": 128,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": 12,
+    "removedWhiteBorder": false
+  },
+  {
+    "provider": "google",
+    "source": "assets/logos/original/gemini-color.svg",
+    "sourceSha256": "8ab0a9bafec11f7e69bcb9fc4ffd8f1bc927d1ddcbbb6ff36dee5ae8b5a9d602",
+    "output": "web/public/logos/google.png",
+    "sha256": "c6b301fe0106a5a8c204a021a5d717bc064eef1c9a6bd069721be859cddad4c4",
+    "width": 128,
+    "height": 128,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": 12,
+    "removedWhiteBorder": false
+  },
+  {
+    "provider": "tencent",
+    "source": "assets/logos/original/hunyuan.svg",
+    "sourceSha256": "36625b8007544ba0275016c8c5b1240e9623637e65e654fa34a10a36d2e3b35f",
+    "output": "web/public/logos/tencent.png",
+    "sha256": "9369fe2af05521f62a3e26d3b24c94cc46d2a4c30e2e172eec77d15a23f7ab88",
+    "width": 128,
+    "height": 128,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": 12,
+    "removedWhiteBorder": false
+  },
+  {
+    "provider": "zhipu",
+    "source": "assets/logos/original/zhipu-ai-seeklogo.svg",
+    "sourceSha256": "07a45e8e35b0b631ed2c68cd1cb041f9721b1ceeb0bd0e34f1459b0304a741c7",
+    "output": "web/public/logos/zhipu.png",
+    "sha256": "e056b64d300747e0a0e245f2825896fa4916bc7e8e84774ba2ae7cebd81bb949",
+    "width": 128,
+    "height": 128,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": 12,
+    "removedWhiteBorder": false
+  },
+  {
+    "provider": "deepseek",
+    "source": "assets/logos/original/deepseek-com-logo.png",
+    "sourceSha256": "cc83709757cb35f07c34637ddfcc9615c8565531a4ff095bad379d863d3dbdc1",
+    "output": "web/public/logos/deepseek.png",
+    "sha256": "80ccfbc3c9d128c3443e52d468ef2f75756c764c085c20fb66daf78fb8f0e616",
+    "width": 128,
+    "height": 128,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": 12,
+    "removedWhiteBorder": true
+  },
+  {
+    "provider": "xai",
+    "source": "assets/logos/original/Grok_Symbol_1.png",
+    "sourceSha256": "3b4ce1c1de82ca6289eed57de4e06c802081d09a843c30a42679515c51dce278",
+    "output": "web/public/logos/xai.png",
+    "sha256": "5b6dc72dc01b0b732afe5c7a726f24ba98b9fe1e85a69a912dab9ecbe3e9bd3e",
+    "width": 128,
+    "height": 128,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": 12,
+    "removedWhiteBorder": false
+  }
+]

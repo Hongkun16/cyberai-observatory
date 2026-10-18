@@ -49,9 +49,14 @@ function href(view: string, params: Record<string, string> = {}) {
 function Creator({ name }: { name: Provider }) {
   return (
     <span className="creator">
-      <span className={'creator-icon ' + name.toLowerCase()}>
-        {name === 'OpenAI' ? '◈' : name[0]}
-      </span>
+      <img
+        className="creator-icon"
+        src={BASE + 'logos/' + name.toLowerCase() + '.png'}
+        alt=""
+        width={20}
+        height={20}
+        decoding="async"
+      />
       {CREATOR_LABELS[name]}
     </span>
   );
@@ -390,6 +395,12 @@ function Dashboard({
               {CREATORS.map((c) => (
                 <span key={c}>
                   <i style={{ background: COLORS[c] }} />
+                  <img
+                    src={BASE + 'logos/' + c.toLowerCase() + '.png'}
+                    alt=""
+                    width={18}
+                    height={18}
+                  />
                   {CREATOR_LABELS[c]}
                 </span>
               ))}

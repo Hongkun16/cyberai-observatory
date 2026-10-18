@@ -17,6 +17,18 @@ try {
     0,
   );
   assert.ok((await page.locator('.data-point').count()) > 0);
+  await expect(page.locator('.legend img')).toHaveCount(7);
+  await expect
+    .poll(() =>
+      page
+        .locator('.legend img')
+        .evaluateAll((images) =>
+          images.every(
+            (img) => img.complete && img.naturalWidth === 128 && img.naturalHeight === 128,
+          ),
+        ),
+    )
+    .toBe(true);
   assert.doesNotMatch(await page.locator('body').innerText(), /审计|证据与方法|核验修订/);
   await page.screenshot({ path: 'test-results/desktop.png', fullPage: true });
   const mark = page.locator('.data-point').first();

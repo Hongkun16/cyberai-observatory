@@ -571,25 +571,16 @@ tbody tr:hover {
   white-space: nowrap;
 }
 .creator-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 19px;
-  height: 19px;
-  font-size: 12px;
-  color: #272d32;
+  display: block;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
-.creator-icon.anthropic {
-  font-family: Georgia, serif;
-  font-weight: bold;
-}
-.creator-icon.google {
-  font-weight: 650;
-  color: #4f85cc;
-}
-.creator-icon.openai {
-  font-size: 20px;
-  color: #278768;
+.legend img {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 .score-cell {
   text-align: right;
