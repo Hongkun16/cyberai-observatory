@@ -136,7 +136,7 @@ def build(workbook: Path, as_of: str):
     shutil.copyfile(workbook, downloads / "audit-2026-10-17.xlsx")
     fields = ["id", "modelId", "benchmark", "status", "category", "score", "configuration", "sourceUrl", "section", "pages", "note"]
     with (downloads / "results.csv").open("w", encoding="utf-8-sig", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(file, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(records)
     print(json.dumps({**data["meta"], "statuses": dict(Counter(r["status"] for r in records))}, ensure_ascii=False, indent=2))
