@@ -48,3 +48,15 @@
 ## 稳定 ID
 
 `data/record-identities.json` 用模型、评测名称、类别和来源 URL 的指纹映射到既有 ID。成绩、配置和状态的修订不会更改 ID。若来源 URL 被修正或同一来源需要新增多条配置记录，应人工维护身份映射并检查深链接，不要重新编号所有记录。重复 ID 或未解析引用会使导入失败。
+
+## 四家厂商扩展层
+
+`data/vendor-supplement.json`是腾讯、智谱GLM、DeepSeek、xAI新增资料的维护源，包含models、evaluations、benchmarks、documents和provenance。导入器先生成历史快照，再合并此层；原始Excel和历史复核不被覆盖。
+
+新增模型和记录的`origin`为`vendor-supplement`。`dateEvidencePaths`保留日期依据的本地归档路径。DeepSeek V4预览版和正式版使用独立ID和日期；Fast服务档位只列目录，不复制分数。
+
+`documents`（同时导出为`data/documents.json`和网站完整JSON中的documents）保存新增厂商归档；历史`pdfs`目录保留原69个PDF。两者共同构成引用校验目录。每份资料包含path、kind、pages、sha256、sourceUrl、downloadUrl、fetchedAt，非PDF的pages为0。
+
+为兼容历史字段，`pdfPath`也可指向官方HTML、MHTML或图片；必须结合sourceKind或目录kind解释。`scoreAudit.evidence`的pages仅用于PDF，网页／图片填写section；每条证据必须含来源、定位、摘录和哈希。laterDisclosure继续表示后续报告披露。`originalScore`为空表示不在历史Excel中，不表示该成绩未披露。
+
+meta.asOf仍是原Excel快照日期；supplementalAsOf表示扩展层日期，supplementalModelCount、supplementalRecordCount、supplementalScoreCount分别记录扩展规模。总计字段覆盖历史快照和新增资料；addedScoreCount包含历史补录与厂商新增数值。

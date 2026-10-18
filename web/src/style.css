@@ -346,6 +346,9 @@ select {
 }
 .legend {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 380px;
   gap: 16px;
   font-size: 10px;
   color: #54595f;
@@ -1074,6 +1077,7 @@ footer a {
     max-width: none;
   }
   .legend {
+    justify-content: flex-start;
     font-size: 9px;
     gap: 18px;
   }

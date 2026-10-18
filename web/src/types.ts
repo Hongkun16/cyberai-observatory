@@ -1,4 +1,4 @@
-export type Provider = 'OpenAI' | 'Anthropic' | 'Google';
+export type Provider = 'OpenAI' | 'Anthropic' | 'Google' | 'Tencent' | 'Zhipu' | 'DeepSeek' | 'xAI';
 export type Model = {
   id: string;
   name: string;
@@ -9,6 +9,7 @@ export type Model = {
   dateEvidence: string;
   dateNote: string;
   dateSource: string;
+  dateEvidencePaths?: string[];
   sourceUrl: string;
   reportType: string;
   pdfKind: string;
@@ -42,6 +43,7 @@ export type Evaluation = {
     evidence: {
       pdfPath: string;
       pages: string;
+      section?: string;
       quote: string;
       sha256: string;
       sourceUrl: string;
@@ -81,6 +83,10 @@ export type Audit = {
     downloadWorkbook: string;
     scope: string;
     workbookSha256: string;
+    supplementalAsOf: string;
+    supplementalModelCount: number;
+    supplementalRecordCount: number;
+    supplementalScoreCount: number;
   };
   models: Model[];
   evaluations: Evaluation[];
@@ -103,6 +109,7 @@ export type Audit = {
     downloadUrl: string;
     fetchedAt: string;
   }[];
+  documents: Audit['pdfs'];
   sources: {
     url: string;
     status: string;

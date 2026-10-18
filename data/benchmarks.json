@@ -341,5 +341,40 @@
     "task": "未披露或未定位具体名称",
     "caveat": "不表示厂商未运行测试",
     "sourceUrl": ""
+  },
+  {
+    "name": "WMDP Cyber",
+    "openness": "厂商官方报告披露；见定义来源",
+    "task": "网安双用途知识多项选择题准确率",
+    "caveat": "知识准确率不等于漏洞利用或攻击任务成功率。",
+    "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+  },
+  {
+    "name": "Cybench / WMDP Cyber",
+    "openness": "厂商官方报告披露；见定义来源",
+    "task": "共享报告中的网安任务与知识评测归属待核",
+    "caveat": "SA结果不能继承到Multi-Agent；此标签不用于合并或绘图。",
+    "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+  },
+  {
+    "name": "AgentHarm",
+    "openness": "厂商官方报告披露；见定义来源",
+    "task": "恶意Agent任务违规率，含网安及其他类别",
+    "caveat": "通用安全指标；越低越好；Grok 4.20表1仅披露SA。",
+    "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+  },
+  {
+    "name": "AgentDojo",
+    "openness": "厂商官方报告披露；见定义来源",
+    "task": "Agent提示注入攻击成功率",
+    "caveat": "防护鲁棒性指标；越低越好，不作为模型攻击能力成功率。",
+    "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+  },
+  {
+    "name": "HackerBench v0.3",
+    "openness": "厂商官方报告披露；见定义来源",
+    "task": "风险双用途网安提示放行率",
+    "caveat": "行为安全指标，越低越好；3.3%不是任务成功率。",
+    "sourceUrl": "https://x.ai/news/grok-4-7"
   }
 ]

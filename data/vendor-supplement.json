@@ -1,0 +1,2442 @@
+{
+  "asOf": "2026-10-18",
+  "description": "腾讯、智谱GLM、DeepSeek、xAI官方资料扩展；来源为用户提供的模型厂商资料及同日归档；未独立重跑。",
+  "provenance": [
+    {
+      "path": "snapshots/vendors/腾讯_Tencent_上交版.xlsx",
+      "sha256": "42127558ab06862fd36891a01b4a90c89e36b1626357222c57e41f7a29d73a21"
+    },
+    {
+      "path": "snapshots/vendors/智谱_Zhipu_上交版.xlsx",
+      "sha256": "e17cb2329b3969d41d285b4119a1933fca7aa8431ed11648e5e128cdc7611fec"
+    },
+    {
+      "path": "snapshots/vendors/DeepSeek_上交版.xlsx",
+      "sha256": "1b1d73ceeaeb52cc6e0e07d7b77e488a0778744a1acbcc8ca536a7bacf2799db"
+    },
+    {
+      "path": "snapshots/vendors/xAI_上交版.xlsx",
+      "sha256": "5c5c27df9082c900a62dcd2bd47ff248914fc24c9ef7fb499af4c2bd91be8681"
+    }
+  ],
+  "models": [
+    {
+      "id": "deepseek-v4-flash",
+      "name": "DeepSeek-V4-Flash",
+      "provider": "DeepSeek",
+      "date": "2026-07-31",
+      "date_precision": "day",
+      "role": "高效率通用推理、编程与 Agent",
+      "dateEvidence": "2026-04-24（预览）；2026-07-31（正式版API公测）",
+      "dateNote": "PDF为V4系列共享卡，4月模型信息；7月正式版成绩以更新日志为准。 此条目按正式版日期绘图；4月预览版另列，不继承正式版成绩。",
+      "dateSource": "https://api-docs.deepseek.com/updates/\nhttps://api-docs.deepseek.com/news/news260731/",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news260731/",
+      "reportType": "正式版官方发布页；另保留4月V4系列共享PDF，不作为正式版独立卡",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash.pdf",
+      "pdfPages": 8,
+      "sha256": "c225d71e3d3d21f263f6f4c2fda2f05757c61eb575a9d263cb9fee291576d5b0",
+      "conclusion": "CyberGym",
+      "caveats": "PDF为V4系列共享卡，4月模型信息；7月正式版成绩以更新日志为准。",
+      "dateEvidencePaths": [
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-2.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek-V4-Pro",
+      "provider": "DeepSeek",
+      "date": "2026-08-13",
+      "date_precision": "day",
+      "role": "旗舰推理、编程、复杂 Agent",
+      "dateEvidence": "2026-04-24（预览）；2026-08-13（正式版）",
+      "dateNote": "PDF为V4系列共享卡；正式版成绩以8月发布记录为准。 此条目按正式版日期绘图；4月预览版另列，不继承正式版成绩。",
+      "dateSource": "https://api-docs.deepseek.com/updates/\nhttps://api-docs.deepseek.com/news/news260813/",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news260813/",
+      "reportType": "正式版官方发布页；另保留4月V4系列共享PDF，不作为正式版独立卡",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash.pdf",
+      "pdfPages": 8,
+      "sha256": "c225d71e3d3d21f263f6f4c2fda2f05757c61eb575a9d263cb9fee291576d5b0",
+      "conclusion": "CyberGym",
+      "caveats": "PDF为V4系列共享卡；正式版成绩以8月发布记录为准。",
+      "dateEvidencePaths": [
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+        "sources/vendors/DeepSeek/deepseek-v4-pro-release-2.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "deepseek-v4-flash-vision-exp",
+      "name": "DeepSeek-V4-Flash-Vision-Exp",
+      "provider": "DeepSeek",
+      "date": "2026-08-21",
+      "date_precision": "day",
+      "role": "实验性视觉理解、多模态 Agent",
+      "dateEvidence": "2026-08-21",
+      "dateNote": "已检查发布页基准图片：CyberGym 75.3，不继承Flash-0731的76.7。",
+      "dateSource": "https://api-docs.deepseek.com/updates/",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news260821/",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-vision-exp.html",
+      "pdfPages": 0,
+      "sha256": "9a9ec802743e123f83cbe5138790e2150024ce16ab80122ce1cc9d136405645a",
+      "conclusion": "CyberGym",
+      "caveats": "已检查发布页基准图片：CyberGym 75.3，不继承Flash-0731的76.7。",
+      "dateEvidencePaths": [
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "deepseek-v4-1-flash",
+      "name": "DeepSeek-V4.1-Flash",
+      "provider": "DeepSeek",
+      "date": "2026-09-10",
+      "date_precision": "day",
+      "role": "新架构、原生视觉理解、高吞吐",
+      "dateEvidence": "2026-09-10（发布）；2026-09-17（论文首发）",
+      "dateNote": "产品发布日期与后续技术报告日期分开。",
+      "dateSource": "https://api-docs.deepseek.com/updates/\nhttps://api-docs.deepseek.com/news/news260910/\nhttps://arxiv.org/abs/2609.19969",
+      "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/main/DeepSeek_V41_Tech_Report.pdf",
+      "reportType": "官方仓库技术报告PDF",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-1-flash.pdf",
+      "pdfPages": 51,
+      "sha256": "ba68e2e40408125ae6d2f63a9a241b61c73910691c74ec1a2a7023c851eac08d",
+      "conclusion": "CyberGym；SEC-Bench Pro；ExploitGym",
+      "caveats": "产品发布日期与后续技术报告日期分开。",
+      "dateEvidencePaths": [
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+        "sources/vendors/DeepSeek/deepseek-v4-1-flash-release-2.html",
+        "sources/vendors/DeepSeek/deepseek-v4-1-flash-release-3.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "deepseek-v4-1-flash-1017",
+      "name": "DeepSeek-V4.1-Flash-1017",
+      "provider": "DeepSeek",
+      "date": "2026-10-17",
+      "date_precision": "day",
+      "role": "V4.1 后续更新，强化编程、Agent 与执行效率",
+      "dateEvidence": "2026-10-17",
+      "dateNote": "已检查更新页图片及1017模型卡，未见该快照具名网安成绩；不继承9月版本。",
+      "dateSource": "https://api-docs.deepseek.com/updates/",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news261017/",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-1-flash-1017.html",
+      "pdfPages": 0,
+      "sha256": "8125b7812df5c3bf3caf1dbddd2048381232970ea71dffd2df8b97bffc5f8c59",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "；9月V4.1技术报告不作为1017专属Model Card。",
+      "dateEvidencePaths": [
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "glm-4-7-flash",
+      "name": "GLM-4.7-Flash",
+      "provider": "Zhipu",
+      "date": "2026-01",
+      "date_precision": "month",
+      "role": "轻量 MoE、低成本编程与通用对话",
+      "dateEvidence": "2026-01（发布月份）；2026-01-19（官方仓库创建时间，UTC）",
+      "dateNote": "仓库创建于2026-01-19T06:28:10Z；创建时间本身不能证明当时公开，不将它强行作为产品精确首发日。",
+      "dateSource": "https://huggingface.co/api/models/zai-org/GLM-4.7-Flash",
+      "sourceUrl": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+      "reportType": "官方仓库模型卡网页",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/Zhipu/glm-4-7-flash.html",
+      "pdfPages": 0,
+      "sha256": "bcb2937e30f5fc2b6b45fb7bc585f7e9cdc64c5088627b6786cb5059d90c4298",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "仓库创建于2026-01-19T06:28:10Z；创建时间本身不能证明当时公开，不将它强行作为产品精确首发日。",
+      "dateEvidencePaths": [
+        "sources/vendors/Zhipu/glm-4-7-flash-release-1.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "glm-5",
+      "name": "GLM-5",
+      "provider": "Zhipu",
+      "date": "2026-02-12",
+      "date_precision": "day",
+      "role": "旗舰编程、复杂系统工程、长程 Agent",
+      "dateEvidence": "2026-02-12（官方发布页）；2026-02-17（论文首发）",
+      "dateNote": "模型发布日与论文提交日分开。",
+      "dateSource": "https://z.ai/blog/glm-5\nhttps://docs.z.ai/release-notes/new-released",
+      "sourceUrl": "https://arxiv.org/pdf/2602.15763",
+      "reportType": "厂商技术报告PDF",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/Zhipu/glm-5.pdf",
+      "pdfPages": 40,
+      "sha256": "e20742ff36e08dc361de6973f7f72ad38e107edf8fd92d2a777a8428fc9b8f0e",
+      "conclusion": "CyberGym；CyberGym（后续报告／补测）",
+      "caveats": "模型发布日与论文提交日分开。",
+      "dateEvidencePaths": [
+        "sources/vendors/Zhipu/glm-5-release-1.mhtml",
+        "sources/vendors/Zhipu/zai-release-notes.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "glm-5-turbo",
+      "name": "GLM-5-Turbo",
+      "provider": "Zhipu",
+      "date": "2026-03",
+      "date_precision": "month",
+      "role": "面向 OpenClaw 等 Agent 工作流优化",
+      "dateEvidence": "2026-03（官方时间线）；原文03-15精确日待核",
+      "dateNote": "官方资料确认3月及模型用途；本次可访问的官方发布日志未保留03-15条目，不把原文精确日标为已确认。",
+      "dateSource": "https://autoclaw.z.ai/models/\nhttps://docs.z.ai/guides/llm/glm-5-turbo",
+      "sourceUrl": "https://docs.z.ai/guides/llm/glm-5-turbo",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-turbo.html",
+      "pdfPages": 0,
+      "sha256": "f189a2f083ddbfe76163462ab48ee340a898cacf9ef44623afe2082c29500fde",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "官方资料确认3月及模型用途；本次可访问的官方发布日志未保留03-15条目，不把原文精确日标为已确认。",
+      "dateEvidencePaths": [
+        "sources/vendors/Zhipu/glm-5-turbo-release-1.html",
+        "sources/vendors/Zhipu/glm-5-turbo.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "glm-5v-turbo",
+      "name": "GLM-5V-Turbo",
+      "provider": "Zhipu",
+      "date": "2026-04",
+      "date_precision": "month",
+      "role": "多模态编程、视觉工具使用与 GUI Agent",
+      "dateEvidence": "2026-04（发布）；2026-04-02（官方仓库发布记录）；2026-04-29（论文首发）",
+      "dateNote": "原文04-01未由当前厂商一手来源确认；仓库明确记04-02，不把报告4月29日当首发日。",
+      "dateSource": "https://github.com/zai-org/GLM-V\nhttps://autoclaw.z.ai/models/",
+      "sourceUrl": "https://arxiv.org/pdf/2604.26752",
+      "reportType": "厂商技术报告PDF",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/Zhipu/glm-5v-turbo.pdf",
+      "pdfPages": 30,
+      "sha256": "c6a28b9f33039e0324cb04cedad322dfbf55f23f9b7b0554480b788b4c22b834",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "原文04-01未由当前厂商一手来源确认；仓库明确记04-02，不把报告4月29日当首发日。",
+      "dateEvidencePaths": [
+        "sources/vendors/Zhipu/glm-5v-turbo-release-1.html",
+        "sources/vendors/Zhipu/glm-5-turbo-release-1.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "glm-5-1",
+      "name": "GLM-5.1",
+      "provider": "Zhipu",
+      "date": "2026-04-07",
+      "date_precision": "day",
+      "role": "长程自主执行、工程开发与持续调试",
+      "dateEvidence": "2026-04-07",
+      "dateNote": "",
+      "dateSource": "https://z.ai/blog/glm-5.1\nhttps://docs.z.ai/release-notes/new-released",
+      "sourceUrl": "https://z.ai/blog/glm-5.1",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-1.mhtml",
+      "pdfPages": 0,
+      "sha256": "9eebe09595096b397431e64c60b20578a087e52442a7f2cc352d017a8c9ee957",
+      "conclusion": "CyberGym",
+      "caveats": "",
+      "dateEvidencePaths": [
+        "sources/vendors/Zhipu/glm-5-1.mhtml",
+        "sources/vendors/Zhipu/zai-release-notes.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "glm-5-2",
+      "name": "GLM-5.2",
+      "provider": "Zhipu",
+      "date": "2026-06-16",
+      "date_precision": "day",
+      "role": "百万上下文、长程编程、复杂工程任务",
+      "dateEvidence": "2026-06-16",
+      "dateNote": "",
+      "dateSource": "https://z.ai/blog/glm-5.2\nhttps://docs.z.ai/release-notes/new-released",
+      "sourceUrl": "https://z.ai/blog/glm-5.2",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-2.mhtml",
+      "pdfPages": 0,
+      "sha256": "9d1569cd74e7b04e16fe00d19556159594f691b024eeb658d1c33c6298cb7951",
+      "conclusion": "CyberGym（后续报告／补测）；ExploitGym（后续报告／补测）；ExploitBench（后续报告／补测）",
+      "caveats": "",
+      "dateEvidencePaths": [
+        "sources/vendors/Zhipu/glm-5-2.mhtml",
+        "sources/vendors/Zhipu/zai-release-notes.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "glm-5-3",
+      "name": "GLM-5.3",
+      "provider": "Zhipu",
+      "date": "2026-08-14",
+      "date_precision": "day",
+      "role": "旗舰编程升级，强化漏洞发现能力",
+      "dateEvidence": "2026-08-14（宣布／Coding Plan）；2026-08-18（平台发布记录）",
+      "dateNote": "宣布、平台记录和开放权重是不同事件；博客说明权重计划在发布两周后开放，不推断精确开放日。",
+      "dateSource": "https://z.ai/blog/glm-5.3\nhttps://docs.z.ai/release-notes/new-released",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "pdfPages": 0,
+      "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+      "conclusion": "CyberGym；ExploitGym；ExploitBench",
+      "caveats": "宣布、平台记录和开放权重是不同事件；博客说明权重计划在发布两周后开放，不推断精确开放日。",
+      "dateEvidencePaths": [
+        "sources/vendors/Zhipu/glm-5-3.mhtml",
+        "sources/vendors/Zhipu/zai-release-notes.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "provider": "Zhipu",
+      "date": "2026-08-26",
+      "date_precision": "day",
+      "role": "高效率原生多模态、编程与办公 Agent",
+      "dateEvidence": "2026-08-26",
+      "dateNote": "",
+      "dateSource": "https://z.ai/blog/glm-5.3-flash\nhttps://docs.z.ai/release-notes/new-released",
+      "sourceUrl": "https://z.ai/blog/glm-5.3-flash",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3-flash.mhtml",
+      "pdfPages": 0,
+      "sha256": "69cc57cac92ae7c0dd043f911dec37ad8fb6c862fde0b45b99ef634de456ade1",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "",
+      "dateEvidencePaths": [
+        "sources/vendors/Zhipu/glm-5-3-flash.mhtml",
+        "sources/vendors/Zhipu/zai-release-notes.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "hy3-preview",
+      "name": "Hy3 preview",
+      "provider": "Tencent",
+      "date": "2026-04-23",
+      "date_precision": "day",
+      "role": "新一代通用模型预览，强化推理、代码与 Agent",
+      "dateEvidence": "2026-04-23",
+      "dateNote": "",
+      "dateSource": "https://hunyuan.tencent.com/research/hy3-preview",
+      "sourceUrl": "https://hunyuan.tencent.com/research/hy3-preview",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Tencent/hy3-preview.mhtml",
+      "pdfPages": 0,
+      "sha256": "c96cf9692bab99dd9b48512949840c9cfc0868e873b0195573a244c56524ebae",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "",
+      "dateEvidencePaths": [
+        "sources/vendors/Tencent/hy3-preview.mhtml"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "hy3",
+      "name": "Hy3",
+      "provider": "Tencent",
+      "date": "2026-07-06",
+      "date_precision": "day",
+      "role": "通用主力，编程、长文、办公与业务 Agent",
+      "dateEvidence": "2026-07-06（正式发布）",
+      "dateNote": "已核正式发布日；原文“8月扩大国际访问”的精确事件日期未由本次主资料确认。",
+      "dateSource": "https://hunyuan.tencent.com/research/hy3",
+      "sourceUrl": "https://hunyuan.tencent.com/research/hy3",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Tencent/hy3.mhtml",
+      "pdfPages": 0,
+      "sha256": "df40271110ee6673a422cf8d3bcb10ebc2b353555f954156b33db31933cbd4b3",
+      "conclusion": "CyberGym（后续报告／补测）",
+      "caveats": "已核对腾讯官方Hy4 preview基准附表图片，确认CyberGym；Hy3为后续报告中的比较结果，不归属于Hy3 preview。",
+      "dateEvidencePaths": [
+        "sources/vendors/Tencent/hy3.mhtml"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "hy4-preview",
+      "name": "Hy4 preview",
+      "provider": "Tencent",
+      "date": "2026-08-28",
+      "date_precision": "day",
+      "role": "新一代旗舰预览，770B MoE、百万上下文、复杂工程与 Agent",
+      "dateEvidence": "2026-08-28",
+      "dateNote": "",
+      "dateSource": "https://hunyuan.tencent.com/model/hy-model\nhttps://github.com/Tencent-Hunyuan/Hy4-preview",
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hy4-preview",
+      "reportType": "官方仓库模型说明网页",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/Tencent/hy4-preview.html",
+      "pdfPages": 0,
+      "sha256": "f36851e5b4d27e8eff20f50480ec2d53a904bd8450f56ca6553f666a3483fbaa",
+      "conclusion": "CyberGym",
+      "caveats": "已核对腾讯官方Hy4 preview基准附表图片，确认CyberGym；独立模型列披露CyberGym。",
+      "dateEvidencePaths": [
+        "sources/vendors/Tencent/hy4-preview-release-1.mhtml",
+        "sources/vendors/Tencent/hy4-preview.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "grok-4-20",
+      "name": "Grok 4.20",
+      "provider": "xAI",
+      "date": "2026-03-10",
+      "date_precision": "day",
+      "role": "通用推理与工具使用",
+      "dateEvidence": "2026-03-10（API上线）；2026-04-07（System Card）",
+      "dateNote": "System Card中“Grok 4.2 SA”指4.20的单Agent评测配置。",
+      "dateSource": "https://docs.x.ai/developers/release-notes",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "reportType": "官方System Card PDF",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+      "pdfPages": 8,
+      "sha256": "ea72c27a6b04949d07c828b1dc5971688a79a780e5727eeca1985434d3262760",
+      "conclusion": "Cybench；WMDP Cyber",
+      "caveats": "System Card中“Grok 4.2 SA”指4.20的单Agent评测配置。",
+      "dateEvidencePaths": [
+        "sources/vendors/xAI/xai-release-notes.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "grok-4-20-multi-agent",
+      "name": "Grok 4.20 Multi-Agent",
+      "provider": "xAI",
+      "date": "2026-03-10",
+      "date_precision": "day",
+      "role": "多 Agent 协作、实时深度研究",
+      "dateEvidence": "2026-03-10（API上线）",
+      "dateNote": "共享System Card覆盖两种部署模式，但双用途表格仅报告SA；不得将SA网安成绩继承为MA成绩。",
+      "dateSource": "https://docs.x.ai/developers/release-notes",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "reportType": "官方System Card PDF（共享）",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+      "pdfPages": 8,
+      "sha256": "ea72c27a6b04949d07c828b1dc5971688a79a780e5727eeca1985434d3262760",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "共享System Card覆盖两种部署模式，但双用途表格仅报告SA；不得将SA网安成绩继承为MA成绩。",
+      "dateEvidencePaths": [
+        "sources/vendors/xAI/xai-release-notes.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "grok-build-0-1",
+      "name": "Grok Build 0.1",
+      "provider": "xAI",
+      "date": "2026-05-19",
+      "date_precision": "day",
+      "role": "编程专用、Coding Agent",
+      "dateEvidence": "2026-05-19（API早期访问记录）；2026-05-29（API公测公告）",
+      "dateNote": "",
+      "dateSource": "https://docs.x.ai/developers/release-notes\nhttps://x.ai/news/grok-build-0-1",
+      "sourceUrl": "https://x.ai/news/grok-build-0-1",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/xAI/grok-build-0-1.html",
+      "pdfPages": 0,
+      "sha256": "1812731dcff815bfbe871aa7339c1da0eb7cebb88ec10bb3f59ef8d6101fff07",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "",
+      "dateEvidencePaths": [
+        "sources/vendors/xAI/xai-release-notes.html",
+        "sources/vendors/xAI/grok-build-0-1.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "grok-4-5",
+      "name": "Grok 4.5",
+      "provider": "xAI",
+      "date": "2026-07-08",
+      "date_precision": "day",
+      "role": "编程、Agent 与知识工作旗舰",
+      "dateEvidence": "2026-07-08（API上线）；2026-07-16（发布公告）",
+      "dateNote": "",
+      "dateSource": "https://docs.x.ai/developers/release-notes\nhttps://x.ai/news/grok-4-5",
+      "sourceUrl": "https://x.ai/news/grok-4-5",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/xAI/grok-4-5.html",
+      "pdfPages": 0,
+      "sha256": "f4da93a6d5eb4a2e7a57c79e566478e67fa4cc136e7b2f48dce1681f0b9acff2",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "",
+      "dateEvidencePaths": [
+        "sources/vendors/xAI/xai-release-notes.html",
+        "sources/vendors/xAI/grok-4-5.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "grok-4-6",
+      "name": "Grok 4.6",
+      "provider": "xAI",
+      "date": "2026-08-12",
+      "date_precision": "day",
+      "role": "长程 Agent、复杂编程、视觉与交互任务",
+      "dateEvidence": "2026-08-12",
+      "dateNote": "",
+      "dateSource": "https://docs.x.ai/developers/release-notes\nhttps://x.ai/news/grok-4-6",
+      "sourceUrl": "https://x.ai/news/grok-4-6",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/xAI/grok-4-6.html",
+      "pdfPages": 0,
+      "sha256": "24d0b48b966e0177d15c51ad106efad1da5ae72ee6ace7f5d26cb8eb486d7960",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "",
+      "dateEvidencePaths": [
+        "sources/vendors/xAI/xai-release-notes.html",
+        "sources/vendors/xAI/grok-4-6.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "grok-4-7",
+      "name": "Grok 4.7",
+      "provider": "xAI",
+      "date": "2026-09-21",
+      "date_precision": "day",
+      "role": "旗舰编程与知识工作，强化持续执行和自我验证",
+      "dateEvidence": "2026-09-21",
+      "dateNote": "HackerBench v0.3的3.3%是风险提示放行率，不是网安任务成功率。",
+      "dateSource": "https://docs.x.ai/developers/release-notes\nhttps://x.ai/news/grok-4-7",
+      "sourceUrl": "https://x.ai/news/grok-4-7",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/xAI/grok-4-7.html",
+      "pdfPages": 0,
+      "sha256": "ad8620db889ba6478a156599375a550d35218d075e5b6f02a9917ac598ce989f",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "HackerBench v0.3的3.3%是风险提示放行率，不是网安任务成功率。",
+      "dateEvidencePaths": [
+        "sources/vendors/xAI/xai-release-notes.html",
+        "sources/vendors/xAI/grok-4-7.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "grok-4-7-fast",
+      "name": "Grok 4.7 Fast",
+      "provider": "xAI",
+      "date": "2026-09-21",
+      "date_precision": "day",
+      "role": "同模型的高速服务档位，面向 Cursor／Grok Build",
+      "dateEvidence": "2026-09-21（服务档位）",
+      "dateNote": "官方发行说明明确Fast为同一模型，仅在Cursor和Grok Build提供；不作为独立模型重复计分。",
+      "dateSource": "https://docs.x.ai/developers/release-notes",
+      "sourceUrl": "https://x.ai/news/grok-4-7",
+      "reportType": "官方网页（未定位独立PDF）",
+      "pdfKind": "HTML",
+      "pdfPath": "sources/vendors/xAI/grok-4-7.html",
+      "pdfPages": 0,
+      "sha256": "ad8620db889ba6478a156599375a550d35218d075e5b6f02a9917ac598ce989f",
+      "conclusion": "同Grok 4.7的高速服务档位，不独立重复计分",
+      "caveats": "官方发行说明明确Fast为同一模型，仅在Cursor和Grok Build提供；不作为独立模型重复计分。",
+      "dateEvidencePaths": [
+        "sources/vendors/xAI/xai-release-notes.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "deepseek-v4-flash-preview",
+      "name": "DeepSeek-V4-Flash Preview",
+      "provider": "DeepSeek",
+      "date": "2026-04-24",
+      "date_precision": "day",
+      "role": "高效率通用推理、编程与 Agent",
+      "dateEvidence": "2026-04-24（预览）；2026-07-31（正式版API公测）",
+      "dateNote": "4月24日预览版；7月／8月正式版另列。共享V4模型卡未提供可归属的具名网安成绩。",
+      "dateSource": "https://api-docs.deepseek.com/updates/\nhttps://api-docs.deepseek.com/news/news260731/",
+      "sourceUrl": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+      "reportType": "官方PDF模型卡（V4系列共享）",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash.pdf",
+      "pdfPages": 8,
+      "sha256": "c225d71e3d3d21f263f6f4c2fda2f05757c61eb575a9d263cb9fee291576d5b0",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "不得将正式版或其他型号的网安成绩继承为预览版成绩。",
+      "dateEvidencePaths": [
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-2.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "deepseek-v4-pro-preview",
+      "name": "DeepSeek-V4-Pro Preview",
+      "provider": "DeepSeek",
+      "date": "2026-04-24",
+      "date_precision": "day",
+      "role": "旗舰推理、编程、复杂 Agent",
+      "dateEvidence": "2026-04-24（预览）；2026-08-13（正式版）",
+      "dateNote": "4月24日预览版；7月／8月正式版另列。共享V4模型卡未提供可归属的具名网安成绩。",
+      "dateSource": "https://api-docs.deepseek.com/updates/\nhttps://api-docs.deepseek.com/news/news260813/",
+      "sourceUrl": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+      "reportType": "官方PDF模型卡（V4系列共享）",
+      "pdfKind": "PDF",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash.pdf",
+      "pdfPages": 8,
+      "sha256": "c225d71e3d3d21f263f6f4c2fda2f05757c61eb575a9d263cb9fee291576d5b0",
+      "conclusion": "未在已查官方资料中确认具名网安能力基准",
+      "caveats": "不得将正式版或其他型号的网安成绩继承为预览版成绩。",
+      "dateEvidencePaths": [
+        "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+        "sources/vendors/DeepSeek/deepseek-v4-pro-release-2.html"
+      ],
+      "origin": "vendor-supplement"
+    }
+  ],
+  "evaluations": [
+    {
+      "id": "CAO-2026-0234",
+      "modelId": "deepseek-v4-flash",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "76.7%",
+      "originalScore": "",
+      "originalConfiguration": "正式版Flash-0731；7月31日更新记录；DeepSeek Harness minimal，max effort，top_p=0.95，temperature=1.0；正式版专属成绩；本条模型日期使用正式版上线日。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 76.7,
+          "unit": "percent",
+          "configuration": "正式版Flash-0731；7月31日更新记录；DeepSeek Harness minimal，max effort，top_p=0.95，temperature=1.0；正式版专属成绩；本条模型日期使用正式版上线日。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+            "pages": "",
+            "section": "2026-07-31",
+            "quote": "Cybergym: 76.7",
+            "sha256": "44aa1245d5d65d5fc54c8f47a9a3d3235e1ab064a8fc64d6a6e57f570ec8c99c",
+            "sourceUrl": "https://api-docs.deepseek.com/updates/"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 76.7,
+      "configuration": "正式版Flash-0731；7月31日更新记录；DeepSeek Harness minimal，max effort，top_p=0.95，temperature=1.0；正式版专属成绩；本条模型日期使用正式版上线日。",
+      "section": "2026-07-31",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0235",
+      "modelId": "deepseek-v4-pro",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "83.3%",
+      "originalScore": "",
+      "originalConfiguration": "8月13日正式版；不可混作4月Preview成绩；正式版专属成绩；本条模型日期使用正式版上线日。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 83.3,
+          "unit": "percent",
+          "configuration": "8月13日正式版；不可混作4月Preview成绩；正式版专属成绩；本条模型日期使用正式版上线日。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+            "pages": "",
+            "section": "2026-08-13",
+            "quote": "Cybergym: 83.3",
+            "sha256": "44aa1245d5d65d5fc54c8f47a9a3d3235e1ab064a8fc64d6a6e57f570ec8c99c",
+            "sourceUrl": "https://api-docs.deepseek.com/updates/"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 83.3,
+      "configuration": "8月13日正式版；不可混作4月Preview成绩；正式版专属成绩；本条模型日期使用正式版上线日。",
+      "section": "2026-08-13",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0236",
+      "modelId": "deepseek-v4-flash-vision-exp",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "75.3%",
+      "originalScore": "",
+      "originalConfiguration": "发布页图片Text-Based Agent Evaluation；DeepSeek Harness Minimal Mode；top_p=.95，temperature=1；模型独立列",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 75.3,
+          "unit": "percent",
+          "configuration": "发布页图片Text-Based Agent Evaluation；DeepSeek Harness Minimal Mode；top_p=.95，temperature=1；模型独立列"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "已人工读取官方基准表图片；原文goal.txt漏列。；原始图表：docs/DeepSeek/v4_260821_benchmark_en.png",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-vision-exp.html",
+            "pages": "",
+            "section": "基准表图片，CyberGym行",
+            "quote": "CyberGym row: DeepSeek V4-Flash-Vision-Exp 75.3; DeepSeek V4-Flash-0731 76.7.",
+            "sha256": "9a9ec802743e123f83cbe5138790e2150024ce16ab80122ce1cc9d136405645a",
+            "sourceUrl": "https://api-docs.deepseek.com/news/news260821/"
+          },
+          {
+            "pdfPath": "sources/vendors/DeepSeek/v4_260821_benchmark_en.png",
+            "pages": "",
+            "section": "CyberGym行／Vision-Exp独立列",
+            "quote": "CyberGym row: DeepSeek V4-Flash-Vision-Exp 75.3; DeepSeek V4-Flash-0731 76.7.",
+            "sha256": "4b3cca9a4075fb05ad51cdc819e106d9baea19ac5f1ab38aa38a370c02bf26f3",
+            "sourceUrl": "https://api-docs.deepseek.com/img/v4_260821_benchmark_en.png"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 75.3,
+      "configuration": "发布页图片Text-Based Agent Evaluation；DeepSeek Harness Minimal Mode；top_p=.95，temperature=1；模型独立列",
+      "section": "基准表图片，CyberGym行",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news260821/",
+      "pdfUrl": "https://api-docs.deepseek.com/news/news260821/",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-vision-exp.html",
+      "note": "已人工读取官方基准表图片；原文goal.txt漏列。；原始图表：docs/DeepSeek/v4_260821_benchmark_en.png",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0237",
+      "modelId": "deepseek-v4-1-flash",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "88.1%",
+      "originalScore": "",
+      "originalConfiguration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 88.1,
+          "unit": "percent",
+          "configuration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+            "pages": "",
+            "section": "2026-09-10",
+            "quote": "CyberGym (Pass@1) 88.1",
+            "sha256": "44aa1245d5d65d5fc54c8f47a9a3d3235e1ab064a8fc64d6a6e57f570ec8c99c",
+            "sourceUrl": "https://api-docs.deepseek.com/updates/"
+          },
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-1-flash.pdf",
+            "pages": "32-33",
+            "section": "§5.3 / Table 3",
+            "quote": "CyberGym (Pass@1) 88.1",
+            "sha256": "ba68e2e40408125ae6d2f63a9a241b61c73910691c74ec1a2a7023c851eac08d",
+            "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/main/DeepSeek_V41_Tech_Report.pdf"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 88.1,
+      "configuration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告",
+      "section": "2026-09-10",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0238",
+      "modelId": "deepseek-v4-1-flash",
+      "benchmark": "SEC-Bench Pro",
+      "status": "已确认",
+      "category": "能力",
+      "score": "62.8%",
+      "originalScore": "",
+      "originalConfiguration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "pass@1",
+          "value": 62.8,
+          "unit": "percent",
+          "configuration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+            "pages": "",
+            "section": "2026-09-10",
+            "quote": "SEC-Bench Pro (Pass@1) 62.8",
+            "sha256": "44aa1245d5d65d5fc54c8f47a9a3d3235e1ab064a8fc64d6a6e57f570ec8c99c",
+            "sourceUrl": "https://api-docs.deepseek.com/updates/"
+          },
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-1-flash.pdf",
+            "pages": "32-33",
+            "section": "§5.3 / Table 3",
+            "quote": "SEC-Bench Pro (Pass@1) 62.8",
+            "sha256": "ba68e2e40408125ae6d2f63a9a241b61c73910691c74ec1a2a7023c851eac08d",
+            "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/main/DeepSeek_V41_Tech_Report.pdf"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 62.8,
+      "configuration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告",
+      "section": "2026-09-10",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0239",
+      "modelId": "deepseek-v4-1-flash",
+      "benchmark": "ExploitGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "15.3%",
+      "originalScore": "",
+      "originalConfiguration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "pass@1",
+          "value": 15.3,
+          "unit": "percent",
+          "configuration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+            "pages": "",
+            "section": "2026-09-10",
+            "quote": "ExploitGym (Pass@1) 15.3",
+            "sha256": "44aa1245d5d65d5fc54c8f47a9a3d3235e1ab064a8fc64d6a6e57f570ec8c99c",
+            "sourceUrl": "https://api-docs.deepseek.com/updates/"
+          },
+          {
+            "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-1-flash.pdf",
+            "pages": "32-33",
+            "section": "§5.3 / Table 3",
+            "quote": "ExploitGym (Pass@1) 15.3",
+            "sha256": "ba68e2e40408125ae6d2f63a9a241b61c73910691c74ec1a2a7023c851eac08d",
+            "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/main/DeepSeek_V41_Tech_Report.pdf"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 15.3,
+      "configuration": "2026-09-10发布快照；官方日志原值；具体设置见技术报告",
+      "section": "2026-09-10",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfUrl": "https://api-docs.deepseek.com/updates/",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0240",
+      "modelId": "glm-5",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "43.2%",
+      "originalScore": "",
+      "originalConfiguration": "首发博客；Claude Code2.1.18，think，无web；1507任务，单次pass@1，250min/任务",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 43.2,
+          "unit": "percent",
+          "configuration": "首发博客；Claude Code2.1.18，think，无web；1507任务，单次pass@1，250min/任务"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-release-1.mhtml",
+            "pages": "",
+            "section": "Performance / Footnotes",
+            "quote": "CyberGym 43.2 (GLM-5 column)",
+            "sha256": "d0c9e42034b0dc2f6edfcbeb96fa41fad376a48ca2ff4fd8543a88e6b9e828cd",
+            "sourceUrl": "https://z.ai/blog/glm-5"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 43.2,
+      "configuration": "首发博客；Claude Code2.1.18，think，无web；1507任务，单次pass@1，250min/任务",
+      "section": "Performance / Footnotes",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5",
+      "pdfUrl": "https://z.ai/blog/glm-5",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-release-1.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0241",
+      "modelId": "glm-5",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "48.3%",
+      "originalScore": "",
+      "originalConfiguration": "后续GLM-5.1官方博客中的GLM-5比较列",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 48.3,
+          "unit": "percent",
+          "configuration": "后续GLM-5.1官方博客中的GLM-5比较列"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "后续报告比较值；保留首发43.2，不覆盖原值。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-1.mhtml",
+            "pages": "",
+            "section": "Performance table",
+            "quote": "CyberGym 48.3 (GLM-5 comparison column)",
+            "sha256": "9eebe09595096b397431e64c60b20578a087e52442a7f2cc352d017a8c9ee957",
+            "sourceUrl": "https://z.ai/blog/glm-5.1"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 48.3,
+      "configuration": "后续GLM-5.1官方博客中的GLM-5比较列",
+      "section": "Performance table",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.1",
+      "pdfUrl": "https://z.ai/blog/glm-5.1",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-1.mhtml",
+      "note": "后续报告比较值；保留首发43.2，不覆盖原值。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0242",
+      "modelId": "glm-5-1",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "68.7%",
+      "originalScore": "",
+      "originalConfiguration": "Claude Code2.1.56，think，无web，temperature1，top_p1，max_new_tokens32000",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 68.7,
+          "unit": "percent",
+          "configuration": "Claude Code2.1.56，think，无web，temperature1，top_p1，max_new_tokens32000"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-1.mhtml",
+            "pages": "",
+            "section": "Performance / Footnotes",
+            "quote": "68.7",
+            "sha256": "9eebe09595096b397431e64c60b20578a087e52442a7f2cc352d017a8c9ee957",
+            "sourceUrl": "https://z.ai/blog/glm-5.1"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 68.7,
+      "configuration": "Claude Code2.1.56，think，无web，temperature1，top_p1，max_new_tokens32000",
+      "section": "Performance / Footnotes",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.1",
+      "pdfUrl": "https://z.ai/blog/glm-5.1",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-1.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0243",
+      "modelId": "glm-5-2",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "77.2%",
+      "originalScore": "",
+      "originalConfiguration": "GLM-5.3官方博客；独立模型列；1507题，single-run pass@1；GLM-5.3配置Claude Code2.1.207，max，无web，max_new_tokens128000；GLM-5.3主列不限任务超时；未单独披露GLM-5.2的完整配置，不将5.3设置自动归给5.2。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 77.2,
+          "unit": "percent",
+          "configuration": "GLM-5.3官方博客；独立模型列；1507题，single-run pass@1；GLM-5.3配置Claude Code2.1.207，max，无web，max_new_tokens128000；GLM-5.3主列不限任务超时；未单独披露GLM-5.2的完整配置，不将5.3设置自动归给5.2。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "后续同厂报告补测",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance / Cybersecurity / Footnotes",
+            "quote": "CyberGym 77.2",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 77.2,
+      "configuration": "GLM-5.3官方博客；独立模型列；1507题，single-run pass@1；GLM-5.3配置Claude Code2.1.207，max，无web，max_new_tokens128000；GLM-5.3主列不限任务超时；未单独披露GLM-5.2的完整配置，不将5.3设置自动归给5.2。",
+      "section": "Performance / Cybersecurity / Footnotes",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "后续同厂报告补测",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0244",
+      "modelId": "glm-5-2",
+      "benchmark": "ExploitGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "2h:29题；6h:39题",
+      "originalScore": "",
+      "originalConfiguration": "GLM-5.3官方博客；独立模型列；869题；2h/6h按模型吞吐归一化的时间预算；值为完成题数，不是百分比",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "完成任务数",
+          "value": 29,
+          "unit": "count",
+          "configuration": "GLM-5.3官方博客；独立模型列；869题；该项按模型吞吐归一化的时间预算；值为完成题数，不是百分比；2h预算"
+        },
+        {
+          "label": "完成任务数",
+          "value": 39,
+          "unit": "count",
+          "configuration": "GLM-5.3官方博客；独立模型列；869题；该项按模型吞吐归一化的时间预算；值为完成题数，不是百分比；6h预算"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "后续同厂报告补测",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance / Cybersecurity / Footnotes",
+            "quote": "ExploitGym 2h / 6h: 29 / 39; 869 tasks.",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": null,
+      "configuration": "GLM-5.3官方博客；独立模型列；869题；2h/6h按模型吞吐归一化的时间预算；值为完成题数，不是百分比",
+      "section": "Performance / Cybersecurity / Footnotes",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "后续同厂报告补测",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0245",
+      "modelId": "glm-5-2",
+      "benchmark": "ExploitBench",
+      "status": "已确认",
+      "category": "能力",
+      "score": "24.4%",
+      "originalScore": "",
+      "originalConfiguration": "GLM-5.3官方博客；独立模型列；能力覆盖分数；300轮；不可解释为完整代码执行成功率；41题，3 revisions取能力并集再平均；GLM-5.2完整设置未单独披露。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "Cap%",
+          "value": 24.4,
+          "unit": "percent",
+          "configuration": "GLM-5.3官方博客；独立模型列；能力覆盖分数；300轮；不可解释为完整代码执行成功率；41题，3 revisions取能力并集再平均；GLM-5.2完整设置未单独披露。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "后续同厂报告补测",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance / Cybersecurity / Footnotes",
+            "quote": "ExploitBench 24.4%; average coverage score over all 41 tasks across 3 revisions; maximum 300 interaction rounds.",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 24.4,
+      "configuration": "GLM-5.3官方博客；独立模型列；能力覆盖分数；300轮；不可解释为完整代码执行成功率；41题，3 revisions取能力并集再平均；GLM-5.2完整设置未单独披露。",
+      "section": "Performance / Cybersecurity / Footnotes",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "后续同厂报告补测",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0246",
+      "modelId": "glm-5-3",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "84.5%",
+      "originalScore": "",
+      "originalConfiguration": "GLM-5.3官方博客；独立模型列；1507题，single-run pass@1；GLM-5.3配置Claude Code2.1.207，max，无web，max_new_tokens128000；GLM-5.3主列不限任务超时；未单独披露GLM-5.2的完整配置，不将5.3设置自动归给5.2。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 84.5,
+          "unit": "percent",
+          "configuration": "GLM-5.3官方博客；独立模型列；1507题，single-run pass@1；GLM-5.3配置Claude Code2.1.207，max，无web，max_new_tokens128000；GLM-5.3主列不限任务超时；未单独披露GLM-5.2的完整配置，不将5.3设置自动归给5.2。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance / Cybersecurity / Footnotes",
+            "quote": "CyberGym 84.5",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 84.5,
+      "configuration": "GLM-5.3官方博客；独立模型列；1507题，single-run pass@1；GLM-5.3配置Claude Code2.1.207，max，无web，max_new_tokens128000；GLM-5.3主列不限任务超时；未单独披露GLM-5.2的完整配置，不将5.3设置自动归给5.2。",
+      "section": "Performance / Cybersecurity / Footnotes",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0247",
+      "modelId": "glm-5-3",
+      "benchmark": "ExploitGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "2h:105题；6h:130题",
+      "originalScore": "",
+      "originalConfiguration": "GLM-5.3官方博客；独立模型列；869题；2h/6h按模型吞吐归一化的时间预算；值为完成题数，不是百分比",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "完成任务数",
+          "value": 105,
+          "unit": "count",
+          "configuration": "GLM-5.3官方博客；独立模型列；869题；该项按模型吞吐归一化的时间预算；值为完成题数，不是百分比；2h预算"
+        },
+        {
+          "label": "完成任务数",
+          "value": 130,
+          "unit": "count",
+          "configuration": "GLM-5.3官方博客；独立模型列；869题；该项按模型吞吐归一化的时间预算；值为完成题数，不是百分比；6h预算"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance / Cybersecurity / Footnotes",
+            "quote": "ExploitGym 2h / 6h: 105 / 130; 869 tasks.",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": null,
+      "configuration": "GLM-5.3官方博客；独立模型列；869题；2h/6h按模型吞吐归一化的时间预算；值为完成题数，不是百分比",
+      "section": "Performance / Cybersecurity / Footnotes",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0248",
+      "modelId": "glm-5-3",
+      "benchmark": "ExploitBench",
+      "status": "已确认",
+      "category": "能力",
+      "score": "54.4%",
+      "originalScore": "",
+      "originalConfiguration": "GLM-5.3官方博客；独立模型列；能力覆盖分数；300轮；不可解释为完整代码执行成功率；41题，3 revisions取能力并集再平均；GLM-5.2完整设置未单独披露。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "Cap%",
+          "value": 54.4,
+          "unit": "percent",
+          "configuration": "GLM-5.3官方博客；独立模型列；能力覆盖分数；300轮；不可解释为完整代码执行成功率；41题，3 revisions取能力并集再平均；GLM-5.2完整设置未单独披露。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance / Cybersecurity / Footnotes",
+            "quote": "ExploitBench 54.4%; average coverage score over all 41 tasks across 3 revisions; maximum 300 interaction rounds.",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 54.4,
+      "configuration": "GLM-5.3官方博客；独立模型列；能力覆盖分数；300轮；不可解释为完整代码执行成功率；41题，3 revisions取能力并集再平均；GLM-5.2完整设置未单独披露。",
+      "section": "Performance / Cybersecurity / Footnotes",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0249",
+      "modelId": "grok-4-20",
+      "benchmark": "Cybench",
+      "status": "已确认",
+      "category": "能力",
+      "score": "53%",
+      "originalScore": "",
+      "originalConfiguration": "Grok 4.2 SA；防护前；unguided end-to-end；明确单Agent配置",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "成功率",
+          "value": 53,
+          "unit": "percent",
+          "configuration": "Grok 4.2 SA；防护前；unguided end-to-end；明确单Agent配置"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "table",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+            "pages": "5-6",
+            "section": "Table4 / §4.2",
+            "quote": "Table 4: Grok 4.2 SA — Cybench success rate 0.53",
+            "sha256": "ea72c27a6b04949d07c828b1dc5971688a79a780e5727eeca1985434d3262760",
+            "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 53.0,
+      "configuration": "Grok 4.2 SA；防护前；unguided end-to-end；明确单Agent配置",
+      "section": "Table4 / §4.2",
+      "pages": "5-6",
+      "sourceKind": "PDF",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0250",
+      "modelId": "grok-4-20",
+      "benchmark": "WMDP Cyber",
+      "status": "已确认",
+      "category": "能力",
+      "score": "91%",
+      "originalScore": "",
+      "originalConfiguration": "Grok 4.2 SA；网安知识选择题；不能当作攻击任务成功率",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "准确率",
+          "value": 91,
+          "unit": "percent",
+          "configuration": "Grok 4.2 SA；网安知识选择题；不能当作攻击任务成功率"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "table",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+            "pages": "5",
+            "section": "Table4",
+            "quote": "Table 4: Grok 4.2 SA — WMDP Cyber accuracy 0.91",
+            "sha256": "ea72c27a6b04949d07c828b1dc5971688a79a780e5727eeca1985434d3262760",
+            "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 91.0,
+      "configuration": "Grok 4.2 SA；网安知识选择题；不能当作攻击任务成功率",
+      "section": "Table4",
+      "pages": "5",
+      "sourceKind": "PDF",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0251",
+      "modelId": "grok-4-20-multi-agent",
+      "benchmark": "Cybench / WMDP Cyber",
+      "status": "模型覆盖待核对",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "表4只给SA结果，不能继承到MA",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "表4只给SA结果，不能继承到MA",
+      "section": "Table 4 / §4.2",
+      "pages": "1,5-6",
+      "sourceKind": "PDF",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+      "note": "共享卡不代表两种模式拥有相同成绩。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0252",
+      "modelId": "grok-4-20",
+      "benchmark": "AgentHarm",
+      "status": "已确认",
+      "category": "通用安全（含网安）",
+      "score": "30%",
+      "originalScore": "",
+      "originalConfiguration": "恶意Agent任务拒答；含网安但也包含其他类别；不列为纯网安能力基准",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "违规率",
+          "value": 30,
+          "unit": "percent",
+          "configuration": "恶意Agent任务拒答；含网安但也包含其他类别；不列为纯网安能力基准"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "table",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+            "pages": "3",
+            "section": "Table 1 / §2",
+            "quote": "Table 1: Grok 4.2 SA — AgentHarm violation rate 0.30; MA not reported.",
+            "sha256": "ea72c27a6b04949d07c828b1dc5971688a79a780e5727eeca1985434d3262760",
+            "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 30.0,
+      "configuration": "恶意Agent任务拒答；含网安但也包含其他类别；不列为纯网安能力基准",
+      "section": "Table 1 / §2",
+      "pages": "3",
+      "sourceKind": "PDF",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0253",
+      "modelId": "grok-4-20",
+      "benchmark": "AgentDojo",
+      "status": "已确认",
+      "category": "防护/鲁棒性",
+      "score": "33%",
+      "originalScore": "",
+      "originalConfiguration": "Agent提示注入鲁棒性；不等同网安攻击能力",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "攻击成功率",
+          "value": 33,
+          "unit": "percent",
+          "configuration": "Agent提示注入鲁棒性；不等同网安攻击能力"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "table",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+            "pages": "3",
+            "section": "Table 1 / §2",
+            "quote": "Table 1: Grok 4.2 SA — AgentDojo attack success rate 0.33; MA not reported.",
+            "sha256": "ea72c27a6b04949d07c828b1dc5971688a79a780e5727eeca1985434d3262760",
+            "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 33.0,
+      "configuration": "Agent提示注入鲁棒性；不等同网安攻击能力",
+      "section": "Table 1 / §2",
+      "pages": "3",
+      "sourceKind": "PDF",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "pdfPath": "sources/vendors/xAI/grok-4-20.pdf",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0254",
+      "modelId": "grok-4-7",
+      "benchmark": "HackerBench v0.3",
+      "status": "已确认",
+      "category": "行为/拒答",
+      "score": "风险双用途提示放行率3.3%",
+      "originalScore": "",
+      "originalConfiguration": "网安风险请求安全性／拒答；越低越好，不是任务成功率",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "风险双用途提示放行率",
+          "value": 3.3,
+          "unit": "percent",
+          "configuration": "网安风险请求安全性／拒答；越低越好，不是任务成功率"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "依据本地归档官方报告逐项复核；比例按原指标换算，不与不同配置合并。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/xAI/grok-4-7.html",
+            "pages": "",
+            "section": "Safety & Cybersecurity",
+            "quote": "allowing only 3.3% of risky dual-use prompts through",
+            "sha256": "ad8620db889ba6478a156599375a550d35218d075e5b6f02a9917ac598ce989f",
+            "sourceUrl": "https://x.ai/news/grok-4-7"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": null,
+      "configuration": "网安风险请求安全性／拒答；越低越好，不是任务成功率",
+      "section": "Safety & Cybersecurity",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://x.ai/news/grok-4-7",
+      "pdfUrl": "https://x.ai/news/grok-4-7",
+      "pdfPath": "sources/vendors/xAI/grok-4-7.html",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0255",
+      "modelId": "hy3",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "51.8%",
+      "originalScore": "",
+      "originalConfiguration": "腾讯Hy4 preview官方模型卡基准附表；各模型最高可用推理设置；报告提醒Hy3部分成绩因harness、judge及反作弊机制更新而与旧报告不同",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 51.8,
+          "unit": "percent",
+          "configuration": "腾讯Hy4 preview官方模型卡基准附表；各模型最高可用推理设置；报告提醒Hy3部分成绩因harness、judge及反作弊机制更新而与旧报告不同"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "后续官方报告补测；已人工核对官方图片；原表漏列。证据图片：docs/Tencent/hy4-benchmark-appendix.jpg",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Tencent/hy3-benchmark-cybergym.html",
+            "pages": "",
+            "section": "Benchmark Appendix / CyberGym行",
+            "quote": "CyberGym row: Hy3 51.8; Hy4 preview 78.4.",
+            "sha256": "571ef5e97b9c766092a79a2d1dc370a3ce0855d29a18c958241efbf826b3801e",
+            "sourceUrl": "https://huggingface.co/tencent/Hy4-preview"
+          },
+          {
+            "pdfPath": "sources/vendors/Tencent/hy4-benchmark-appendix.jpg",
+            "pages": "",
+            "section": "CyberGym行／Hy3与Hy4 preview独立列",
+            "quote": "CyberGym row: Hy3 51.8; Hy4 preview 78.4.",
+            "sha256": "02c751bf51c52c52cc02094561d7144bbfe3e27084d48d8a405d580da3554e21",
+            "sourceUrl": "https://huggingface.co/tencent/Hy4-preview/resolve/main/assets/benchmark-appendix.jpg"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 51.8,
+      "configuration": "腾讯Hy4 preview官方模型卡基准附表；各模型最高可用推理设置；报告提醒Hy3部分成绩因harness、judge及反作弊机制更新而与旧报告不同",
+      "section": "Benchmark Appendix / CyberGym行",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://huggingface.co/tencent/Hy4-preview",
+      "pdfUrl": "https://huggingface.co/tencent/Hy4-preview",
+      "pdfPath": "sources/vendors/Tencent/hy3-benchmark-cybergym.html",
+      "note": "后续官方报告补测；已人工核对官方图片；原表漏列。证据图片：docs/Tencent/hy4-benchmark-appendix.jpg",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0256",
+      "modelId": "hy4-preview",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "78.4%",
+      "originalScore": "",
+      "originalConfiguration": "腾讯Hy4 preview官方模型卡基准附表；各模型最高可用推理设置；报告提醒Hy3部分成绩因harness、judge及反作弊机制更新而与旧报告不同",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 78.4,
+          "unit": "percent",
+          "configuration": "腾讯Hy4 preview官方模型卡基准附表；各模型最高可用推理设置；报告提醒Hy3部分成绩因harness、judge及反作弊机制更新而与旧报告不同"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "official_web",
+        "notes": "已人工核对官方图片；原表漏列。证据图片：docs/Tencent/hy4-benchmark-appendix.jpg",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Tencent/hy3-benchmark-cybergym.html",
+            "pages": "",
+            "section": "Benchmark Appendix / CyberGym行",
+            "quote": "CyberGym row: Hy3 51.8; Hy4 preview 78.4.",
+            "sha256": "571ef5e97b9c766092a79a2d1dc370a3ce0855d29a18c958241efbf826b3801e",
+            "sourceUrl": "https://huggingface.co/tencent/Hy4-preview"
+          },
+          {
+            "pdfPath": "sources/vendors/Tencent/hy4-benchmark-appendix.jpg",
+            "pages": "",
+            "section": "CyberGym行／Hy3与Hy4 preview独立列",
+            "quote": "CyberGym row: Hy3 51.8; Hy4 preview 78.4.",
+            "sha256": "02c751bf51c52c52cc02094561d7144bbfe3e27084d48d8a405d580da3554e21",
+            "sourceUrl": "https://huggingface.co/tencent/Hy4-preview/resolve/main/assets/benchmark-appendix.jpg"
+          }
+        ],
+        "laterDisclosure": false
+      },
+      "numericScore": 78.4,
+      "configuration": "腾讯Hy4 preview官方模型卡基准附表；各模型最高可用推理设置；报告提醒Hy3部分成绩因harness、judge及反作弊机制更新而与旧报告不同",
+      "section": "Benchmark Appendix / CyberGym行",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://huggingface.co/tencent/Hy4-preview",
+      "pdfUrl": "https://huggingface.co/tencent/Hy4-preview",
+      "pdfPath": "sources/vendors/Tencent/hy3-benchmark-cybergym.html",
+      "note": "已人工核对官方图片；原表漏列。证据图片：docs/Tencent/hy4-benchmark-appendix.jpg",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0257",
+      "modelId": "deepseek-v4-1-flash-1017",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news261017/",
+      "pdfUrl": "https://api-docs.deepseek.com/news/news261017/",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-1-flash-1017.html",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0258",
+      "modelId": "glm-4-7-flash",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+      "pdfUrl": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+      "pdfPath": "sources/vendors/Zhipu/glm-4-7-flash.html",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0259",
+      "modelId": "glm-5-turbo",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://docs.z.ai/guides/llm/glm-5-turbo",
+      "pdfUrl": "https://docs.z.ai/guides/llm/glm-5-turbo",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-turbo.html",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0260",
+      "modelId": "glm-5v-turbo",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "PDF",
+      "sourceUrl": "https://arxiv.org/pdf/2604.26752",
+      "pdfUrl": "https://arxiv.org/pdf/2604.26752",
+      "pdfPath": "sources/vendors/Zhipu/glm-5v-turbo.pdf",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0261",
+      "modelId": "glm-5-3-flash",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3-flash",
+      "pdfUrl": "https://z.ai/blog/glm-5.3-flash",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3-flash.mhtml",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0262",
+      "modelId": "hy3-preview",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://hunyuan.tencent.com/research/hy3-preview",
+      "pdfUrl": "https://hunyuan.tencent.com/research/hy3-preview",
+      "pdfPath": "sources/vendors/Tencent/hy3-preview.mhtml",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0263",
+      "modelId": "grok-build-0-1",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://x.ai/news/grok-build-0-1",
+      "pdfUrl": "https://x.ai/news/grok-build-0-1",
+      "pdfPath": "sources/vendors/xAI/grok-build-0-1.html",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0264",
+      "modelId": "grok-4-5",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://x.ai/news/grok-4-5",
+      "pdfUrl": "https://x.ai/news/grok-4-5",
+      "pdfPath": "sources/vendors/xAI/grok-4-5.html",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0265",
+      "modelId": "grok-4-6",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://x.ai/news/grok-4-6",
+      "pdfUrl": "https://x.ai/news/grok-4-6",
+      "pdfPath": "sources/vendors/xAI/grok-4-6.html",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0266",
+      "modelId": "grok-4-7-fast",
+      "benchmark": "未披露具名项目",
+      "status": "同模型服务档位",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "官方说明Fast为Grok 4.7的高速服务档位；无独立测分，不复制Grok 4.7成绩。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "官方说明Fast为Grok 4.7的高速服务档位；无独立测分，不复制Grok 4.7成绩。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "HTML",
+      "sourceUrl": "https://x.ai/news/grok-4-7",
+      "pdfUrl": "https://x.ai/news/grok-4-7",
+      "pdfPath": "sources/vendors/xAI/grok-4-7.html",
+      "note": "官方说明Fast为Grok 4.7的高速服务档位；无独立测分，不复制Grok 4.7成绩。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0267",
+      "modelId": "deepseek-v4-flash-preview",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "PDF",
+      "sourceUrl": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+      "pdfUrl": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash.pdf",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0268",
+      "modelId": "deepseek-v4-pro-preview",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "section": "官方模型说明／发布信息",
+      "pages": "",
+      "sourceKind": "PDF",
+      "sourceUrl": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+      "pdfUrl": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+      "pdfPath": "sources/vendors/DeepSeek/deepseek-v4-flash.pdf",
+      "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement"
+    }
+  ],
+  "benchmarks": [
+    {
+      "name": "WMDP Cyber",
+      "openness": "厂商官方报告披露；见定义来源",
+      "task": "网安双用途知识多项选择题准确率",
+      "caveat": "知识准确率不等于漏洞利用或攻击任务成功率。",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+    },
+    {
+      "name": "Cybench / WMDP Cyber",
+      "openness": "厂商官方报告披露；见定义来源",
+      "task": "共享报告中的网安任务与知识评测归属待核",
+      "caveat": "SA结果不能继承到Multi-Agent；此标签不用于合并或绘图。",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+    },
+    {
+      "name": "AgentHarm",
+      "openness": "厂商官方报告披露；见定义来源",
+      "task": "恶意Agent任务违规率，含网安及其他类别",
+      "caveat": "通用安全指标；越低越好；Grok 4.20表1仅披露SA。",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+    },
+    {
+      "name": "AgentDojo",
+      "openness": "厂商官方报告披露；见定义来源",
+      "task": "Agent提示注入攻击成功率",
+      "caveat": "防护鲁棒性指标；越低越好，不作为模型攻击能力成功率。",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+    },
+    {
+      "name": "HackerBench v0.3",
+      "openness": "厂商官方报告披露；见定义来源",
+      "task": "风险双用途网安提示放行率",
+      "caveat": "行为安全指标，越低越好；3.3%不是任务成功率。",
+      "sourceUrl": "https://x.ai/news/grok-4-7"
+    }
+  ],
+  "documents": [
+    {
+      "name": "deepseek-v4-1-flash-1017.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-1-flash-1017.html",
+      "pages": 0,
+      "sha256": "8125b7812df5c3bf3caf1dbddd2048381232970ea71dffd2df8b97bffc5f8c59",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news261017/",
+      "downloadUrl": "https://api-docs.deepseek.com/news/news261017/",
+      "fetchedAt": "2026-10-18T09:25:27.289427+00:00"
+    },
+    {
+      "name": "deepseek-v4-1-flash-release-2.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-1-flash-release-2.html",
+      "pages": 0,
+      "sha256": "2f884496b62a95aaf6a819374e5fed88d4be0f40c40cbab5dd7a3a866d5eb505",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news260910/",
+      "downloadUrl": "https://api-docs.deepseek.com/news/news260910/",
+      "fetchedAt": "2026-10-18T09:25:27.288007+00:00"
+    },
+    {
+      "name": "deepseek-v4-1-flash-release-3.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-1-flash-release-3.html",
+      "pages": 0,
+      "sha256": "20a85d60266362ba0213c8c523aad4229d8ecb75af2a55114bb7af3b4b7909c7",
+      "sourceUrl": "https://arxiv.org/abs/2609.19969",
+      "downloadUrl": "https://arxiv.org/abs/2609.19969",
+      "fetchedAt": "2026-10-18T09:35:12.758732+00:00"
+    },
+    {
+      "name": "deepseek-v4-1-flash.pdf",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "PDF",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-1-flash.pdf",
+      "pages": 51,
+      "sha256": "ba68e2e40408125ae6d2f63a9a241b61c73910691c74ec1a2a7023c851eac08d",
+      "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/main/DeepSeek_V41_Tech_Report.pdf",
+      "downloadUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/main/DeepSeek_V41_Tech_Report.pdf",
+      "fetchedAt": "2026-10-18T09:25:34.240655+00:00"
+    },
+    {
+      "name": "deepseek-v4-flash-release-1.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
+      "pages": 0,
+      "sha256": "44aa1245d5d65d5fc54c8f47a9a3d3235e1ab064a8fc64d6a6e57f570ec8c99c",
+      "sourceUrl": "https://api-docs.deepseek.com/updates/",
+      "downloadUrl": "https://api-docs.deepseek.com/updates/",
+      "fetchedAt": "2026-10-18T09:25:27.291022+00:00"
+    },
+    {
+      "name": "deepseek-v4-flash-release-2.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-flash-release-2.html",
+      "pages": 0,
+      "sha256": "5b940bd5a3f03d4e261e3e525278774f91d3b60f2fb3d6142303aae1133a7f1f",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news260731/",
+      "downloadUrl": "https://api-docs.deepseek.com/news/news260731/",
+      "fetchedAt": "2026-10-18T09:25:27.287134+00:00"
+    },
+    {
+      "name": "deepseek-v4-flash-vision-exp.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-flash-vision-exp.html",
+      "pages": 0,
+      "sha256": "9a9ec802743e123f83cbe5138790e2150024ce16ab80122ce1cc9d136405645a",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news260821/",
+      "downloadUrl": "https://api-docs.deepseek.com/news/news260821/",
+      "fetchedAt": "2026-10-18T09:25:27.286896+00:00"
+    },
+    {
+      "name": "deepseek-v4-flash.pdf",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "PDF",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-flash.pdf",
+      "pages": 8,
+      "sha256": "c225d71e3d3d21f263f6f4c2fda2f05757c61eb575a9d263cb9fee291576d5b0",
+      "sourceUrl": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+      "downloadUrl": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+      "fetchedAt": "2026-10-18T09:25:32.677369+00:00"
+    },
+    {
+      "name": "deepseek-v4-pro-release-2.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/DeepSeek/deepseek-v4-pro-release-2.html",
+      "pages": 0,
+      "sha256": "136427cad4a383674473c7b32261ef6302464982718bcb4dccad6f56e0d7b76b",
+      "sourceUrl": "https://api-docs.deepseek.com/news/news260813/",
+      "downloadUrl": "https://api-docs.deepseek.com/news/news260813/",
+      "fetchedAt": "2026-10-18T09:25:27.286722+00:00"
+    },
+    {
+      "name": "v4.1_261017_benchmark_table_en.png",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "官方基准表图片",
+      "path": "sources/vendors/DeepSeek/v4.1_261017_benchmark_table_en.png",
+      "pages": 0,
+      "sha256": "52c22094008778b467230086bedb4faa4b846e70499307ee5da0c75fc3a15a01",
+      "sourceUrl": "https://api-docs.deepseek.com/img/v4.1_261017_benchmark_table_en.png",
+      "downloadUrl": "https://api-docs.deepseek.com/img/v4.1_261017_benchmark_table_en.png",
+      "fetchedAt": "2026-10-18"
+    },
+    {
+      "name": "v4_260821_benchmark_en.png",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "官方基准表图片",
+      "path": "sources/vendors/DeepSeek/v4_260821_benchmark_en.png",
+      "pages": 0,
+      "sha256": "4b3cca9a4075fb05ad51cdc819e106d9baea19ac5f1ab38aa38a370c02bf26f3",
+      "sourceUrl": "https://api-docs.deepseek.com/img/v4_260821_benchmark_en.png",
+      "downloadUrl": "https://api-docs.deepseek.com/img/v4_260821_benchmark_en.png",
+      "fetchedAt": "2026-10-18"
+    },
+    {
+      "name": "hy3-benchmark-cybergym.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/Tencent/hy3-benchmark-cybergym.html",
+      "pages": 0,
+      "sha256": "571ef5e97b9c766092a79a2d1dc370a3ce0855d29a18c958241efbf826b3801e",
+      "sourceUrl": "https://huggingface.co/tencent/Hy4-preview",
+      "downloadUrl": "https://huggingface.co/tencent/Hy4-preview",
+      "fetchedAt": "2026-10-18T11:08:40.778487+00:00"
+    },
+    {
+      "name": "hy3-preview.mhtml",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "MHTML",
+      "path": "sources/vendors/Tencent/hy3-preview.mhtml",
+      "pages": 0,
+      "sha256": "c96cf9692bab99dd9b48512949840c9cfc0868e873b0195573a244c56524ebae",
+      "sourceUrl": "https://hunyuan.tencent.com/research/hy3-preview",
+      "downloadUrl": "https://hunyuan.tencent.com/research/hy3-preview",
+      "fetchedAt": "2026-10-18T09:25:34.783834+00:00",
+      "originalSha256": "49590f762871406e5376a15cf4799a090b30131cb41982b7c2c309dbdce01f30",
+      "sanitization": "已遮盖网页签名资源URL中的腾讯云访问标识，以通过GitHub凭据保护；正文和成绩未改动。originalSha256为用户提供的原始存档哈希，sha256为公开脱敏副本哈希。"
+    },
+    {
+      "name": "hy3.mhtml",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "MHTML",
+      "path": "sources/vendors/Tencent/hy3.mhtml",
+      "pages": 0,
+      "sha256": "df40271110ee6673a422cf8d3bcb10ebc2b353555f954156b33db31933cbd4b3",
+      "sourceUrl": "https://hunyuan.tencent.com/research/hy3",
+      "downloadUrl": "https://hunyuan.tencent.com/research/hy3",
+      "fetchedAt": "2026-10-18T09:25:34.493614+00:00",
+      "originalSha256": "49f573ab275c89ed58118194c79e302a61954b422e1941bd9addc1d7b1ac35fc",
+      "sanitization": "已遮盖网页签名资源URL中的腾讯云访问标识，以通过GitHub凭据保护；正文和成绩未改动。originalSha256为用户提供的原始存档哈希，sha256为公开脱敏副本哈希。"
+    },
+    {
+      "name": "hy4-benchmark-appendix.jpg",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "官方基准附表图片",
+      "path": "sources/vendors/Tencent/hy4-benchmark-appendix.jpg",
+      "pages": 0,
+      "sha256": "02c751bf51c52c52cc02094561d7144bbfe3e27084d48d8a405d580da3554e21",
+      "sourceUrl": "https://huggingface.co/tencent/Hy4-preview/resolve/main/assets/benchmark-appendix.jpg",
+      "downloadUrl": "https://huggingface.co/tencent/Hy4-preview/resolve/main/assets/benchmark-appendix.jpg",
+      "fetchedAt": "2026-10-18"
+    },
+    {
+      "name": "hy4-preview-release-1.mhtml",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "MHTML",
+      "path": "sources/vendors/Tencent/hy4-preview-release-1.mhtml",
+      "pages": 0,
+      "sha256": "e19b85f2f4349c0e39f6267b573479c22c268c400100e745fa49df72dada37f5",
+      "sourceUrl": "https://hunyuan.tencent.com/model/hy-model",
+      "downloadUrl": "https://hunyuan.tencent.com/model/hy-model",
+      "fetchedAt": "2026-10-18T09:25:34.276143+00:00"
+    },
+    {
+      "name": "hy4-preview.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/Tencent/hy4-preview.html",
+      "pages": 0,
+      "sha256": "f36851e5b4d27e8eff20f50480ec2d53a904bd8450f56ca6553f666a3483fbaa",
+      "sourceUrl": "https://github.com/Tencent-Hunyuan/Hy4-preview",
+      "downloadUrl": "https://github.com/Tencent-Hunyuan/Hy4-preview",
+      "fetchedAt": "2026-10-18T09:27:51.739828+00:00"
+    },
+    {
+      "name": "glm-4-7-flash-release-1.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/Zhipu/glm-4-7-flash-release-1.html",
+      "pages": 0,
+      "sha256": "831d4be1040cd91070eeec4fda43f82ae14412d270097f585458454400f9b1b4",
+      "sourceUrl": "https://huggingface.co/api/models/zai-org/GLM-4.7-Flash",
+      "downloadUrl": "https://huggingface.co/api/models/zai-org/GLM-4.7-Flash",
+      "fetchedAt": "2026-10-18T09:27:51.738340+00:00"
+    },
+    {
+      "name": "glm-4-7-flash.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/Zhipu/glm-4-7-flash.html",
+      "pages": 0,
+      "sha256": "bcb2937e30f5fc2b6b45fb7bc585f7e9cdc64c5088627b6786cb5059d90c4298",
+      "sourceUrl": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+      "downloadUrl": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+      "fetchedAt": "2026-10-18T09:27:10.742095+00:00"
+    },
+    {
+      "name": "glm-5-1.mhtml",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "MHTML",
+      "path": "sources/vendors/Zhipu/glm-5-1.mhtml",
+      "pages": 0,
+      "sha256": "9eebe09595096b397431e64c60b20578a087e52442a7f2cc352d017a8c9ee957",
+      "sourceUrl": "https://z.ai/blog/glm-5.1",
+      "downloadUrl": "https://z.ai/blog/glm-5.1",
+      "fetchedAt": "2026-10-18T09:25:45.092784+00:00"
+    },
+    {
+      "name": "glm-5-2.mhtml",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "MHTML",
+      "path": "sources/vendors/Zhipu/glm-5-2.mhtml",
+      "pages": 0,
+      "sha256": "9d1569cd74e7b04e16fe00d19556159594f691b024eeb658d1c33c6298cb7951",
+      "sourceUrl": "https://z.ai/blog/glm-5.2",
+      "downloadUrl": "https://z.ai/blog/glm-5.2",
+      "fetchedAt": "2026-10-18T09:25:45.162698+00:00"
+    },
+    {
+      "name": "glm-5-3-flash.mhtml",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "MHTML",
+      "path": "sources/vendors/Zhipu/glm-5-3-flash.mhtml",
+      "pages": 0,
+      "sha256": "69cc57cac92ae7c0dd043f911dec37ad8fb6c862fde0b45b99ef634de456ade1",
+      "sourceUrl": "https://z.ai/blog/glm-5.3-flash",
+      "downloadUrl": "https://z.ai/blog/glm-5.3-flash",
+      "fetchedAt": "2026-10-18T09:25:45.181770+00:00"
+    },
+    {
+      "name": "glm-5-3.mhtml",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "MHTML",
+      "path": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "pages": 0,
+      "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "downloadUrl": "https://z.ai/blog/glm-5.3",
+      "fetchedAt": "2026-10-18T09:25:45.166224+00:00"
+    },
+    {
+      "name": "glm-5-release-1.mhtml",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "MHTML",
+      "path": "sources/vendors/Zhipu/glm-5-release-1.mhtml",
+      "pages": 0,
+      "sha256": "d0c9e42034b0dc2f6edfcbeb96fa41fad376a48ca2ff4fd8543a88e6b9e828cd",
+      "sourceUrl": "https://z.ai/blog/glm-5",
+      "downloadUrl": "https://z.ai/blog/glm-5",
+      "fetchedAt": "2026-10-18T09:25:44.685558+00:00"
+    },
+    {
+      "name": "glm-5-turbo-release-1.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/Zhipu/glm-5-turbo-release-1.html",
+      "pages": 0,
+      "sha256": "f670bffaa05b62460258e9c49f7192dab32a772dd87f59db9e6a5133b13e3bda",
+      "sourceUrl": "https://autoclaw.z.ai/models/",
+      "downloadUrl": "https://autoclaw.z.ai/models/",
+      "fetchedAt": "2026-10-18T09:29:59.255240+00:00"
+    },
+    {
+      "name": "glm-5-turbo.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/Zhipu/glm-5-turbo.html",
+      "pages": 0,
+      "sha256": "f189a2f083ddbfe76163462ab48ee340a898cacf9ef44623afe2082c29500fde",
+      "sourceUrl": "https://docs.z.ai/guides/llm/glm-5-turbo",
+      "downloadUrl": "https://docs.z.ai/guides/llm/glm-5-turbo",
+      "fetchedAt": "2026-10-18T09:27:10.740270+00:00"
+    },
+    {
+      "name": "glm-5.pdf",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "PDF",
+      "path": "sources/vendors/Zhipu/glm-5.pdf",
+      "pages": 40,
+      "sha256": "e20742ff36e08dc361de6973f7f72ad38e107edf8fd92d2a777a8428fc9b8f0e",
+      "sourceUrl": "https://arxiv.org/pdf/2602.15763",
+      "downloadUrl": "https://arxiv.org/pdf/2602.15763",
+      "fetchedAt": "2026-10-18T09:27:10.745237+00:00"
+    },
+    {
+      "name": "glm-5v-turbo-release-1.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/Zhipu/glm-5v-turbo-release-1.html",
+      "pages": 0,
+      "sha256": "eb45372dab7e901d45f56892912e857914f4ef033fb8d17fcf80dafa275e004f",
+      "sourceUrl": "https://github.com/zai-org/GLM-V",
+      "downloadUrl": "https://github.com/zai-org/GLM-V",
+      "fetchedAt": "2026-10-18T09:27:10.743064+00:00"
+    },
+    {
+      "name": "glm-5v-turbo.pdf",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "PDF",
+      "path": "sources/vendors/Zhipu/glm-5v-turbo.pdf",
+      "pages": 30,
+      "sha256": "c6a28b9f33039e0324cb04cedad322dfbf55f23f9b7b0554480b788b4c22b834",
+      "sourceUrl": "https://arxiv.org/pdf/2604.26752",
+      "downloadUrl": "https://arxiv.org/pdf/2604.26752",
+      "fetchedAt": "2026-10-18T09:27:10.744104+00:00"
+    },
+    {
+      "name": "zai-release-notes.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/Zhipu/zai-release-notes.html",
+      "pages": 0,
+      "sha256": "a97ee4c68b2057d2878f496f0717ca07393d6860fdc40f05f92cb7d592cffdc5",
+      "sourceUrl": "https://docs.z.ai/release-notes/new-released",
+      "downloadUrl": "https://docs.z.ai/release-notes/new-released",
+      "fetchedAt": "2026-10-18T09:28:36.340991+00:00"
+    },
+    {
+      "name": "grok-4-20.pdf",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "PDF",
+      "path": "sources/vendors/xAI/grok-4-20.pdf",
+      "pages": 8,
+      "sha256": "ea72c27a6b04949d07c828b1dc5971688a79a780e5727eeca1985434d3262760",
+      "sourceUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "downloadUrl": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+      "fetchedAt": "2026-10-18T09:25:28.333446+00:00"
+    },
+    {
+      "name": "grok-4-5.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/xAI/grok-4-5.html",
+      "pages": 0,
+      "sha256": "f4da93a6d5eb4a2e7a57c79e566478e67fa4cc136e7b2f48dce1681f0b9acff2",
+      "sourceUrl": "https://x.ai/news/grok-4-5",
+      "downloadUrl": "https://x.ai/news/grok-4-5",
+      "fetchedAt": "2026-10-18T09:25:43.864933+00:00"
+    },
+    {
+      "name": "grok-4-6.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/xAI/grok-4-6.html",
+      "pages": 0,
+      "sha256": "24d0b48b966e0177d15c51ad106efad1da5ae72ee6ace7f5d26cb8eb486d7960",
+      "sourceUrl": "https://x.ai/news/grok-4-6",
+      "downloadUrl": "https://x.ai/news/grok-4-6",
+      "fetchedAt": "2026-10-18T09:25:43.873709+00:00"
+    },
+    {
+      "name": "grok-4-7.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/xAI/grok-4-7.html",
+      "pages": 0,
+      "sha256": "ad8620db889ba6478a156599375a550d35218d075e5b6f02a9917ac598ce989f",
+      "sourceUrl": "https://x.ai/news/grok-4-7",
+      "downloadUrl": "https://x.ai/news/grok-4-7",
+      "fetchedAt": "2026-10-18T09:25:44.385178+00:00"
+    },
+    {
+      "name": "grok-build-0-1.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/xAI/grok-build-0-1.html",
+      "pages": 0,
+      "sha256": "1812731dcff815bfbe871aa7339c1da0eb7cebb88ec10bb3f59ef8d6101fff07",
+      "sourceUrl": "https://x.ai/news/grok-build-0-1",
+      "downloadUrl": "https://x.ai/news/grok-build-0-1",
+      "fetchedAt": "2026-10-18T09:25:44.465111+00:00"
+    },
+    {
+      "name": "xai-release-notes.html",
+      "purpose": "厂商扩展：模型报告、发布日期或成绩证据",
+      "kind": "HTML",
+      "path": "sources/vendors/xAI/xai-release-notes.html",
+      "pages": 0,
+      "sha256": "345795792cc0152dd3cfc5fbb780e141a040fb840ffd70a6a50ced269cf16bd3",
+      "sourceUrl": "https://docs.x.ai/developers/release-notes",
+      "downloadUrl": "https://docs.x.ai/developers/release-notes",
+      "fetchedAt": "2026-10-18T09:25:32.382055+00:00"
+    }
+  ]
+}

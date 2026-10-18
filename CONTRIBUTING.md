@@ -4,7 +4,7 @@
 
 提交数据修订时请提供：模型精确版本、评测与指标名称、官方来源链接、章节 / 页码或图表、原始成绩、运行配置，以及属于首次披露还是后续补测。
 
-原始快照由Excel导入，PDF成绩补录由`data/score-audit/*.json`维护。新增/修正成绩时请编辑对应复核记录，保留PDF文件页码、提取方式和读数依据，运行`npm run data:import`同步生成JSON、CSV与Excel。原始历史Excel不因成绩补录被覆盖。新增模型还需在`data/model-identities.json`中加入ID和有证据支持的日期精度，不把其他模型结果自动继承到待核记录。
+原始快照由Excel导入，PDF成绩补录由`data/score-audit/*.json`维护。新增/修正成绩时请编辑对应复核记录，保留PDF文件页码、提取方式和读数依据，运行`npm run data:import`同步生成JSON、CSV与Excel。原始历史Excel不因成绩补录被覆盖。扩展原快照中的模型时还需在`data/model-identities.json`中加入ID和有证据支持的日期精度，不把其他模型结果自动继承到待核记录。
 
 核对或修订状态时保留记录 ID，说明修改依据。来源 URL 变化或需要拆分配置时，按数据字典维护身份映射。运行：
 
@@ -17,3 +17,5 @@ npm run build
 前端交互变更需运行浏览器检查。PR 自动执行数据校验与浏览器检查，成功后由维护者合并；只有 main 分支部署。
 
 新增历史成绩和可比组时，请先把原始记录与分析判断分开：相同评测名称不足以成立可比组。
+
+新增腾讯、智谱GLM、DeepSeek、xAI资料时维护`data/vendor-supplement.json`，归档原文件到`sources/vendors/`并记录SHA-256；新增记录在`data/record-identities.json`登记指纹与稳定ID。PDF填写文件页码，网页／图片填写evidence.section；不将网页章节写成PDF页码。日期依据文件在模型dateEvidencePaths中保留。不要编辑生成的data/documents.json或其他导出文件。

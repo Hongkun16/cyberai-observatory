@@ -15,6 +15,7 @@ import type { Audit, Evaluation, Provider } from './types';
 import {
   CREATORS,
   COLORS,
+  CREATOR_LABELS,
   configuration,
   familiesFor,
   modelName,
@@ -51,7 +52,7 @@ function Creator({ name }: { name: Provider }) {
       <span className={'creator-icon ' + name.toLowerCase()}>
         {name === 'OpenAI' ? '◈' : name[0]}
       </span>
-      {name}
+      {CREATOR_LABELS[name]}
     </span>
   );
 }
@@ -224,8 +225,8 @@ function App() {
                 }
               >
                 <p>
-                  探索 OpenAI、Anthropic 和 Google 的模型在漏洞发现、漏洞利用、CTF
-                  与多阶段任务中的表现。
+                  探索 OpenAI、Anthropic、Google、腾讯、智谱 GLM、DeepSeek 和 xAI
+                  的模型在漏洞发现、漏洞利用、CTF 与多阶段任务中的表现。
                 </p>
                 <div className="intro-links">
                   <External url={REPO}>About this dataset</External>
@@ -279,11 +280,13 @@ function Dashboard({
 }) {
   const benchmark = params.get('benchmark') || 'ExploitBench';
   const all = useMemo(() => resultsFor(data, benchmark), [data, benchmark]);
-  const families = familiesFor(all);
-  const family = families.find((f) => f.id === params.get('metric')) || families[0];
   const creator = params.get('creator') || 'all',
     setting = params.get('setting') || 'all',
     search = params.get('search') || '';
+  const families = familiesFor(
+    all.filter((r) => creator === 'all' || r.model.provider === creator),
+  );
+  const family = families.find((f) => f.id === params.get('metric')) || families[0];
   const sort = params.get('sort') || 'score',
     asc = params.get('direction') === 'asc';
   const results = all
@@ -387,7 +390,7 @@ function Dashboard({
               {CREATORS.map((c) => (
                 <span key={c}>
                   <i style={{ background: COLORS[c] }} />
-                  {c}
+                  {CREATOR_LABELS[c]}
                 </span>
               ))}
             </div>
@@ -402,7 +405,9 @@ function Dashboard({
           >
             <option value="all">All creators</option>
             {CREATORS.map((c) => (
-              <option key={c}>{c}</option>
+              <option key={c} value={c}>
+                {CREATOR_LABELS[c]}
+              </option>
             ))}
           </select>
           <select
@@ -734,6 +739,7 @@ function Models({
           }
         >
           <p>查看该模型在公开网络安全评测中的成绩、任务覆盖与运行配置。</p>
+          {selected.dateNote && <p>{selected.dateNote}</p>}
           <div className="intro-links">
             <a href="#models">← All models</a>
             <External url={selected.sourceUrl}>Model report</External>
@@ -743,6 +749,11 @@ function Models({
           <div className="section-heading">
             <h2>Cybersecurity performance</h2>
           </div>
+          {records.length === 0 && (
+            <p className="model-disclosure" role="status">
+              暂无可归属到该版本的已确认成绩。{selected.caveats || selected.conclusion}
+            </p>
+          )}
           <div className="table-scroll">
             <table aria-label="模型评测成绩">
               <thead>
@@ -803,7 +814,7 @@ function Models({
         meta={
           <>
             <span>{data.models.length} models</span>
-            <span>3 creators</span>
+            <span>{new Set(data.models.map((m) => m.provider)).size} creators</span>
             <span>2026 releases</span>
           </>
         }
@@ -823,7 +834,9 @@ function Models({
           >
             <option value="all">All creators</option>
             {CREATORS.map((c) => (
-              <option key={c}>{c}</option>
+              <option key={c} value={c}>
+                {CREATOR_LABELS[c]}
+              </option>
             ))}
           </select>
           <span>{models.length} models</span>
@@ -1027,6 +1040,16 @@ function ResultDialog({
         <section className="run-settings">
           <h3>运行设置</h3>
           <p>{configuration(record.configuration)}</p>
+          {record.scoreAudit?.laterDisclosure && (
+            <p>后续报告披露：此成绩来自模型发布后的报告或补测，不能视为首发成绩。</p>
+          )}
+          {record.scoreAudit?.notes && <p>{record.scoreAudit.notes}</p>}
+          {record.scoreAudit?.evidence.map((evidence, index) => (
+            <p key={index}>
+              来源定位：{evidence.pages ? `PDF 文件第 ${evidence.pages} 页` : evidence.section} ·{' '}
+              <External url={evidence.sourceUrl}>原始来源</External>
+            </p>
+          ))}
         </section>
         <div className="dialog-links">
           <External url={sourceLink(record)}>查看报告</External>

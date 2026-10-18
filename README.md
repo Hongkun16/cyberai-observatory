@@ -4,7 +4,9 @@
 
 [浏览网站](https://hongkun16.github.io/cyberai-observatory/) · [能力进展](https://hongkun16.github.io/cyberai-observatory/#progress) · [研究方法](docs/methodology.md) · [下载成绩补录版 Excel](web/public/downloads/audit-2026-10-18.xlsx)
 
-基于公开模型报告的证据资料库与交互网站。报告快照 **2026-10-17**：**48** 个模型 / 版本、**233** 条逐项记录、**196** 条证据归属已确认。**2026-10-18 已逐项复核全部196条已确认记录的PDF正文、表格及图表，新增113条数值成绩，现有156条数值记录、315项分配置指标。**项目没有独立重跑模型评测。
+基于公开模型报告的证据资料库与交互网站。覆盖 **OpenAI、Anthropic、Google、腾讯、智谱 GLM、DeepSeek、xAI 七家厂商**。截至 **2026-10-18**，共 **73** 个模型 / 版本 / 服务档位、**268** 条逐项记录、**218** 条证据归属已确认，包含 **178** 条数值记录、**339** 项分配置指标。项目没有独立重跑模型评测。
+
+原2026-10-17快照的48个模型、233条记录与196条PDF成绩复核完整保留。本轮根据用户提供的厂商资料及官方报告归档，新增25个版本条目（含DeepSeek预览版／正式版拆分）、35条记录和22条数值成绩。详见[厂商扩展说明](docs/vendor-expansion.md)。
 
 ![CyberAI Observatory 首页](docs/preview.png)
 
@@ -12,14 +14,14 @@
 
 - **成绩对比：**按评测、指标、厂商和运行配置筛选柱状图与成绩表，点击查看分项成绩和报告链接。
 - **进展趋势：**按模型发布日期查看同一指标的表现，月精度日期单列。
-- **模型目录：**48 个版本，支持搜索、厂商筛选和模型成绩页。
-- **评测库：**49 个评测 / 任务标签的定义、开放性和比较限制。
+- **模型目录：**73 个版本 / 服务档位，支持搜索、厂商筛选和模型成绩页。
+- **评测库：**54 个评测 / 任务标签的定义、开放性和比较限制。
 - **来源与方法：**核验记录、修订说明与研究方法保留在本仓库，网站聚焦成绩展示。
 - **下载：**Excel、CSV、完整 JSON；PDF 目录保留官方来源、页数与 SHA-256。
 
 ## 如何解释图表
 
-156 条记录已核实数值，22 条仅有未标精确值的曲线，18 条只有定性结论，37 条因证据未确认而不适用。原43条成绩也已复核。所有补录保留PDF路径、文件页码、原文摘录或图表读数、哈希和配置，详见 [成绩补录说明](docs/score-audit.md)。
+178 条记录已核实数值，22 条仅有未标精确值的曲线，18 条只有定性结论，50 条因归属未确认、未披露或不独立计分而不适用。原43条成绩也已复核。补录保留归档路径、PDF文件页码或网页章节、原文摘录或图表读数、哈希和配置。历史PDF复核详见 [成绩补录说明](docs/score-audit.md)。
 
 网页以 Artificial Analysis 的简洁数据展示风格为参考，采用浅灰页头、衬线标题、柱状图与紧凑表格。默认展示 ExploitBench Cap%，可切换评测、指标与运行配置。多个预算、防护开关及指标分别保留；次数指标可单独绘图，混合指标不平均。月精度结果在图下单列。只有曲线而没有精确数值标签的结果不估读。
 
@@ -55,6 +57,7 @@ npm run test:web
 
 ```text
 snapshots/2026-10-17.xlsx + data/score-audit/*.json
+                        + data/vendor-supplement.json + sources/vendors/
           ↓ scripts/import_workbook.py + scripts/export_workbook.py
 pdf/                     # 模型报告与补充材料 PDF
 data/                    # 标准模型、记录、评测、来源、修订、PDF 目录
@@ -65,15 +68,15 @@ web/public/downloads/    # CSV / Excel 下载
 dist/                    # 静态网站
 ```
 
-`data/model-identities.json` 保存模型 ID 及经整理的日期精度。`data/record-identities.json` 保存证据记录身份；修正配置、成绩或状态时保留原 ID。具体字段见 [数据字典](docs/data-dictionary.md)。PDF成绩复核层按厂商保存在 `data/score-audit/`，原始成绩及配置保留在 `originalScore`、`originalConfiguration`。
+`data/model-identities.json` 保存模型 ID 及经整理的日期精度。`data/record-identities.json` 保存证据记录身份；修正配置、成绩或状态时保留原 ID。具体字段见 [数据字典](docs/data-dictionary.md)。历史PDF成绩复核层按厂商保存在 `data/score-audit/`；新增四家厂商由 `data/vendor-supplement.json` 独立维护，官方PDF、HTML、MHTML和基准图片保存在 `sources/vendors/`。原始成绩及配置保留在 `originalScore`、`originalConfiguration`。
 
-原始Excel是记录、归属和来源索引的快照；逐项PDF复核JSON是成绩补录与配置纠正的来源。两者合并生成结构化数据、CSV及补录版Excel（含新增“成绩补录审计”表）。原始Excel完整保留，不覆盖历史证据。生成的Excel采用固定时间戳，可重复构建。
+原始Excel是记录、归属和来源索引的快照；逐项PDF复核JSON是历史成绩补录与配置纠正的来源；厂商扩展JSON保存新增模型、成绩及证据目录。两者合并生成结构化数据、CSV及补录版Excel（含“成绩补录审计”“新增厂商模型”“新增厂商证据文件”表）。原始Excel完整保留，不覆盖历史证据。生成的Excel采用固定时间戳，可重复构建。
 
 ## 部署与维护
 
 推送 `main` 后，GitHub Actions 会重新导入工作簿、校验数据、构建、执行浏览器检查，再部署 GitHub Pages。PR 执行同样检查但不部署。项目站点路径通过 `VITE_BASE_PATH` 设置，使用哈希导航以支持刷新和直接分享。
 
-PDF 文件收录在 [`pdf/`](pdf/README.md)，共 69 份模型报告与补充材料，包含官方原始 PDF 和官方网页转制 PDF。文件与 `data/pdfs.json` 的 SHA-256 逐一对应，网站链接与导出的 JSON 仍保留原始来源。
+PDF 文件收录在 [`pdf/`](pdf/README.md)，共 69 份模型报告与补充材料，包含官方原始 PDF 和官方网页转制 PDF。文件与 `data/pdfs.json` 的 SHA-256 逐一对应，网站链接与导出的 JSON 仍保留原始来源。新增厂商的36份PDF、网页和图片另存于 `sources/vendors/`，目录与哈希见 `data/documents.json`。
 
 [贡献方式](CONTRIBUTING.md) · [更新记录](CHANGELOG.md) · [下一步](ROADMAP.md)
 

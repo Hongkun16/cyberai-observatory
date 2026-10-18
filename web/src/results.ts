@@ -1,10 +1,31 @@
 import type { Audit, Evaluation, Model, Provider } from './types';
 
-export const CREATORS: Provider[] = ['OpenAI', 'Anthropic', 'Google'];
+export const CREATORS: Provider[] = [
+  'OpenAI',
+  'Anthropic',
+  'Google',
+  'Tencent',
+  'Zhipu',
+  'DeepSeek',
+  'xAI',
+];
 export const COLORS: Record<Provider, string> = {
   OpenAI: '#278768',
   Anthropic: '#d27b62',
   Google: '#4f85cc',
+  Tencent: '#8566b5',
+  Zhipu: '#bd8a28',
+  DeepSeek: '#4659bd',
+  xAI: '#525660',
+};
+export const CREATOR_LABELS: Record<Provider, string> = {
+  OpenAI: 'OpenAI',
+  Anthropic: 'Anthropic',
+  Google: 'Google',
+  Tencent: '腾讯 Tencent',
+  Zhipu: '智谱 GLM',
+  DeepSeek: 'DeepSeek',
+  xAI: 'xAI',
 };
 export type Metric = Evaluation['metrics'][number];
 export type Family = { id: string; label: string; unit: string; lower: boolean };
@@ -89,7 +110,7 @@ function familyFor(benchmark: string, metric: Metric): Family {
     id: id + '|' + unit,
     label,
     unit,
-    lower: /违规率|良性拒答|ASR|QSR|OSR|攻击成功率/.test(name),
+    lower: /违规率|良性拒答|ASR|QSR|OSR|攻击成功率|风险双用途提示放行率/.test(name),
   };
 }
 export function numberText(value: number) {

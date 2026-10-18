@@ -122,6 +122,37 @@ def apply_score_audit(records, pdfs):
     return records
 
 
+def merge_vendor_supplement(data, registry):
+    """Merge archived vendor evidence without changing the historical workbook."""
+    supplement = json.loads((ROOT / "data/vendor-supplement.json").read_text(encoding="utf-8"))
+    for item in supplement["provenance"] + supplement["documents"]:
+        path = ROOT / item["path"]
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]:
+            raise ValueError(f"Vendor archive hash mismatch: {item['path']}")
+    for r in supplement["evaluations"]:
+        key = fingerprint(r["modelId"], r["benchmark"], r["category"], r["sourceUrl"])
+        if registry.get(key) != r["id"]:
+            raise ValueError(f"Vendor record identity mismatch: {r['id']}")
+    data["models"].extend(supplement["models"])
+    data["evaluations"].extend(supplement["evaluations"])
+    data["benchmarks"].extend(supplement["benchmarks"])
+    data["documents"] = supplement["documents"]
+    records = data["evaluations"]
+    data["meta"].update(
+        supplementalAsOf=supplement["asOf"],
+        supplementalModelCount=len(supplement["models"]),
+        supplementalRecordCount=len(supplement["evaluations"]),
+        supplementalScoreCount=sum(r["scoreStatus"] == "reported" for r in supplement["evaluations"]),
+        modelCount=len(data["models"]), recordCount=len(records),
+        scoreCount=sum(r["scoreStatus"] == "reported" for r in records),
+        addedScoreCount=sum(not r["originalScore"] and r["scoreStatus"] == "reported" for r in records),
+        numericCount=sum(r["numericScore"] is not None for r in records),
+        reviewedScoreRecords=sum(r["scoreAudit"] is not None for r in records),
+        metricCount=sum(len(r["metrics"]) for r in records),
+        scoreStatusCounts=dict(Counter(r["scoreStatus"] for r in records)),
+    )
+
+
 def build(workbook: Path, as_of: str):
     sheets = read_workbook(workbook)
     identities = json.loads((ROOT / "data/model-identities.json").read_text())
@@ -184,9 +215,10 @@ def build(workbook: Path, as_of: str):
                      "downloadWorkbook": "downloads/audit-2026-10-18.xlsx"},
             "models": models, "evaluations": records, "benchmarks": benchmarks, "pdfs": pdfs,
             "revisions": revisions, "sources": sources}
+    merge_vendor_supplement(data, registry)
     validate(data)
     write_json(registry_path, registry)
-    for key in ["models", "evaluations", "benchmarks", "sources", "revisions", "pdfs", "meta"]:
+    for key in ["models", "evaluations", "benchmarks", "sources", "revisions", "pdfs", "documents", "meta"]:
         write_json(ROOT / f"data/{key}.json", data[key])
     write_json(ROOT / "web/public/data/audit.json", data)
     downloads = ROOT / "web/public/downloads"
@@ -212,13 +244,17 @@ def validate(data):
     if len(ids) != len(set(ids)):
         raise ValueError("Duplicate evaluation IDs")
     benchmarks = {b["name"] for b in data["benchmarks"]}
-    pdfs = {p["path"] for p in data["pdfs"]}
+    if len(benchmarks) != len(data["benchmarks"]):
+        raise ValueError("Duplicate benchmark names")
+    inventory = {p["path"]: p for p in data["pdfs"] + data.get("documents", [])}
     for m in data["models"]:
         pattern = r"\d{4}-\d{2}" if m["date_precision"] == "month" else r"\d{4}-\d{2}-\d{2}"
         if not re.fullmatch(pattern, m["date"]):
             raise ValueError(f"Date precision mismatch: {m['id']}")
+        if m["pdfPath"] not in inventory:
+            raise ValueError(f"Unresolved model report: {m['id']}")
     for r in data["evaluations"]:
-        if r["modelId"] not in models or r["benchmark"] not in benchmarks or r["pdfPath"] not in pdfs:
+        if r["modelId"] not in models or r["benchmark"] not in benchmarks or r["pdfPath"] not in inventory:
             raise ValueError(f"Unresolved reference: {r['id']}")
         for field in ["sourceUrl", "pdfUrl"]:
             if not r[field].startswith("https://"):
@@ -231,6 +267,15 @@ def validate(data):
             raise ValueError(f"Unconfirmed evidence has scored metrics: {r['id']}")
         if r["status"] == "已确认" and not r.get("scoreAudit"):
             raise ValueError(f"Confirmed record lacks score review: {r['id']}")
+        if r.get("scoreAudit"):
+            if not r["scoreAudit"]["evidence"]:
+                raise ValueError(f"Missing score evidence: {r['id']}")
+            for evidence in r["scoreAudit"]["evidence"]:
+                document = inventory.get(evidence["pdfPath"])
+                if not document or evidence["sha256"] != document["sha256"]:
+                    raise ValueError(f"Score evidence hash mismatch: {r['id']}")
+                if not evidence.get("quote") or not (evidence.get("pages") or evidence.get("section")):
+                    raise ValueError(f"Missing score evidence location: {r['id']}")
         if r["scoreStatus"] != "reported" and (r["numericScore"] is not None or r["metrics"]):
             raise ValueError(f"Non-numeric review has numeric metrics: {r['id']}")
         for metric in r["metrics"]:

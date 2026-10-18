@@ -75,7 +75,53 @@ try {
   await page.getByRole('button', { name: '展开导航' }).click();
   await page.getByRole('navigation').getByRole('link', { name: '模型', exact: true }).click();
   await page.getByRole('heading', { name: 'AI Models', exact: true }).waitFor();
-  await expect(page.locator('table tbody tr')).toHaveCount(48);
+  await expect(page.locator('table tbody tr')).toHaveCount(73);
+  for (const [creator, count] of [
+    ['Tencent', 3],
+    ['Zhipu', 8],
+    ['DeepSeek', 7],
+    ['xAI', 7],
+  ]) {
+    await page.getByRole('combobox', { name: '筛选模型厂商', exact: true }).selectOption(creator);
+    await expect(page.getByRole('table', { name: '模型列表' }).locator('tbody tr')).toHaveCount(
+      count,
+    );
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  }
+  await page.goto(origin + '#models?model=deepseek-v4-1-flash-1017');
+  await expect(page.getByRole('status')).toContainText('暂无可归属到该版本的已确认成绩');
+  await page.goto(origin + '#overview?benchmark=CyberGym&creator=Tencent');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('78.4%');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('51.8%');
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.screenshot({ path: 'test-results/vendors-mobile.png', fullPage: true });
+  await page.goto(origin + '#overview?benchmark=CyberGym&creator=Zhipu&search=GLM-5');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('43.2%');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('48.3%');
+  await page.goto(origin + '#overview?benchmark=CyberGym&creator=DeepSeek');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('88.1%');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('75.3%');
+  await page.goto(
+    origin +
+      '#overview?benchmark=ExploitGym&creator=Zhipu&metric=' +
+      encodeURIComponent('完成任务数|count'),
+  );
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('130');
+  await page.getByRole('combobox', { name: '筛选运行配置' }).selectOption('2 hours');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('105');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).not.toContainText('130');
+  await page.goto(origin + '#overview?benchmark=Cybench&creator=xAI');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('53%');
+  await page.goto(origin + '#overview?benchmark=HackerBench%20v0.3&creator=xAI');
+  await expect(
+    page.getByRole('heading', { name: '风险双用途提示放行率', exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('3.3%');
+  await page.setViewportSize({ width: 1440, height: 1050 });
+  await page.goto(origin + '#overview?benchmark=CyberGym');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('Hy4 preview');
+  await page.screenshot({ path: 'test-results/vendors-desktop.png', fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(origin + '#overview?record=CAO-2026-0147');
   await page.getByRole('dialog').waitFor();
   assert.match(await page.locator('.reported-result strong').innerText(), /289\/869/);
