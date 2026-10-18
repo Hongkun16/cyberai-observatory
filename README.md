@@ -4,9 +4,7 @@
 
 [浏览网站](https://hongkun16.github.io/cyberai-observatory/) · [能力进展](https://hongkun16.github.io/cyberai-observatory/#progress) · [研究方法](docs/methodology.md) · [下载成绩 Excel](web/public/downloads/audit-2026-10-18.xlsx)
 
-基于公开模型报告的证据资料库与交互网站。覆盖 **OpenAI、Anthropic、Google、腾讯、智谱 GLM、DeepSeek、xAI 七家厂商**。截至 **2026-10-18**，共 **73** 个模型 / 版本 / 服务档位、**268** 条逐项记录、**218** 条证据归属已确认，包含 **178** 条数值记录、**339** 项分配置指标。项目没有独立重跑模型评测。
-
-原2026-10-17快照的48个模型、233条记录与196条PDF成绩复核完整保留。本轮根据用户提供的厂商资料及官方报告归档，新增25个版本条目（含DeepSeek预览版／正式版拆分）、35条记录和22条数值成绩。详见[厂商扩展说明](docs/vendor-expansion.md)。
+基于公开模型报告的证据资料库与交互网站。覆盖 **OpenAI、Anthropic、Google、腾讯、智谱 GLM、DeepSeek、xAI 七家厂商**。截至 **2026-10-18**，共 **73** 个模型 / 版本 / 服务档位、**268** 条逐项记录、**218** 条证据归属已确认，包含 **178** 条数值记录、**339** 项分配置指标。
 
 ![CyberAI Observatory 首页](docs/preview.png)
 
