@@ -376,5 +376,33 @@
     "task": "风险双用途网安提示放行率",
     "caveat": "行为安全指标，越低越好；3.3%不是任务成功率。",
     "sourceUrl": "https://x.ai/news/grok-4-7"
+  },
+  {
+    "name": "In-house exploit suite (36 tasks; Moonshot)",
+    "task": "月之暗面内部36题端到端利用测试",
+    "openness": "内部私有题集；用户态与Linux内核任务",
+    "caveat": "不是公开ExploitGym或ExploitBench；题集、配置和加固等级单独解释。",
+    "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf"
+  },
+  {
+    "name": "The Last Ones (TLO)",
+    "task": "32步模拟企业网络的自主攻击进度与端到端完成情况",
+    "openness": "UK AISI／CAISI评估；原版环境开放性未确认",
+    "caveat": "保留每次100M token预算、尝试数与模型部署设置；不把平均步骤当成功率。",
+    "sourceUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities"
+  },
+  {
+    "name": "CyberBench v1",
+    "task": "真实开源项目漏洞PoC复现与修复的总体准确率（v1）",
+    "openness": "Vals AI私有评测；v1已归档",
+    "caveat": "mini-swe-agent；60题PoC及原Patch设置；不与v1.1直接比较。",
+    "sourceUrl": "https://www.vals.ai/benchmarks/cyber-v1"
+  },
+  {
+    "name": "CyberBench v1.1",
+    "task": "离线沙箱及加固评分器下的漏洞PoC复现与修复准确率（v1.1）",
+    "openness": "Vals AI私有评测；离线任务沙箱与加固grader",
+    "caveat": "保留60题PoC、56题Patch的版本设置；v1.1重跑结果不覆盖v1。",
+    "sourceUrl": "https://www.vals.ai/benchmarks/cyber"
   }
 ]

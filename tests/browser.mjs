@@ -25,7 +25,7 @@ try {
     'CyScenarioBench',
     'CVE-Bench',
   ]);
-  await expect(page.locator('.legend img')).toHaveCount(7);
+  await expect(page.locator('.legend img')).toHaveCount(8);
   await expect
     .poll(() =>
       page
@@ -95,12 +95,13 @@ try {
   await page.getByRole('button', { name: '展开导航' }).click();
   await page.getByRole('navigation').getByRole('link', { name: '模型', exact: true }).click();
   await page.getByRole('heading', { name: 'AI Models', exact: true }).waitFor();
-  await expect(page.locator('table tbody tr')).toHaveCount(73);
+  await expect(page.locator('table tbody tr')).toHaveCount(79);
   for (const [creator, count] of [
     ['Tencent', 3],
     ['Zhipu', 8],
     ['DeepSeek', 7],
     ['xAI', 7],
+    ['Kimi', 6],
   ]) {
     await page.getByRole('combobox', { name: '筛选模型厂商', exact: true }).selectOption(creator);
     await expect(page.getByRole('table', { name: '模型列表' }).locator('tbody tr')).toHaveCount(
@@ -170,7 +171,7 @@ try {
   await page.goto(origin + '#models');
   await expect(
     page.getByRole('table', { name: 'Model directory', exact: true }).locator('tbody tr'),
-  ).toHaveCount(73);
+  ).toHaveCount(79);
   assert.doesNotMatch(await page.locator('main').innerText(), /[\u3400-\u9fff]/);
   await expect(
     page.getByRole('combobox', { name: 'Filter model creator' }).locator('option[value="Zhipu"]'),
@@ -181,7 +182,7 @@ try {
   ).toBeVisible();
   assert.doesNotMatch(await page.locator('main').innerText(), /[\u3400-\u9fff]/);
   await page.goto(origin + '#benchmarks');
-  await expect(page.locator('.benchmark-row')).toHaveCount(54);
+  await expect(page.locator('.benchmark-row')).toHaveCount(58);
   assert.deepEqual((await page.locator('.benchmark-row h2').allTextContents()).slice(0, 6), [
     'ExploitBench',
     'CyberGym',
@@ -207,6 +208,68 @@ try {
   await expect(page.getByRole('combobox', { name: '筛选厂商', exact: true })).toHaveValue(
     'Tencent',
   );
+  await page.goto(origin + '#overview?benchmark=CyberGym&creator=Kimi');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('80%');
+  await page.getByRole('combobox', { name: '选择指标' }).selectOption('Avg@5成功率|percent');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('Kimi K2.5');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('41.3%');
+  await page.goto(origin + '#overview?benchmark=ExploitBench&creator=Kimi');
+  await expect(page.getByRole('table', { name: '模型成绩表' }).locator('tbody tr')).toHaveCount(2);
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('32.2%');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('32%');
+  await page.goto(origin + '#overview?benchmark=ExploitGym&creator=Kimi');
+  await page.getByRole('combobox', { name: '筛选运行配置' }).selectOption('2 hours');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('36');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).not.toContainText('70');
+  await page.getByRole('combobox', { name: '筛选运行配置' }).selectOption('6 hours');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('70');
+  await expect(page.getByRole('table', { name: '模型成绩表' })).not.toContainText('70%');
+  await page.goto(
+    origin +
+      '#overview?benchmark=Real-world%20Vulnerability%20Discovery&creator=Kimi&metric=' +
+      encodeURIComponent('人工复核确认比例|percent'),
+  );
+  await expect(page.getByRole('table', { name: '模型成绩表' })).toContainText('~70%');
+  await expect(page.locator('.data-point')).toHaveCount(0);
+  await page.goto(
+    origin + '#overview?benchmark=CyberBench%20v1.1&creator=Kimi&record=CAO-2026-0272',
+  );
+  await expect(page.getByRole('dialog')).toContainText('Vals AI');
+  await expect(page.getByRole('dialog')).toContainText('独立机构评测');
+  await page.getByRole('button', { name: '关闭结果详情' }).click();
+  await page.getByRole('button', { name: 'Switch to English', exact: true }).click();
+  await expect(page.getByRole('table', { name: 'Model results', exact: true })).toContainText(
+    '75.24%',
+  );
+  assert.doesNotMatch(await page.locator('main').innerText(), /[\u3400-\u9fff]/);
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await expect
+    .poll(() =>
+      page
+        .locator('.bar-plot .data-point rect')
+        .first()
+        .evaluate((bar) => {
+          const bounds = bar.getBoundingClientRect();
+          const plot = bar.closest('.plot-scroll').getBoundingClientRect();
+          return bounds.left >= plot.left && bounds.right <= plot.right;
+        }),
+    )
+    .toBe(true);
+  await page.screenshot({ path: 'test-results/kimi-mobile.png', fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 1050 });
+  await page.goto(origin + '#models?model=kimi-k3');
+  await expect(page.getByRole('table', { name: 'Model evaluation results' })).toContainText(
+    'CyberBench v1.1',
+  );
+  assert.doesNotMatch(await page.locator('main').innerText(), /[\u3400-\u9fff]/);
+  await expect(page.getByRole('table', { name: 'Model evaluation results' })).toContainText(
+    'Tasks completed (2 hours): 36',
+  );
+  await expect(page.getByRole('table', { name: 'Model evaluation results' })).toContainText(
+    'Tasks completed (6 hours): 70',
+  );
+  await page.screenshot({ path: 'test-results/kimi-profile.png', fullPage: true });
   assert.deepEqual(errors, []);
   console.log(
     'Browser checks passed: comparison, metric conversion, filters, trend dates, profiles, deep links, keyboard focus, downloads and mobile.',

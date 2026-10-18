@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import english from './data.en.json';
-import { configuration, numberText, scoreSummary } from './results';
+import { configuration, numberText, scoreSummary, variant } from './results';
 import type { Evaluation } from './types';
 
 type Language = 'zh' | 'en';
@@ -50,10 +50,13 @@ export function useLanguage() {
     if (!/[\u3400-\u9fff]/.test(record.score)) return record.score;
     return (
       record.metrics
-        .map(
-          (metric) =>
-            `${tr(metric.label)}: ${typeof metric.value === 'number' ? numberText(metric.value) : metric.value}${metric.unit === 'percent' ? '%' : ''}`,
-        )
+        .map((metric) => {
+          const setting = variant(metric.configuration);
+          const repeated =
+            record.metrics.filter((other) => other.label === metric.label).length > 1;
+          const qualifier = repeated && setting !== 'Report setting' ? ` (${setting})` : '';
+          return `${tr(metric.label)}${qualifier}: ${typeof metric.value === 'number' ? numberText(metric.value) : metric.value}${metric.unit === 'percent' ? '%' : ''}`;
+        })
         .join('; ') || 'See original reported result'
     );
   };

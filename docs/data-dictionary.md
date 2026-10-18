@@ -49,9 +49,9 @@
 
 `data/record-identities.json` 用模型、评测名称、类别和来源 URL 的指纹映射到既有 ID。成绩、配置和状态的修订不会更改 ID。若来源 URL 被修正或同一来源需要新增多条配置记录，应人工维护身份映射并检查深链接，不要重新编号所有记录。重复 ID 或未解析引用会使导入失败。
 
-## 四家厂商扩展层
+## 厂商扩展层
 
-`data/vendor-supplement.json`是腾讯、智谱GLM、DeepSeek、xAI新增资料的维护源，包含models、evaluations、benchmarks、documents和provenance。导入器先生成历史快照，再合并此层；原始Excel和历史复核不被覆盖。
+`data/vendor-supplement.json`是腾讯、智谱GLM、DeepSeek、xAI、Kimi新增资料的维护源，包含models、evaluations、benchmarks、documents和provenance。导入器先生成历史快照，再合并此层；原始Excel和历史复核不被覆盖。
 
 新增模型和记录的`origin`为`vendor-supplement`。`dateEvidencePaths`保留日期依据的本地归档路径。DeepSeek V4预览版和正式版使用独立ID和日期；Fast服务档位只列目录，不复制分数。
 
@@ -68,3 +68,5 @@ meta.asOf仍是原Excel快照日期；supplementalAsOf表示扩展层日期，su
 网站按times降序排列已有评测，相同次数沿用参考表顺序；未列评测排在其后，按本站已确认且有数值成绩的去重模型数降序。首页取前六项作为快捷评测。原始评测数组、ID和深链接不因排序或语言改变。
 
 英文展示词典位于`web/src/data.en.json`，覆盖模型用途／日期说明、评测任务／开放性、指标及分项配置。语言状态仅保存在浏览器本地；数据原文不改写。英文成绩摘要来自已记录的分项指标，原成绩、完整配置、证据定位和核验备注可在结果弹窗展开查看。
+
+Kimi的`assessmentProvider`表示评测方，`assessmentKind`为vendor（厂商自测）、cross-vendor（其他厂商比较）或independent（独立机构）。来源类型同时保留到网站、CSV与Excel；后两类不是本项目独立重跑。原始版本ID、试验预算、指标单位和证据定位不因来源不同而合并。

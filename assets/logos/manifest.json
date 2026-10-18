@@ -89,5 +89,18 @@
     "mode": "RGBA",
     "padding": 12,
     "removedWhiteBorder": false
+  },
+  {
+    "provider": "kimi",
+    "source": "assets/logos/original/kimi.svg",
+    "sourceSha256": "66434c899a0731c503192feec161c3c412d2d5a4bd0979ae8e49eae638bf29fa",
+    "output": "web/public/logos/kimi.png",
+    "sha256": "918d997d6102cb2b4bb1e71a7400fec65d55aa30892e97e58fa610cc6344b3f3",
+    "width": 128,
+    "height": 128,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": 12,
+    "removedWhiteBorder": false
   }
 ]

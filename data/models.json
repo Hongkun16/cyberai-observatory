@@ -1503,5 +1503,146 @@
       "sources/vendors/DeepSeek/deepseek-v4-pro-release-2.html"
     ],
     "origin": "vendor-supplement"
+  },
+  {
+    "id": "kimi-k2-5",
+    "name": "Kimi K2.5",
+    "provider": "Kimi",
+    "date": "2026-01-27",
+    "date_precision": "day",
+    "role": "多模态与 Agent；支持思考／非思考模式",
+    "dateEvidence": "1月27日为官方产品演进记录中的模型发布日；2月2日为技术报告提交日，两者分开。",
+    "dateNote": "1月27日为官方产品演进记录中的模型发布日；2月2日为技术报告提交日，两者分开。",
+    "dateSource": "https://www.kimi.ai/help/agent/agent-overview",
+    "sourceUrl": "https://arxiv.org/pdf/2602.02276",
+    "reportType": "厂商技术报告PDF",
+    "pdfKind": "官方原始 PDF",
+    "pdfPath": "sources/vendors/Moonshot/kimi-k2-5.pdf",
+    "pdfPages": 31,
+    "sha256": "889025c0fcbacb8b049aacd5b21f6c902a236eb28dec7aa51e6852ca39ec5417",
+    "conclusion": "CyberGym",
+    "caveats": "1月27日为官方产品演进记录中的模型发布日；2月2日为技术报告提交日，两者分开。",
+    "dateEvidencePaths": [
+      "sources/vendors/Moonshot/release-history.html"
+    ],
+    "origin": "vendor-supplement"
+  },
+  {
+    "id": "kimi-k2-6",
+    "name": "Kimi K2.6",
+    "provider": "Kimi",
+    "date": "2026-04-20",
+    "date_precision": "day",
+    "role": "多模态、长程编程与 Agent Swarm",
+    "dateEvidence": "按官方产品演进记录4月20日绘图；原表另列4月21日论坛公告，保留不同事件口径。",
+    "dateNote": "按官方产品演进记录4月20日绘图；原表另列4月21日论坛公告，保留不同事件口径。",
+    "dateSource": "https://www.kimi.ai/help/agent/agent-overview",
+    "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K2.6",
+    "reportType": "官方模型说明网页（共享页面不代表独立模型卡）",
+    "pdfKind": "MHTML",
+    "pdfPath": "sources/vendors/Moonshot/kimi-k2-6.mhtml",
+    "pdfPages": 0,
+    "sha256": "b75c00c64576896c669a1335d79cb234d9e16f945b5ca739beae857346fc585c",
+    "conclusion": "CyberBench v1（Vals AI独立机构评测）",
+    "caveats": "按官方产品演进记录4月20日绘图；原表另列4月21日论坛公告，保留不同事件口径。",
+    "dateEvidencePaths": [
+      "sources/vendors/Moonshot/release-history.html"
+    ],
+    "origin": "vendor-supplement"
+  },
+  {
+    "id": "kimi-k2-7-code",
+    "name": "Kimi K2.7 Code",
+    "provider": "Kimi",
+    "date": "2026-06-12",
+    "date_precision": "day",
+    "role": "编程与工具使用；持续思考",
+    "dateEvidence": "官方更新日志确认6月12日发布并开放权重；未确认具名网安成绩，不继承其他Kimi版本。",
+    "dateNote": "官方更新日志确认6月12日发布并开放权重；未确认具名网安成绩，不继承其他Kimi版本。",
+    "dateSource": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+    "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+    "reportType": "官方模型说明网页（共享页面不代表独立模型卡）",
+    "pdfKind": "MHTML",
+    "pdfPath": "sources/vendors/Moonshot/kimi-k2-7-code.mhtml",
+    "pdfPages": 0,
+    "sha256": "a4e61fd94b6408158c3fe63d9df56dd3b929b03382f5156bcc209d83b3631d60",
+    "conclusion": "未确认具名网安基准",
+    "caveats": "官方更新日志确认6月12日发布并开放权重；未确认具名网安成绩，不继承其他Kimi版本。",
+    "dateEvidencePaths": [
+      "sources/vendors/Moonshot/kimi-code-changelog.mhtml"
+    ],
+    "origin": "vendor-supplement"
+  },
+  {
+    "id": "kimi-k2-7-code-highspeed",
+    "name": "Kimi K2.7 Code HighSpeed",
+    "provider": "Kimi",
+    "date": "2026-07-09",
+    "date_precision": "day",
+    "role": "K2.7 Code 同模型加速档位；不另计 benchmark 使用次数",
+    "dateEvidence": "7月9日为HighSpeed正式上线；6月12日仅预告。同一模型加速档位，不复制独立成绩；共享配置页不是独立模型卡。",
+    "dateNote": "7月9日为HighSpeed正式上线；6月12日仅预告。同一模型加速档位，不复制独立成绩；共享配置页不是独立模型卡。",
+    "dateSource": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html\nhttps://www.kimi.com/en/help/kimi-code/models",
+    "sourceUrl": "https://www.kimi.com/en/help/kimi-code/models",
+    "reportType": "官方模型说明网页（共享页面不代表独立模型卡）",
+    "pdfKind": "MHTML",
+    "pdfPath": "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml",
+    "pdfPages": 0,
+    "sha256": "a8f69993ce58925e7ac6c686418554d0678d0d48793fa665237c0ba875049495",
+    "conclusion": "同模型加速档位；无独立成绩",
+    "caveats": "7月9日为HighSpeed正式上线；6月12日仅预告。同一模型加速档位，不复制独立成绩；共享配置页不是独立模型卡。",
+    "dateEvidencePaths": [
+      "sources/vendors/Moonshot/kimi-code-changelog.mhtml",
+      "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml"
+    ],
+    "origin": "vendor-supplement"
+  },
+  {
+    "id": "kimi-k3",
+    "name": "Kimi K3",
+    "provider": "Kimi",
+    "date": "2026-07-16",
+    "date_precision": "day",
+    "role": "2.8T 参数旗舰多模态 Agent；1M 上下文",
+    "dateEvidence": "7月16日为产品／API发布，7月27日为完整权重开放；技术报告、其他厂商比较和独立评测分开保留。",
+    "dateNote": "7月16日为产品／API发布，7月27日为完整权重开放；技术报告、其他厂商比较和独立评测分开保留。",
+    "dateSource": "https://www.kimi.ai/help/agent/agent-overview\nhttps://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+    "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+    "reportType": "厂商技术报告PDF",
+    "pdfKind": "官方原始 PDF",
+    "pdfPath": "sources/vendors/Moonshot/kimi-k3.pdf",
+    "pdfPages": 47,
+    "sha256": "86fb82a63ced501f0c3f4f404c0c6fa88a7a6cfac17aae81fd1a8f455998067c",
+    "conclusion": "Real-world Vulnerability Discovery；In-house exploit suite；CyberGym；ExploitGym；ExploitBench；TLO；CyberBench v1/v1.1",
+    "caveats": "7月16日为产品／API发布，7月27日为完整权重开放；技术报告、其他厂商比较和独立评测分开保留。",
+    "dateEvidencePaths": [
+      "sources/vendors/Moonshot/release-history.html",
+      "sources/vendors/Moonshot/kimi-code-changelog.mhtml"
+    ],
+    "origin": "vendor-supplement"
+  },
+  {
+    "id": "kimi-k2-8-preview",
+    "name": "Kimi K2.8 Preview",
+    "provider": "Kimi",
+    "date": "2026-09-11",
+    "date_precision": "day",
+    "role": "编程与 Agent 预览模型；1M 上下文",
+    "dateEvidence": "官方更新日志确认9月11日Kimi Code全量上线，仍为预览版；不因共享模型ID或配置页继承K3或K2.7成绩。",
+    "dateNote": "官方更新日志确认9月11日Kimi Code全量上线，仍为预览版；不因共享模型ID或配置页继承K3或K2.7成绩。",
+    "dateSource": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html\nhttps://www.kimi.com/en/help/kimi-code/models",
+    "sourceUrl": "https://www.kimi.com/en/help/kimi-code/models",
+    "reportType": "官方模型说明网页（共享页面不代表独立模型卡）",
+    "pdfKind": "MHTML",
+    "pdfPath": "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml",
+    "pdfPages": 0,
+    "sha256": "a8f69993ce58925e7ac6c686418554d0678d0d48793fa665237c0ba875049495",
+    "conclusion": "未确认具名网安基准",
+    "caveats": "官方更新日志确认9月11日Kimi Code全量上线，仍为预览版；不因共享模型ID或配置页继承K3或K2.7成绩。",
+    "dateEvidencePaths": [
+      "sources/vendors/Moonshot/kimi-code-changelog.mhtml",
+      "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml"
+    ],
+    "origin": "vendor-supplement"
   }
 ]

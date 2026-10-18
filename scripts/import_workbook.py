@@ -230,7 +230,7 @@ def build(workbook: Path, as_of: str):
     downloads = ROOT / "web/public/downloads"
     downloads.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(workbook, downloads / "audit-2026-10-17.xlsx")
-    fields = ["id", "modelId", "benchmark", "status", "category", "score", "scoreStatus", "originalScore", "configuration", "sourceUrl", "section", "pages", "note", "metrics", "scoreEvidence", "scoreReviewNotes"]
+    fields = ["id", "modelId", "benchmark", "status", "category", "score", "scoreStatus", "originalScore", "configuration", "sourceUrl", "section", "pages", "note", "metrics", "scoreEvidence", "scoreReviewNotes", "assessmentProvider", "assessmentKind"]
     with (downloads / "results.csv").open("w", encoding="utf-8-sig", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
@@ -260,6 +260,8 @@ def validate(data):
         if m["pdfPath"] not in inventory:
             raise ValueError(f"Unresolved model report: {m['id']}")
     for r in data["evaluations"]:
+        if r.get("assessmentKind") and (r["assessmentKind"] not in {"vendor", "cross-vendor", "independent"} or not r.get("assessmentProvider")):
+            raise ValueError(f"Invalid assessment attribution: {r['id']}")
         if r["modelId"] not in models or r["benchmark"] not in benchmarks or r["pdfPath"] not in inventory:
             raise ValueError(f"Unresolved reference: {r['id']}")
         for field in ["sourceUrl", "pdfUrl"]:

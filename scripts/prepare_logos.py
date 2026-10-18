@@ -21,6 +21,7 @@ SOURCES = {
     "zhipu": "zhipu-ai-seeklogo.svg",
     "deepseek": "deepseek-com-logo.png",
     "xai": "Grok_Symbol_1.png",
+    "kimi": "kimi.svg",
 }
 
 

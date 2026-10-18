@@ -27,8 +27,8 @@ class AuditIntegrityTests(unittest.TestCase):
         expected = Counter((models[r["模型/快照"]], r["Benchmark/评测"], r["证据状态"], r["明确文字数值（非统一指标）"], r["实际执行模型/配置"], r["PDF页码（文件页）"]) for name in ["能力评测", "防护与拒答", "待核对与排除"] for r in self.sheets[name])
         self.assertEqual(actual, expected)
         self.assertEqual(len(self.legacy_records), 233)
-        self.assertEqual(len(self.data["evaluations"]), 268)
-        self.assertEqual(len(self.data["models"]), 73)
+        self.assertEqual(len(self.data["evaluations"]), 282)
+        self.assertEqual(len(self.data["models"]), 79)
 
     def test_unconfirmed_records_remain_separate(self):
         self.assertEqual(Counter(r["status"] for r in self.legacy_records), {"已确认": 196, "模型覆盖待核对": 15, "未披露具名项目": 8, "不得归属给Fable生产配置": 8, "明确未运行": 4, "停止报告": 1, "仅方法引用": 1})
@@ -70,8 +70,8 @@ class AuditIntegrityTests(unittest.TestCase):
 
     def test_all_confirmed_records_have_archived_score_review(self):
         records = self.data["evaluations"]
-        self.assertEqual(sum(r["scoreAudit"] is not None for r in records), 218)
-        self.assertEqual(Counter(r["scoreStatus"] for r in records), {"reported": 178, "graphical": 22, "qualitative": 18, "not_applicable": 50})
+        self.assertEqual(sum(r["scoreAudit"] is not None for r in records), 229)
+        self.assertEqual(Counter(r["scoreStatus"] for r in records), {"reported": 189, "graphical": 22, "qualitative": 18, "not_applicable": 53})
         self.assertEqual(sum(not r["originalScore"] and r["scoreStatus"] == "reported" for r in self.legacy_records), 113)
         inventory = {p["path"]: p for p in self.data["pdfs"] + self.data["documents"]}
         for r in records:
@@ -120,9 +120,9 @@ class AuditIntegrityTests(unittest.TestCase):
         workbook = openpyxl.load_workbook(path, read_only=True, data_only=True)
         self.assertIn("成绩补录审计", workbook.sheetnames)
         rows = list(workbook["成绩补录审计"].values)[4:]
-        self.assertEqual(len(rows), 268)
-        self.assertEqual(workbook["新增厂商模型"].max_row, 26)
-        self.assertEqual(workbook["新增厂商证据文件"].max_row, 37)
+        self.assertEqual(len(rows), 282)
+        self.assertEqual(workbook["新增厂商模型"].max_row, 32)
+        self.assertEqual(workbook["新增厂商证据文件"].max_row, 47)
         actual = {r[0]: r for r in rows}
         for record in self.data["evaluations"]:
             self.assertEqual(actual[record["id"]][3], importer.SCORE_STATUS_LABELS[record["scoreStatus"]])
@@ -142,7 +142,7 @@ class AuditIntegrityTests(unittest.TestCase):
 
     def test_vendor_snapshots_and_later_disclosures_are_separate(self):
         models = {m["id"]: m for m in self.data["models"]}
-        self.assertEqual(Counter(m["provider"] for m in models.values() if m.get("origin") == "vendor-supplement"), {"Tencent": 3, "Zhipu": 8, "DeepSeek": 7, "xAI": 7})
+        self.assertEqual(Counter(m["provider"] for m in models.values() if m.get("origin") == "vendor-supplement"), {"Tencent": 3, "Zhipu": 8, "DeepSeek": 7, "xAI": 7, "Kimi": 6})
         for mid, date in [("deepseek-v4-flash", "2026-07-31"), ("deepseek-v4-pro", "2026-08-13")]:
             self.assertEqual(models[mid]["date"], date)
             self.assertEqual(models[mid + "-preview"]["date"], "2026-04-24")
@@ -191,6 +191,43 @@ class AuditIntegrityTests(unittest.TestCase):
                 self.assertIn(value, translations)
                 self.assertTrue(translations[value].strip())
                 self.assertIsNone(re.search(r"[\u3400-\u9fff]", translations[value]))
+
+    def test_kimi_snapshots_and_assessors_are_kept_separate(self):
+        models = {m["id"]: m for m in self.data["models"] if m["provider"] == "Kimi"}
+        self.assertEqual(len(models), 6)
+        self.assertEqual(models["kimi-k2-7-code-highspeed"]["date"], "2026-07-09")
+        self.assertEqual(models["kimi-k2-8-preview"]["date"], "2026-09-11")
+        records = [r for r in self.data["evaluations"] if r["modelId"] in models]
+        self.assertEqual(len(records), 14)
+        for mid in ["kimi-k2-7-code", "kimi-k2-7-code-highspeed", "kimi-k2-8-preview"]:
+            entries = [r for r in records if r["modelId"] == mid]
+            self.assertEqual(len(entries), 1)
+            self.assertEqual(entries[0]["scoreStatus"], "not_applicable")
+            self.assertFalse(entries[0]["metrics"])
+        exploit = [r for r in records if r["benchmark"] == "ExploitBench"]
+        self.assertEqual({(r["assessmentProvider"], r["metrics"][0]["value"]) for r in exploit}, {("Zhipu / GLM", 32.2), ("UK AISI / CAISI", 32)})
+        self.assertEqual(next(r for r in exploit if r["assessmentKind"] == "independent")["metrics"][1]["value"], "0/41")
+        vals = [r for r in records if r["benchmark"].startswith("CyberBench")]
+        self.assertEqual({(r["modelId"], r["benchmark"], r["numericScore"]) for r in vals}, {("kimi-k2-6", "CyberBench v1", 74.35), ("kimi-k3", "CyberBench v1", 79.03), ("kimi-k3", "CyberBench v1.1", 75.24)})
+        self.assertTrue(all(r["assessmentKind"] == "independent" and r["scoreAudit"]["laterDisclosure"] for r in vals))
+
+    def test_kimi_metric_units_and_approximate_results(self):
+        records = [r for r in self.data["evaluations"] if r["modelId"].startswith("kimi-")]
+        k25 = next(r for r in records if r["modelId"] == "kimi-k2-5")
+        self.assertEqual(k25["metrics"][0]["label"], "Avg@5成功率")
+        self.assertEqual(k25["numericScore"], 41.3)
+        self.assertEqual(k25["scoreAudit"]["evidence"][0]["pages"], "11-12,26")
+        exploitgym = next(r for r in records if r["benchmark"] == "ExploitGym")
+        self.assertEqual([m["value"] for m in exploitgym["metrics"]], [36, 70])
+        self.assertTrue(all(m["unit"] == "count" for m in exploitgym["metrics"]))
+        self.assertIn("2h预算", exploitgym["metrics"][0]["configuration"])
+        self.assertNotIn("6h", exploitgym["metrics"][0]["configuration"])
+        tier1 = next(r for r in records if r["benchmark"] == "Real-world Vulnerability Discovery")
+        self.assertEqual(tier1["metrics"][2]["value"], "~70")
+        self.assertIsNone(tier1["numericScore"])
+        tlo = next(r for r in records if r["benchmark"] == "The Last Ones (TLO)")
+        self.assertEqual([(m["value"], m["unit"]) for m in tlo["metrics"]], [(17, "count"), ("1/10", "ratio")])
+        self.assertIsNone(tlo["numericScore"])
 
 
 if __name__ == "__main__":

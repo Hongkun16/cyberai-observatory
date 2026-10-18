@@ -1,12 +1,12 @@
 # 新增厂商资料归档
 
-源文件来自用户提供的“模型厂商资料_2026-10-18/交付/docs”，PDF及大部分文件保留原始字节；腾讯网页存档的签名资源URL中云访问标识已遮盖。脱敏文件的原始哈希另存于originalSha256，公开副本哈希存于sha256。
+来源为用户提供的“模型厂商资料_2026-10-18/交付/docs”及“Kimi_Excel及本地资料.zip”。PDF及大部分文件保留原始字节；腾讯网页存档的签名资源URL中云访问标识已遮盖。脱敏文件的原始哈希保存在originalSha256，公开副本哈希保存在sha256。
 
-36份文件含5份PDF、20份HTML、8份MHTML、3张基准图片。SHA-256和抓取时间见[data/documents.json](../../data/documents.json)，每次导入均校验哈希。历史69份PDF仍在[pdf/](../../pdf/README.md)。
+共46份文件：7份PDF、21份HTML、15份MHTML、3张基准图片。完整目录、来源及哈希见[data/documents.json](../../data/documents.json)，每次导入均校验哈希。历史69份PDF仍在[pdf/](../../pdf/README.md)。
 
-MHTML可用Chrome／Edge打开；HTML中的远程图片不保证离线加载，成绩用到的基准表图片已单独归档。模型卡、日期依据和成绩证据的对应关系见[data/vendor-supplement.json](../../data/vendor-supplement.json)。
+MHTML可用Chrome／Edge打开；原始摘录和日期依据见[data/vendor-supplement.json](../../data/vendor-supplement.json)。本轮复用用户提供的归档，未重新抓取或运行模型评测。
 
-| 本地文件 | 类型 | 官方来源 |
+| 本地文件 | 类型 | 官方或评测机构来源 |
 | --- | --- | --- |
 | [DeepSeek/deepseek-v4-1-flash-1017.html](DeepSeek/deepseek-v4-1-flash-1017.html) | HTML | [来源](https://api-docs.deepseek.com/news/news261017/) |
 | [DeepSeek/deepseek-v4-1-flash-release-2.html](DeepSeek/deepseek-v4-1-flash-release-2.html) | HTML | [来源](https://api-docs.deepseek.com/news/news260910/) |
@@ -44,3 +44,13 @@ MHTML可用Chrome／Edge打开；HTML中的远程图片不保证离线加载，�
 | [xAI/grok-4-7.html](xAI/grok-4-7.html) | HTML | [来源](https://x.ai/news/grok-4-7) |
 | [xAI/grok-build-0-1.html](xAI/grok-build-0-1.html) | HTML | [来源](https://x.ai/news/grok-build-0-1) |
 | [xAI/xai-release-notes.html](xAI/xai-release-notes.html) | HTML | [来源](https://docs.x.ai/developers/release-notes) |
+| [Moonshot/aisi-kimi-k3.mhtml](Moonshot/aisi-kimi-k3.mhtml) | MHTML | [来源](https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities) |
+| [Moonshot/kimi-code-changelog.mhtml](Moonshot/kimi-code-changelog.mhtml) | MHTML | [来源](https://www.kimi.com/code/docs/en/kimi-code/whats-new.html) |
+| [Moonshot/kimi-k2-5.pdf](Moonshot/kimi-k2-5.pdf) | 官方原始 PDF | [来源](https://arxiv.org/pdf/2602.02276) |
+| [Moonshot/kimi-k2-6.mhtml](Moonshot/kimi-k2-6.mhtml) | MHTML | [来源](https://huggingface.co/moonshotai/Kimi-K2.6) |
+| [Moonshot/kimi-k2-7-code.mhtml](Moonshot/kimi-k2-7-code.mhtml) | MHTML | [来源](https://huggingface.co/moonshotai/Kimi-K2.7-Code) |
+| [Moonshot/kimi-k2-8-preview.mhtml](Moonshot/kimi-k2-8-preview.mhtml) | MHTML | [来源](https://www.kimi.com/en/help/kimi-code/models) |
+| [Moonshot/kimi-k3.pdf](Moonshot/kimi-k3.pdf) | 官方原始 PDF | [来源](https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf) |
+| [Moonshot/release-history.html](Moonshot/release-history.html) | HTML | [来源](https://www.kimi.ai/help/agent/agent-overview) |
+| [Moonshot/vals-cyberbench-v1-1.mhtml](Moonshot/vals-cyberbench-v1-1.mhtml) | MHTML | [来源](https://www.vals.ai/benchmarks/cyber) |
+| [Moonshot/vals-cyberbench-v1.mhtml](Moonshot/vals-cyberbench-v1.mhtml) | MHTML | [来源](https://www.vals.ai/benchmarks/cyber-v1) |

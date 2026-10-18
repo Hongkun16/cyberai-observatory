@@ -55,7 +55,7 @@ def export():
     audit.append([f"公开报告成绩复核 | {SCORE_REVIEW_DATE}"])
     audit.append([f"复核{data['meta']['reviewedScoreRecords']}条已确认记录；原成绩{data['meta']['originalScoreCount']}条，现已核实数值{data['meta']['scoreCount']}条，新增数值{data['meta']['addedScoreCount']}条。"])
     audit.append([])
-    audit.append(["记录ID", "模型", "评测", "成绩状态", "补录成绩", "原成绩", "复核方式", "证据文件与页码", "原文/图表读数证据", "逐指标数据", "备注"])
+    audit.append(["记录ID", "模型", "评测", "成绩状态", "补录成绩", "原成绩", "复核方式", "证据文件与页码", "原文/图表读数证据", "逐指标数据", "备注", "评测方", "评测来源类型"])
     names = {m["id"]: m["name"] for m in data["models"]}
     for r in data["evaluations"]:
         review = r["scoreAudit"]
@@ -63,9 +63,9 @@ def export():
                       r["originalScore"], review["method"] if review else "不适用",
                       "；".join(evidence_location(e) for e in review["evidence"]) if review else "",
                       "\n".join(e["quote"] for e in review["evidence"]) if review else r["status"],
-                      json.dumps(r["metrics"], ensure_ascii=False), review["notes"] if review else r["status"]])
+                      json.dumps(r["metrics"], ensure_ascii=False), review["notes"] if review else r["status"], r.get("assessmentProvider", ""), r.get("assessmentKind", "")])
     audit.freeze_panes = "D5"
-    audit.auto_filter.ref = f"A4:K{audit.max_row}"
+    audit.auto_filter.ref = f"A4:M{audit.max_row}"
     for row in audit.iter_rows():
         for cell in row:
             cell.alignment = Alignment(wrap_text=True, vertical="top")
@@ -73,7 +73,7 @@ def export():
     for cell in audit[4]:
         cell.fill = PatternFill("solid", fgColor="243E63")
         cell.font = Font(name="Microsoft YaHei", bold=True, color="FFFFFF")
-    for column in "ABCDEFGHIJK":
+    for column in "ABCDEFGHIJKLM":
         audit.column_dimensions[column].width = 45 if column in "EFHIJK" else 24
     vendor_models = workbook.create_sheet("新增厂商模型")
     vendor_models.append(["模型ID", "厂商", "模型／版本", "模型日期", "日期精度", "日期依据", "日期说明", "官方模型资料", "本地归档", "说明与限制"])
@@ -94,7 +94,7 @@ def export():
     instructions = workbook["使用说明"]
     instructions.append(["成绩补录", f"{SCORE_REVIEW_DATE}按PDF正文、表格和图表复核全部196条已确认记录；不从未标值曲线估读精确分数，不将未确认结果归属到模型。"])
     instructions.append(["原始文件", "原2026-10-17工作簿完整保留在仓库snapshots/2026-10-17.xlsx。本文件为附加成绩证据后的导出版本。"])
-    instructions.append(["厂商扩展", f"新增腾讯、智谱GLM、DeepSeek、xAI共{data['meta']['supplementalModelCount']}个模型／版本、{data['meta']['supplementalRecordCount']}条记录；网页和图片以章节／表格定位，不伪造PDF页码。所有记录见成绩补录审计表，新增模型和证据文件另列。"])
+    instructions.append(["厂商扩展", f"新增腾讯、智谱GLM、DeepSeek、xAI、Kimi共{data['meta']['supplementalModelCount']}个模型／版本、{data['meta']['supplementalRecordCount']}条记录；网页和图片以章节／表格定位，不伪造PDF页码。所有记录见成绩补录审计表，新增模型和证据文件另列。Kimi区分厂商自测、其他厂商比较和独立机构评测。"])
     # openpyxl/ZIP timestamps would otherwise make reproducible imports look dirty.
     buffer = io.BytesIO()
     workbook.save(buffer)

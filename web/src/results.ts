@@ -8,6 +8,7 @@ export const CREATORS: Provider[] = [
   'Zhipu',
   'DeepSeek',
   'xAI',
+  'Kimi',
 ];
 export const COLORS: Record<Provider, string> = {
   OpenAI: '#278768',
@@ -17,6 +18,7 @@ export const COLORS: Record<Provider, string> = {
   Zhipu: '#bd8a28',
   DeepSeek: '#4659bd',
   xAI: '#525660',
+  Kimi: '#c75a86',
 };
 export const CREATOR_LABELS: Record<Provider, string> = {
   OpenAI: 'OpenAI',
@@ -26,6 +28,7 @@ export const CREATOR_LABELS: Record<Provider, string> = {
   Zhipu: 'GLM',
   DeepSeek: 'DeepSeek',
   xAI: 'xAI',
+  Kimi: 'Kimi',
 };
 export type Metric = Evaluation['metrics'][number];
 export type Family = { id: string; label: string; unit: string; lower: boolean };

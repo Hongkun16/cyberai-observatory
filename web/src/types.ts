@@ -1,4 +1,5 @@
-export type Provider = 'OpenAI' | 'Anthropic' | 'Google' | 'Tencent' | 'Zhipu' | 'DeepSeek' | 'xAI';
+export type Provider =
+  'OpenAI' | 'Anthropic' | 'Google' | 'Tencent' | 'Zhipu' | 'DeepSeek' | 'xAI' | 'Kimi';
 export type Model = {
   id: string;
   name: string;
@@ -20,6 +21,8 @@ export type Model = {
   caveats: string;
 };
 export type Evaluation = {
+  assessmentProvider?: string;
+  assessmentKind?: 'vendor' | 'cross-vendor' | 'independent';
   id: string;
   modelId: string;
   benchmark: string;

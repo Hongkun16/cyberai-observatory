@@ -255,8 +255,8 @@ function App() {
               >
                 <p>
                   {t(
-                    '探索 OpenAI、Anthropic、Google、Tencent、GLM、DeepSeek 和 xAI 的模型在漏洞发现、漏洞利用、CTF 与多阶段任务中的表现。',
-                    'Explore OpenAI, Anthropic, Google, Tencent, GLM, DeepSeek and xAI models on vulnerability discovery, exploitation, CTFs and multi-stage tasks.',
+                    '探索 OpenAI、Anthropic、Google、Tencent、GLM、DeepSeek、xAI 和 Kimi 的模型在漏洞发现、漏洞利用、CTF 与多阶段任务中的表现。',
+                    'Explore OpenAI, Anthropic, Google, Tencent, GLM, DeepSeek, xAI and Kimi models on vulnerability discovery, exploitation, CTFs and multi-stage tasks.',
                   )}
                 </p>
                 <div className="intro-links">
@@ -608,6 +608,14 @@ function PerformanceChart({
   const { t, tr } = useLanguage();
   const [hover, setHover] = useState<string>();
   const [expanded, setExpanded] = useState(false);
+  const plotRef = useRef<HTMLDivElement>(null);
+  const [plotWidth, setPlotWidth] = useState(1000);
+  useEffect(() => {
+    if (!plotRef.current) return;
+    const observer = new ResizeObserver(([entry]) => setPlotWidth(entry.contentRect.width));
+    observer.observe(plotRef.current);
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     setExpanded(false);
     setHover(undefined);
@@ -616,7 +624,7 @@ function PerformanceChart({
   const monthly = time ? numeric.filter((r) => r.model.date_precision === 'month') : [];
   const drawable = time ? numeric.filter((r) => r.model.date_precision === 'day') : numeric;
   const shown = expanded || time ? drawable : drawable.slice(0, 18);
-  const width = time ? 1100 : Math.max(1000, shown.length * 66 + 110),
+  const width = time ? 1100 : Math.max(Math.min(plotWidth, 1000), shown.length * 66 + 110),
     height = time ? 360 : 440,
     top = 32,
     bottom = time ? 298 : 278,
@@ -634,7 +642,7 @@ function PerformanceChart({
   const step = (width - left - right) / Math.max(1, shown.length);
   return (
     <>
-      <div className="plot-scroll">
+      <div className="plot-scroll" ref={plotRef}>
         {shown.length ? (
           <svg
             className={'plot ' + (time ? 'time-plot' : 'bar-plot')}
@@ -845,8 +853,8 @@ function Models({
               )}
               {language === 'zh'
                 ? selected.caveats || selected.conclusion
-                : selected.id === 'grok-4-7-fast'
-                  ? 'Fast is a service tier of Grok 4.7, without separate scores.'
+                : ['grok-4-7-fast', 'kimi-k2-7-code-highspeed'].includes(selected.id)
+                  ? 'This is a faster service tier of the same model, without separate scores.'
                   : 'Results from other snapshots or deployment configurations are not inherited.'}
             </p>
           )}
@@ -1165,6 +1173,18 @@ function ResultDialog({
         )}
         <section className="run-settings">
           <h3>{t('运行设置', 'Run settings')}</h3>
+          {record.assessmentProvider && (
+            <p>
+              {t('评测方：', 'Assessed by: ')}
+              {record.assessmentProvider}
+              {' · '}
+              {record.assessmentKind === 'independent'
+                ? t('独立机构评测', 'Independent assessment')
+                : record.assessmentKind === 'cross-vendor'
+                  ? t('其他厂商评测', 'Cross-vendor assessment')
+                  : t('厂商自测', 'Vendor self-report')}
+            </p>
+          )}
           <p>
             {language === 'en'
               ? record.metrics.length

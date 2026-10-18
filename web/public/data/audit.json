@@ -5,27 +5,27 @@
     "workbook": "snapshots/2026-10-17.xlsx",
     "workbookSha256": "295437386b734c541366c85e1f9b99d355786d52d2cdab722fd4d4c6928d9848",
     "scope": "公开报告证据整理；未独立重跑模型评测",
-    "modelCount": 73,
-    "recordCount": 268,
-    "scoreCount": 178,
+    "modelCount": 79,
+    "recordCount": 282,
+    "scoreCount": 189,
     "originalScoreCount": 43,
-    "addedScoreCount": 135,
-    "numericCount": 68,
+    "addedScoreCount": 146,
+    "numericCount": 74,
     "scoreReviewDate": "2026-10-18",
-    "reviewedScoreRecords": 218,
-    "metricCount": 339,
+    "reviewedScoreRecords": 229,
+    "metricCount": 357,
     "scoreStatusCounts": {
-      "reported": 178,
-      "not_applicable": 50,
+      "reported": 189,
+      "not_applicable": 53,
       "qualitative": 18,
       "graphical": 22
     },
     "downloadWorkbook": "downloads/audit-2026-10-18.xlsx",
     "supplementalAsOf": "2026-10-18",
-    "supplementalModelCount": 25,
-    "supplementalRecordCount": 35,
-    "supplementalScoreCount": 22,
-    "reviewedWorkbookSha256": "fd41caa80b9909f9487d627e99c3535c259da427986493dfcb7aec8a73be3aab"
+    "supplementalModelCount": 31,
+    "supplementalRecordCount": 49,
+    "supplementalScoreCount": 33,
+    "reviewedWorkbookSha256": "76d059348b71196aa49e712044787c768965e9a2c191db6d89803e81c065b8c6"
   },
   "models": [
     {
@@ -1530,6 +1530,147 @@
       "dateEvidencePaths": [
         "sources/vendors/DeepSeek/deepseek-v4-flash-release-1.html",
         "sources/vendors/DeepSeek/deepseek-v4-pro-release-2.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "kimi-k2-5",
+      "name": "Kimi K2.5",
+      "provider": "Kimi",
+      "date": "2026-01-27",
+      "date_precision": "day",
+      "role": "多模态与 Agent；支持思考／非思考模式",
+      "dateEvidence": "1月27日为官方产品演进记录中的模型发布日；2月2日为技术报告提交日，两者分开。",
+      "dateNote": "1月27日为官方产品演进记录中的模型发布日；2月2日为技术报告提交日，两者分开。",
+      "dateSource": "https://www.kimi.ai/help/agent/agent-overview",
+      "sourceUrl": "https://arxiv.org/pdf/2602.02276",
+      "reportType": "厂商技术报告PDF",
+      "pdfKind": "官方原始 PDF",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-5.pdf",
+      "pdfPages": 31,
+      "sha256": "889025c0fcbacb8b049aacd5b21f6c902a236eb28dec7aa51e6852ca39ec5417",
+      "conclusion": "CyberGym",
+      "caveats": "1月27日为官方产品演进记录中的模型发布日；2月2日为技术报告提交日，两者分开。",
+      "dateEvidencePaths": [
+        "sources/vendors/Moonshot/release-history.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "kimi-k2-6",
+      "name": "Kimi K2.6",
+      "provider": "Kimi",
+      "date": "2026-04-20",
+      "date_precision": "day",
+      "role": "多模态、长程编程与 Agent Swarm",
+      "dateEvidence": "按官方产品演进记录4月20日绘图；原表另列4月21日论坛公告，保留不同事件口径。",
+      "dateNote": "按官方产品演进记录4月20日绘图；原表另列4月21日论坛公告，保留不同事件口径。",
+      "dateSource": "https://www.kimi.ai/help/agent/agent-overview",
+      "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K2.6",
+      "reportType": "官方模型说明网页（共享页面不代表独立模型卡）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-6.mhtml",
+      "pdfPages": 0,
+      "sha256": "b75c00c64576896c669a1335d79cb234d9e16f945b5ca739beae857346fc585c",
+      "conclusion": "CyberBench v1（Vals AI独立机构评测）",
+      "caveats": "按官方产品演进记录4月20日绘图；原表另列4月21日论坛公告，保留不同事件口径。",
+      "dateEvidencePaths": [
+        "sources/vendors/Moonshot/release-history.html"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "kimi-k2-7-code",
+      "name": "Kimi K2.7 Code",
+      "provider": "Kimi",
+      "date": "2026-06-12",
+      "date_precision": "day",
+      "role": "编程与工具使用；持续思考",
+      "dateEvidence": "官方更新日志确认6月12日发布并开放权重；未确认具名网安成绩，不继承其他Kimi版本。",
+      "dateNote": "官方更新日志确认6月12日发布并开放权重；未确认具名网安成绩，不继承其他Kimi版本。",
+      "dateSource": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+      "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+      "reportType": "官方模型说明网页（共享页面不代表独立模型卡）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-7-code.mhtml",
+      "pdfPages": 0,
+      "sha256": "a4e61fd94b6408158c3fe63d9df56dd3b929b03382f5156bcc209d83b3631d60",
+      "conclusion": "未确认具名网安基准",
+      "caveats": "官方更新日志确认6月12日发布并开放权重；未确认具名网安成绩，不继承其他Kimi版本。",
+      "dateEvidencePaths": [
+        "sources/vendors/Moonshot/kimi-code-changelog.mhtml"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "kimi-k2-7-code-highspeed",
+      "name": "Kimi K2.7 Code HighSpeed",
+      "provider": "Kimi",
+      "date": "2026-07-09",
+      "date_precision": "day",
+      "role": "K2.7 Code 同模型加速档位；不另计 benchmark 使用次数",
+      "dateEvidence": "7月9日为HighSpeed正式上线；6月12日仅预告。同一模型加速档位，不复制独立成绩；共享配置页不是独立模型卡。",
+      "dateNote": "7月9日为HighSpeed正式上线；6月12日仅预告。同一模型加速档位，不复制独立成绩；共享配置页不是独立模型卡。",
+      "dateSource": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html\nhttps://www.kimi.com/en/help/kimi-code/models",
+      "sourceUrl": "https://www.kimi.com/en/help/kimi-code/models",
+      "reportType": "官方模型说明网页（共享页面不代表独立模型卡）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml",
+      "pdfPages": 0,
+      "sha256": "a8f69993ce58925e7ac6c686418554d0678d0d48793fa665237c0ba875049495",
+      "conclusion": "同模型加速档位；无独立成绩",
+      "caveats": "7月9日为HighSpeed正式上线；6月12日仅预告。同一模型加速档位，不复制独立成绩；共享配置页不是独立模型卡。",
+      "dateEvidencePaths": [
+        "sources/vendors/Moonshot/kimi-code-changelog.mhtml",
+        "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "kimi-k3",
+      "name": "Kimi K3",
+      "provider": "Kimi",
+      "date": "2026-07-16",
+      "date_precision": "day",
+      "role": "2.8T 参数旗舰多模态 Agent；1M 上下文",
+      "dateEvidence": "7月16日为产品／API发布，7月27日为完整权重开放；技术报告、其他厂商比较和独立评测分开保留。",
+      "dateNote": "7月16日为产品／API发布，7月27日为完整权重开放；技术报告、其他厂商比较和独立评测分开保留。",
+      "dateSource": "https://www.kimi.ai/help/agent/agent-overview\nhttps://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+      "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+      "reportType": "厂商技术报告PDF",
+      "pdfKind": "官方原始 PDF",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k3.pdf",
+      "pdfPages": 47,
+      "sha256": "86fb82a63ced501f0c3f4f404c0c6fa88a7a6cfac17aae81fd1a8f455998067c",
+      "conclusion": "Real-world Vulnerability Discovery；In-house exploit suite；CyberGym；ExploitGym；ExploitBench；TLO；CyberBench v1/v1.1",
+      "caveats": "7月16日为产品／API发布，7月27日为完整权重开放；技术报告、其他厂商比较和独立评测分开保留。",
+      "dateEvidencePaths": [
+        "sources/vendors/Moonshot/release-history.html",
+        "sources/vendors/Moonshot/kimi-code-changelog.mhtml"
+      ],
+      "origin": "vendor-supplement"
+    },
+    {
+      "id": "kimi-k2-8-preview",
+      "name": "Kimi K2.8 Preview",
+      "provider": "Kimi",
+      "date": "2026-09-11",
+      "date_precision": "day",
+      "role": "编程与 Agent 预览模型；1M 上下文",
+      "dateEvidence": "官方更新日志确认9月11日Kimi Code全量上线，仍为预览版；不因共享模型ID或配置页继承K3或K2.7成绩。",
+      "dateNote": "官方更新日志确认9月11日Kimi Code全量上线，仍为预览版；不因共享模型ID或配置页继承K3或K2.7成绩。",
+      "dateSource": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html\nhttps://www.kimi.com/en/help/kimi-code/models",
+      "sourceUrl": "https://www.kimi.com/en/help/kimi-code/models",
+      "reportType": "官方模型说明网页（共享页面不代表独立模型卡）",
+      "pdfKind": "MHTML",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml",
+      "pdfPages": 0,
+      "sha256": "a8f69993ce58925e7ac6c686418554d0678d0d48793fa665237c0ba875049495",
+      "conclusion": "未确认具名网安基准",
+      "caveats": "官方更新日志确认9月11日Kimi Code全量上线，仍为预览版；不因共享模型ID或配置页继承K3或K2.7成绩。",
+      "dateEvidencePaths": [
+        "sources/vendors/Moonshot/kimi-code-changelog.mhtml",
+        "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml"
       ],
       "origin": "vendor-supplement"
     }
@@ -13074,6 +13215,654 @@
       "note": "已检查归档官方资料，未确认该版本的具名网安成绩；不代表未做测试。",
       "comparisonGroup": null,
       "origin": "vendor-supplement"
+    },
+    {
+      "id": "CAO-2026-0269",
+      "modelId": "kimi-k2-5",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "41.3%",
+      "originalScore": "",
+      "originalConfiguration": "Moonshot技术报告；CyberGym difficulty level 1；编程任务按5次独立运行取平均（Avg@5），不标为pass@1。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "Avg@5成功率",
+          "value": 41.3,
+          "unit": "percent",
+          "configuration": "Moonshot技术报告；CyberGym difficulty level 1；编程任务按5次独立运行取平均（Avg@5），不标为pass@1。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "table/text",
+        "notes": "41.3按原表百分制保存；保留Avg@5和difficulty level 1，不与其他harness的pass@1合并。 技术报告提交日为2月2日，不称为1月27日首发成绩。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Moonshot/kimi-k2-5.pdf",
+            "pages": "11-12,26",
+            "section": "Table 4 / Appendix E.5",
+            "quote": "Table 4: CyberGym 41.3. Appendix E.5: difficulty level 1; coding task results averaged over 5 independent runs (Avg@5).",
+            "sha256": "889025c0fcbacb8b049aacd5b21f6c902a236eb28dec7aa51e6852ca39ec5417",
+            "sourceUrl": "https://arxiv.org/pdf/2602.02276"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 41.3,
+      "configuration": "Moonshot技术报告；CyberGym difficulty level 1；编程任务按5次独立运行取平均（Avg@5），不标为pass@1。",
+      "section": "Table 4 / Appendix E.5",
+      "pages": "11-12,26",
+      "sourceKind": "官方原始 PDF",
+      "sourceUrl": "https://arxiv.org/pdf/2602.02276",
+      "pdfUrl": "https://arxiv.org/pdf/2602.02276",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-5.pdf",
+      "note": "41.3按原表百分制保存；保留Avg@5和difficulty level 1，不与其他harness的pass@1合并。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Moonshot AI",
+      "assessmentKind": "vendor"
+    },
+    {
+      "id": "CAO-2026-0270",
+      "modelId": "kimi-k2-6",
+      "benchmark": "CyberBench v1",
+      "status": "已确认",
+      "category": "能力",
+      "score": "74.35%",
+      "originalScore": "",
+      "originalConfiguration": "Vals AI独立机构评测；2026-09-16归档v1；60题PoC与原Patch设置；Overall accuracy；不得与v1.1直接比较。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "准确率",
+          "value": 74.35,
+          "unit": "percent",
+          "configuration": "Vals AI独立机构评测；2026-09-16归档v1；60题PoC与原Patch设置；Overall accuracy；不得与v1.1直接比较。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "archived_web",
+        "notes": "",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Moonshot/vals-cyberbench-v1.mhtml",
+            "pages": "",
+            "section": "Overall leaderboard / Methodology",
+            "quote": "Kimi K2.6 — Overall Accuracy 74.35%. v1 results archived; superseded by v1.1.",
+            "sha256": "c5b56da7d148da7cacc78535f1f4f5dd6de7e58a7fdd8c195f5bbf0197285d81",
+            "sourceUrl": "https://www.vals.ai/benchmarks/cyber-v1"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 74.35,
+      "configuration": "Vals AI独立机构评测；2026-09-16归档v1；60题PoC与原Patch设置；Overall accuracy；不得与v1.1直接比较。",
+      "section": "Overall leaderboard / Methodology",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://www.vals.ai/benchmarks/cyber-v1",
+      "pdfUrl": "https://www.vals.ai/benchmarks/cyber-v1",
+      "pdfPath": "sources/vendors/Moonshot/vals-cyberbench-v1.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Vals AI",
+      "assessmentKind": "independent"
+    },
+    {
+      "id": "CAO-2026-0271",
+      "modelId": "kimi-k3",
+      "benchmark": "CyberBench v1",
+      "status": "已确认",
+      "category": "能力",
+      "score": "79.03%",
+      "originalScore": "",
+      "originalConfiguration": "Vals AI独立机构评测；2026-09-16归档v1；60题PoC与原Patch设置；Overall accuracy；不得与v1.1直接比较。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "准确率",
+          "value": 79.03,
+          "unit": "percent",
+          "configuration": "Vals AI独立机构评测；2026-09-16归档v1；60题PoC与原Patch设置；Overall accuracy；不得与v1.1直接比较。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "archived_web",
+        "notes": "",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Moonshot/vals-cyberbench-v1.mhtml",
+            "pages": "",
+            "section": "Overall leaderboard / Methodology",
+            "quote": "Kimi K3 — Overall Accuracy 79.03%. v1 results archived; superseded by v1.1.",
+            "sha256": "c5b56da7d148da7cacc78535f1f4f5dd6de7e58a7fdd8c195f5bbf0197285d81",
+            "sourceUrl": "https://www.vals.ai/benchmarks/cyber-v1"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 79.03,
+      "configuration": "Vals AI独立机构评测；2026-09-16归档v1；60题PoC与原Patch设置；Overall accuracy；不得与v1.1直接比较。",
+      "section": "Overall leaderboard / Methodology",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://www.vals.ai/benchmarks/cyber-v1",
+      "pdfUrl": "https://www.vals.ai/benchmarks/cyber-v1",
+      "pdfPath": "sources/vendors/Moonshot/vals-cyberbench-v1.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Vals AI",
+      "assessmentKind": "independent"
+    },
+    {
+      "id": "CAO-2026-0272",
+      "modelId": "kimi-k3",
+      "benchmark": "CyberBench v1.1",
+      "status": "已确认",
+      "category": "能力",
+      "score": "75.24%",
+      "originalScore": "",
+      "originalConfiguration": "Vals AI独立机构评测；2026-10-12版v1.1；60题PoC、56题Patch；离线任务沙箱与加固clean-room grader；Overall accuracy；不得与v1直接比较。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "准确率",
+          "value": 75.24,
+          "unit": "percent",
+          "configuration": "Vals AI独立机构评测；2026-10-12版v1.1；60题PoC、56题Patch；离线任务沙箱与加固clean-room grader；Overall accuracy；不得与v1直接比较。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "archived_web",
+        "notes": "",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Moonshot/vals-cyberbench-v1-1.mhtml",
+            "pages": "",
+            "section": "Overall leaderboard / Methodology",
+            "quote": "Kimi K3 — Overall Accuracy 75.24%. Rerun with offline task sandboxes, hardened clean-room grader; 60-task PoC track and 56-task Patch roster.",
+            "sha256": "0640c02419c8893446e52f63b6a3ed8d8eb214ce42902593c425afd559b2fcad",
+            "sourceUrl": "https://www.vals.ai/benchmarks/cyber"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 75.24,
+      "configuration": "Vals AI独立机构评测；2026-10-12版v1.1；60题PoC、56题Patch；离线任务沙箱与加固clean-room grader；Overall accuracy；不得与v1直接比较。",
+      "section": "Overall leaderboard / Methodology",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://www.vals.ai/benchmarks/cyber",
+      "pdfUrl": "https://www.vals.ai/benchmarks/cyber",
+      "pdfPath": "sources/vendors/Moonshot/vals-cyberbench-v1-1.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Vals AI",
+      "assessmentKind": "independent"
+    },
+    {
+      "id": "CAO-2026-0273",
+      "modelId": "kimi-k3",
+      "benchmark": "Real-world Vulnerability Discovery",
+      "status": "已确认",
+      "category": "能力",
+      "score": "16个此前未知漏洞／6项目；人工复核候选约70%确认",
+      "originalScore": "",
+      "originalConfiguration": "Moonshot K3技术报告§6.2.2 Tier 1；真实软件及内部基础设施；约70%仅指经过人工复核的候选，不是全部任务成功率；16个此前未知漏洞涉及6个项目。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "此前未知漏洞数",
+          "value": 16,
+          "unit": "count",
+          "configuration": "Moonshot K3技术报告§6.2.2 Tier 1；真实软件及内部基础设施；约70%仅指经过人工复核的候选，不是全部任务成功率；16个此前未知漏洞涉及6个项目。"
+        },
+        {
+          "label": "涉及项目数",
+          "value": 6,
+          "unit": "count",
+          "configuration": "Moonshot K3技术报告§6.2.2 Tier 1；真实软件及内部基础设施；约70%仅指经过人工复核的候选，不是全部任务成功率；16个此前未知漏洞涉及6个项目。"
+        },
+        {
+          "label": "人工复核确认比例",
+          "value": "~70",
+          "unit": "percent",
+          "configuration": "Moonshot K3技术报告§6.2.2 Tier 1；真实软件及内部基础设施；约70%仅指经过人工复核的候选，不是全部任务成功率；16个此前未知漏洞涉及6个项目。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "table/text",
+        "notes": "约70%保留为带限定字符串，不作为精确数值点绘图；候选漏洞确认率不是任务成功率。 报告包含截至7月23日的独立评估；不称为7月16日首发成绩，精确报告发表日未另核。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Moonshot/kimi-k3.pdf",
+            "pages": "30",
+            "section": "§6.2.2 Tier 1",
+            "quote": "Of the findings that underwent human review, approximately 70% were confirmed as genuine, including 16 previously unknown vulnerabilities across six projects.",
+            "sha256": "86fb82a63ced501f0c3f4f404c0c6fa88a7a6cfac17aae81fd1a8f455998067c",
+            "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": null,
+      "configuration": "Moonshot K3技术报告§6.2.2 Tier 1；真实软件及内部基础设施；约70%仅指经过人工复核的候选，不是全部任务成功率；16个此前未知漏洞涉及6个项目。",
+      "section": "§6.2.2 Tier 1",
+      "pages": "30",
+      "sourceKind": "官方原始 PDF",
+      "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+      "pdfUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k3.pdf",
+      "note": "约70%保留为带限定字符串，不作为精确数值点绘图；候选漏洞确认率不是任务成功率。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Moonshot AI",
+      "assessmentKind": "vendor"
+    },
+    {
+      "id": "CAO-2026-0274",
+      "modelId": "kimi-k3",
+      "benchmark": "In-house exploit suite (36 tasks; Moonshot)",
+      "status": "已确认",
+      "category": "能力",
+      "score": "14/36（38.9%）；其中10题来自用户态",
+      "originalScore": "",
+      "originalConfiguration": "Moonshot内部36题利用集；16题用户态、20题Linux内核；GLM-5.2为基线；不同加固等级，不能等同公开ExploitGym或ExploitBench。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "成功率",
+          "value": 38.9,
+          "unit": "percent",
+          "configuration": "Moonshot内部36题利用集；16题用户态、20题Linux内核；GLM-5.2为基线；不同加固等级，不能等同公开ExploitGym或ExploitBench。"
+        },
+        {
+          "label": "已解挑战",
+          "value": 14,
+          "unit": "count",
+          "configuration": "Moonshot内部36题利用集；16题用户态、20题Linux内核；GLM-5.2为基线；不同加固等级，不能等同公开ExploitGym或ExploitBench。"
+        },
+        {
+          "label": "用户态成功任务数",
+          "value": 10,
+          "unit": "count",
+          "configuration": "Moonshot内部36题利用集；16题用户态、20题Linux内核；GLM-5.2为基线；不同加固等级，不能等同公开ExploitGym或ExploitBench。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "table/text",
+        "notes": " 报告包含截至7月23日的独立评估；不称为7月16日首发成绩，精确报告发表日未另核。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Moonshot/kimi-k3.pdf",
+            "pages": "30-31",
+            "section": "§6.2.2 Tier 2",
+            "quote": "Solving 14 of 36 tasks (38.9%) versus 8 of 36 (22.2%) for GLM-5.2; 10 of the 14 come from the user-space track.",
+            "sha256": "86fb82a63ced501f0c3f4f404c0c6fa88a7a6cfac17aae81fd1a8f455998067c",
+            "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": null,
+      "configuration": "Moonshot内部36题利用集；16题用户态、20题Linux内核；GLM-5.2为基线；不同加固等级，不能等同公开ExploitGym或ExploitBench。",
+      "section": "§6.2.2 Tier 2",
+      "pages": "30-31",
+      "sourceKind": "官方原始 PDF",
+      "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+      "pdfUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k3.pdf",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Moonshot AI",
+      "assessmentKind": "vendor"
+    },
+    {
+      "id": "CAO-2026-0275",
+      "modelId": "kimi-k3",
+      "benchmark": "CyberGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "80%",
+      "originalScore": "",
+      "originalConfiguration": "智谱GLM-5.3博客中的Kimi K3比较列；CyberGym 1507题single-run pass@1；不把GLM-5.3专属harness设置自动归给Kimi。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "目标漏洞复现",
+          "value": 80,
+          "unit": "percent",
+          "configuration": "智谱GLM-5.3博客中的Kimi K3比较列；CyberGym 1507题single-run pass@1；不把GLM-5.3专属harness设置自动归给Kimi。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "archived_web",
+        "notes": "",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance table / CyberGym",
+            "quote": "CyberGym row: GLM-5.3 84.5, GLM-5.2 77.2, Kimi K3 80.0.",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 80.0,
+      "configuration": "智谱GLM-5.3博客中的Kimi K3比较列；CyberGym 1507题single-run pass@1；不把GLM-5.3专属harness设置自动归给Kimi。",
+      "section": "Performance table / CyberGym",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Zhipu / GLM",
+      "assessmentKind": "cross-vendor"
+    },
+    {
+      "id": "CAO-2026-0276",
+      "modelId": "kimi-k3",
+      "benchmark": "ExploitGym",
+      "status": "已确认",
+      "category": "能力",
+      "score": "2h:36题；6h:70题",
+      "originalScore": "",
+      "originalConfiguration": "智谱GLM-5.3博客中的Kimi K3比较列；ExploitGym按吞吐归一化预算，2h与6h成绩独立，不换算为百分比。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "完成任务数",
+          "value": 36,
+          "unit": "count",
+          "configuration": "智谱GLM-5.3博客对Kimi K3实测；Claude Code2.1.207，max，no web，temperature=1，top_p=1，max_new_tokens=128000；869题；按40 TPS归一化API推理时间加非API开销；2h预算；数值为完成题数。"
+        },
+        {
+          "label": "完成任务数",
+          "value": 70,
+          "unit": "count",
+          "configuration": "智谱GLM-5.3博客对Kimi K3实测；Claude Code2.1.207，max，no web，temperature=1，top_p=1，max_new_tokens=128000；869题；按40 TPS归一化API推理时间加非API开销；6h预算；数值为完成题数。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "archived_web",
+        "notes": "",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance table / ExploitGym footnote",
+            "quote": "Kimi K3: ExploitGym 2h / 6h = 36 / 70. Footnote explicitly evaluates Kimi-K3 in Claude Code 2.1.207 and normalizes by 40 TPS.",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": null,
+      "configuration": "智谱GLM-5.3博客中的Kimi K3比较列；ExploitGym按吞吐归一化预算，2h与6h成绩独立，不换算为百分比。",
+      "section": "Performance table / ExploitGym footnote",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Zhipu / GLM",
+      "assessmentKind": "cross-vendor"
+    },
+    {
+      "id": "CAO-2026-0277",
+      "modelId": "kimi-k3",
+      "benchmark": "ExploitBench",
+      "status": "已确认",
+      "category": "能力",
+      "score": "32.2%",
+      "originalScore": "",
+      "originalConfiguration": "智谱GLM-5.3博客中的Kimi K3比较列；ExploitBench能力覆盖32.2%；不是完整ACE成功率；与AISI的32%分别保留，不平均。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "Cap%",
+          "value": 32.2,
+          "unit": "percent",
+          "configuration": "智谱GLM-5.3博客中的Kimi K3比较列；ExploitBench能力覆盖32.2%；不是完整ACE成功率；与AISI的32%分别保留，不平均。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "archived_web",
+        "notes": "",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+            "pages": "",
+            "section": "Performance table / ExploitBench",
+            "quote": "ExploitBench row: GLM-5.3 54.4, GLM-5.2 24.4, Kimi K3 32.2.",
+            "sha256": "b3e0c6d51c6c4948207694bfc4bb216ff5fd2075e614af730aa991e4329f4882",
+            "sourceUrl": "https://z.ai/blog/glm-5.3"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": 32.2,
+      "configuration": "智谱GLM-5.3博客中的Kimi K3比较列；ExploitBench能力覆盖32.2%；不是完整ACE成功率；与AISI的32%分别保留，不平均。",
+      "section": "Performance table / ExploitBench",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://z.ai/blog/glm-5.3",
+      "pdfUrl": "https://z.ai/blog/glm-5.3",
+      "pdfPath": "sources/vendors/Zhipu/glm-5-3.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Zhipu / GLM",
+      "assessmentKind": "cross-vendor"
+    },
+    {
+      "id": "CAO-2026-0278",
+      "modelId": "kimi-k3",
+      "benchmark": "ExploitBench",
+      "status": "已确认",
+      "category": "能力",
+      "score": "Cap 32%；完整ACE 0/41",
+      "originalScore": "",
+      "originalConfiguration": "UK AISI／CAISI 2026-07-23初步评估；41个V8漏洞；Kimi部署的选择性评测；Cap与完整ACE分别记录；不继承其他模型的防护关闭设置。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "Cap%",
+          "value": 32,
+          "unit": "percent",
+          "configuration": "UK AISI／CAISI 2026-07-23初步评估；41个V8漏洞；Kimi部署的选择性评测；Cap与完整ACE分别记录；不继承其他模型的防护关闭设置。"
+        },
+        {
+          "label": "完整ACE",
+          "value": "0/41",
+          "unit": "ratio",
+          "configuration": "UK AISI／CAISI 2026-07-23初步评估；41个V8漏洞；Kimi部署的选择性评测；Cap与完整ACE分别记录；不继承其他模型的防护关闭设置。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "archived_web",
+        "notes": "AISI来源32%与GLM来源32.2%是两条独立披露，不擅自提高精度、不覆盖或平均。",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Moonshot/aisi-kimi-k3.mhtml",
+            "pages": "",
+            "section": "Exploit Development: ExploitBench / Figures 1 and 3",
+            "quote": "Kimi K3 achieves a score of 32%; Kimi K3 achieved ACE on 0/41 samples.",
+            "sha256": "9e0e6add23c69c6a7d577c1d7e7609d6431f28335a9f6c065497da7dae6ec55e",
+            "sourceUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": null,
+      "configuration": "UK AISI／CAISI 2026-07-23初步评估；41个V8漏洞；Kimi部署的选择性评测；Cap与完整ACE分别记录；不继承其他模型的防护关闭设置。",
+      "section": "Exploit Development: ExploitBench / Figures 1 and 3",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities",
+      "pdfUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities",
+      "pdfPath": "sources/vendors/Moonshot/aisi-kimi-k3.mhtml",
+      "note": "AISI来源32%与GLM来源32.2%是两条独立披露，不擅自提高精度、不覆盖或平均。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "UK AISI / CAISI",
+      "assessmentKind": "independent"
+    },
+    {
+      "id": "CAO-2026-0279",
+      "modelId": "kimi-k3",
+      "benchmark": "The Last Ones (TLO)",
+      "status": "已确认",
+      "category": "能力",
+      "score": "平均到达17/32步；10次尝试成功1次",
+      "originalScore": "",
+      "originalConfiguration": "UK AISI／CAISI 2026-07-23初步评估；The Last Ones为32步企业网络靶场；10次尝试，每次100M token预算；平均进度与成功尝试数分开，不把17步当作成功率。",
+      "scoreStatus": "reported",
+      "metrics": [
+        {
+          "label": "平均完成步骤",
+          "value": 17,
+          "unit": "count",
+          "configuration": "UK AISI／CAISI 2026-07-23初步评估；The Last Ones为32步企业网络靶场；10次尝试，每次100M token预算；平均进度与成功尝试数分开，不把17步当作成功率。"
+        },
+        {
+          "label": "端到端成功",
+          "value": "1/10",
+          "unit": "ratio",
+          "configuration": "UK AISI／CAISI 2026-07-23初步评估；The Last Ones为32步企业网络靶场；10次尝试，每次100M token预算；平均进度与成功尝试数分开，不把17步当作成功率。"
+        }
+      ],
+      "scoreAudit": {
+        "reviewedAt": "2026-10-18",
+        "method": "archived_web",
+        "notes": "",
+        "evidence": [
+          {
+            "pdfPath": "sources/vendors/Moonshot/aisi-kimi-k3.mhtml",
+            "pages": "",
+            "section": "Cyber Range: The Last Ones (TLO)",
+            "quote": "Kimi K3 reached step 17 of this 32-step attack path on average; solved it in 1/10 attempts within the standard 100M token limit.",
+            "sha256": "9e0e6add23c69c6a7d577c1d7e7609d6431f28335a9f6c065497da7dae6ec55e",
+            "sourceUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities"
+          }
+        ],
+        "laterDisclosure": true
+      },
+      "numericScore": null,
+      "configuration": "UK AISI／CAISI 2026-07-23初步评估；The Last Ones为32步企业网络靶场；10次尝试，每次100M token预算；平均进度与成功尝试数分开，不把17步当作成功率。",
+      "section": "Cyber Range: The Last Ones (TLO)",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities",
+      "pdfUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities",
+      "pdfPath": "sources/vendors/Moonshot/aisi-kimi-k3.mhtml",
+      "note": "",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "UK AISI / CAISI",
+      "assessmentKind": "independent"
+    },
+    {
+      "id": "CAO-2026-0280",
+      "modelId": "kimi-k2-7-code",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档模型资料与更新日志，未确认该版本具名网安成绩；不代表未做测试，不继承其他版本。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档模型资料与更新日志，未确认该版本具名网安成绩；不代表未做测试，不继承其他版本。",
+      "section": "官方模型配置页／更新日志",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+      "pdfUrl": "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-7-code.mhtml",
+      "note": "已检查归档模型资料与更新日志，未确认该版本具名网安成绩；不代表未做测试，不继承其他版本。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Moonshot AI",
+      "assessmentKind": "vendor"
+    },
+    {
+      "id": "CAO-2026-0281",
+      "modelId": "kimi-k2-7-code-highspeed",
+      "benchmark": "未披露具名项目",
+      "status": "同模型服务档位",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "同一模型的加速服务档位，无独立具名网安成绩；不复制其他模型或版本的结果。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "同一模型的加速服务档位，无独立具名网安成绩；不复制其他模型或版本的结果。",
+      "section": "官方模型配置页／更新日志",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://www.kimi.com/en/help/kimi-code/models",
+      "pdfUrl": "https://www.kimi.com/en/help/kimi-code/models",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml",
+      "note": "同一模型的加速服务档位，无独立具名网安成绩；不复制其他模型或版本的结果。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Moonshot AI",
+      "assessmentKind": "vendor"
+    },
+    {
+      "id": "CAO-2026-0282",
+      "modelId": "kimi-k2-8-preview",
+      "benchmark": "未披露具名项目",
+      "status": "未披露具名项目",
+      "category": "能力",
+      "score": "",
+      "originalScore": "",
+      "originalConfiguration": "已检查归档模型资料与更新日志，未确认该版本具名网安成绩；不代表未做测试，不继承其他版本。",
+      "scoreStatus": "not_applicable",
+      "metrics": [],
+      "scoreAudit": null,
+      "numericScore": null,
+      "configuration": "已检查归档模型资料与更新日志，未确认该版本具名网安成绩；不代表未做测试，不继承其他版本。",
+      "section": "官方模型配置页／更新日志",
+      "pages": "",
+      "sourceKind": "MHTML",
+      "sourceUrl": "https://www.kimi.com/en/help/kimi-code/models",
+      "pdfUrl": "https://www.kimi.com/en/help/kimi-code/models",
+      "pdfPath": "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml",
+      "note": "已检查归档模型资料与更新日志，未确认该版本具名网安成绩；不代表未做测试，不继承其他版本。",
+      "comparisonGroup": null,
+      "origin": "vendor-supplement",
+      "assessmentProvider": "Moonshot AI",
+      "assessmentKind": "vendor"
     }
   ],
   "benchmarks": [
@@ -13454,6 +14243,34 @@
       "task": "风险双用途网安提示放行率",
       "caveat": "行为安全指标，越低越好；3.3%不是任务成功率。",
       "sourceUrl": "https://x.ai/news/grok-4-7"
+    },
+    {
+      "name": "In-house exploit suite (36 tasks; Moonshot)",
+      "task": "月之暗面内部36题端到端利用测试",
+      "openness": "内部私有题集；用户态与Linux内核任务",
+      "caveat": "不是公开ExploitGym或ExploitBench；题集、配置和加固等级单独解释。",
+      "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf"
+    },
+    {
+      "name": "The Last Ones (TLO)",
+      "task": "32步模拟企业网络的自主攻击进度与端到端完成情况",
+      "openness": "UK AISI／CAISI评估；原版环境开放性未确认",
+      "caveat": "保留每次100M token预算、尝试数与模型部署设置；不把平均步骤当成功率。",
+      "sourceUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities"
+    },
+    {
+      "name": "CyberBench v1",
+      "task": "真实开源项目漏洞PoC复现与修复的总体准确率（v1）",
+      "openness": "Vals AI私有评测；v1已归档",
+      "caveat": "mini-swe-agent；60题PoC及原Patch设置；不与v1.1直接比较。",
+      "sourceUrl": "https://www.vals.ai/benchmarks/cyber-v1"
+    },
+    {
+      "name": "CyberBench v1.1",
+      "task": "离线沙箱及加固评分器下的漏洞PoC复现与修复准确率（v1.1）",
+      "openness": "Vals AI私有评测；离线任务沙箱与加固grader",
+      "caveat": "保留60题PoC、56题Patch的版本设置；v1.1重跑结果不覆盖v1。",
+      "sourceUrl": "https://www.vals.ai/benchmarks/cyber"
     }
   ],
   "pdfs": [
@@ -15697,6 +16514,126 @@
       "sourceUrl": "https://docs.x.ai/developers/release-notes",
       "downloadUrl": "https://docs.x.ai/developers/release-notes",
       "fetchedAt": "2026-10-18T09:25:32.382055+00:00"
+    },
+    {
+      "name": "aisi-kimi-k3.mhtml",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "MHTML",
+      "path": "sources/vendors/Moonshot/aisi-kimi-k3.mhtml",
+      "pages": 0,
+      "sha256": "9e0e6add23c69c6a7d577c1d7e7609d6431f28335a9f6c065497da7dae6ec55e",
+      "sourceUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities",
+      "downloadUrl": "https://www.aisi.gov.uk/blog/preliminary-assessment-of-kimi-k3s-cyber-capabilities",
+      "fetchedAt": "2026-10-18T11:57:07+00:00",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "kimi-code-changelog.mhtml",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "MHTML",
+      "path": "sources/vendors/Moonshot/kimi-code-changelog.mhtml",
+      "pages": 0,
+      "sha256": "0c0034796e3950f134d6d9dd6dd86a16a826500a3c1e7a9cff05d34e1fd04f6b",
+      "sourceUrl": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+      "downloadUrl": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+      "fetchedAt": "2026-10-18T11:57:08+00:00",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "kimi-k2-5.pdf",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "官方原始 PDF",
+      "path": "sources/vendors/Moonshot/kimi-k2-5.pdf",
+      "pages": 31,
+      "sha256": "889025c0fcbacb8b049aacd5b21f6c902a236eb28dec7aa51e6852ca39ec5417",
+      "sourceUrl": "https://arxiv.org/pdf/2602.02276",
+      "downloadUrl": "https://arxiv.org/pdf/2602.02276",
+      "fetchedAt": "2026-10-18",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "kimi-k2-6.mhtml",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "MHTML",
+      "path": "sources/vendors/Moonshot/kimi-k2-6.mhtml",
+      "pages": 0,
+      "sha256": "b75c00c64576896c669a1335d79cb234d9e16f945b5ca739beae857346fc585c",
+      "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K2.6",
+      "downloadUrl": "https://huggingface.co/moonshotai/Kimi-K2.6",
+      "fetchedAt": "2026-10-18T11:57:04+00:00",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "kimi-k2-7-code.mhtml",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "MHTML",
+      "path": "sources/vendors/Moonshot/kimi-k2-7-code.mhtml",
+      "pages": 0,
+      "sha256": "a4e61fd94b6408158c3fe63d9df56dd3b929b03382f5156bcc209d83b3631d60",
+      "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+      "downloadUrl": "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+      "fetchedAt": "2026-10-18T11:57:04+00:00",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "kimi-k2-8-preview.mhtml",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "MHTML",
+      "path": "sources/vendors/Moonshot/kimi-k2-8-preview.mhtml",
+      "pages": 0,
+      "sha256": "a8f69993ce58925e7ac6c686418554d0678d0d48793fa665237c0ba875049495",
+      "sourceUrl": "https://www.kimi.com/en/help/kimi-code/models",
+      "downloadUrl": "https://www.kimi.com/en/help/kimi-code/models",
+      "fetchedAt": "2026-10-18T11:57:04+00:00",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "kimi-k3.pdf",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "官方原始 PDF",
+      "path": "sources/vendors/Moonshot/kimi-k3.pdf",
+      "pages": 47,
+      "sha256": "86fb82a63ced501f0c3f4f404c0c6fa88a7a6cfac17aae81fd1a8f455998067c",
+      "sourceUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+      "downloadUrl": "https://raw.githubusercontent.com/MoonshotAI/Kimi-K3/main/k3_tech_report.pdf",
+      "fetchedAt": "2026-10-18",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "release-history.html",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "HTML",
+      "path": "sources/vendors/Moonshot/release-history.html",
+      "pages": 0,
+      "sha256": "ceb8d3a8e2a58163a0c16094f5bb25490656db592d4b3ad4e470b13b8297fc58",
+      "sourceUrl": "https://www.kimi.ai/help/agent/agent-overview",
+      "downloadUrl": "https://www.kimi.ai/help/agent/agent-overview",
+      "fetchedAt": "2026-10-18",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "vals-cyberbench-v1-1.mhtml",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "MHTML",
+      "path": "sources/vendors/Moonshot/vals-cyberbench-v1-1.mhtml",
+      "pages": 0,
+      "sha256": "0640c02419c8893446e52f63b6a3ed8d8eb214ce42902593c425afd559b2fcad",
+      "sourceUrl": "https://www.vals.ai/benchmarks/cyber",
+      "downloadUrl": "https://www.vals.ai/benchmarks/cyber",
+      "fetchedAt": "2026-10-18T11:57:11+00:00",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
+    },
+    {
+      "name": "vals-cyberbench-v1.mhtml",
+      "purpose": "Kimi扩展：模型报告、日期依据或独立机构评测",
+      "kind": "MHTML",
+      "path": "sources/vendors/Moonshot/vals-cyberbench-v1.mhtml",
+      "pages": 0,
+      "sha256": "c5b56da7d148da7cacc78535f1f4f5dd6de7e58a7fdd8c195f5bbf0197285d81",
+      "sourceUrl": "https://www.vals.ai/benchmarks/cyber-v1",
+      "downloadUrl": "https://www.vals.ai/benchmarks/cyber-v1",
+      "fetchedAt": "2026-10-18T11:57:08+00:00",
+      "archiveNote": "来自用户提供的配套资料包；本轮未重新抓取。"
     }
   ],
   "benchmarkUsage": {
