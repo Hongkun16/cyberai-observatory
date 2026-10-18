@@ -1,0 +1,2073 @@
+[
+  {
+    "id": "CAO-2026-0111",
+    "score": "pass@1 66.6%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 66.6,
+        "unit": "percent",
+        "configuration": "1507任务；no thinking/default设置；原始卡"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-6.pdf",
+        "pages": "30",
+        "quote": "pass@1 66.6%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0112",
+    "score": "平均 pass@1 0.93；pass@30 100%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均 pass@1",
+        "value": 0.93,
+        "unit": "ratio",
+        "configuration": "原始报告RSP子集"
+      },
+      {
+        "label": "pass@30",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "原始报告RSP子集"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-6.pdf",
+        "pages": "203",
+        "quote": "平均 pass@1 0.93；pass@30 100%"
+      }
+    ],
+    "method": "text",
+    "notes": "原卡称未运行40题中的3题，原表35/40配置不能直接套用；后续卡纠正判分后为1.00，不覆盖本条原始结果。",
+    "configurationCorrection": "公开Cybench的37/40题子集（原卡称3题未运行）；原卡pass@1与pass@30分别记录，不等同厂商内部CTF；不继承后续纠正判分结果"
+  },
+  {
+    "id": "CAO-2026-0113",
+    "score": "累计解题 13/13",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "13/13",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-6.pdf",
+        "pages": "199",
+        "quote": "累计解题 13/13"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0114",
+    "score": "累计解题 16/18",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "16/18",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-6.pdf",
+        "pages": "199",
+        "quote": "累计解题 16/18"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0115",
+    "score": "累计解题 5/7",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "5/7",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-6.pdf",
+        "pages": "200",
+        "quote": "累计解题 5/7"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0116",
+    "score": "累计解题 6/6",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "6/6",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-6.pdf",
+        "pages": "201",
+        "quote": "累计解题 6/6"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0117",
+    "score": "累计解题 5/5",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "5/5",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-6.pdf",
+        "pages": "202",
+        "quote": "累计解题 5/5"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0118",
+    "score": "pass@1 65.2%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 65.2,
+        "unit": "percent",
+        "configuration": "1507任务；no thinking/default设置"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-4-6.pdf",
+        "pages": "29",
+        "quote": "pass@1 65.2%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0119",
+    "score": "平均 pass@1 0.90；pass@30 100%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均 pass@1",
+        "value": 0.9,
+        "unit": "ratio",
+        "configuration": "原始报告RSP子集"
+      },
+      {
+        "label": "pass@30",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "原始报告RSP子集"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-4-6.pdf",
+        "pages": "125-126",
+        "quote": "平均 pass@1 0.90；pass@30 100%"
+      }
+    ],
+    "method": "text",
+    "notes": "原卡称未运行40题中的3题；后续纠正判分为0.96，不覆盖本条。",
+    "configurationCorrection": "公开Cybench的37/40题子集（原卡称3题未运行）；原卡pass@1与pass@30分别记录，不等同厂商内部CTF；不继承后续纠正判分结果"
+  },
+  {
+    "id": "CAO-2026-0120",
+    "score": "累计解题 13/13",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "13/13",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-4-6.pdf",
+        "pages": "122",
+        "quote": "累计解题 13/13"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0121",
+    "score": "累计解题 16/18",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "16/18",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-4-6.pdf",
+        "pages": "122",
+        "quote": "累计解题 16/18"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0122",
+    "score": "累计解题 5/7",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "5/7",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-4-6.pdf",
+        "pages": "123",
+        "quote": "累计解题 5/7"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0123",
+    "score": "累计解题 6/6",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "6/6",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-4-6.pdf",
+        "pages": "124",
+        "quote": "累计解题 6/6"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0124",
+    "score": "累计解题 5/5",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "累计解决挑战数",
+        "value": "5/5",
+        "unit": "ratio",
+        "configuration": "RSP CTF，多次尝试累计解题；非pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-4-6.pdf",
+        "pages": "124",
+        "quote": "累计解题 5/5"
+      }
+    ],
+    "method": "figure",
+    "notes": "分母采用结果图与图注，和Details段所列题目数不同；不得当作单次成功率。"
+  },
+  {
+    "id": "CAO-2026-0125",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-6.pdf",
+        "pages": "203-204",
+        "quote": "a number of novel vulnerabilities in both open and closed source software were discovered"
+      }
+    ],
+    "method": "text",
+    "notes": "报告描述发现多个新漏洞，但未公开具体成绩、数量或成功率。"
+  },
+  {
+    "id": "CAO-2026-0126",
+    "score": "pass@1 96%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 96,
+        "unit": "percent",
+        "configuration": "35题；每题10次；防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-7.pdf",
+        "pages": "49",
+        "quote": "pass@1 96%"
+      }
+    ],
+    "method": "text",
+    "notes": "正文“nearly every challenge”不等于严格100% pass@10，未录入未经精确披露的pass@10。"
+  },
+  {
+    "id": "CAO-2026-0127",
+    "score": "pass@1 0.73（图示）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 0.73,
+        "unit": "ratio",
+        "configuration": "1507任务；原卡图示"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-7.pdf",
+        "pages": "50",
+        "quote": "pass@1 0.73（图示）"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续Opus4.8卡报告73.1%；本条保留原卡两位小数图示值。"
+  },
+  {
+    "id": "CAO-2026-0128",
+    "score": "完整利用 1.2%；至少部分控制 45.2%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "完整利用",
+        "value": 1.2,
+        "unit": "percent",
+        "configuration": "250 trials；原卡"
+      },
+      {
+        "label": "至少部分控制",
+        "value": 45.2,
+        "unit": "percent",
+        "configuration": "250 trials；原卡"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-7.pdf",
+        "pages": "51",
+        "quote": "完整利用 1.2%；至少部分控制 45.2%"
+      }
+    ],
+    "method": "figure",
+    "notes": "堆叠柱顶45.2%为完整+部分；后续4.8卡重跑35.2%，不覆盖此值。"
+  },
+  {
+    "id": "CAO-2026-0129",
+    "score": "plain 平均flags 5.02；AutoNudge 5.45；T3开启图示平均flags 0.46",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 5.02,
+        "unit": "count",
+        "configuration": "plain；3 trials；防护关闭"
+      },
+      {
+        "label": "平均能力flags",
+        "value": 5.45,
+        "unit": "count",
+        "configuration": "AutoNudge；3 trials；防护关闭"
+      },
+      {
+        "label": "平均能力flags",
+        "value": 0.46,
+        "unit": "count",
+        "configuration": "T3防护开启；图示"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-8.pdf",
+        "pages": "50-51",
+        "quote": "plain 平均flags 5.02；AutoNudge 5.45；T3开启图示平均flags 0.46"
+      }
+    ],
+    "method": "figure",
+    "notes": "原卡正文明确每变体3 trials，原表5 trials不符；图示值0.46为防护开启，不与无防护合并。",
+    "configurationCorrection": "41个V8漏洞；plain/AutoNudge；300 turns；每变体3 trials；防护开关分别列示"
+  },
+  {
+    "id": "CAO-2026-0130",
+    "score": "目标漏洞 pass@1 78.8%；任意crash 95.8%；T3目标漏洞正文1.0%／图示0.9%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 78.8,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "任意crash",
+        "value": 95.8,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 1.0,
+        "unit": "percent",
+        "configuration": "T3开启；正文"
+      },
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 0.9,
+        "unit": "percent",
+        "configuration": "T3开启；图示"
+      },
+      {
+        "label": "任意crash",
+        "value": 2.8,
+        "unit": "percent",
+        "configuration": "T3开启；图示"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-8.pdf",
+        "pages": "51-52",
+        "quote": "目标漏洞 pass@1 78.8%；任意crash 95.8%；T3目标漏洞正文1.0%／图示0.9%"
+      }
+    ],
+    "method": "figure",
+    "notes": "来源内部冲突：T3目标漏洞正文1.0%，图示0.9%；保留两者并明确标注。"
+  },
+  {
+    "id": "CAO-2026-0131",
+    "score": "完整利用 8.8%（22/250）；至少寄存器控制 68.8%；T3开启均0",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "完整利用",
+        "value": 8.8,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "完整利用次数",
+        "value": 22,
+        "unit": "count",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "至少寄存器控制",
+        "value": 68.8,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "任意非零进展",
+        "value": 0,
+        "unit": "percent",
+        "configuration": "T3开启"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-8.pdf",
+        "pages": "53",
+        "quote": "完整利用 8.8%（22/250）；至少寄存器控制 68.8%；T3开启均0"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0132",
+    "score": "无防护：0分61.5%，最高0.6（1次）；有防护：最高0.4，0.4占4.9%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "0分比例",
+        "value": 61.5,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "最高grade",
+        "value": 0.6,
+        "unit": "ratio",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "grade 0.6次数",
+        "value": 1,
+        "unit": "count",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "grade 0.4比例",
+        "value": 18.1,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "最高grade",
+        "value": 0.4,
+        "unit": "ratio",
+        "configuration": "T3开启"
+      },
+      {
+        "label": "grade 0.4比例",
+        "value": 4.9,
+        "unit": "percent",
+        "configuration": "T3开启"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-8.pdf",
+        "pages": "54",
+        "quote": "无防护：0分61.5%，最高0.6（1次）；有防护：最高0.4，0.4占4.9%"
+      }
+    ],
+    "method": "text",
+    "notes": "旧harness；为分级结果，非统一成功率。"
+  },
+  {
+    "id": "CAO-2026-0134",
+    "score": "plain 平均flags 9.62；AutoNudge 10.14、Cap 70%；完整ACE 99次（两臂合计）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 9.62,
+        "unit": "count",
+        "configuration": "plain；5 trials"
+      },
+      {
+        "label": "平均能力flags",
+        "value": 10.14,
+        "unit": "count",
+        "configuration": "AutoNudge；5 trials"
+      },
+      {
+        "label": "Cap%",
+        "value": 70,
+        "unit": "percent",
+        "configuration": "AutoNudge；5 trials"
+      },
+      {
+        "label": "完整ACE",
+        "value": 99,
+        "unit": "count",
+        "configuration": "plain+AutoNudge合计"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5.pdf",
+        "pages": "38",
+        "quote": "plain 平均flags 9.62；AutoNudge 10.14、Cap 70%；完整ACE 99次（两臂合计）"
+      }
+    ],
+    "method": "table",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0135",
+    "score": "控制流劫持4个目标；grade 0.8另6个；非零79.4%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 4,
+        "unit": "count",
+        "configuration": "旧harness"
+      },
+      {
+        "label": "grade 0.8另计目标",
+        "value": 6,
+        "unit": "count",
+        "configuration": "旧harness"
+      },
+      {
+        "label": "非零grade",
+        "value": 79.4,
+        "unit": "percent",
+        "configuration": "旧harness"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5.pdf",
+        "pages": "39",
+        "quote": "控制流劫持4个目标；grade 0.8另6个；非零79.4%"
+      }
+    ],
+    "method": "figure",
+    "notes": "不可和新Binary Exploitation Benchmark的66次劫持混合。"
+  },
+  {
+    "id": "CAO-2026-0136",
+    "score": "完整利用131/250（52.4%）；至少部分进展218/250（87.2%）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "完整利用",
+        "value": 52.4,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "完整利用次数",
+        "value": 131,
+        "unit": "count",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "至少部分进展",
+        "value": 87.2,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "至少部分进展次数",
+        "value": 218,
+        "unit": "count",
+        "configuration": "防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5.pdf",
+        "pages": "40-41",
+        "quote": "完整利用131/250（52.4%）；至少部分进展218/250（87.2%）"
+      }
+    ],
+    "method": "figure",
+    "notes": "218包括131次完整利用，非额外218次部分利用。"
+  },
+  {
+    "id": "CAO-2026-0137",
+    "score": "平均solve rate 33.7%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均solve rate",
+        "value": 33.7,
+        "unit": "percent",
+        "configuration": "9场景；防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5.pdf",
+        "pages": "42",
+        "quote": "平均solve rate 33.7%"
+      }
+    ],
+    "method": "figure",
+    "notes": "不可与后续10场景53.0%重跑结果合并。"
+  },
+  {
+    "id": "CAO-2026-0138",
+    "score": "2h 171/869；6h 191/869",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "成功利用数",
+        "value": 171,
+        "unit": "count",
+        "configuration": "2h；原卡；生产防护关闭"
+      },
+      {
+        "label": "成功利用数",
+        "value": 191,
+        "unit": "count",
+        "configuration": "6h；原卡；生产防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5.pdf",
+        "pages": "44",
+        "quote": "2h 171/869；6h 191/869"
+      }
+    ],
+    "method": "figure",
+    "notes": "图中数字为正确使用指定漏洞的利用数。"
+  },
+  {
+    "id": "CAO-2026-0139",
+    "score": "The Last Ones 8/10；Doing Life最远22/23步，未通关；Cooling Tower未通关，最佳3/5 flags",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "端到端成功",
+        "value": "8/10",
+        "unit": "ratio",
+        "configuration": "The Last Ones；早期快照；每次100M tokens"
+      },
+      {
+        "label": "最远步骤",
+        "value": "22/23",
+        "unit": "ratio",
+        "configuration": "Doing Life；未通关"
+      },
+      {
+        "label": "最佳flags",
+        "value": "3/5",
+        "unit": "ratio",
+        "configuration": "Cooling Tower；未通关"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5.pdf",
+        "pages": "44-45",
+        "quote": "The Last Ones 8/10；Doing Life最远22/23步，未通关；Cooling Tower未通关，最佳3/5 flags"
+      }
+    ],
+    "method": "text",
+    "notes": "UK AISI外部早期快照，不等同最终生产部署条件。"
+  },
+  {
+    "id": "CAO-2026-0140",
+    "score": "plain 平均flags 3.96；AutoNudge 4.18、Cap 31%；完整ACE 0",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 3.96,
+        "unit": "count",
+        "configuration": "plain"
+      },
+      {
+        "label": "平均能力flags",
+        "value": 4.18,
+        "unit": "count",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "Cap%",
+        "value": 31,
+        "unit": "percent",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "完整ACE",
+        "value": 0,
+        "unit": "count",
+        "configuration": "plain+AutoNudge合计"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5.pdf",
+        "pages": "31",
+        "quote": "plain 平均flags 3.96；AutoNudge 4.18、Cap 31%；完整ACE 0"
+      }
+    ],
+    "method": "table",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0141",
+    "score": "控制流劫持0；grade 0.8有2个目标；0分45.5%；默认防护开启全0",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 0,
+        "unit": "count",
+        "configuration": "旧harness；防护关闭"
+      },
+      {
+        "label": "grade 0.8目标",
+        "value": 2,
+        "unit": "count",
+        "configuration": "旧harness；防护关闭"
+      },
+      {
+        "label": "0分比例",
+        "value": 45.5,
+        "unit": "percent",
+        "configuration": "旧harness；防护关闭"
+      },
+      {
+        "label": "非零结果",
+        "value": 0,
+        "unit": "count",
+        "configuration": "默认防护开启"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5.pdf",
+        "pages": "32",
+        "quote": "控制流劫持0；grade 0.8有2个目标；0分45.5%；默认防护开启全0"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0142",
+    "score": "目标漏洞 pass@1 52.7%；任意crash 65.4%；默认防护开启0",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 52.7,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "任意crash",
+        "value": 65.4,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "成绩",
+        "value": 0,
+        "unit": "count",
+        "configuration": "默认防护开启"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5.pdf",
+        "pages": "33",
+        "quote": "目标漏洞 pass@1 52.7%；任意crash 65.4%；默认防护开启0"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0143",
+    "score": "完整利用0/250；部分控制33/250（13.2%）；默认防护开启0",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "完整利用",
+        "value": 0,
+        "unit": "count",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "部分控制次数",
+        "value": 33,
+        "unit": "count",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "部分控制",
+        "value": 13.2,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "成绩",
+        "value": 0,
+        "unit": "count",
+        "configuration": "默认防护开启"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5.pdf",
+        "pages": "34-35",
+        "quote": "完整利用0/250；部分控制33/250（13.2%）；默认防护开启0"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0144",
+    "score": "plain 平均flags 13.99、Cap 91%；AutoNudge 14.15、Cap 91%；完整ACE 301/410（73.4%）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 13.99,
+        "unit": "count",
+        "configuration": "plain"
+      },
+      {
+        "label": "Cap%",
+        "value": 91,
+        "unit": "percent",
+        "configuration": "plain"
+      },
+      {
+        "label": "平均能力flags",
+        "value": 14.15,
+        "unit": "count",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "Cap%",
+        "value": 91,
+        "unit": "percent",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "完整ACE",
+        "value": "301/410",
+        "unit": "ratio",
+        "configuration": "plain+AutoNudge合计"
+      },
+      {
+        "label": "完整ACE率",
+        "value": 73.4,
+        "unit": "percent",
+        "configuration": "plain+AutoNudge合计"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5-5.pdf",
+        "pages": "50",
+        "quote": "plain 平均flags 13.99、Cap 91%；AutoNudge 14.15、Cap 91%；完整ACE 301/410（73.4%）"
+      }
+    ],
+    "method": "figure",
+    "notes": "网安防护关闭，escape classifiers及其他安全措施保持开启。"
+  },
+  {
+    "id": "CAO-2026-0145",
+    "score": "平均solve rate 67.6%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均solve rate",
+        "value": 67.6,
+        "unit": "percent",
+        "configuration": "10场景；防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5-5.pdf",
+        "pages": "51-52",
+        "quote": "平均solve rate 67.6%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0146",
+    "score": "控制流劫持106次；非零grade 91.1%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 106,
+        "unit": "count",
+        "configuration": "新harness；831入口"
+      },
+      {
+        "label": "非零grade",
+        "value": 91.1,
+        "unit": "percent",
+        "configuration": "新harness；831入口"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5-5.pdf",
+        "pages": "52-53",
+        "quote": "控制流劫持106次；非零grade 91.1%"
+      }
+    ],
+    "method": "figure",
+    "notes": "新harness重跑结果，不可与旧OSS-Fuzz直接比较。"
+  },
+  {
+    "id": "CAO-2026-0147",
+    "score": "2h 289/869；6h 300/869",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "成功利用数",
+        "value": 289,
+        "unit": "count",
+        "configuration": "2h；系统漏洞缓解关闭"
+      },
+      {
+        "label": "成功利用数",
+        "value": 300,
+        "unit": "count",
+        "configuration": "6h；系统漏洞缓解关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5-5.pdf",
+        "pages": "54",
+        "quote": "2h 289/869；6h 300/869"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0148",
+    "score": "AutoNudge 平均flags 11.53、Cap 80%；完整ACE 178/410（43.4%）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 11.53,
+        "unit": "count",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "Cap%",
+        "value": 80,
+        "unit": "percent",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "完整ACE",
+        "value": "178/410",
+        "unit": "ratio",
+        "configuration": "plain+AutoNudge合计"
+      },
+      {
+        "label": "完整ACE率",
+        "value": 43.4,
+        "unit": "percent",
+        "configuration": "plain+AutoNudge合计"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5-5.pdf",
+        "pages": "25",
+        "quote": "AutoNudge 平均flags 11.53、Cap 80%；完整ACE 178/410（43.4%）"
+      }
+    ],
+    "method": "figure",
+    "notes": "网安防护关闭，escape classifiers保持开启；未披露plain均值，不能从合计ACE推算。"
+  },
+  {
+    "id": "CAO-2026-0149",
+    "score": "平均solve rate 46.1%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均solve rate",
+        "value": 46.1,
+        "unit": "percent",
+        "configuration": "10场景；防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5-5.pdf",
+        "pages": "26",
+        "quote": "平均solve rate 46.1%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0150",
+    "score": "控制流劫持50次；非零grade 85.8%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 50,
+        "unit": "count",
+        "configuration": "新harness；831入口"
+      },
+      {
+        "label": "非零grade",
+        "value": 85.8,
+        "unit": "percent",
+        "configuration": "新harness；831入口"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5-5.pdf",
+        "pages": "27",
+        "quote": "控制流劫持50次；非零grade 85.8%"
+      }
+    ],
+    "method": "figure",
+    "notes": "新harness重跑，不和旧OSS-Fuzz比较。"
+  },
+  {
+    "id": "CAO-2026-0151",
+    "score": "2h 205/869；6h 231/869",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "成功利用数",
+        "value": 205,
+        "unit": "count",
+        "configuration": "2h"
+      },
+      {
+        "label": "成功利用数",
+        "value": 231,
+        "unit": "count",
+        "configuration": "6h"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5-5.pdf",
+        "pages": "28",
+        "quote": "2h 205/869；6h 231/869"
+      }
+    ],
+    "method": "figure",
+    "notes": "ASLR/stack canaries/KASLR关闭；V8 sandbox除sandbox-escape任务外关闭；kernel保留SMEP/SMAP。"
+  },
+  {
+    "id": "CAO-2026-0152",
+    "score": "plain 平均flags 5.15、Cap 38%；AutoNudge 6.56、Cap 49%；完整ACE 4/410（1.0%）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 5.15,
+        "unit": "count",
+        "configuration": "plain"
+      },
+      {
+        "label": "Cap%",
+        "value": 38,
+        "unit": "percent",
+        "configuration": "plain"
+      },
+      {
+        "label": "平均能力flags",
+        "value": 6.56,
+        "unit": "count",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "Cap%",
+        "value": 49,
+        "unit": "percent",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "完整ACE",
+        "value": "4/410",
+        "unit": "ratio",
+        "configuration": "plain+AutoNudge合计"
+      },
+      {
+        "label": "完整ACE率",
+        "value": 1,
+        "unit": "percent",
+        "configuration": "plain+AutoNudge合计"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-haiku-5-5.pdf",
+        "pages": "24-25",
+        "quote": "plain 平均flags 5.15、Cap 38%；AutoNudge 6.56、Cap 49%；完整ACE 4/410（1.0%）"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0153",
+    "score": "平均solve rate 3.3%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均solve rate",
+        "value": 3.3,
+        "unit": "percent",
+        "configuration": "10场景；预发布快照；防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-haiku-5-5.pdf",
+        "pages": "26-27",
+        "quote": "平均solve rate 3.3%"
+      }
+    ],
+    "method": "figure",
+    "notes": "报告说明为与发布模型能力相近的预发布快照。"
+  },
+  {
+    "id": "CAO-2026-0154",
+    "score": "控制流劫持3次；非零grade 58.2%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 3,
+        "unit": "count",
+        "configuration": "新harness；831入口"
+      },
+      {
+        "label": "非零grade",
+        "value": 58.2,
+        "unit": "percent",
+        "configuration": "新harness；831入口"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-haiku-5-5.pdf",
+        "pages": "27-28",
+        "quote": "控制流劫持3次；非零grade 58.2%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0155",
+    "score": "2h 79/869；6h 82/869",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "成功利用数",
+        "value": 79,
+        "unit": "count",
+        "configuration": "2h"
+      },
+      {
+        "label": "成功利用数",
+        "value": 82,
+        "unit": "count",
+        "configuration": "6h"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-haiku-5-5.pdf",
+        "pages": "29",
+        "quote": "2h 79/869；6h 82/869"
+      }
+    ],
+    "method": "figure",
+    "notes": "ASLR/stack canaries/KASLR关闭；V8 sandbox除sandbox-escape任务外关闭；kernel保留SMEP/SMAP。"
+  },
+  {
+    "id": "CAO-2026-0157",
+    "score": "pass@1 100%（35题，每题10次）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "35题；每题10次"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-mythos-preview.pdf",
+        "pages": "48-49",
+        "quote": "pass@1 100%（35题，每题10次）"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0158",
+    "score": "pass@1 0.83",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 0.83,
+        "unit": "ratio",
+        "configuration": "1507任务；原卡图文值"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-mythos-preview.pdf",
+        "pages": "50",
+        "quote": "pass@1 0.83"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续卡披露83.1%，此条保留原卡0.83。"
+  },
+  {
+    "id": "CAO-2026-0159",
+    "score": "标准：完整利用 72.4%，至少部分控制 84%；移除top 2漏洞：完整 4.4%，至少部分 85.2%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "完整利用",
+        "value": 72.4,
+        "unit": "percent",
+        "configuration": "标准；250 trials；原卡"
+      },
+      {
+        "label": "至少部分控制",
+        "value": 84,
+        "unit": "percent",
+        "configuration": "标准；250 trials；原卡"
+      },
+      {
+        "label": "完整利用",
+        "value": 4.4,
+        "unit": "percent",
+        "configuration": "移除top 2漏洞；原卡"
+      },
+      {
+        "label": "至少部分控制",
+        "value": 85.2,
+        "unit": "percent",
+        "configuration": "移除top 2漏洞；原卡"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-mythos-preview.pdf",
+        "pages": "51-52",
+        "quote": "标准：完整利用 72.4%，至少部分控制 84%；移除top 2漏洞：完整 4.4%，至少部分 85.2%"
+      }
+    ],
+    "method": "figure",
+    "notes": "堆叠柱顶为至少部分控制总和；后续重跑结果不同，保留本报告数值。"
+  },
+  {
+    "id": "CAO-2026-0160",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-mythos-preview.pdf",
+        "pages": "52-53",
+        "quote": "first model to solve one of these private cyber ranges end-to-end"
+      }
+    ],
+    "method": "text",
+    "notes": "仅定性披露企业网络靶场通关、OT靶场未通关及现代补丁沙箱未发现新利用；未公开精确成功次数/率。"
+  },
+  {
+    "id": "CAO-2026-0161",
+    "score": "AutoNudge 平均flags 9.90、Cap 69%（3 trials）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 9.9,
+        "unit": "count",
+        "configuration": "AutoNudge；3 trials"
+      },
+      {
+        "label": "Cap%",
+        "value": 69,
+        "unit": "percent",
+        "configuration": "AutoNudge；3 trials"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5.pdf",
+        "pages": "60",
+        "quote": "AutoNudge 平均flags 9.90、Cap 69%（3 trials）"
+      }
+    ],
+    "method": "table",
+    "notes": "后续官方报告补测；后续共用卡补测，非Mythos Preview原始卡。"
+  },
+  {
+    "id": "CAO-2026-0162",
+    "score": "控制流劫持12个目标；非零76.7%；grade≥0.4为31.1%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 12,
+        "unit": "count",
+        "configuration": "旧harness"
+      },
+      {
+        "label": "非零grade",
+        "value": 76.7,
+        "unit": "percent",
+        "configuration": "旧harness"
+      },
+      {
+        "label": "grade≥0.4",
+        "value": 31.1,
+        "unit": "percent",
+        "configuration": "旧harness"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5.pdf",
+        "pages": "60-61",
+        "quote": "控制流劫持12个目标；非零76.7%；grade≥0.4为31.1%"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续官方报告补测"
+  },
+  {
+    "id": "CAO-2026-0163",
+    "score": "plain 平均flags 10.44；AutoNudge 10.75、Cap 78%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 10.44,
+        "unit": "count",
+        "configuration": "plain；5 trials"
+      },
+      {
+        "label": "平均能力flags",
+        "value": 10.75,
+        "unit": "count",
+        "configuration": "AutoNudge；5 trials"
+      },
+      {
+        "label": "Cap%",
+        "value": 78,
+        "unit": "percent",
+        "configuration": "AutoNudge；5 trials"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5.pdf",
+        "pages": "59-60",
+        "quote": "plain 平均flags 10.44；AutoNudge 10.75、Cap 78%"
+      }
+    ],
+    "method": "table",
+    "notes": "该报告写plain超过半数环境达ACE，未给两臂合计精确ACE数；不引入后续重跑132。所有数值只归Mythos 5，非Fable 5。"
+  },
+  {
+    "id": "CAO-2026-0164",
+    "score": "控制流劫持13个目标；非零80.0%；grade≥0.4为32.4%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 13,
+        "unit": "count",
+        "configuration": "旧harness"
+      },
+      {
+        "label": "非零grade",
+        "value": 80,
+        "unit": "percent",
+        "configuration": "旧harness"
+      },
+      {
+        "label": "grade≥0.4",
+        "value": 32.4,
+        "unit": "percent",
+        "configuration": "旧harness"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5.pdf",
+        "pages": "60-61",
+        "quote": "控制流劫持13个目标；非零80.0%；grade≥0.4为32.4%"
+      }
+    ],
+    "method": "figure",
+    "notes": "Mythos 5防护关闭；非Fable生产配置。"
+  },
+  {
+    "id": "CAO-2026-0165",
+    "score": "目标漏洞 pass@1 83.8%；任意crash 99.4%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "目标漏洞复现 pass@1",
+        "value": 83.8,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "任意crash",
+        "value": 99.4,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5.pdf",
+        "pages": "61-62",
+        "quote": "目标漏洞 pass@1 83.8%；任意crash 99.4%"
+      }
+    ],
+    "method": "figure",
+    "notes": "Mythos 5防护关闭；非Fable生产配置。"
+  },
+  {
+    "id": "CAO-2026-0166",
+    "score": "完整利用221/250（88.4%）；至少寄存器控制90.0%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "完整利用",
+        "value": "221/250",
+        "unit": "ratio",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "完整利用率",
+        "value": 88.4,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "至少寄存器控制",
+        "value": 90,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5.pdf",
+        "pages": "63",
+        "quote": "完整利用221/250（88.4%）；至少寄存器控制90.0%"
+      }
+    ],
+    "method": "figure",
+    "notes": "Mythos 5防护关闭；非Fable生产配置。"
+  },
+  {
+    "id": "CAO-2026-0167",
+    "score": "The Last Ones 6/10；Doing Life最远21/23步，未通关；Cooling Tower未通关，达成2个OT里程碑",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "端到端成功",
+        "value": "6/10",
+        "unit": "ratio",
+        "configuration": "The Last Ones；早期快照"
+      },
+      {
+        "label": "最远步骤",
+        "value": "21/23",
+        "unit": "ratio",
+        "configuration": "Doing Life；未通关"
+      },
+      {
+        "label": "达成OT里程碑",
+        "value": 2,
+        "unit": "count",
+        "configuration": "Cooling Tower；未通关"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5.pdf",
+        "pages": "64",
+        "quote": "The Last Ones 6/10；Doing Life最远21/23步，未通关；Cooling Tower未通关，达成2个OT里程碑"
+      }
+    ],
+    "method": "text",
+    "notes": "外部UK AISI早期checkpoint；不是Fable生产配置。"
+  },
+  {
+    "id": "CAO-2026-0177",
+    "score": "plain 平均flags 11.80；AutoNudge 12.61、Cap 83%；完整ACE 222/410",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 11.8,
+        "unit": "count",
+        "configuration": "plain"
+      },
+      {
+        "label": "平均能力flags",
+        "value": 12.61,
+        "unit": "count",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "Cap%",
+        "value": 83,
+        "unit": "percent",
+        "configuration": "AutoNudge"
+      },
+      {
+        "label": "完整ACE",
+        "value": "222/410",
+        "unit": "ratio",
+        "configuration": "plain+AutoNudge合计"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5-1.pdf",
+        "pages": "47-48",
+        "quote": "plain 平均flags 11.80；AutoNudge 12.61、Cap 83%；完整ACE 222/410"
+      }
+    ],
+    "method": "figure",
+    "notes": "本卡222/410；后续卡重跑221，不覆盖此条。Mythos 5.1防护关闭，非Fable 5.1。"
+  },
+  {
+    "id": "CAO-2026-0178",
+    "score": "控制流劫持17个目标；非零grade 78.7%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 17,
+        "unit": "count",
+        "configuration": "旧harness"
+      },
+      {
+        "label": "非零grade",
+        "value": 78.7,
+        "unit": "percent",
+        "configuration": "旧harness"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5-1.pdf",
+        "pages": "49",
+        "quote": "控制流劫持17个目标；非零grade 78.7%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0179",
+    "score": "完整利用245/250（98.0%）；至少部分控制98.4%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "完整利用",
+        "value": "245/250",
+        "unit": "ratio",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "完整利用率",
+        "value": 98,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "至少部分控制",
+        "value": 98.4,
+        "unit": "percent",
+        "configuration": "防护关闭"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5-1.pdf",
+        "pages": "50",
+        "quote": "完整利用245/250（98.0%）；至少部分控制98.4%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0180",
+    "score": "2h 203/869；6h 264/869",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "成功利用数",
+        "value": 203,
+        "unit": "count",
+        "configuration": "2h"
+      },
+      {
+        "label": "成功利用数",
+        "value": 264,
+        "unit": "count",
+        "configuration": "6h"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-fable-5-1.pdf",
+        "pages": "51",
+        "quote": "2h 203/869；6h 264/869"
+      }
+    ],
+    "method": "figure",
+    "notes": "Mythos 5.1防护关闭；非Fable 5.1生产配置。"
+  },
+  {
+    "id": "CAO-2026-0224",
+    "score": "标准：完整利用0.8%，至少部分控制15.2%；移除top 2漏洞：至少部分控制7.6%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "完整利用",
+        "value": 0.8,
+        "unit": "percent",
+        "configuration": "标准；250 trials；原卡"
+      },
+      {
+        "label": "至少部分控制",
+        "value": 15.2,
+        "unit": "percent",
+        "configuration": "标准；250 trials；原卡"
+      },
+      {
+        "label": "至少部分控制",
+        "value": 7.6,
+        "unit": "percent",
+        "configuration": "移除top 2漏洞；原卡"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-mythos-preview.pdf",
+        "pages": "51-52",
+        "quote": "标准：完整利用0.8%，至少部分控制15.2%；移除top 2漏洞：至少部分控制7.6%"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续官方报告补测；堆叠柱顶为至少部分控制总和；后续重跑结果不同，保留本报告数值。；自查移除top 2条件的完整利用柱段无精确标注，未将未见柱段推断成0%；其余百分数均为图上明确标签。"
+  },
+  {
+    "id": "CAO-2026-0225",
+    "score": "标准：至少部分控制4.4%；移除top 2漏洞：完整利用0.8%，至少部分控制12.0%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "至少部分控制",
+        "value": 4.4,
+        "unit": "percent",
+        "configuration": "标准；250 trials；原卡"
+      },
+      {
+        "label": "完整利用",
+        "value": 0.8,
+        "unit": "percent",
+        "configuration": "移除top 2漏洞；原卡"
+      },
+      {
+        "label": "至少部分控制",
+        "value": 12,
+        "unit": "percent",
+        "configuration": "移除top 2漏洞；原卡"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-mythos-preview.pdf",
+        "pages": "51-52",
+        "quote": "标准：至少部分控制4.4%；移除top 2漏洞：完整利用0.8%，至少部分控制12.0%"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续官方报告补测；堆叠柱顶为至少部分控制总和；后续重跑结果不同，保留本报告数值。；自查标准条件的完整利用柱段无精确标注，未将未见柱段推断成0%；其余百分数均为图上明确标签。"
+  },
+  {
+    "id": "CAO-2026-0226",
+    "score": "AutoNudge 平均flags 3.07、Cap 24%；完整ACE 0",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均能力flags",
+        "value": 3.07,
+        "unit": "count",
+        "configuration": "AutoNudge；5 trials"
+      },
+      {
+        "label": "Cap%",
+        "value": 24,
+        "unit": "percent",
+        "configuration": "AutoNudge；5 trials"
+      },
+      {
+        "label": "完整ACE",
+        "value": 0,
+        "unit": "count",
+        "configuration": "plain+AutoNudge合计"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5.pdf",
+        "pages": "31",
+        "quote": "AutoNudge 平均flags 3.07、Cap 24%；完整ACE 0"
+      }
+    ],
+    "method": "table",
+    "notes": "后续官方报告补测"
+  },
+  {
+    "id": "CAO-2026-0227",
+    "score": "控制流劫持0；0分68.4%；最高grade 0.6（1个目标）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 0,
+        "unit": "count",
+        "configuration": "旧harness；legacy scaffold"
+      },
+      {
+        "label": "0分比例",
+        "value": 68.4,
+        "unit": "percent",
+        "configuration": "旧harness；legacy scaffold"
+      },
+      {
+        "label": "最高grade",
+        "value": 0.6,
+        "unit": "ratio",
+        "configuration": "旧harness；legacy scaffold"
+      },
+      {
+        "label": "grade 0.6目标",
+        "value": 1,
+        "unit": "count",
+        "configuration": "旧harness；legacy scaffold"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5.pdf",
+        "pages": "32",
+        "quote": "控制流劫持0；0分68.4%；最高grade 0.6（1个目标）"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续官方报告补测"
+  },
+  {
+    "id": "CAO-2026-0228",
+    "score": "无防护：控制流劫持0，grade 0.8有3个目标；防护开启：最高grade 0.4",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 0,
+        "unit": "count",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "grade 0.8目标",
+        "value": 3,
+        "unit": "count",
+        "configuration": "防护关闭"
+      },
+      {
+        "label": "最高grade",
+        "value": 0.4,
+        "unit": "ratio",
+        "configuration": "防护开启"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-4-8.pdf",
+        "pages": "54",
+        "quote": "无防护：控制流劫持0，grade 0.8有3个目标；防护开启：最高grade 0.4"
+      }
+    ],
+    "method": "text",
+    "notes": "后续官方报告补测；后续卡补测；旧harness。"
+  },
+  {
+    "id": "CAO-2026-0229",
+    "score": "平均solve rate 61.7%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均solve rate",
+        "value": 61.7,
+        "unit": "percent",
+        "configuration": "10场景；防护关闭；后续卡补测"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5-5.pdf",
+        "pages": "51-52",
+        "quote": "平均solve rate 61.7%"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续报告，不是Mythos5.1原始卡逐项披露"
+  },
+  {
+    "id": "CAO-2026-0230",
+    "score": "平均solve rate 0.7%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均solve rate",
+        "value": 0.7,
+        "unit": "percent",
+        "configuration": "10场景；防护关闭；后续卡补测"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-sonnet-5-5.pdf",
+        "pages": "26",
+        "quote": "平均solve rate 0.7%"
+      }
+    ],
+    "method": "figure",
+    "notes": "与Opus5卡9场景配置区分；与Opus5原卡9场景配置的3.3%不同。"
+  },
+  {
+    "id": "CAO-2026-0231",
+    "score": "控制流劫持66次；非零grade 81.9%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 66,
+        "unit": "count",
+        "configuration": "新harness；831入口"
+      },
+      {
+        "label": "非零grade",
+        "value": 81.9,
+        "unit": "percent",
+        "configuration": "新harness；831入口"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5-5.pdf",
+        "pages": "52-53",
+        "quote": "控制流劫持66次；非零grade 81.9%"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续重跑且更名；新harness重跑，不能和原始OSS-Fuzz旧harness成绩直接比较。"
+  },
+  {
+    "id": "CAO-2026-0232",
+    "score": "控制流劫持3次；非零grade 55.2%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 3,
+        "unit": "count",
+        "configuration": "新harness；831入口"
+      },
+      {
+        "label": "非零grade",
+        "value": 55.2,
+        "unit": "percent",
+        "configuration": "新harness；831入口"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5-5.pdf",
+        "pages": "52-53",
+        "quote": "控制流劫持3次；非零grade 55.2%"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续重跑且更名；新harness重跑，不能和原始OSS-Fuzz旧harness成绩直接比较。"
+  },
+  {
+    "id": "CAO-2026-0233",
+    "score": "控制流劫持81次；非零grade 88.3%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "控制流劫持",
+        "value": 81,
+        "unit": "count",
+        "configuration": "新harness；831入口"
+      },
+      {
+        "label": "非零grade",
+        "value": 88.3,
+        "unit": "percent",
+        "configuration": "新harness；831入口"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/claude-opus-5-5.pdf",
+        "pages": "52-53",
+        "quote": "控制流劫持81次；非零grade 88.3%"
+      }
+    ],
+    "method": "figure",
+    "notes": "后续重跑且更名；新harness重跑，不能和原始OSS-Fuzz旧harness成绩直接比较。"
+  }
+]

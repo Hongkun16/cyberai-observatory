@@ -1,0 +1,2273 @@
+[
+  {
+    "id": "CAO-2026-0001",
+    "score": "88%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@12",
+        "value": 88,
+        "unit": "percent",
+        "configuration": "厂商从公开题目内部选题；Professional；16 rollouts，pass@12；不等同 Cybench"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-3-codex.pdf",
+        "pages": "14",
+        "quote": "88%"
+      }
+    ],
+    "method": "figure",
+    "notes": "图5当前模型柱标88%；不得用后续报告更精细的88.2%覆盖本报告原值。"
+  },
+  {
+    "id": "CAO-2026-0002",
+    "score": "90%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 90,
+        "unit": "percent",
+        "configuration": "v1.0；34/40题；zero-day prompt；无源码远程探测；pass@1，3 rollouts"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-3-codex.pdf",
+        "pages": "15",
+        "quote": "90%"
+      }
+    ],
+    "method": "text",
+    "notes": "核验原有90%正确；34/40题，zero-day、无源码，3 rollouts。"
+  },
+  {
+    "id": "CAO-2026-0003",
+    "score": "80%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "场景通过率",
+        "value": 80,
+        "unit": "percent",
+        "configuration": "内部网络靶场；每场景16次，至少一次成功计场景通过"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-3-codex.pdf",
+        "pages": "16-17",
+        "quote": "80%"
+      }
+    ],
+    "method": "text",
+    "notes": "15个场景，每场景16次尝试中至少成功一次计通过。"
+  },
+  {
+    "id": "CAO-2026-0006",
+    "score": "88.23%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@12",
+        "value": 88.23,
+        "unit": "percent",
+        "configuration": "厂商从公开题目内部选题；Professional；16 rollouts，pass@12；不等同 Cybench"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-4-thinking.pdf",
+        "pages": "22",
+        "quote": "88.23%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0007",
+    "score": "86.27%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 86.27,
+        "unit": "percent",
+        "configuration": "v1.0；34/40题；zero-day prompt；无源码远程探测；pass@1，3 rollouts"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-4-thinking.pdf",
+        "pages": "23",
+        "quote": "86.27%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0008",
+    "score": "73.33%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "场景通过率",
+        "value": 73.33,
+        "unit": "percent",
+        "configuration": "内部网络靶场；每场景16次，至少一次成功计场景通过"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-4-thinking.pdf",
+        "pages": "24-25",
+        "quote": "73.33%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0009",
+    "score": "网络攻击模拟88%；漏洞研究与利用73%；规避48%；中等14/17、困难5/5",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "Network Attack Simulation",
+        "value": 88,
+        "unit": "percent",
+        "configuration": "外部；代表性近最终checkpoint；xhigh；漏洞研究/网络攻击模拟/规避"
+      },
+      {
+        "label": "Vulnerability Research and Exploitation",
+        "value": 73,
+        "unit": "percent",
+        "configuration": "外部；代表性近最终checkpoint；xhigh；漏洞研究/网络攻击模拟/规避"
+      },
+      {
+        "label": "Evasion",
+        "value": 48,
+        "unit": "percent",
+        "configuration": "外部；代表性近最终checkpoint；xhigh；漏洞研究/网络攻击模拟/规避"
+      },
+      {
+        "label": "中等挑战已解",
+        "value": "14/17",
+        "unit": "ratio",
+        "configuration": "外部；代表性近最终checkpoint；xhigh；漏洞研究/网络攻击模拟/规避"
+      },
+      {
+        "label": "困难挑战已解",
+        "value": "5/5",
+        "unit": "ratio",
+        "configuration": "外部；代表性近最终checkpoint；xhigh；漏洞研究/网络攻击模拟/规避"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-4-thinking.pdf",
+        "pages": "25-26",
+        "quote": "网络攻击模拟88%；漏洞研究与利用73%；规避48%；中等14/17、困难5/5"
+      }
+    ],
+    "method": "text",
+    "notes": "近最终代表性checkpoint，high reasoning，每题最多1000 turns，100K tokens compaction。"
+  },
+  {
+    "id": "CAO-2026-0010",
+    "score": "79.0%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "CyberGym",
+        "value": 79.0,
+        "unit": "percent",
+        "configuration": "后续 GPT-5.5 官方发布页比较 GPT-5.4；不能当作5.4卡内项目"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_introducing-gpt-5-5_94153.pdf",
+        "pages": "2,19",
+        "quote": "79.0%"
+      }
+    ],
+    "method": "table",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0014",
+    "score": "81.32%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@12",
+        "value": 81.32,
+        "unit": "percent",
+        "configuration": "附录明确mini列；pass@12"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-4-thinking.pdf",
+        "pages": "36",
+        "quote": "81.32%"
+      }
+    ],
+    "method": "table",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0015",
+    "score": "83.33%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 83.33,
+        "unit": "percent",
+        "configuration": "附录明确mini列；pass@1"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-4-thinking.pdf",
+        "pages": "36",
+        "quote": "83.33%"
+      }
+    ],
+    "method": "table",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0018",
+    "score": "96.3%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@12",
+        "value": 96.3,
+        "unit": "percent",
+        "configuration": "厂商从公开题目内部选题；Professional；16 rollouts，pass@12；不等同 Cybench"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "31",
+        "quote": "96.3%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0019",
+    "score": "93.1%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 93.1,
+        "unit": "percent",
+        "configuration": "v1.0；34/40题；zero-day prompt；无源码远程探测；pass@1，3 rollouts"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "32",
+        "quote": "93.1%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0020",
+    "score": "93.33%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "场景通过率",
+        "value": 93.33,
+        "unit": "percent",
+        "configuration": "内部网络靶场；每场景16次，至少一次成功计场景通过"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "33",
+        "quote": "93.33%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0021",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "33-34",
+        "quote": "Did not independently produce a functional full chain exploit or another verifier-confirmed Critical-level outcome."
+      }
+    ],
+    "method": "text",
+    "notes": "有可信memory-safety线索及部分受控利用primitive；仅定性披露，不能将未达Critical当作0分。"
+  },
+  {
+    "id": "CAO-2026-0022",
+    "score": "平均成功率26%；至少成功一次7/11",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均成功率",
+        "value": 26,
+        "unit": "percent",
+        "configuration": "Irregular外部评测；11场景"
+      },
+      {
+        "label": "至少成功一次场景",
+        "value": "7/11",
+        "unit": "ratio",
+        "configuration": "Irregular外部评测；11场景"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "34",
+        "quote": "平均成功率26%；至少成功一次7/11"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0023",
+    "score": "网络攻击模拟98%；漏洞研究与利用92%；规避54%；全部挑战至少成功一次",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "Network Attack Simulation",
+        "value": 98,
+        "unit": "percent",
+        "configuration": "外部；网络模拟/漏洞研究/规避；评测配置需独立比较"
+      },
+      {
+        "label": "Vulnerability Research and Exploitation",
+        "value": 92,
+        "unit": "percent",
+        "configuration": "外部；网络模拟/漏洞研究/规避；评测配置需独立比较"
+      },
+      {
+        "label": "Evasion",
+        "value": 54,
+        "unit": "percent",
+        "configuration": "外部；网络模拟/漏洞研究/规避；评测配置需独立比较"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "34",
+        "quote": "网络攻击模拟98%；漏洞研究与利用92%；规避54%；全部挑战至少成功一次"
+      }
+    ],
+    "method": "text",
+    "notes": "本报告写all atomic challenges，不从其他版本补入任务数。后续5.6报告给GPT-5.5网络攻击模拟100%，与本报告98%不同，保留原值。"
+  },
+  {
+    "id": "CAO-2026-0024",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "35",
+        "quote": "Outperforming previous GPT models on a set of CTF challenges and a vulnerability discovery benchmark."
+      }
+    ],
+    "method": "text",
+    "notes": "CAISI同时获得代表性发布checkpoint及降低拒答checkpoint；专家探测混用两者，只给相对结论。"
+  },
+  {
+    "id": "CAO-2026-0025",
+    "score": "专家任务pass@5 90.5% ±12.9%；pass@1 66.7% ±15.9%；低难度100%；长程range 1/10（最高记录3/10）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "专家CTF pass@5",
+        "value": 90.5,
+        "unit": "percent",
+        "configuration": "±12.9%；50M token/attempt"
+      },
+      {
+        "label": "专家CTF pass@1",
+        "value": 66.7,
+        "unit": "percent",
+        "configuration": "±15.9%；50M token/attempt"
+      },
+      {
+        "label": "较低难度任务",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "外部窄任务及32步网络靶场；checkpoint区分"
+      },
+      {
+        "label": "32步range成功尝试",
+        "value": "1/10",
+        "unit": "ratio",
+        "configuration": "range预算100M tokens；另有最高记录3/10"
+      },
+      {
+        "label": "range最高记录成功尝试",
+        "value": "3/10",
+        "unit": "ratio",
+        "configuration": "外部窄任务及32步网络靶场；checkpoint区分"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "35-36",
+        "quote": "专家任务pass@5 90.5% ±12.9%；pass@1 66.7% ±15.9%；低难度100%；长程range 1/10（最高记录3/10）"
+      }
+    ],
+    "method": "text",
+    "notes": "代表性发布及降低拒答checkpoint；最高记录3/10不是统一重复实验均值，保留单独描述。另一个工业控制range未解。"
+  },
+  {
+    "id": "CAO-2026-0026",
+    "score": "81.8%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "CyberGym",
+        "value": 81.8,
+        "unit": "percent",
+        "configuration": "宣发披露；xhigh；单模型"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_introducing-gpt-5-5_94153.pdf",
+        "pages": "2,19",
+        "quote": "81.8%"
+      }
+    ],
+    "method": "table",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0028",
+    "score": "93.1%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 93.1,
+        "unit": "percent",
+        "configuration": "v1.0；34/40题；zero-day prompt；无源码远程探测；pass@1，3 rollouts"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5.pdf",
+        "pages": "32",
+        "quote": "93.1%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0031",
+    "score": "94.11%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@12",
+        "value": 94.11,
+        "unit": "percent",
+        "configuration": "厂商从公开题目内部选题；Professional；16 rollouts，pass@12；不等同 Cybench"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5-instant.pdf",
+        "pages": "17",
+        "quote": "94.11%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0032",
+    "score": "90.2%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 90.2,
+        "unit": "percent",
+        "configuration": "v1.0；34/40题；zero-day prompt；无源码远程探测；pass@1，3 rollouts"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5-instant.pdf",
+        "pages": "18",
+        "quote": "90.2%"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0033",
+    "score": "76.9%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "场景通过率",
+        "value": 76.9,
+        "unit": "percent",
+        "configuration": "内部网络靶场；每场景16次，至少一次成功计场景通过"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5-instant.pdf",
+        "pages": "19",
+        "quote": "Table 9: GPT-5.5 Instant combined pass rate 76.9%; 13 scenarios, 3 failures."
+      }
+    ],
+    "method": "table",
+    "notes": "本表13个场景，剔除了Printer Queue和Simple Privilege Escalation；不可和GPT-5.5原报告15场景93.33%直接比较。"
+  },
+  {
+    "id": "CAO-2026-0034",
+    "score": "96.67%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 96.67,
+        "unit": "percent",
+        "configuration": "新版63题；按GPT-5.3-Codex高算力低解题率筛选；不与旧Professional混比"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "48",
+        "quote": "96.67%"
+      }
+    ],
+    "method": "figure",
+    "notes": "图30精确柱标；正文Sol四舍五入为96.7%。63题新版CTF，不能与旧Professional pass@12混比。该预览报告图中模型标签写GPT-5.6 Sol，记录保留原有preview报告快照身份。"
+  },
+  {
+    "id": "CAO-2026-0035",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "50",
+        "quote": "Figure 32: CVEBench pass@1 vs output tokens; model curves have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已查看图32；34/40题、zero-day、无源码、3 rollouts。图只有曲线，不能用刻度估读精确分数。"
+  },
+  {
+    "id": "CAO-2026-0036",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "52",
+        "quote": "Figure 33: Cap Percent；41 V8漏洞；16 flags跨5 seeds并集; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0037",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "53",
+        "quote": "Figure 34: intended-exploit率；869题；实线2h、虚线6h，随output tokens变化; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0038",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "54",
+        "quote": "Figure 35: pass@1随output tokens变化；2026 May版183漏洞，原公开grader; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0039",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "50-51",
+        "quote": "Did not independently produce a functional full chain exploit or another verifier-confirmed Critical-level outcome."
+      }
+    ],
+    "method": "text",
+    "notes": "多日研究产生真实PoC与受控利用primitive；仅定性披露，不把未达Critical当成0%。"
+  },
+  {
+    "id": "CAO-2026-0040",
+    "score": "总计19/197；Easy 11%（5/44）、Medium 12%（10/77）、Hard 5%（4/67）、Elite 0%（0/9）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "已解挑战",
+        "value": "19/197",
+        "unit": "ratio",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "Easy",
+        "value": 11,
+        "unit": "percent",
+        "configuration": "5/44"
+      },
+      {
+        "label": "Medium",
+        "value": 12,
+        "unit": "percent",
+        "configuration": "10/77"
+      },
+      {
+        "label": "Hard",
+        "value": 5,
+        "unit": "percent",
+        "configuration": "4/67"
+      },
+      {
+        "label": "Elite",
+        "value": 0,
+        "unit": "percent",
+        "configuration": "0/9"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "54-55",
+        "quote": "总计19/197；Easy 11%（5/44）、Medium 12%（10/77）、Hard 5%（4/67）、Elite 0%（0/9）"
+      }
+    ],
+    "method": "text",
+    "notes": "Irregular harness，分母受设备可用性影响，不同模型略异。百分比保留报告四舍五入原值。"
+  },
+  {
+    "id": "CAO-2026-0041",
+    "score": "平均成功率28%；至少成功一次7/11",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均成功率",
+        "value": 28,
+        "unit": "percent",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "至少成功一次场景",
+        "value": "7/11",
+        "unit": "ratio",
+        "configuration": "Irregular外部；正文明确Sol"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "54-55",
+        "quote": "平均成功率28%；至少成功一次7/11"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0042",
+    "score": "22/22至少成功一次；网络攻击模拟98%；漏洞研究与利用91%；规避56%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "已解挑战",
+        "value": "22/22",
+        "unit": "ratio",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "Network Attack Simulation",
+        "value": 98,
+        "unit": "percent",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "Vulnerability Research and Exploitation",
+        "value": 91,
+        "unit": "percent",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "Evasion",
+        "value": 56,
+        "unit": "percent",
+        "configuration": "Irregular外部；正文明确Sol"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "54-55",
+        "quote": "22/22至少成功一次；网络攻击模拟98%；漏洞研究与利用91%；规避56%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0043",
+    "score": "96.67%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 96.67,
+        "unit": "percent",
+        "configuration": "新版63题；按GPT-5.3-Codex高算力低解题率筛选；不与旧Professional混比"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "49",
+        "quote": "96.67%"
+      }
+    ],
+    "method": "figure",
+    "notes": "图30精确柱标；正文Sol四舍五入为96.7%。63题新版CTF，不能与旧Professional pass@12混比。"
+  },
+  {
+    "id": "CAO-2026-0044",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "51",
+        "quote": "Figure 32: CVEBench pass@1 vs output tokens; model curves have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已查看图32；34/40题、zero-day、无源码、3 rollouts。图只有曲线，不能用刻度估读精确分数。"
+  },
+  {
+    "id": "CAO-2026-0045",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "53",
+        "quote": "Figure 33: Cap Percent；41 V8漏洞；16 flags跨5 seeds并集; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0046",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "54",
+        "quote": "Figure 34: intended-exploit率；869题；实线2h、虚线6h，随output tokens变化; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0047",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "55",
+        "quote": "Figure 35: pass@1随output tokens变化；2026 May版183漏洞，原公开grader; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0048",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "51-52",
+        "quote": "Did not independently produce a functional full chain exploit or another verifier-confirmed Critical-level outcome."
+      }
+    ],
+    "method": "text",
+    "notes": "多日研究产生真实PoC与受控利用primitive；仅定性披露，不把未达Critical当成0%。"
+  },
+  {
+    "id": "CAO-2026-0049",
+    "score": "总计19/197；Easy 11%（5/44）、Medium 12%（10/77）、Hard 5%（4/67）、Elite 0%（0/9）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "已解挑战",
+        "value": "19/197",
+        "unit": "ratio",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "Easy",
+        "value": 11,
+        "unit": "percent",
+        "configuration": "5/44"
+      },
+      {
+        "label": "Medium",
+        "value": 12,
+        "unit": "percent",
+        "configuration": "10/77"
+      },
+      {
+        "label": "Hard",
+        "value": 5,
+        "unit": "percent",
+        "configuration": "4/67"
+      },
+      {
+        "label": "Elite",
+        "value": 0,
+        "unit": "percent",
+        "configuration": "0/9"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "55-56",
+        "quote": "总计19/197；Easy 11%（5/44）、Medium 12%（10/77）、Hard 5%（4/67）、Elite 0%（0/9）"
+      }
+    ],
+    "method": "text",
+    "notes": "Irregular harness，分母受设备可用性影响，不同模型略异。百分比保留报告四舍五入原值。"
+  },
+  {
+    "id": "CAO-2026-0050",
+    "score": "平均成功率28%；至少成功一次7/11",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均成功率",
+        "value": 28,
+        "unit": "percent",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "至少成功一次场景",
+        "value": "7/11",
+        "unit": "ratio",
+        "configuration": "Irregular外部；正文明确Sol"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "55-56",
+        "quote": "平均成功率28%；至少成功一次7/11"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0051",
+    "score": "22/22至少成功一次；网络攻击模拟98%；漏洞研究与利用91%；规避56%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "已解挑战",
+        "value": "22/22",
+        "unit": "ratio",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "Network Attack Simulation",
+        "value": 98,
+        "unit": "percent",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "Vulnerability Research and Exploitation",
+        "value": 91,
+        "unit": "percent",
+        "configuration": "Irregular外部；正文明确Sol"
+      },
+      {
+        "label": "Evasion",
+        "value": 56,
+        "unit": "percent",
+        "configuration": "Irregular外部；正文明确Sol"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "55-56",
+        "quote": "22/22至少成功一次；网络攻击模拟98%；漏洞研究与利用91%；规避56%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0052",
+    "score": "91.84%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 91.84,
+        "unit": "percent",
+        "configuration": "新版63题；按GPT-5.3-Codex高算力低解题率筛选；不与旧Professional混比"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "49",
+        "quote": "91.84%"
+      }
+    ],
+    "method": "figure",
+    "notes": "图30精确柱标；正文Sol四舍五入为96.7%。63题新版CTF，不能与旧Professional pass@12混比。"
+  },
+  {
+    "id": "CAO-2026-0053",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "51",
+        "quote": "Figure 32: CVEBench pass@1 vs output tokens; model curves have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已查看图32；34/40题、zero-day、无源码、3 rollouts。图只有曲线，不能用刻度估读精确分数。"
+  },
+  {
+    "id": "CAO-2026-0054",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "53",
+        "quote": "Figure 33: Cap Percent；41 V8漏洞；16 flags跨5 seeds并集; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0055",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "54",
+        "quote": "Figure 34: intended-exploit率；869题；实线2h、虚线6h，随output tokens变化; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0056",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "55",
+        "quote": "Figure 35: pass@1随output tokens变化；2026 May版183漏洞，原公开grader; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0058",
+    "score": "85.19%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 85.19,
+        "unit": "percent",
+        "configuration": "新版63题；按GPT-5.3-Codex高算力低解题率筛选；不与旧Professional混比"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "49",
+        "quote": "85.19%"
+      }
+    ],
+    "method": "figure",
+    "notes": "图30精确柱标；正文Sol四舍五入为96.7%。63题新版CTF，不能与旧Professional pass@12混比。"
+  },
+  {
+    "id": "CAO-2026-0059",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "51",
+        "quote": "Figure 32: CVEBench pass@1 vs output tokens; model curves have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已查看图32；34/40题、zero-day、无源码、3 rollouts。图只有曲线，不能用刻度估读精确分数。"
+  },
+  {
+    "id": "CAO-2026-0060",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "53",
+        "quote": "Figure 33: Cap Percent；41 V8漏洞；16 flags跨5 seeds并集; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0061",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "54",
+        "quote": "Figure 34: intended-exploit率；869题；实线2h、虚线6h，随output tokens变化; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0062",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "55",
+        "quote": "Figure 35: pass@1随output tokens变化；2026 May版183漏洞，原公开grader; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0064",
+    "score": "专家CTF 95.0% ±9.8%；The Last Ones 7/10；Doing Life未解，3/10到第21/23步",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "专家CTF",
+        "value": 95.0,
+        "unit": "percent",
+        "configuration": "±9.8%；UK AISI"
+      },
+      {
+        "label": "The Last Ones完成",
+        "value": "7/10",
+        "unit": "ratio",
+        "configuration": "外部专家级CTF；The Last Ones / Doing Life；早期访问checkpoint"
+      },
+      {
+        "label": "Doing Life达到21/23步",
+        "value": "3/10",
+        "unit": "ratio",
+        "configuration": "外部专家级CTF；The Last Ones / Doing Life；早期访问checkpoint"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "56",
+        "quote": "专家CTF 95.0% ±9.8%；The Last Ones 7/10；Doing Life未解，3/10到第21/23步"
+      }
+    ],
+    "method": "text",
+    "notes": "保留进度指标，不将3/10当成Doing Life完成率。"
+  },
+  {
+    "id": "CAO-2026-0065",
+    "score": "100%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "Cap Percent",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "41题；5 seeds union；ACE直接满分；评分较5.6更新；可能历史漏洞污染"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "90-91",
+        "quote": "100%"
+      }
+    ],
+    "method": "text",
+    "notes": "更新评分：任一种子达ACE即16/16满分；最低测试reasoning已满分；可能历史漏洞污染。"
+  },
+  {
+    "id": "CAO-2026-0066",
+    "score": "31.5%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "ACE成功率",
+        "value": 31.5,
+        "unit": "percent",
+        "configuration": "2026年6–8月近期漏洞；内部移植集"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "147-148",
+        "quote": "31.5%"
+      },
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "92",
+        "quote": "Figure 47 additionally shows enabled vs reduced API attack-surface curves, without exact labels."
+      }
+    ],
+    "method": "figure",
+    "notes": "附录图80及正文精确31.5%，对应近期漏洞内部移植集比较。主报告图47同时给增加API攻击面与缩减API攻击面两条曲线但未逐点标值；不可将31.5%用于新增API攻击面曲线。"
+  },
+  {
+    "id": "CAO-2026-0067",
+    "score": "85.4%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 85.4,
+        "unit": "percent",
+        "configuration": "2026年5月版；183题；增加根因分析judge；不可直接混用5.6旧grader"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "92-93",
+        "quote": "85.4%"
+      }
+    ],
+    "method": "figure",
+    "notes": "增加root-cause审计grader，不能与5.6原公开grader直接混比。"
+  },
+  {
+    "id": "CAO-2026-0068",
+    "score": "42.4%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "intended-exploit率",
+        "value": 42.4,
+        "unit": "percent",
+        "configuration": "869题；更新v1实现；禁止运行时装包；全程离线；token上限，无wall-clock cap"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "93-94",
+        "quote": "42.4%"
+      }
+    ],
+    "method": "figure",
+    "notes": "updated v1 implementation，运行时禁装包、离线、token cap无wall-clock cap。"
+  },
+  {
+    "id": "CAO-2026-0069",
+    "score": "pass@1 88.0%；pass@4 99.2%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 88.0,
+        "unit": "percent",
+        "configuration": "262 binaries，19私有程序；无源码；六目标全满足；pass@1/pass@4"
+      },
+      {
+        "label": "pass@4",
+        "value": 99.2,
+        "unit": "percent",
+        "configuration": "四次独立尝试token总量；取任一尝试最大正确率"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "95",
+        "quote": "pass@1 88.0%；pass@4 99.2%"
+      }
+    ],
+    "method": "figure",
+    "notes": "补齐原表只保留的pass@4之外的pass@1。262 binaries、19私有程序，六个目标全部满足才通过。"
+  },
+  {
+    "id": "CAO-2026-0070",
+    "score": "10/22（45.5%）；Runtime 4/5、Parser 5/14、Egress Proxy 1/3",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "整体成功率",
+        "value": 45.5,
+        "unit": "percent",
+        "configuration": "10/22"
+      },
+      {
+        "label": "Runtime",
+        "value": "4/5",
+        "unit": "ratio",
+        "configuration": "内部22题；运行时/解析器/出口代理"
+      },
+      {
+        "label": "Parser",
+        "value": "5/14",
+        "unit": "ratio",
+        "configuration": "内部22题；运行时/解析器/出口代理"
+      },
+      {
+        "label": "Egress Proxy",
+        "value": "1/3",
+        "unit": "ratio",
+        "configuration": "内部22题；运行时/解析器/出口代理"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "96",
+        "quote": "10/22（45.5%）；Runtime 4/5、Parser 5/14、Egress Proxy 1/3"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0071",
+    "score": "浏览器初始利用链29小时；适配官方稳定版另12小时；内核本地提权12小时",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "浏览器初始利用链",
+        "value": 29,
+        "unit": "count",
+        "configuration": "hours；初始build后发现缺少部分production mitigations"
+      },
+      {
+        "label": "适配官方稳定版",
+        "value": 12,
+        "unit": "count",
+        "configuration": "additional hours"
+      },
+      {
+        "label": "内核本地提权",
+        "value": 12,
+        "unit": "count",
+        "configuration": "hours；hardened configuration"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "96-97",
+        "quote": "浏览器初始利用链29小时；适配官方稳定版另12小时；内核本地提权12小时"
+      }
+    ],
+    "method": "text",
+    "notes": "专家仅安全监督/验证；Codex Ultra，最多64 subagents。时间不是成功率；不将初始缺防护build当成稳定版成绩。"
+  },
+  {
+    "id": "CAO-2026-0072",
+    "score": "86/226；Elite 0/7；完全加固目标未成功",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "已解挑战",
+        "value": "86/226",
+        "unit": "ratio",
+        "configuration": "Irregular外部；与内部自动基准分开"
+      },
+      {
+        "label": "Elite已解",
+        "value": "0/7",
+        "unit": "ratio",
+        "configuration": "Irregular外部；与内部自动基准分开"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "97-98",
+        "quote": "86/226；Elite 0/7；完全加固目标未成功"
+      }
+    ],
+    "method": "text",
+    "notes": "Irregular沙箱、无公开互联网。"
+  },
+  {
+    "id": "CAO-2026-0073",
+    "score": "平均成功率59%；至少成功一次9/10",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "平均成功率",
+        "value": 59,
+        "unit": "percent",
+        "configuration": "Irregular外部；与内部自动基准分开"
+      },
+      {
+        "label": "至少成功一次场景",
+        "value": "9/10",
+        "unit": "ratio",
+        "configuration": "Irregular外部；与内部自动基准分开"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "98",
+        "quote": "平均成功率59%；至少成功一次9/10"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0074",
+    "score": "20/22；漏洞研究与利用100%；网络攻击模拟100%；规避52%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "已解挑战",
+        "value": "20/22",
+        "unit": "ratio",
+        "configuration": "Irregular外部；与内部自动基准分开"
+      },
+      {
+        "label": "Vulnerability Research and Exploitation",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "Irregular外部；与内部自动基准分开"
+      },
+      {
+        "label": "Network Attack Simulation",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "Irregular外部；与内部自动基准分开"
+      },
+      {
+        "label": "Evasion",
+        "value": 52,
+        "unit": "percent",
+        "configuration": "Irregular外部；与内部自动基准分开"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "98",
+        "quote": "20/22；漏洞研究与利用100%；网络攻击模拟100%；规避52%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0075",
+    "score": "81.7%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "Cap Percent",
+        "value": 81.7,
+        "unit": "percent",
+        "configuration": "9月附录；最大推理预算；历史污染提醒"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "147",
+        "quote": "81.7%"
+      }
+    ],
+    "method": "text",
+    "notes": "September报告附录值，保留该版本与配置。"
+  },
+  {
+    "id": "CAO-2026-0076",
+    "score": "5.5%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "ACE成功率",
+        "value": 5.5,
+        "unit": "percent",
+        "configuration": "6–8月近期漏洞；内部"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "147-148",
+        "quote": "5.5%"
+      }
+    ],
+    "method": "text",
+    "notes": "September报告附录值，保留该版本与配置。"
+  },
+  {
+    "id": "CAO-2026-0077",
+    "score": "66.3%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 66.3,
+        "unit": "percent",
+        "configuration": "9月模型专属分数"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "148-149",
+        "quote": "66.3%"
+      }
+    ],
+    "method": "text",
+    "notes": "September报告附录值，保留该版本与配置。"
+  },
+  {
+    "id": "CAO-2026-0078",
+    "score": "22.1%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "intended-exploit率",
+        "value": 22.1,
+        "unit": "percent",
+        "configuration": "9月模型专属分数"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "149-150",
+        "quote": "22.1%"
+      }
+    ],
+    "method": "text",
+    "notes": "September报告附录值，保留该版本与配置。"
+  },
+  {
+    "id": "CAO-2026-0079",
+    "score": "1/22；Runtime 1/5、Parser 0/14、Egress Proxy 0/3",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "已解挑战",
+        "value": "1/22",
+        "unit": "ratio",
+        "configuration": "22题，1/22"
+      },
+      {
+        "label": "Runtime",
+        "value": "1/5",
+        "unit": "ratio",
+        "configuration": "22题，1/22"
+      },
+      {
+        "label": "Parser",
+        "value": "0/14",
+        "unit": "ratio",
+        "configuration": "22题，1/22"
+      },
+      {
+        "label": "Egress Proxy",
+        "value": "0/3",
+        "unit": "ratio",
+        "configuration": "22题，1/22"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "151",
+        "quote": "1/22；Runtime 1/5、Parser 0/14、Egress Proxy 0/3"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0080",
+    "score": "43.4%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "Cap Percent",
+        "value": 43.4,
+        "unit": "percent",
+        "configuration": "9月附录；最大推理预算；历史污染提醒"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "147",
+        "quote": "43.4%"
+      }
+    ],
+    "method": "text",
+    "notes": "September报告附录值，保留该版本与配置。"
+  },
+  {
+    "id": "CAO-2026-0081",
+    "score": "0%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "ACE成功率",
+        "value": 0,
+        "unit": "percent",
+        "configuration": "6–8月近期漏洞；内部"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "147-148",
+        "quote": "0%"
+      }
+    ],
+    "method": "text",
+    "notes": "September报告附录值，保留该版本与配置。"
+  },
+  {
+    "id": "CAO-2026-0082",
+    "score": "34.2%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 34.2,
+        "unit": "percent",
+        "configuration": "9月模型专属分数"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "148-149",
+        "quote": "34.2%"
+      }
+    ],
+    "method": "text",
+    "notes": "September报告附录值，保留该版本与配置。"
+  },
+  {
+    "id": "CAO-2026-0083",
+    "score": "11.6%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "intended-exploit率",
+        "value": 11.6,
+        "unit": "percent",
+        "configuration": "9月模型专属分数"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "149-150",
+        "quote": "11.6%"
+      }
+    ],
+    "method": "text",
+    "notes": "September报告附录值，保留该版本与配置。"
+  },
+  {
+    "id": "CAO-2026-0084",
+    "score": "1/22；Runtime 1/5、Parser 0/14、Egress Proxy 0/3",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "已解挑战",
+        "value": "1/22",
+        "unit": "ratio",
+        "configuration": "22题，1/22"
+      },
+      {
+        "label": "Runtime",
+        "value": "1/5",
+        "unit": "ratio",
+        "configuration": "22题，1/22"
+      },
+      {
+        "label": "Parser",
+        "value": "0/14",
+        "unit": "ratio",
+        "configuration": "22题，1/22"
+      },
+      {
+        "label": "Egress Proxy",
+        "value": "0/3",
+        "unit": "ratio",
+        "configuration": "22题，1/22"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-astra.pdf",
+        "pages": "151",
+        "quote": "1/22；Runtime 1/5、Parser 0/14、Egress Proxy 0/3"
+      }
+    ],
+    "method": "figure",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0085",
+    "score": "82.62%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "Cap Percent",
+        "value": 82.62,
+        "unit": "percent",
+        "configuration": "10月更新；最大推理预算；与9月分开"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-sol-oct.pdf",
+        "pages": "22-23",
+        "quote": "82.62%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0086",
+    "score": "68.85%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 68.85,
+        "unit": "percent",
+        "configuration": "10月更新；明确模型专属结果"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-sol-oct.pdf",
+        "pages": "23",
+        "quote": "68.85%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0090",
+    "score": "44.66%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "Cap Percent",
+        "value": 44.66,
+        "unit": "percent",
+        "configuration": "10月更新；最大推理预算；与9月分开"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-sol-oct.pdf",
+        "pages": "22-23",
+        "quote": "44.66%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0091",
+    "score": "48.5%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 48.5,
+        "unit": "percent",
+        "configuration": "10月更新；明确模型专属结果"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-sol-oct.pdf",
+        "pages": "23",
+        "quote": "48.5%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0095",
+    "score": "99.7%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "Cap Percent",
+        "value": 99.7,
+        "unit": "percent",
+        "configuration": "该版本独立结果；不混入前代比较列"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-1-sol.pdf",
+        "pages": "43",
+        "quote": "99.7%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0096",
+    "score": "21.5%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "ACE成功率",
+        "value": 21.5,
+        "unit": "percent",
+        "configuration": "该版本独立结果；不混入前代比较列"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-1-sol.pdf",
+        "pages": "43",
+        "quote": "21.5%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0097",
+    "score": "78.8%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 78.8,
+        "unit": "percent",
+        "configuration": "该版本独立结果；不混入前代比较列"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-1-sol.pdf",
+        "pages": "44",
+        "quote": "78.8%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0098",
+    "score": "35.1%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "intended-exploit率",
+        "value": 35.1,
+        "unit": "percent",
+        "configuration": "该版本独立结果；不混入前代比较列"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-6-1-sol.pdf",
+        "pages": "45",
+        "quote": "35.1%"
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0100",
+    "score": "85.6%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "CyberGym",
+        "value": 85.6,
+        "unit": "percent",
+        "configuration": "2026-06-22完整版本更新；单模型；官方宣发"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5-cyber.pdf",
+        "pages": "3",
+        "quote": "85.6%"
+      }
+    ],
+    "method": "text",
+    "notes": "2026-06-22完整版本更新，单模型发布文章数值。"
+  },
+  {
+    "id": "CAO-2026-0101",
+    "score": "39.5%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "intended-exploit率",
+        "value": 39.5,
+        "unit": "percent",
+        "configuration": "2026-06-22完整版本更新；单模型；官方宣发"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5-cyber.pdf",
+        "pages": "3",
+        "quote": "39.5%"
+      }
+    ],
+    "method": "text",
+    "notes": "2026-06-22完整版本更新，单模型发布文章数值。"
+  },
+  {
+    "id": "CAO-2026-0102",
+    "score": "69.8%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 69.8,
+        "unit": "percent",
+        "configuration": "2026-06-22完整版本更新；单模型；官方宣发"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-5-cyber.pdf",
+        "pages": "3",
+        "quote": "69.8%"
+      }
+    ],
+    "method": "text",
+    "notes": "2026-06-22完整版本更新，单模型发布文章数值。"
+  },
+  {
+    "id": "CAO-2026-0103",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-cyber.pdf",
+        "pages": "2,5",
+        "quote": "GPT-5.6-Cyber outperforms both GPT-5.6 Sol and GPT-5.5 Cyber."
+      }
+    ],
+    "method": "text",
+    "notes": "已查看网页转制PDF正文及页面图像：该项仅披露相对结论，未给精确分数；不得挪用6月另一配置ExploitGym 39.5%。最高公开reasoning；内部加固实现。"
+  },
+  {
+    "id": "CAO-2026-0104",
+    "score": "57.3%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "请求完成率",
+        "value": 57.3,
+        "unit": "percent",
+        "configuration": "内部请求完成率；衡量响应/拒答，不是任务成功率"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-cyber.pdf",
+        "pages": "2",
+        "quote": "57.3%"
+      }
+    ],
+    "method": "text",
+    "notes": "Daybreak Red；衡量模型回应高级网安请求的比例，不是任务成功率。"
+  },
+  {
+    "id": "CAO-2026-0105",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-cyber.pdf",
+        "pages": "2,5",
+        "quote": "Both GPT-5.6 Sol and GPT-5.6-Cyber improve over GPT-5.5-Cyber."
+      }
+    ],
+    "method": "text",
+    "notes": "已查看网页转制PDF正文及页面图像：该项仅披露相对结论，未给精确分数；不得挪用6月另一配置ExploitGym 39.5%。最高公开reasoning；内部加固实现。"
+  },
+  {
+    "id": "CAO-2026-0106",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-cyber.pdf",
+        "pages": "2,5",
+        "quote": "GPT-5.6-Cyber outperforms both GPT-5.6 Sol and GPT-5.5 Cyber."
+      }
+    ],
+    "method": "text",
+    "notes": "已查看网页转制PDF正文及页面图像：该项仅披露相对结论，未给精确分数；不得挪用6月另一配置ExploitGym 39.5%。最高公开reasoning；内部加固实现。"
+  },
+  {
+    "id": "CAO-2026-0107",
+    "score": "95.0%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "请求完成率",
+        "value": 95.0,
+        "unit": "percent",
+        "configuration": "内部请求完成率；衡量响应/拒答，不是任务成功率"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-cyber.pdf",
+        "pages": "2",
+        "quote": "95.0%"
+      }
+    ],
+    "method": "text",
+    "notes": "Daybreak Red；衡量模型回应高级网安请求的比例，不是任务成功率。"
+  },
+  {
+    "id": "CAO-2026-0108",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-cyber.pdf",
+        "pages": "2,5",
+        "quote": "GPT-5.6-Cyber performs worse than GPT-5.6 Sol on this evaluation."
+      }
+    ],
+    "method": "text",
+    "notes": "已查看网页转制PDF正文及页面图像：该项仅披露相对结论，未给精确分数；不得挪用6月另一配置ExploitGym 39.5%。最高公开reasoning；内部加固实现。"
+  },
+  {
+    "id": "CAO-2026-0109",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-cyber.pdf",
+        "pages": "2,5",
+        "quote": "300 turns: GPT-5.6 Sol (Daybreak Blue) performs best; at 600 turns, the gap narrows."
+      }
+    ],
+    "method": "text",
+    "notes": "已查看网页转制PDF正文及页面图像：该项仅披露相对结论，未给精确分数；不得挪用6月另一配置ExploitGym 39.5%。最高公开reasoning；内部加固实现。"
+  },
+  {
+    "id": "CAO-2026-0110",
+    "score": "",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-cyber.pdf",
+        "pages": "2,5",
+        "quote": "GPT-5.6-Cyber (Daybreak Red) outperformed GPT-5.6 Sol (Daybreak Blue)."
+      }
+    ],
+    "method": "text",
+    "notes": "已查看网页转制PDF正文及页面图像：该项仅披露相对结论，未给精确分数；不得挪用6月另一配置ExploitGym 39.5%。最高公开reasoning；内部加固实现。"
+  },
+  {
+    "id": "CAO-2026-0216",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "53",
+        "quote": "Figure 33: Cap Percent；41 V8漏洞；16 flags跨5 seeds并集; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0217",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "54",
+        "quote": "Figure 34: intended-exploit率；869题；实线2h、虚线6h，随output tokens变化; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0218",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "55",
+        "quote": "Figure 35: pass@1随output tokens变化；2026 May版183漏洞，原公开grader; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0219",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "53",
+        "quote": "Figure 33: Cap Percent；41 V8漏洞；16 flags跨5 seeds并集; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0220",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "54",
+        "quote": "Figure 34: intended-exploit率；869题；实线2h、虚线6h，随output tokens变化; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0221",
+    "score": "",
+    "scoreStatus": "graphical",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "55",
+        "quote": "Figure 35: pass@1随output tokens变化；2026 May版183漏洞，原公开grader; curve points have no exact numeric annotations."
+      }
+    ],
+    "method": "figure",
+    "notes": "已渲染查看；报告给出该模型曲线，未标注精确数据点，不估读。不同预算/2h与6h上限不得合为一个百分比。"
+  },
+  {
+    "id": "CAO-2026-0222",
+    "score": "无防护基线83.6%；无阻断+越狱83.0%；初始防护ASR 10.0%；追加缓解后ASR 0%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "无防护基线",
+        "value": 83.6,
+        "unit": "percent",
+        "configuration": "GPT-5.6 Sol，without safeguards、无jailbreak"
+      },
+      {
+        "label": "无阻断+通用越狱",
+        "value": 83.0,
+        "unit": "percent",
+        "configuration": "without blocking"
+      },
+      {
+        "label": "初始防护ASR",
+        "value": 10.0,
+        "unit": "percent",
+        "configuration": "pre-automated-RT safeguards"
+      },
+      {
+        "label": "追加缓解后ASR",
+        "value": 0,
+        "unit": "percent",
+        "configuration": "post-automated-RT safeguards"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-preview.pdf",
+        "pages": "73-74",
+        "quote": "无防护基线83.6%；无阻断+越狱83.0%；初始防护ASR 10.0%；追加缓解后ASR 0%"
+      }
+    ],
+    "method": "figure",
+    "notes": "CyberGym用作越狱迁移/能力退化及端到端防护测试，四种配置单列，不和公开能力排行榜混用。"
+  },
+  {
+    "id": "CAO-2026-0223",
+    "score": "无防护基线83.6%；无阻断+越狱83.0%；初始防护ASR 10.0%；追加缓解后ASR 0%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "无防护基线",
+        "value": 83.6,
+        "unit": "percent",
+        "configuration": "GPT-5.6 Sol，without safeguards、无jailbreak"
+      },
+      {
+        "label": "无阻断+通用越狱",
+        "value": 83.0,
+        "unit": "percent",
+        "configuration": "without blocking"
+      },
+      {
+        "label": "初始防护ASR",
+        "value": 10.0,
+        "unit": "percent",
+        "configuration": "pre-automated-RT safeguards"
+      },
+      {
+        "label": "追加缓解后ASR",
+        "value": 0,
+        "unit": "percent",
+        "configuration": "post-automated-RT safeguards"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gpt-5-6-sol.pdf",
+        "pages": "77",
+        "quote": "无防护基线83.6%；无阻断+越狱83.0%；初始防护ASR 10.0%；追加缓解后ASR 0%"
+      }
+    ],
+    "method": "text",
+    "notes": "CyberGym用作越狱迁移/能力退化及端到端防护测试，四种配置单列，不和公开能力排行榜混用。"
+  }
+]

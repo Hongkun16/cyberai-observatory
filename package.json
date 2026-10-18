@@ -1,13 +1,13 @@
 {
   "name": "cyberai-observatory",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite web --config vite.config.ts --host 0.0.0.0",
     "build": "tsc --noEmit && vite build web --config vite.config.ts",
     "preview": "vite preview web --config vite.config.ts --host 0.0.0.0",
-    "data:import": "python3 scripts/import_workbook.py",
+    "data:import": "python3 scripts/import_workbook.py && python3 scripts/export_workbook.py",
     "test:data": "python3 -m unittest discover -s tests -v",
     "test:web": "node tests/browser.mjs",
     "format": "prettier --write web/src web/index.html vite.config.ts tests/browser.mjs"

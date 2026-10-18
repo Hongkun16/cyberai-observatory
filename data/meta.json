@@ -1,11 +1,24 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "asOf": "2026-10-17",
   "workbook": "snapshots/2026-10-17.xlsx",
   "workbookSha256": "295437386b734c541366c85e1f9b99d355786d52d2cdab722fd4d4c6928d9848",
   "scope": "公开报告证据整理；未独立重跑模型评测",
   "modelCount": 48,
   "recordCount": 233,
-  "scoreCount": 43,
-  "numericCount": 28
+  "scoreCount": 156,
+  "originalScoreCount": 43,
+  "addedScoreCount": 113,
+  "numericCount": 49,
+  "scoreReviewDate": "2026-10-18",
+  "reviewedScoreRecords": 196,
+  "metricCount": 315,
+  "scoreStatusCounts": {
+    "reported": 156,
+    "not_applicable": 37,
+    "qualitative": 18,
+    "graphical": 22
+  },
+  "downloadWorkbook": "downloads/audit-2026-10-18.xlsx",
+  "reviewedWorkbookSha256": "36bbda404c328da420e1990cbe88ffe434383dcaebc8b8bcf1fec1ff84f241e7"
 }

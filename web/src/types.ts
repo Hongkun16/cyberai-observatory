@@ -25,6 +25,28 @@ export type Evaluation = {
   status: string;
   category: string;
   score: string;
+  originalScore: string;
+  originalConfiguration: string;
+  scoreStatus: 'reported' | 'graphical' | 'qualitative' | 'not_disclosed' | 'not_applicable';
+  metrics: {
+    label: string;
+    value: number | string;
+    unit: string;
+    configuration: string;
+  }[];
+  scoreAudit: {
+    reviewedAt: string;
+    method: string;
+    notes: string;
+    laterDisclosure: boolean;
+    evidence: {
+      pdfPath: string;
+      pages: string;
+      quote: string;
+      sha256: string;
+      sourceUrl: string;
+    }[];
+  } | null;
   numericScore: number | null;
   configuration: string;
   section: string;
@@ -50,6 +72,13 @@ export type Audit = {
     recordCount: number;
     scoreCount: number;
     numericCount: number;
+    originalScoreCount: number;
+    addedScoreCount: number;
+    scoreReviewDate: string;
+    reviewedScoreRecords: number;
+    metricCount: number;
+    scoreStatusCounts: Record<string, number>;
+    downloadWorkbook: string;
     scope: string;
     workbookSha256: string;
   };

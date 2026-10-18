@@ -32,6 +32,30 @@ import './style.css';
 
 const BASE = import.meta.env.BASE_URL;
 const REPOSITORY = 'https://github.com/Hongkun16/cyberai-observatory';
+const scoreLabels: Record<Evaluation['scoreStatus'], string> = {
+  reported: '已核实数值',
+  graphical: '仅图示，未标精确值',
+  qualitative: '仅定性结论',
+  not_disclosed: '未披露数值',
+  not_applicable: '不适用（证据未确认）',
+};
+function scoreText(record: Evaluation) {
+  return record.score || scoreLabels[record.scoreStatus];
+}
+function metricText(metric: Evaluation['metrics'][number]) {
+  const suffix: Record<string, string> = {
+    percent: '%',
+    hours: ' 小时',
+    hour: ' 小时',
+    seconds: ' 秒',
+    tokens: ' tokens',
+    multiplier: '×',
+  };
+  return `${metric.value}${suffix[metric.unit] || ''}`;
+}
+function metricKey(metric: Evaluation['metrics'][number]) {
+  return `${metric.label}${metric.configuration ? ' · ' + metric.configuration : ''}`;
+}
 const providers: Provider[] = ['OpenAI', 'Anthropic', 'Google'];
 const colors: Record<Provider, string> = {
   OpenAI: '#3867e8',
@@ -61,7 +85,7 @@ function dateLabel(m: Model) {
   return m.date + (m.date_precision === 'month' ? ' · 月精度' : '');
 }
 function isLater(r: Evaluation) {
-  return /后续|后测|后补/.test(r.configuration + r.note);
+  return r.scoreAudit?.laterDisclosure || /后续|后测|后补/.test(r.configuration + r.note);
 }
 function statusClass(status: string) {
   return status === '已确认'
@@ -116,7 +140,10 @@ function App() {
   }, []);
   useEffect(() => {
     const controller = new AbortController();
-    fetch(BASE + 'data/audit.json', { signal: controller.signal })
+    fetch(BASE + `data/audit.json?v=${__DATA_VERSION__}`, {
+      signal: controller.signal,
+      cache: 'no-cache',
+    })
       .then((r) => {
         if (!r.ok) throw Error('load');
         return r.json();
@@ -136,9 +163,11 @@ function App() {
     document.title = `${nav.find((n) => n.id === route.view)?.zh} · CyberAI Observatory`;
   }, [route.view]);
   function update(params: Record<string, string | null>) {
-    const p = new URLSearchParams(route.params);
+    // Hash changes can arrive faster than React renders; retain the latest URL filters.
+    const current = readRoute();
+    const p = new URLSearchParams(current.params);
     Object.entries(params).forEach(([k, v]) => (v ? p.set(k, v) : p.delete(k)));
-    location.hash = href(route.view, Object.fromEntries(p));
+    location.hash = href(current.view, Object.fromEntries(p));
   }
   const select = (record: Evaluation) => update({ record: record.id });
   if (error)
@@ -385,7 +414,7 @@ function Overview(props: Shared) {
           { n: audit.models.length, label: '模型与版本快照', en: 'MODEL SNAPSHOTS' },
           { n: audit.evaluations.length, label: '逐项评测记录', en: 'EVALUATION RECORDS' },
           { n: confirmed, label: '证据归属已确认', en: 'CONFIRMED RECORDS' },
-          { n: audit.meta.scoreCount, label: '含原文成绩的记录', en: 'REPORTED SCORES' },
+          { n: audit.meta.scoreCount, label: '已核实数值的记录', en: 'VERIFIED RESULTS' },
         ].map((s) => (
           <div className="stat" key={s.en}>
             <span>{s.en}</span>
@@ -397,6 +426,20 @@ function Overview(props: Shared) {
           </div>
         ))}
       </section>
+      <div className="score-review-banner">
+        <CheckCircle2 size={18} />
+        <p>
+          <strong>PDF 成绩复核已更新</strong>
+          <span>
+            {audit.meta.scoreReviewDate} · 已复核 {audit.meta.reviewedScoreRecords}{' '}
+            条已确认记录，新增 {audit.meta.addedScoreCount}{' '}
+            条数值成绩；仅图示、定性和不适用分别标注。
+          </span>
+        </p>
+        <a className="text-link" href="#evidence?scoreStatus=reported">
+          查看补录 <ArrowUpRight size={14} />
+        </a>
+      </div>
       <section className="section">
         <SectionTitle
           number="01"
@@ -505,7 +548,7 @@ function Overview(props: Shared) {
           <h3>把证据带进你的研究。</h3>
           <p>下载完整核验表，或使用结构化 JSON 与 CSV。</p>
         </div>
-        <a className="button secondary" href={BASE + 'downloads/audit-2026-10-17.xlsx'} download>
+        <a className="button secondary" href={BASE + audit.meta.downloadWorkbook} download>
           下载 Excel <ArrowDownToLine size={16} />
         </a>
         <a className="text-link" href={BASE + 'data/audit.json'} download>
@@ -531,27 +574,72 @@ function TrendChart({ audit, route, update, select }: Shared) {
   const options = [
     ...new Set(
       audit.evaluations
-        .filter((r) => r.category === '能力' && r.numericScore !== null)
+        .filter(
+          (r) =>
+            r.category === '能力' &&
+            (r.numericScore !== null ||
+              r.metrics?.some(
+                (m) => typeof m.value === 'number' && ['percent', 'count'].includes(m.unit),
+              )),
+        )
         .map((r) => r.benchmark),
     ),
   ].sort();
-  const all = audit.evaluations.filter(
-    (r) =>
-      r.benchmark === benchmark &&
-      r.status === '已确认' &&
-      r.category === '能力' &&
-      (provider === 'all' || modelMap.get(r.modelId)?.provider === provider),
+  const benchmarkRecords = audit.evaluations.filter(
+    (r) => r.benchmark === benchmark && r.status === '已确认' && r.category === '能力',
   );
-  const points = all.filter(
+  const metricOptions = [
+    ...new Map(
+      benchmarkRecords
+        .flatMap((r) => r.metrics || [])
+        .filter((m) => typeof m.value === 'number' && ['percent', 'count'].includes(m.unit))
+        .map((m) => [metricKey(m), m]),
+    ).entries(),
+  ];
+  const metricChoice = route.params.get('metric') || 'auto';
+  const metric = metricOptions.find(([key]) => key === metricChoice)?.[1];
+  const plotted = benchmarkRecords.flatMap((r) => {
+    const numericMetrics = (r.metrics || []).filter(
+      (m) => m.unit === 'percent' && typeof m.value === 'number',
+    );
+    const candidates =
+      metricChoice === 'auto'
+        ? numericMetrics.length === 1
+          ? numericMetrics
+          : r.numericScore !== null
+            ? [
+                {
+                  label: '原文单一百分数',
+                  value: r.numericScore,
+                  unit: 'percent',
+                  configuration: r.configuration,
+                },
+              ]
+            : []
+        : (r.metrics || []).filter(
+            (m) => metricKey(m) === metricChoice && typeof m.value === 'number',
+          );
+    return candidates.map((m, index) => ({
+      ...r,
+      numericScore: m.value as number,
+      pointId: `${r.id}-${index}`,
+      plotLabel: `${m.label} ${metricText(m)}`,
+      plotConfig: m.configuration,
+    }));
+  });
+  const all = benchmarkRecords.filter(
+    (r) => provider === 'all' || modelMap.get(r.modelId)?.provider === provider,
+  );
+  const filteredPlots = plotted.filter(
+    (r) => provider === 'all' || modelMap.get(r.modelId)?.provider === provider,
+  );
+  const points = filteredPlots.filter(
     (r) => r.numericScore !== null && modelMap.get(r.modelId)?.date_precision === 'day',
   );
-  const months = all.filter(
+  const months = filteredPlots.filter(
     (r) => r.numericScore !== null && modelMap.get(r.modelId)?.date_precision === 'month',
   );
-  const dates = audit.evaluations
-    .filter((r) => r.benchmark === benchmark && r.category === '能力' && r.numericScore !== null)
-    .map((r) => modelMap.get(r.modelId)!.date.slice(0, 7))
-    .sort();
+  const dates = plotted.map((r) => modelMap.get(r.modelId)!.date.slice(0, 7)).sort();
   const firstMonth = dates[0] || audit.meta.asOf.slice(0, 7),
     lastMonth = dates.at(-1) || firstMonth;
   const lo = Date.parse(firstMonth + '-01'),
@@ -565,8 +653,10 @@ function TrendChart({ audit, route, update, select }: Shared) {
     right = width - 65;
   const x = (d: string | number) =>
     70 + (((typeof d === 'number' ? d : Date.parse(d)) - lo) / (hi - lo)) * (right - 70);
-  const y = (n: number) => 260 - n * 2.12;
-  const active = points.find((p) => p.id === hover);
+  const maximum =
+    metric?.unit === 'count' ? Math.max(1, ...plotted.map((p) => p.numericScore)) * 1.1 : 100;
+  const y = (n: number) => 260 - (n / maximum) * 212;
+  const active = points.find((p) => p.pointId === hover);
   const bench = audit.benchmarks.find((b) => b.name === benchmark);
   return (
     <div className="chart-panel">
@@ -579,7 +669,7 @@ function TrendChart({ audit, route, update, select }: Shared) {
               value={options.includes(benchmark) ? benchmark : ''}
               onChange={(e) => {
                 setHover(null);
-                update({ benchmark: e.target.value });
+                update({ benchmark: e.target.value, metric: null });
               }}
             >
               {!options.includes(benchmark) && <option value="">选择可绘图评测</option>}
@@ -607,6 +697,26 @@ function TrendChart({ audit, route, update, select }: Shared) {
           ))}
         </div>
       </div>
+      <div className="metric-selector">
+        <label htmlFor="trend-metric">查看指标 / 配置</label>
+        <select
+          id="trend-metric"
+          value={metricChoice}
+          onChange={(e) => {
+            setHover(null);
+            update({ metric: e.target.value === 'auto' ? null : e.target.value });
+          }}
+        >
+          <option value="auto">单一百分数指标（每条记录仅一个百分数）</option>
+          {metricOptions.map(([key, item]) => (
+            <option key={key} value={key}>
+              {item.label} · {item.configuration || '见证据配置'} [
+              {item.unit === 'percent' ? '%' : '计数'}]
+            </option>
+          ))}
+        </select>
+        <span>多指标记录可逐项选择，配置差异见证据。</span>
+      </div>
       <div className="chart-title">
         <div>
           <h3>
@@ -628,16 +738,19 @@ function TrendChart({ audit, route, update, select }: Shared) {
           aria-label={`${benchmark}公开成绩时间散点图。每个数据点可用键盘选择。`}
         >
           <text x="28" y="22" className="axis-title">
-            原文百分数 (%)
+            {metric?.unit === 'count' ? '原文计数' : '原文百分数 (%)'}
           </text>
-          {[0, 25, 50, 75, 100].map((t) => (
-            <g key={t}>
-              <line x1="70" x2={right} y1={y(t)} y2={y(t)} className="grid-line" />
-              <text x="49" y={y(t) + 4} textAnchor="end" className="axis-label">
-                {t}
-              </text>
-            </g>
-          ))}
+          {[0, 0.25, 0.5, 0.75, 1].map((fraction) => {
+            const t = fraction * maximum;
+            return (
+              <g key={t}>
+                <line x1="70" x2={right} y1={y(t)} y2={y(t)} className="grid-line" />
+                <text x="49" y={y(t) + 4} textAnchor="end" className="axis-label">
+                  {Number(t.toFixed(1))}
+                </text>
+              </g>
+            );
+          })}
           {ticks.map((t, i) => {
             const date = new Date(t);
             return (
@@ -663,14 +776,14 @@ function TrendChart({ audit, route, update, select }: Shared) {
               cy = y(r.numericScore!);
             return (
               <g
-                key={r.id}
+                key={r.pointId}
                 className="data-point"
                 role="button"
                 tabIndex={0}
-                aria-label={`${m.name}，${r.score}，${m.date}。打开原文证据`}
-                onMouseEnter={() => setHover(r.id)}
+                aria-label={`${m.name}，${r.plotLabel}，${m.date}。打开原文证据`}
+                onMouseEnter={() => setHover(r.pointId)}
                 onMouseLeave={() => setHover(null)}
-                onFocus={() => setHover(r.id)}
+                onFocus={() => setHover(r.pointId)}
                 onBlur={() => setHover(null)}
                 onClick={() => select(r)}
                 onKeyDown={(e) => {
@@ -684,20 +797,20 @@ function TrendChart({ audit, route, update, select }: Shared) {
                   className="point-halo"
                   cx={cx}
                   cy={cy}
-                  r={hover === r.id ? 14 : 10}
+                  r={hover === r.pointId ? 14 : 10}
                   fill={colors[m.provider]}
-                  opacity={hover === r.id ? 0.14 : 0.07}
+                  opacity={hover === r.pointId ? 0.14 : 0.07}
                 />
                 <circle
                   cx={cx}
                   cy={cy}
-                  r={hover === r.id ? 6.5 : compact ? 7 : 5}
+                  r={hover === r.pointId ? 6.5 : compact ? 7 : 5}
                   fill={colors[m.provider]}
                   stroke="white"
                   strokeWidth="2"
                 />
                 <title>
-                  {m.name} · {r.score} · {m.date}
+                  {m.name} · {r.plotLabel} · {r.plotConfig} · {m.date}
                 </title>
                 {points.length < 8 && !compact && (
                   <text
@@ -714,7 +827,7 @@ function TrendChart({ audit, route, update, select }: Shared) {
           })}
           {!points.length && (
             <text x={width / 2} y="153" textAnchor="middle" className="empty-chart">
-              当前筛选下，没有日精度、单一百分数的能力成绩
+              当前筛选下，没有符合指标条件的日精度能力成绩
             </text>
           )}
         </svg>
@@ -724,8 +837,8 @@ function TrendChart({ audit, route, update, select }: Shared) {
           <>
             <ProviderMark value={modelMap.get(active.modelId)!.provider} />
             <strong>{modelMap.get(active.modelId)!.name}</strong>
-            <span>{active.score}</span>
-            <span className="readout-config">{active.configuration}</span>
+            <span>{active.plotLabel}</span>
+            <span className="readout-config">{active.plotConfig}</span>
             <button onClick={() => select(active)}>
               查看证据 <ArrowRight size={13} />
             </button>
@@ -743,9 +856,9 @@ function TrendChart({ audit, route, update, select }: Shared) {
         <div className="month-records">
           <span>仅有月精度，单独列示：</span>
           {months.map((r) => (
-            <button key={r.id} onClick={() => select(r)}>
+            <button key={r.pointId} onClick={() => select(r)}>
               <i style={{ background: colors[modelMap.get(r.modelId)!.provider] }} />
-              {modelMap.get(r.modelId)!.name} <strong>{r.score}</strong>
+              {modelMap.get(r.modelId)!.name} <strong>{r.plotLabel}</strong>
               <span>{modelMap.get(r.modelId)!.date}</span>
               <ArrowUpRight size={12} />
             </button>
@@ -755,12 +868,12 @@ function TrendChart({ audit, route, update, select }: Shared) {
       <div className="chart-footnote">
         <CircleHelp size={15} />
         <p>
-          同名评测的题集、指标与预算可能不同，数据点不连线、不作综合排名。横轴为模型日期，后续补测见证据；混合指标保留原文，不强行换算。
-          {all.some((r) => r.numericScore === null) && (
+          同名评测的题集、指标与预算可能不同，数据点不连线、不作综合排名。横轴为模型日期，后续补测见证据；每个点保留指标与配置，不把多指标平均为一个分数。
+          {all.some((r) => !filteredPlots.some((p) => p.id === r.id)) && (
             <span>
               {' '}
-              当前另有 {all.filter((r) => r.numericScore === null).length}{' '}
-              条非单一百分数成绩或未填成绩，见记录表。
+              当前另有 {all.filter((r) => !filteredPlots.some((p) => p.id === r.id)).length}{' '}
+              条记录不符合所选指标，具体数值或披露状态见下方记录表。
             </span>
           )}
         </p>
@@ -798,7 +911,7 @@ function Progress(props: Shared) {
         <SectionTitle
           number="01"
           title={`${benchmark} · 逐项记录`}
-          text="包含未填成绩和待核记录。点击一行查看完整证据。"
+          text="数值成绩、仅图示、定性结论和证据未确认分别标注。点击查看提取依据。"
         />
         <RecordTable records={records} audit={audit} select={props.select} />
       </div>
@@ -896,7 +1009,20 @@ function RecordTable({
                 </button>
               </td>
               <td className="score-cell">
-                {r.score || <span className="muted">未填成绩</span>}
+                {r.scoreStatus === 'reported' ? (
+                  r.score
+                ) : (
+                  <span className="muted">{scoreText(r)}</span>
+                )}
+                <small className={`score-review-label ${r.scoreStatus}`}>
+                  {r.scoreStatus === 'reported' ? (
+                    <>
+                      <CheckCircle2 size={10} /> PDF已复核
+                    </>
+                  ) : (
+                    scoreLabels[r.scoreStatus]
+                  )}
+                </small>
                 {isLater(r) && <small className="later-tag">后续补测</small>}
               </td>
               <td>
@@ -1282,13 +1408,15 @@ function Evidence({ audit, route, update, select }: Shared) {
   const section = route.params.get('section') || 'records';
   const search = route.params.get('search') || '',
     status = route.params.get('status') || 'all',
-    category = route.params.get('category') || 'all';
+    category = route.params.get('category') || 'all',
+    scoreStatus = route.params.get('scoreStatus') || 'all';
   const modelMap = new Map(audit.models.map((m) => [m.id, m]));
   const records = audit.evaluations.filter(
     (r) =>
       (status === 'all' || r.status === status) &&
       (category === 'all' || r.category === category) &&
-      `${r.id} ${r.benchmark} ${modelMap.get(r.modelId)?.name} ${r.configuration} ${r.note}`
+      (scoreStatus === 'all' || r.scoreStatus === scoreStatus) &&
+      `${r.id} ${r.benchmark} ${modelMap.get(r.modelId)?.name} ${r.configuration} ${r.note} ${r.score} ${r.scoreAudit?.notes || ''}`
         .toLowerCase()
         .includes(search.toLowerCase()),
   );
@@ -1303,7 +1431,7 @@ function Evidence({ audit, route, update, select }: Shared) {
       <PageIntro
         eyebrow="EVIDENCE / 证据与方法"
         title="每一个结论，都应该能找到来处。"
-        text="核验快照 2026-10-17。这里记录来源、配置、证据归属与尚未解决的问题。"
+        text={`报告快照 ${audit.meta.asOf}；成绩复核 ${audit.meta.scoreReviewDate}。保留原文、图表读数和配置差异。`}
       />
       <div className="tabs" aria-label="证据页面分类">
         {sections.map((s) => (
@@ -1348,6 +1476,20 @@ function Evidence({ audit, route, update, select }: Shared) {
                 <option key={s}>{s}</option>
               ))}
             </select>
+            <select
+              aria-label="筛选成绩披露状态"
+              value={scoreStatus}
+              onChange={(e) =>
+                update({ scoreStatus: e.target.value === 'all' ? null : e.target.value })
+              }
+            >
+              <option value="all">全部成绩状态</option>
+              {Object.entries(scoreLabels).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label} ({audit.meta.scoreStatusCounts[value] || 0})
+                </option>
+              ))}
+            </select>
             <span className="result-count">{records.length} 条记录</span>
           </div>
           <RecordTable records={records} audit={audit} select={select} />
@@ -1356,7 +1498,7 @@ function Evidence({ audit, route, update, select }: Shared) {
       {section === 'method' && (
         <div className="method-layout">
           <div className="method-prose">
-            <div className="eyebrow">METHODOLOGY / V0.1</div>
+            <div className="eyebrow">METHODOLOGY / V0.2</div>
             <h2>一份公开报告的证据地图。</h2>
             <p className="lead">
               本项目整理公开报告中的网安评测信息，未独立重跑模型，也未对所有结论做独立复现。
@@ -1377,8 +1519,12 @@ function Evidence({ audit, route, update, select }: Shared) {
             </p>
             <h3>04 · 如何处理成绩</h3>
             <p>
-              43 条记录包含原文成绩，其中 {audit.meta.numericCount}{' '}
-              条为可直接解析的单一百分数。次数、比值、区间、多指标和带限定条件的复合成绩保留原文。图表只显示能力类、已确认、单一百分数记录；这并不使它们自动可比。
+              {audit.meta.scoreReviewDate} 已逐项复核全部 {audit.meta.reviewedScoreRecords}{' '}
+              条已确认记录， 从原表 {audit.meta.originalScoreCount} 条含成绩记录补至{' '}
+              {audit.meta.scoreCount} 条已核实数值记录， 共提取 {audit.meta.metricCount}{' '}
+              项指标。只有曲线而没有精确标值的结果记为“仅图示”，
+              只有文字结论的记为“仅定性”，未确认归属的记为“不适用”。不通过估读曲线或借用相邻模型成绩填数。
+              次数、比值、区间及多个配置分别保留；选择具体百分数指标可查看对应数据点。
             </p>
             <h3>05 · 比较必须满足的条件</h3>
             <p>
@@ -1416,12 +1562,8 @@ function Evidence({ audit, route, update, select }: Shared) {
                 <dd>{audit.sources.length}</dd>
               </div>
             </dl>
-            <a
-              className="button secondary"
-              href={BASE + 'downloads/audit-2026-10-17.xlsx'}
-              download
-            >
-              下载原始核验表 <ArrowDownToLine size={15} />
+            <a className="button secondary" href={BASE + audit.meta.downloadWorkbook} download>
+              下载成绩补录版 <ArrowDownToLine size={15} />
             </a>
           </aside>
         </div>
@@ -1462,15 +1604,15 @@ function Evidence({ audit, route, update, select }: Shared) {
           <div className="download-grid">
             {[
               {
-                file: 'downloads/audit-2026-10-17.xlsx',
-                name: 'Excel 核验工作簿',
-                text: '10 张工作表 · 完整核验快照',
+                file: audit.meta.downloadWorkbook,
+                name: 'Excel 成绩补录版',
+                text: '原工作簿 + 逐项成绩审计与指标',
                 icon: FileText,
               },
               {
                 file: 'downloads/results.csv',
                 name: 'CSV 逐项记录',
-                text: '233 条记录 · 适合表格分析',
+                text: `${audit.evaluations.length} 条记录 · 含成绩状态`,
                 icon: Database,
               },
               {
@@ -1582,9 +1724,43 @@ function EvidenceDrawer({
           </div>
           <div className="reported-score">
             <span>原文成绩 / REPORTED RESULT</span>
-            <strong>{r.score || '未填成绩'}</strong>
-            <p>保留原文指标，不换算为统一能力分。</p>
+            <strong>{scoreText(r)}</strong>
+            <p>{scoreLabels[r.scoreStatus]} · 保留原始指标与运行条件。</p>
           </div>
+          {r.metrics.length > 0 && (
+            <section className="extracted-metrics" aria-label="逐指标成绩">
+              <h3>逐指标成绩</h3>
+              {r.metrics.map((metric, i) => (
+                <div key={i}>
+                  <span>
+                    {metric.label}
+                    <small>{metric.configuration}</small>
+                  </span>
+                  <strong>{metricText(metric)}</strong>
+                </div>
+              ))}
+            </section>
+          )}
+          {r.scoreAudit && (
+            <section className="score-audit-evidence" aria-label="成绩提取依据">
+              <h3>
+                <CheckCircle2 size={14} /> 成绩提取依据 <span>{r.scoreAudit.reviewedAt}</span>
+              </h3>
+              {r.scoreAudit.evidence.map((e, i) => (
+                <div key={i}>
+                  <External url={e.sourceUrl}>
+                    {e.pdfPath.split('/').at(-1)} · 文件页 {e.pages}
+                  </External>
+                  <blockquote>{e.quote}</blockquote>
+                  <code title={e.sha256}>SHA-256 {e.sha256.slice(0, 16)}…</code>
+                </div>
+              ))}
+              {r.scoreAudit.notes && <p>{r.scoreAudit.notes}</p>}
+              {r.originalScore && r.originalScore !== r.score && (
+                <p className="original-score">原表记录：{r.originalScore}</p>
+              )}
+            </section>
+          )}
           <dl className="evidence-details">
             <div>
               <dt>运行配置与指标口径</dt>

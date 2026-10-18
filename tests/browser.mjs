@@ -36,6 +36,12 @@ try {
   assert.equal(await page.locator('.reported-score strong').innerText(), '90%');
   await page.getByRole('button', { name: '关闭证据面板' }).click();
   await expect(page.locator('.record-table tbody tr')).toHaveCount(233);
+  await page.getByRole('combobox', { name: '筛选成绩披露状态' }).selectOption('reported');
+  await expect(page.locator('.record-table tbody tr')).toHaveCount(156);
+  await page.getByRole('combobox', { name: '筛选成绩披露状态' }).selectOption('graphical');
+  await expect(page.locator('.record-table tbody tr')).toHaveCount(22);
+  await expect(page.getByText('未填成绩', { exact: true })).toHaveCount(0);
+  await page.getByRole('combobox', { name: '筛选成绩披露状态' }).selectOption('all');
   await page.getByRole('combobox', { name: '筛选证据状态' }).selectOption('模型覆盖待核对');
   await expect(page.locator('.record-table tbody tr')).toHaveCount(15);
   await page.getByRole('combobox', { name: '筛选记录类别' }).selectOption('行为/拒答');
@@ -44,9 +50,28 @@ try {
   await page.goto(origin + '#progress?benchmark=ExploitBench');
   await page.getByRole('heading', { name: '把成绩放回时间与条件中。' }).waitFor();
   assert.equal(await page.locator('.month-records button').count(), 2);
-  assert.equal(await page.locator('.data-point').count(), 3);
+  assert.ok(
+    (await page.locator('.data-point').count()) >= 8,
+    'Newly extracted scores should be visible in the plot',
+  );
   await page.getByRole('button', { name: 'Anthropic', exact: true }).click();
-  await page.getByText('当前筛选下，没有日精度、单一百分数的能力成绩').waitFor();
+  await expect(page.getByRole('button', { name: 'Anthropic', exact: true })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await page.getByLabel('查看指标 / 配置').selectOption('Cap% · AutoNudge');
+  await expect(page.locator('.data-point')).toHaveCount(5);
+  await page.getByRole('button', { name: /Claude Haiku 5.5，Cap% 49%/ }).click();
+  await expect(page.getByRole('region', { name: '逐指标成绩' })).toBeVisible();
+  await expect(page.getByRole('region', { name: '成绩提取依据' })).toBeVisible();
+  await page.getByRole('button', { name: '关闭证据面板' }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await page.getByLabel('查看指标 / 配置').selectOption('完整ACE · plain+AutoNudge合计');
+  await page.getByText('原文计数', { exact: true }).waitFor();
+  await page.getByLabel('BENCHMARK', { exact: true }).selectOption('CTF Professional');
+  await page.getByText('当前筛选下，没有符合指标条件的日精度能力成绩').waitFor();
+  await page.getByRole('button', { name: 'OpenAI', exact: true }).click();
+  await expect(page.locator('.data-point')).toHaveCount(5);
 
   await page.goto(origin + '#models?search=Gemini');
   await page.getByRole('heading', { name: '每一个模型，都有自己的证据档案。' }).waitFor();
@@ -62,7 +87,7 @@ try {
   for (const path of [
     'data/audit.json',
     'downloads/results.csv',
-    'downloads/audit-2026-10-17.xlsx',
+    'downloads/audit-2026-10-18.xlsx',
   ]) {
     const result = await page.request.get(origin + path);
     assert.equal(result.status(), 200);

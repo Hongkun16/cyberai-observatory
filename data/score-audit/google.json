@@ -1,0 +1,656 @@
+[
+  {
+    "id": "CAO-2026-0183",
+    "score": "达到网络安全预警阈值，未达到 Cyber CCL",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-1-pro.pdf",
+        "pages": "7-8",
+        "quote": "Cyber assessment: reached alert threshold; CCL not reached."
+      }
+    ],
+    "method": "table",
+    "notes": "无公开数值成绩；3.1 Pro与Deep Think均进行了额外网安测试；报告称计入推理成本Deep Think更差，不能继承其他版本分数。"
+  },
+  {
+    "id": "CAO-2026-0188",
+    "score": "额外网安测试：未达到 Cyber CCL",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-5-flash.pdf",
+        "pages": "7",
+        "quote": "Additional testing found Gemini 3.5 Flash remains below the cyber CCL."
+      }
+    ],
+    "method": "text",
+    "notes": "只披露阈值判断，没有具名题集、原始分数或成功率。"
+  },
+  {
+    "id": "CAO-2026-0189",
+    "score": "额外网安测试：未达到 Cyber CCL",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-6-flash.pdf",
+        "pages": "7",
+        "quote": "Additional testing found Gemini 3.6 Flash remains below the cyber CCL."
+      }
+    ],
+    "method": "text",
+    "notes": "只披露阈值判断，没有具名题集、原始分数或成功率。"
+  },
+  {
+    "id": "CAO-2026-0190",
+    "score": "达到前沿竞争水平（未披露数值）",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-5-flash-cyber.pdf",
+        "pages": "3",
+        "quote": "Within CodeMender, 3.5 Flash Cyber reaches competitive performance at the frontier on CyberGym."
+      }
+    ],
+    "method": "text",
+    "notes": "CodeMender多智能体组合报告；整页视觉核对无分数图表。"
+  },
+  {
+    "id": "CAO-2026-0191",
+    "score": "代理评测达到预警阈值；估计未接近 Cyber CCL",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_3-7_flash_fsf_report_a944d.pdf",
+        "pages": "15-18",
+        "quote": "Proxy evaluations indicate Gemini 3.7 Flash reaches the alert threshold, but none of the uplift estimates near the CCL."
+      }
+    ],
+    "method": "text",
+    "notes": "使用网安、软件工程和综合能力代理评测预测uplift，未公开具名代理原始数值；能力评估未运行Key Skills，不可与防护设置Key Skills混淆。"
+  },
+  {
+    "id": "CAO-2026-0193",
+    "score": "里程碑拒绝率 100%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "里程碑拒绝率",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "最新防护开启；Key Skills"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_3-7_flash_fsf_report_a944d.pdf",
+        "pages": "31",
+        "quote": "The model refuses on 100% of the milestones."
+      }
+    ],
+    "method": "text",
+    "notes": "防护拒答率；不是任务成功率。"
+  },
+  {
+    "id": "CAO-2026-0194",
+    "score": "违规率 11.4%；良性拒答率 6.5%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "违规率",
+        "value": 11.4,
+        "unit": "percent",
+        "configuration": ""
+      },
+      {
+        "label": "良性拒答率",
+        "value": 6.5,
+        "unit": "percent",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_3-7_flash_fsf_report_a944d.pdf",
+        "pages": "30-31",
+        "quote": "Figure 5, Gemini 3.7 Flash Cyber Conversational: violations 11.4%; benign refusals 6.5%."
+      }
+    ],
+    "method": "figure",
+    "notes": "视觉读取图5明确数字；与前代使用同图对比，但只提取目标模型。"
+  },
+  {
+    "id": "CAO-2026-0195",
+    "score": "QSR 5%；OSR 50%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "查询成功率 QSR",
+        "value": 5,
+        "unit": "percent",
+        "configuration": ""
+      },
+      {
+        "label": "目标成功率 OSR",
+        "value": 50,
+        "unit": "percent",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_3-7_flash_fsf_report_a944d.pdf",
+        "pages": "32",
+        "quote": "Figure 6, Gemini 3.7 Flash Cyber Static: QSR 5%; OSR 50%."
+      }
+    ],
+    "method": "figure",
+    "notes": "越狱攻击成功率，越低越好；图示95% Jeffreys Beta置信区间。"
+  },
+  {
+    "id": "CAO-2026-0196",
+    "score": "OSR 24%；QSR 仅图示（无数值标注）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "目标成功率 OSR",
+        "value": 24,
+        "unit": "percent",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_3-7_flash_fsf_report_a944d.pdf",
+        "pages": "32",
+        "quote": "Figure 6, Gemini 3.7 Flash Cyber Adaptive: OSR 24%; QSR is shown as a small bar without a numeric label."
+      }
+    ],
+    "method": "figure",
+    "notes": "未根据柱高猜测QSR，也未填0；OSR为图中明确标注值。攻击成功率，越低越好。"
+  },
+  {
+    "id": "CAO-2026-0197",
+    "score": "QSR 18%；OSR 88%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "查询成功率 QSR",
+        "value": 18,
+        "unit": "percent",
+        "configuration": ""
+      },
+      {
+        "label": "目标成功率 OSR",
+        "value": 88,
+        "unit": "percent",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_3-7_flash_fsf_report_a944d.pdf",
+        "pages": "32-33",
+        "quote": "Figure 6, Gemini 3.7 Flash Gray Swan Cyber: QSR 18%; OSR 88%."
+      }
+    ],
+    "method": "figure",
+    "notes": "28项cyber tasks，Shade自动红队，高thinking；攻击成功率，越低越好。"
+  },
+  {
+    "id": "CAO-2026-0198",
+    "score": "攻击成功率 5.5%（k=15）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "攻击成功率 ASR",
+        "value": 5.5,
+        "unit": "percent",
+        "configuration": "Gray Swan IPI；k=15次攻击"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "211-212",
+        "quote": "Figure 6.9: Gemini 3.8 Flash, ASR 5.5% at k=15."
+      }
+    ],
+    "method": "figure",
+    "notes": "后续报告补测／历史对比披露；非原始发布页披露。原发布页仅定性描述；数值由后续Gemini4安全报告图6.9补录，不表示原发布时已披露。k=1、k=10无数字标注未估读；越低越好。",
+    "laterDisclosure": true
+  },
+  {
+    "id": "CAO-2026-0199",
+    "score": "攻击成功率 6%（k=15）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "攻击成功率 ASR",
+        "value": 6.0,
+        "unit": "percent",
+        "configuration": "Gray Swan IPI；k=15次攻击"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "211-212",
+        "quote": "Figure 6.9: Gemini 3.8 Flash Cyber, ASR 6% at k=15."
+      }
+    ],
+    "method": "figure",
+    "notes": "后续报告补测／历史对比披露；非原始发布页披露。原发布页仅定性描述；数值由后续Gemini4安全报告图6.9补录，不表示原发布时已披露。k=1、k=10无数字标注未估读；越低越好。",
+    "laterDisclosure": true
+  },
+  {
+    "id": "CAO-2026-0200",
+    "score": "达到前沿水平，超过3.5 Flash Cyber及更大模型（未披露数值）",
+    "scoreStatus": "qualitative",
+    "metrics": [],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-8-flash-cyber.pdf",
+        "pages": "2",
+        "quote": "On CyberGym, Gemini 3.8 Flash Cyber demonstrates frontier-level performance and surpasses 3.5 Flash Cyber."
+      }
+    ],
+    "method": "text",
+    "notes": "原发布页文本和视觉核对均无该评测分数。"
+  },
+  {
+    "id": "CAO-2026-0201",
+    "score": "47.2% pass@1",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 47.2,
+        "unit": "percent",
+        "configuration": "Collinear CWE-Bench"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-8-flash-cyber.pdf",
+        "pages": "3",
+        "quote": "Gemini 3.8 Flash Cyber has a pass@1 of 47.2%."
+      }
+    ],
+    "method": "text",
+    "notes": "漏洞修复能力；不继承对比模型47.8%。"
+  },
+  {
+    "id": "CAO-2026-0202",
+    "score": "成功率 >70%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "成功率",
+        "value": ">70",
+        "unit": "percent",
+        "configuration": "内部基准，20种编程语言"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-8-flash-cyber.pdf",
+        "pages": "2",
+        "quote": "Across complex codebases spanning 20 programming languages, success rate exceeds 70%."
+      }
+    ],
+    "method": "text",
+    "notes": "原文为严格大于70%，不写作精确70%。"
+  },
+  {
+    "id": "CAO-2026-0203",
+    "score": "正确补丁数为最佳商业大模型的 2.6 倍",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "正确补丁数量比",
+        "value": 2.6,
+        "unit": "ratio",
+        "configuration": "Chrome Security内部比较"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-8-flash-cyber.pdf",
+        "pages": "3",
+        "quote": "Produced 2.6 times more correct patches to vulnerabilities in Chrome than the best commercial models."
+      }
+    ],
+    "method": "text",
+    "notes": "数量比值；未披露绝对补丁数或成功率。"
+  },
+  {
+    "id": "CAO-2026-0204",
+    "score": "召回率提高 +7.5–9.7%；成本低 2.3–5.2 倍",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "召回率相对比较",
+        "value": "+7.5–9.7",
+        "unit": "percent",
+        "configuration": "Wiz内部渗透测试；对比其他前沿模型"
+      },
+      {
+        "label": "成本降低倍数",
+        "value": "2.3–5.2",
+        "unit": "ratio",
+        "configuration": "Wiz内部渗透测试"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/gemini-3-8-flash-cyber.pdf",
+        "pages": "3",
+        "quote": "Wiz: +7.5–9.7% higher recall, at a 2.3–5.2x lower cost."
+      }
+    ],
+    "method": "text",
+    "notes": "原文未说明百分数是相对百分比还是百分点，保留原文表述，不擅自改为pp。"
+  },
+  {
+    "id": "CAO-2026-0205",
+    "score": "端到端 12/12（100%，至少成功一次）；片段 77/82（93.9%）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "端到端场景至少一次成功率",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "12个场景，多个尝试；非pass@1"
+      },
+      {
+        "label": "端到端成功场景",
+        "value": "12/12",
+        "unit": "count",
+        "configuration": ""
+      },
+      {
+        "label": "通过片段比例",
+        "value": 93.9,
+        "unit": "percent",
+        "configuration": "图3.2；各片段多个尝试"
+      },
+      {
+        "label": "通过片段",
+        "value": "77/82",
+        "unit": "count",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "34-39",
+        "quote": "Figure 3.2: 77/82 segments (93.9%); 12/12 E2E challenges (100.0%)."
+      }
+    ],
+    "method": "figure",
+    "notes": "Model C最终候选，不加模型外防护；两个挑战通过非预期解法解决，原始成功率与uplift可能高估预期任务表现。图中pass@k曲线无逐点数字，未估读。"
+  },
+  {
+    "id": "CAO-2026-0206",
+    "score": "能力达成率 87%（best-of-three union）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "能力达成率",
+        "value": 87,
+        "unit": "percent",
+        "configuration": "autonudge；300-turn limit；best-of-three union；656项能力"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "213-214",
+        "quote": "Gemini 4 Argon reached 87% of the 656 capabilities tested."
+      }
+    ],
+    "method": "text",
+    "notes": "41个挑战，每个16项能力；不是挑战级成功率，也不是pass@1。"
+  },
+  {
+    "id": "CAO-2026-0207",
+    "score": "历史漏洞召回率 86%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "历史漏洞召回率",
+        "value": 86,
+        "unit": "percent",
+        "configuration": "内部基准；1200个近期已确认历史漏洞；内部Antigravity harness"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "213-215",
+        "quote": "Gemini 4 Argon discovered 86% of the historical vulnerabilities."
+      }
+    ],
+    "method": "text",
+    "notes": "真实代码库开放式漏洞发现；不同于20-language benchmark。"
+  },
+  {
+    "id": "CAO-2026-0208",
+    "score": "72% pass@1",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 72,
+        "unit": "percent",
+        "configuration": "内部真实红队任务；漏洞发现并完成利用；包含有/无源码变体"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "215-216",
+        "quote": "Gemini 4 Argon finds and exploits vulnerable targets with a 72% pass@1 rate."
+      }
+    ],
+    "method": "text",
+    "notes": ""
+  },
+  {
+    "id": "CAO-2026-0209",
+    "score": "68% pass@1",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "pass@1",
+        "value": 68,
+        "unit": "percent",
+        "configuration": "CWE-Bench v1；120任务；每任务4次独立试验；high reasoning；每次1小时；Antigravity"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "216-217",
+        "quote": "Gemini 4 Argon achieves 68% Pass@1 on CWE-Bench v1."
+      }
+    ],
+    "method": "text",
+    "notes": "所有既有功能和回归测试需通过；分数为120任务平均成功率，不是四次取最好。"
+  },
+  {
+    "id": "CAO-2026-0210",
+    "score": "里程碑拒绝率 100%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "里程碑拒绝率",
+        "value": 100,
+        "unit": "percent",
+        "configuration": "CyScenarioBench与ExploitBench；最新防护开启"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "57",
+        "quote": "The model refuses 100% of the milestones under this evaluation."
+      }
+    ],
+    "method": "text",
+    "notes": "本段将两个防护评测合并叙述，不单独推断每个题集能力成功率。"
+  },
+  {
+    "id": "CAO-2026-0211",
+    "score": "违规率 0.4%；良性拒答率 53.9%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "违规率",
+        "value": 0.4,
+        "unit": "percent",
+        "configuration": ""
+      },
+      {
+        "label": "良性拒答率",
+        "value": 53.9,
+        "unit": "percent",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "57-58",
+        "quote": "Figure 3.9: Gemini 4.0 Argon Cyber Conversational violations 0.4%; benign refusals 53.9%."
+      }
+    ],
+    "method": "figure",
+    "notes": "防护效果和良性使用代价分别保留，不把近100%覆盖写成精确100%。"
+  },
+  {
+    "id": "CAO-2026-0212",
+    "score": "QSR <1%；OSR 20%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "查询成功率 QSR",
+        "value": "<1",
+        "unit": "percent",
+        "configuration": ""
+      },
+      {
+        "label": "目标成功率 OSR",
+        "value": 20,
+        "unit": "percent",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "60-61",
+        "quote": "Figure 3.10: Gemini 4.0 Argon Cyber Static QSR <1%; OSR 20%."
+      }
+    ],
+    "method": "figure",
+    "notes": "正文说close to 0%，图中明确<1%，保留上界而不填精确0%。攻击成功率，越低越好。"
+  },
+  {
+    "id": "CAO-2026-0213",
+    "score": "QSR <1%；合并 OSR 20%；单轮 OSR 0%；多轮 OSR 40%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "查询成功率 QSR",
+        "value": "<1",
+        "unit": "percent",
+        "configuration": ""
+      },
+      {
+        "label": "合并目标成功率 OSR",
+        "value": 20,
+        "unit": "percent",
+        "configuration": "单轮+多轮自适应攻击"
+      },
+      {
+        "label": "单轮目标成功率 OSR",
+        "value": 0,
+        "unit": "percent",
+        "configuration": ""
+      },
+      {
+        "label": "多轮目标成功率 OSR",
+        "value": 40,
+        "unit": "percent",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "60-61",
+        "quote": "Figure 3.10 Cyber Adaptive: QSR <1%, OSR 20%; text: single-turn OSR 0%, multi-turn OSR 40%."
+      }
+    ],
+    "method": "figure",
+    "notes": "正文和图表一致；攻击成功率，越低越好。"
+  },
+  {
+    "id": "CAO-2026-0214",
+    "score": "QSR 10%；OSR 56%",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "查询成功率 QSR",
+        "value": 10,
+        "unit": "percent",
+        "configuration": ""
+      },
+      {
+        "label": "目标成功率 OSR",
+        "value": 56,
+        "unit": "percent",
+        "configuration": ""
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "60,62",
+        "quote": "Figure 3.10: Gemini 4.0 Argon Gray Swan Cyber QSR 10%; OSR 56%."
+      }
+    ],
+    "method": "figure",
+    "notes": "25项cyber任务，Shade自动红队，高thinking；原文62页确认QSR10%。攻击成功率，越低越好。"
+  },
+  {
+    "id": "CAO-2026-0215",
+    "score": "攻击成功率 0.7%（k=15）",
+    "scoreStatus": "reported",
+    "metrics": [
+      {
+        "label": "攻击成功率 ASR",
+        "value": 0.7,
+        "unit": "percent",
+        "configuration": "Gray Swan IPI；k=15次攻击；held-out competition attacks"
+      }
+    ],
+    "evidence": [
+      {
+        "pdfPath": "pdf/supplement_gemini_4_safety_report_b78dc.pdf",
+        "pages": "211-212",
+        "quote": "Figure 6.9: Gemini 4 Argon attack success rate 0.7% at k=15."
+      }
+    ],
+    "method": "figure",
+    "notes": "间接提示注入鲁棒性，越低越好；k=1/k=10无精确标注未估读。"
+  }
+]

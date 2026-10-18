@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
-import io
 import json
 import re
 import shutil
@@ -15,6 +14,14 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SCORE_REVIEW_DATE = "2026-10-18"
+SCORE_STATUS_LABELS = {
+    "reported": "已核实数值",
+    "graphical": "仅图示，未标精确值",
+    "qualitative": "仅定性结论",
+    "not_disclosed": "未披露数值",
+    "not_applicable": "不适用（证据未确认）",
+}
 NS = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
 REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 
@@ -71,6 +78,50 @@ def write_json(path: Path, value) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def apply_score_audit(records, pdfs):
+    """Apply individually reviewed PDF evidence; never infer missing scores."""
+    reviews = {}
+    for path in sorted((ROOT / "data/score-audit").glob("*.json")):
+        for review in json.loads(path.read_text(encoding="utf-8")):
+            if review["id"] in reviews:
+                raise ValueError(f"Duplicate score audit: {review['id']}")
+            reviews[review["id"]] = review
+    confirmed = {r["id"] for r in records if r["status"] == "已确认"}
+    if set(reviews) != confirmed:
+        raise ValueError(f"Score audit coverage mismatch. Missing: {sorted(confirmed - set(reviews))}; extra: {sorted(set(reviews) - confirmed)}")
+    inventory = {pdf["path"]: pdf for pdf in pdfs}
+    for record in records:
+        record["originalScore"] = record["score"]
+        record["originalConfiguration"] = record["configuration"]
+        if record["status"] != "已确认":
+            record.update(scoreStatus="not_applicable", metrics=[], scoreAudit=None)
+            continue
+        review = reviews[record["id"]]
+        status = review["scoreStatus"]
+        if status not in SCORE_STATUS_LABELS or status == "not_applicable":
+            raise ValueError(f"Invalid score status: {record['id']}")
+        if not review.get("evidence"):
+            raise ValueError(f"Score audit missing evidence: {record['id']}")
+        evidence = []
+        for item in review["evidence"]:
+            pdf = inventory.get(item["pdfPath"])
+            if not pdf or not item["pages"] or not item["quote"]:
+                raise ValueError(f"Invalid score evidence: {record['id']}")
+            evidence.append({**item, "sha256": pdf["sha256"], "sourceUrl": pdf["downloadUrl"] or pdf["sourceUrl"]})
+        score = review.get("score", "").strip()
+        if status == "reported" and not score:
+            raise ValueError(f"Reported score is empty: {record['id']}")
+        record.update(
+            score=score, numericScore=parse_percentage(score), scoreStatus=status,
+            configuration=review.get("configurationCorrection", record["configuration"]),
+            metrics=review.get("metrics", []),
+            scoreAudit={"reviewedAt": SCORE_REVIEW_DATE, "method": review["method"],
+                        "notes": review.get("notes", ""), "evidence": evidence,
+                        "laterDisclosure": review.get("laterDisclosure", False)},
+        )
+    return records
+
+
 def build(workbook: Path, as_of: str):
     sheets = read_workbook(workbook)
     identities = json.loads((ROOT / "data/model-identities.json").read_text())
@@ -119,11 +170,18 @@ def build(workbook: Path, as_of: str):
     sources = [{"url": r["URL"], "status": r["HTTP状态"], "finalUrl": r["最终URL"],
                 "contentType": r["内容类型"], "sha256": r["原始文件SHA-256"],
                 "fetchedAt": r["抓取时间UTC"], "error": r["错误"]} for r in sheets["访问日志"]]
-    data = {"meta": {"version": "0.1.0", "asOf": as_of, "workbook": "snapshots/" + workbook.name,
+    apply_score_audit(records, pdfs)
+    data = {"meta": {"version": "0.2.0", "asOf": as_of, "workbook": "snapshots/" + workbook.name,
                      "workbookSha256": hashlib.sha256(workbook.read_bytes()).hexdigest(),
                      "scope": "公开报告证据整理；未独立重跑模型评测", "modelCount": len(models),
-                     "recordCount": len(records), "scoreCount": sum(bool(r["score"]) for r in records),
-                     "numericCount": sum(r["numericScore"] is not None for r in records)},
+                     "recordCount": len(records), "scoreCount": sum(r["scoreStatus"] == "reported" for r in records),
+                     "originalScoreCount": sum(bool(r["originalScore"]) for r in records),
+                     "addedScoreCount": sum(not r["originalScore"] and r["scoreStatus"] == "reported" for r in records),
+                     "numericCount": sum(r["numericScore"] is not None for r in records),
+                     "scoreReviewDate": SCORE_REVIEW_DATE, "reviewedScoreRecords": sum(r["scoreAudit"] is not None for r in records),
+                     "metricCount": sum(len(r["metrics"]) for r in records),
+                     "scoreStatusCounts": dict(Counter(r["scoreStatus"] for r in records)),
+                     "downloadWorkbook": "downloads/audit-2026-10-18.xlsx"},
             "models": models, "evaluations": records, "benchmarks": benchmarks, "pdfs": pdfs,
             "revisions": revisions, "sources": sources}
     validate(data)
@@ -134,11 +192,14 @@ def build(workbook: Path, as_of: str):
     downloads = ROOT / "web/public/downloads"
     downloads.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(workbook, downloads / "audit-2026-10-17.xlsx")
-    fields = ["id", "modelId", "benchmark", "status", "category", "score", "configuration", "sourceUrl", "section", "pages", "note"]
+    fields = ["id", "modelId", "benchmark", "status", "category", "score", "scoreStatus", "originalScore", "configuration", "sourceUrl", "section", "pages", "note", "metrics", "scoreEvidence", "scoreReviewNotes"]
     with (downloads / "results.csv").open("w", encoding="utf-8-sig", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
-        writer.writerows(records)
+        for record in records:
+            writer.writerow({**record, "metrics": json.dumps(record["metrics"], ensure_ascii=False),
+                             "scoreEvidence": json.dumps(record["scoreAudit"]["evidence"] if record["scoreAudit"] else [], ensure_ascii=False),
+                             "scoreReviewNotes": record["scoreAudit"]["notes"] if record["scoreAudit"] else record["status"]})
     print(json.dumps({**data["meta"], "statuses": dict(Counter(r["status"] for r in records))}, ensure_ascii=False, indent=2))
     return data
 
@@ -164,6 +225,19 @@ def validate(data):
                 raise ValueError(f"Invalid source URL: {r['id']}")
         if r["numericScore"] != parse_percentage(r["score"]):
             raise ValueError(f"Score conversion mismatch: {r['id']}")
+        if r.get("scoreStatus") not in SCORE_STATUS_LABELS:
+            raise ValueError(f"Unknown score status: {r['id']}")
+        if r["status"] != "已确认" and (r["scoreStatus"] != "not_applicable" or r["metrics"]):
+            raise ValueError(f"Unconfirmed evidence has scored metrics: {r['id']}")
+        if r["status"] == "已确认" and not r.get("scoreAudit"):
+            raise ValueError(f"Confirmed record lacks score review: {r['id']}")
+        if r["scoreStatus"] != "reported" and (r["numericScore"] is not None or r["metrics"]):
+            raise ValueError(f"Non-numeric review has numeric metrics: {r['id']}")
+        for metric in r["metrics"]:
+            if not metric.get("label") or "value" not in metric or not metric.get("unit"):
+                raise ValueError(f"Invalid extracted metric: {r['id']}")
+            if metric["unit"] == "percent" and isinstance(metric["value"], (int, float)) and not 0 <= metric["value"] <= 100:
+                raise ValueError(f"Percentage metric outside range: {r['id']}")
     return True
 
 
