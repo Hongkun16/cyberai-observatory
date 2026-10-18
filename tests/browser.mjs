@@ -4,16 +4,19 @@ import { mkdir } from 'node:fs/promises';
 
 const origin = process.env.TEST_URL || 'http://127.0.0.1:4173/';
 const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
-const context = await browser.newContext({ viewport: { width: 1440, height: 1050 }, reducedMotion: 'reduce' });
+const context = await browser.newContext({
+  viewport: { width: 1440, height: 1050 },
+  reducedMotion: 'reduce',
+});
 const page = await context.newPage();
 const errors = [];
-page.on('pageerror', error => errors.push(error.message));
+page.on('pageerror', (error) => errors.push(error.message));
 await mkdir('test-results', { recursive: true });
 try {
   await page.goto(origin);
   await page.getByRole('heading', { name: '追踪大模型 网络安全能力的演进。' }).waitFor();
   await expect(page.locator('.stat strong').first()).toHaveText('48↗');
-  assert.ok(await page.locator('.data-point').count() > 0);
+  assert.ok((await page.locator('.data-point').count()) > 0);
   await page.screenshot({ path: 'test-results/desktop.png', fullPage: true });
 
   // SVG marks must be operable by keyboard and restore focus on close.
@@ -25,7 +28,7 @@ try {
   assert.ok(await page.getByRole('link', { name: '打开官方来源' }).getAttribute('href'));
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
-  assert.equal(await dot.evaluate(n => document.activeElement === n), true);
+  assert.equal(await dot.evaluate((n) => document.activeElement === n), true);
 
   // A deep-linked evidence record works on a fresh load.
   await page.goto(origin + '#evidence?record=CAO-2026-0002');
@@ -56,7 +59,11 @@ try {
   await page.locator('.benchmark-card').click();
   await page.getByRole('heading', { name: 'CVE-Bench', exact: true }).waitFor();
 
-  for (const path of ['data/audit.json', 'downloads/results.csv', 'downloads/audit-2026-10-17.xlsx']) {
+  for (const path of [
+    'data/audit.json',
+    'downloads/results.csv',
+    'downloads/audit-2026-10-17.xlsx',
+  ]) {
     const result = await page.request.get(origin + path);
     assert.equal(result.status(), 200);
   }
@@ -66,7 +73,10 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(origin + '#overview');
   await page.getByRole('heading', { name: '追踪大模型 网络安全能力的演进。' }).waitFor();
-  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), 'Mobile page overflows horizontally');
+  assert.ok(
+    await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+    'Mobile page overflows horizontally',
+  );
   await page.screenshot({ path: 'test-results/mobile.png', fullPage: true });
   await page.getByRole('button', { name: '展开导航' }).click();
   await page.getByRole('navigation').getByRole('link', { name: 'Models 模型库' }).click();
@@ -78,7 +88,9 @@ try {
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
   await page.screenshot({ path: 'test-results/evidence-mobile.png', fullPage: true });
   assert.deepEqual(errors, [], 'Browser runtime errors');
-  console.log('Browser checks passed: desktop, mobile, chart keyboard, deep links, filters, model matrix, benchmark detail, downloads and evidence.');
+  console.log(
+    'Browser checks passed: desktop, mobile, chart keyboard, deep links, filters, model matrix, benchmark detail, downloads and evidence.',
+  );
 } finally {
   await browser.close();
 }
